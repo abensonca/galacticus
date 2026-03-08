@@ -153,10 +153,10 @@ def main():
                 encoded = latex_encode(file_key)
                 if re.search(r'\.(pm|Inc)$', file_key):
                     # Perl modules and include files: no hyperlink.
-                    out.write(f'\\item {{\\normalfont \\ttfamily {encoded}}}\n')
+                    out.write(f'\\item \\mono{{{encoded}}}\n')
                 else:
                     out.write(
-                        f'\\item \\hyperlink{{{file_key}}}{{\\normalfont \\ttfamily {encoded}}}\n'
+                        f'\\item \\hyperlink{{{file_key}}}\\mono{{{encoded}}}\n'
                     )
             out.write('\\end{itemize}\n')
 
