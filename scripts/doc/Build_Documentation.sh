@@ -57,7 +57,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # Extract contributor data.
-./scripts/doc/Extract_Contributors.pl . doc/contributions.tex
+./scripts/doc/Extract_Contributors.py . doc/contributions.tex
 if [ $? -ne 0 ]; then
  echo Failed to extract contributor data
  exit 1
