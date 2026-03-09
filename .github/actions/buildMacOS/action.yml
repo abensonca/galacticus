@@ -197,10 +197,10 @@ runs:
           $CPAN::Config->{pushy_https} = 0;
           $CPAN::Config->{urllist} = [
             q{https://cpan.metacpan.org/},
-            q{http://www.cpan.org/},
-            q{http://cpan.perl.org/},
-            q{ftp://ftp.cpan.org/pub/CPAN/},
+            q{https://www.cpan.org/},
+            q{https://cpan.perl.org/},
             q{http://ftp.funet.fi/pub/languages/perl/CPAN/},
+            q{ftp://ftp.cpan.org/pub/CPAN/},
           ];
           CPAN::HandleConfig->commit();
         '
