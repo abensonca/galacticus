@@ -202,7 +202,7 @@ runs:
             q{ftp://ftp.cpan.org/pub/CPAN/},
             q{http://ftp.funet.fi/pub/languages/perl/CPAN/},
           ];
-          CPAN::Config->commit();
+          CPAN::HandleConfig->commit();
         '
     - name: Install Perl modules
       shell: bash
