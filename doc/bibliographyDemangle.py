@@ -19,7 +19,7 @@ with open('Galacticus.bib', 'r', encoding='utf-8', errors='replace') as ifile, \
         line = line.replace('\ufffd', ' ')
 
         # Percentages.
-        line = re.sub(r'[^\\]%', r'\\%', line)
+        line = re.sub(r'(?<!\\)%', r'\\%', line)
 
         # Backslashes.
         line = re.sub(r'\{\\textbackslash\}([a-zA-Z]+)', r'{\\\1}', line)
