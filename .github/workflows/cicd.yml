@@ -805,7 +805,7 @@ jobs:
         run: |
           printf '<details><summary>Updated files (click to expand)</summary>\n\n' > warnings-collapsible.md
           cat warnings.md >> warnings-collapsible.md
-          printf '\n</details>\n' >> warnings-collapsible.md
+          printf '\n\n</details>\n' >> warnings-collapsible.md
       - name: Comment on the PR if any warnings were found
         if: steps.check_files.outputs.files_exists == 'true' && github.event.pull_request.head.repo.full_name == github.repository
         continue-on-error: true
