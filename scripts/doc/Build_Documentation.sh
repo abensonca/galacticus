@@ -81,7 +81,7 @@ fi
 cd doc
 
 # Demangle the bibliography.
-./Bibliography_Demangle.pl
+./bibliographyDemangle.py
 if [ $? -ne 0 ]; then
  echo Failed to demangle bibliography
  exit 1
