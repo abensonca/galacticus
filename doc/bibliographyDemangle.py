@@ -48,7 +48,7 @@ with open('Galacticus.bib', 'r', encoding='utf-8', errors='replace') as ifile, \
         line = line.replace('μ', r'$\mu$')
         line = line.replace('ν', r'$\nu$')
         line = line.replace('ξ', r'$\xi$')
-        line = line.replace('ℴ', r'$\omicron$')
+        line = line.replace('ℴ', r'$o$')
         line = line.replace('π', r'$\pi$')
         line = line.replace('ϖ', r'$\pi$')
         line = line.replace('ρ', r'$\rho$')
