@@ -60,13 +60,19 @@ _LATEX_SPECIAL = [
     ('~',  r'\~{}'),
 ]
 
+# Precomputed mapping and regex for efficient, single-pass LaTeX escaping.
+_LATEX_SPECIAL_MAP = dict(_LATEX_SPECIAL)
+_LATEX_SPECIAL_RE = re.compile(r'[\\{}$&%#^_~]')
+
 
 def latex_encode(text):
     """Escape special LaTeX characters in *text* (equivalent to LaTeX::Encode)."""
-    # Backslash must be replaced first to avoid double-escaping.
-    for char, replacement in _LATEX_SPECIAL:
-        text = text.replace(char, replacement)
-    return text
+    # Use a single-pass regex substitution so that replacement strings are not
+    # re-escaped by subsequent replacements.
+    return _LATEX_SPECIAL_RE.sub(
+        lambda m: _LATEX_SPECIAL_MAP[m.group(0)],
+        text,
+    )
 
 
 def encode_name_for_latex(name):
