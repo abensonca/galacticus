@@ -14,6 +14,7 @@ parser.add_argument('outputFile', help='Output file for stack traces')
 args = parser.parse_args()
 
 # Parse the node list.
+print("Parsing node list....")
 node_list = None
 result = subprocess.run(['scontrol', 'show', 'job', args.slurmJobID], capture_output=True, text=True)
 for line in result.stdout.splitlines():
@@ -27,6 +28,7 @@ if node_list is None:
     sys.exit(1)
 
 # Extract canonical node names.
+print("Extracting canonical node names....")
 node_names = []
 result = subprocess.run(['scontrol', 'show', 'hostnames', node_list], capture_output=True, text=True)
 for line in result.stdout.splitlines():
@@ -38,6 +40,7 @@ for line in result.stdout.splitlines():
 user = os.environ.get('USER', '')
 with open(args.outputFile, 'w') as output:
     for node_name in node_names:
+        print(f"Connecting to node '{node_name}'....")
         output.write(f"Node: {node_name}\n")
         cmd = (
             f"srun --jobid={args.slurmJobID} -w {node_name} --pty bash -c "
