@@ -692,7 +692,7 @@ jobs:
     needs: Build-Executable-DMO-Linux
     uses: ./.github/workflows/testModel.yml
     with:
-      file: benchmark-darkMatterOnlySubhalos.pl
+      file: benchmark-darkMatterOnlySubhalos.py
       artifact: galacticus-exec-dmo
       runPath: ./testSuite
       cacheData: 0
@@ -704,7 +704,7 @@ jobs:
     needs: Build-Executable-Linux
     uses: ./.github/workflows/testModel.yml
     with:
-      file: benchmark-milkyWay.pl
+      file: benchmark-milkyWay.py
       artifact: galacticus-exec
       runPath: ./testSuite
       cacheData: 1
