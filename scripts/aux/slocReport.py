@@ -3,7 +3,9 @@ import os
 import re
 import json
 import subprocess
+import sys
 import urllib.request
+import urllib.error
 
 # Count source lines of code in Galacticus source files, accounting for embedded XML and LaTeX.
 # Andrew Benson (04-January-2024)
@@ -65,6 +67,11 @@ result = subprocess.run(
     'sloccount aux constraints parameters parameters.xml perl plots schema scripts testSuite source',
     shell=True, capture_output=True, text=True
 )
+if result.returncode != 0:
+    print(f"Error: sloccount failed with exit code {result.returncode}.", file=sys.stderr)
+    if result.stderr:
+        print(result.stderr, file=sys.stderr)
+    raise SystemExit(result.returncode)
 for line in result.stdout.splitlines():
     match = re.match(r'^([a-z0-9]+):\s*(\d+)', line)
     if match:
@@ -82,4 +89,12 @@ req = urllib.request.Request(
     headers={'Content-type': 'application/json'},
     method='POST'
 )
-urllib.request.urlopen(req)
+try:
+    with urllib.request.urlopen(req, timeout=10) as response:
+        status_code = response.getcode()
+        if status_code < 200 or status_code >= 300:
+            print(f"Error: Slack webhook returned HTTP status {status_code}.", file=sys.stderr)
+            raise SystemExit(1)
+except urllib.error.URLError as e:
+    print(f"Error: failed to post SLOC report to Slack: {e}", file=sys.stderr)
+    raise SystemExit(1)
