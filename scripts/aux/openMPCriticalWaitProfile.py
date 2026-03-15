@@ -26,14 +26,21 @@ with h5py.File(args.modelFileName, 'r') as model_file:
 # Find total critical section wait time.
 wait_time_total = critical_section_wait_times.sum()
 
+# If there is no total wait time (or it is non-positive), there is nothing meaningful to report.
+if wait_time_total <= 0:
+    print("Total wait time for critical section across all threads is non-positive; no significant contributors to report.")
+    sys.exit(0)
+
 # Report.
 print(f"Total wait time for critical section across all threads = {wait_time_total} s")
 print("Significant contributing critical sections are:")
 
 wait_time_ranks = np.argsort(critical_section_wait_times)
-i                   = 0
+n_sections = len(critical_section_wait_times)
+i = 0
 wait_time_percentage = 100.0
-while i < 10 or wait_time_percentage > 10.0:
+max_sections = min(10, n_sections)
+while (i < max_sections or wait_time_percentage > 10.0) and i < n_sections:
     i += 1
     wait_time_percentage = 100.0 * critical_section_wait_times[wait_time_ranks[-i]] / wait_time_total
     # Decode byte string if needed and strip surrounding quotes/whitespace.
