@@ -38,7 +38,7 @@
 
   !![
   <nodeOperator name="nodeOperatorNodeMajorMergerRecentCount">
-   <description>A node operator class that counts the number of recent major mergers between nodes prior to each output time.</description>
+   <description>A node operator class that counts the number of dark matter halo--halo major mergers (mass ratio $\geq$ \mono{massRatioMajor}, default 0.25) occurring within a lookback interval \mono{intervalRecent} before each output time. \mono{intervalType} selects absolute Gyr or dynamical-time units; \mono{intervalFromInfall} measures the interval from satellite infall rather than from the output time.</description>
   </nodeOperator>
   !!]
   type, extends(nodeOperatorClass) :: nodeOperatorNodeMajorMergerRecentCount

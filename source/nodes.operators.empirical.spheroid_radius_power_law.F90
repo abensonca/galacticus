@@ -27,7 +27,10 @@
   !![
   <nodeOperator name="nodeOperatorSpheroidRadiusPowerLaw">
    <description>
-    A node operator that implements an an empirical power law relationship between spheroid stellar radius and stellar mass.
+    A node operator that sets the spheroid scale radius using an empirical power law in stellar mass,
+    $r_\mathrm{s} = \beta \left(M_\star/\mathrm{M}_\odot\right)^\alpha$, calibrated to observations (default parameters
+    from \citealt{shen_erratum_2007} for early-type galaxies). \mono{alpha} is the mass exponent and \mono{beta} is the
+    normalization. The radius is updated at node initialization, after mergers, and when the ODE is solved analytically.
    </description>
   </nodeOperator>
   !!]

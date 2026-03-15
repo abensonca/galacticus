@@ -25,7 +25,7 @@ Implements a node operator class that applies labels to nodes during tree initia
 
   !![
   <nodeOperator name="nodeOperatorLabel">
-   <description>A node operator class that applies labels to nodes during tree initialization based on a \refClass{galacticFilterClass}.</description>
+   <description>A node operator class that assigns a string \mono{label} meta-property to nodes passing a \refClass{galacticFilterClass} test. \mono{onInitialize} applies the label at tree initialization; \mono{onPostEvolution} reapplies it after each differential evolution step, allowing dynamic labeling of nodes that satisfy time-varying filter criteria. Labels can be used to identify special populations for subsequent analysis or filtering.</description>
   </nodeOperator>
   !!]
   type, extends(nodeOperatorClass) :: nodeOperatorLabel
