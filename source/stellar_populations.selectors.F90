@@ -35,9 +35,12 @@ module Stellar_Population_Selectors
   <functionClass>
    <name>stellarPopulationSelector</name>
    <descriptiveName>Stellar Population Selectors</descriptiveName>
-   <description>
-    Class providing selectors for stellar populations.
-   </description>
+   <description>Class providing selectors for stellar populations — algorithms that choose the appropriate
+    \refClass{stellarPopulationClass} object to associate with a star formation event given the current
+    star formation rate, the component metallicity, and the galaxy component. Different implementations
+    may always return the same (fixed) stellar population, or may select a metal-poor population at low
+    metallicities to represent Population~III stars or a starburst population at high star formation
+    rates, allowing heterogeneous stellar populations within a single galaxy.</description>
    <default>fixed</default>
    <method name="select" >
     <description>Return a stellar population.</description>

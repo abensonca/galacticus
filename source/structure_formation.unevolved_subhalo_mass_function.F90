@@ -29,7 +29,12 @@ module Unevolved_Subhalo_Mass_Functions
   <functionClass>
    <name>unevolvedSubhaloMassFunction</name>
    <descriptiveName>Unevolved Subhalo Mass Function</descriptiveName>
-   <description>Class providing unevolved subhalo mass functions.</description>
+   <description>Class providing unevolved subhalo mass functions $\mathrm{d}N/\mathrm{d}m$ — the mass spectrum of
+    subhalos at the time they first fell into their host, before tidal stripping has reduced their mass.
+    The unevolved \gls{smf} represents the initial conditions for subhalo evolution and is predicted from
+    the extended Press-Schechter formalism or calibrated to N-body simulations. Both differential
+    (per unit mass per host halo) and integrated (between two mass limits) forms are provided, as
+    functions of the subhalo mass, host mass, and cosmic time.</description>
    <default>giocoli2008</default>
    <method name="differential" >
     <description>Return the differential unevolved subhalo mass function per halo for \mono{mass} [$M_\odot$] subhalos in \mono{massHost} [$M_\odot$] hosts at \mono{time} [Gyr].</description>
