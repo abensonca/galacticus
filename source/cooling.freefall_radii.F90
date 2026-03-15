@@ -33,7 +33,11 @@ module Freefall_Radii
   <functionClass>
    <name>freefallRadius</name>
    <descriptiveName>Freefall radii.</descriptiveName>
-   <description>Class providing models of the freefall radius for gas in the hot atmosphere surrounding a galaxy.</description>
+   <description>Class providing models of the freefall radius (in Mpc) for gas in the hot halo surrounding a galaxy,
+    defined as the radius from which gas would freefall to the centre of the halo in the available time. Comparison
+    of the freefall radius with the cooling radius determines the cooling regime: when $r_\mathrm{cool} < r_\mathrm{ff}$
+    the gas is in the rapid-cooling (cold-flow) regime, whereas when $r_\mathrm{cool} > r_\mathrm{ff}$ a quasi-static
+    hot atmosphere forms and cooling proceeds more gradually.</description>
    <default>darkMatterHalo</default>
    <method name="radius" >
     <description>Returns the freefall radius for gas in the hot atmosphere surrounding the galaxy in \mono{node} in units of Mpc.</description>
