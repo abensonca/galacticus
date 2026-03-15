@@ -33,10 +33,12 @@ module Stellar_Populations_Initial_Mass_Functions
   <functionClass>
    <name>initialMassFunction</name>
    <descriptiveName>Initial Mass Functions</descriptiveName>
-   <description>
-    Class providing stellar initial mass functions. All IMFs are assumed to be continuous in $M$, unless otherwise noted and
-    normalized to unit mass.
-   </description>
+   <description>Class providing stellar initial mass functions (\glspl{imf}), $\phi(M) = \mathrm{d}N/\mathrm{d}M$,
+    normalized to unit total stellar mass formed. The \gls{imf} determines the relative number of stars at each
+    mass and therefore governs the recycled gas fraction, metal yields, ionizing photon rate, and the total
+    luminosity of a stellar population. All \glspl{imf} are assumed continuous in $M$ unless otherwise noted.
+    Implementations provide the \gls{imf} itself, its cumulative integral, the minimum and maximum stellar mass,
+    and a tabulation suitable for numerical integration over the stellar population.</description>
    <default>chabrier2001</default>
    <method name="massMinimum" >
     <description>Return the minimum mass in the initial mass function.</description>

@@ -36,7 +36,12 @@ module Stellar_Populations
   <functionClass>
    <name>stellarPopulation</name>
    <descriptiveName>Stellar Populations</descriptiveName>
-   <description>Class providing stellar populations.</description>
+   <description>Class providing stellar populations — composite descriptions of a coeval group of stars formed
+    with a given initial mass function, metallicity, and age. For a given population, implementations return the
+    mass recycled back to the \gls{ism} per unit stellar mass formed, the metal yield, and the energy input rate
+    from stellar evolution as a function of age interval. Both explicit (time-resolved) and instantaneous recycling
+    approximations are supported. The spectra method returns the associated \refClass{stellarPopulationSpectraClass}
+    object for computing integrated luminosities.</description>
    <default>standard</default>
    <data>integer(c_size_t) :: uniqueID_=-1_c_size_t</data>
    <method name="rateRecycling" >
