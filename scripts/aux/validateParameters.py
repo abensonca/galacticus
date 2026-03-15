@@ -26,7 +26,15 @@ root = tree.getroot()
 format_version = 2  # Best guess if no other information.
 format_elem = root.find('formatVersion')
 if format_elem is not None:
-    format_version = int(format_elem.text.strip())
+    format_text = format_elem.text
+    if format_text is None or not format_text.strip():
+        print("Invalid or missing 'formatVersion' value in XML: expected a non-empty integer.", file=sys.stderr)
+        sys.exit(1)
+    try:
+        format_version = int(format_text.strip())
+    except ValueError:
+        print(f"Invalid 'formatVersion' value '{format_text}': expected an integer.", file=sys.stderr)
+        sys.exit(1)
 elif root.find('parameter') is not None:
     format_version = 1
 
