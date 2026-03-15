@@ -29,7 +29,7 @@ Implements an output analysis property extractor class that extracts the Einstei
 
   !![
   <nodePropertyExtractor name="nodePropertyExtractorRadiusEinstein">
-   <description>An output analysis property extractor class that extracts the Einstein radius of the halo.</description>
+   <description>A property extractor that computes the Einstein radius (in arcseconds) of the dark matter halo for gravitational lensing, given a background source at redshift \mono{redshiftSource}. The Einstein radius is determined numerically by finding the projected impact parameter at which the mean projected surface mass density enclosed within that radius equals the critical surface density $\Sigma_\mathrm{cr} = c^2 D_s / (4\pi G D_l D_{ls})$, where $D_s$, $D_l$, and $D_{ls}$ are the angular diameter distances to the source, lens, and from lens to source, respectively. Numerical integration over the line-of-sight and impact parameter is performed using the halo mass distribution from \refClass{massDistributionClass}.</description>
   </nodePropertyExtractor>
   !!]
   type, extends(nodePropertyExtractorScalar) :: nodePropertyExtractorRadiusEinstein
