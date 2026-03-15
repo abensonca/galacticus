@@ -32,7 +32,11 @@ module Transfer_Functions
   <functionClass>
    <name>transferFunction</name>
    <descriptiveName>Transfer Function</descriptiveName>
-   <description>Class providing transfer functions for power spectra.</description>
+   <description>Class providing transfer functions $T(k)$ for the matter power spectrum. The transfer function encodes the
+    modification of the primordial power spectrum by physical processes between inflation and matter-radiation equality,
+    including baryon acoustic oscillations, Silk damping, and free-streaming of dark matter particles. It is defined such
+    that the linear power spectrum at late times is $P(k) \propto k^{n_s} T^2(k)$. Implementations may also return the
+    wavenumber at which $T(k)$ is suppressed by a given factor, characterizing the small-scale cutoff scale.</description>
    <default>eisensteinHu1999</default>
    <data>class(cosmologyParametersClass), pointer :: cosmologyParameters_ => null()</data>
    <method name="value" >

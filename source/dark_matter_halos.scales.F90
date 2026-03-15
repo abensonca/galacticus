@@ -32,7 +32,10 @@ module Dark_Matter_Halo_Scales
   <functionClass>
    <name>darkMatterHaloScale</name>
    <descriptiveName>Dark Matter Halo Scales</descriptiveName>
-   <description>Class providing dark matter halo scales.</description>
+   <description>Class providing the characteristic physical scales of dark matter halos, including the virial radius,
+    virial velocity, virial temperature, mean density, and dynamical timescale. These scales define the boundary and
+    characteristic properties of a dark matter halo and are required by many other classes that compute cooling rates,
+    star formation, and satellite orbital dynamics.</description>
    <default>virialDensityContrastDefinition</default>
    <method name="timescaleDynamical" >
     <description>The characteristic dynamical timescale of a dark matter halo.</description>

@@ -48,7 +48,10 @@ module Black_Hole_Seeds
    <name>blackHoleSeeds</name>
    <descriptiveName>Black Hole Seeds</descriptiveName>
    <description>
-    Class providing models of black hole seeds.
+    Class providing models of the initial seed masses for supermassive black holes and their formation channel.
+    Black hole seeds are the initial conditions for black hole growth via accretion and mergers, and their masses
+    and formation channels (e.g. stellar collapse, direct collapse, star cluster collapse) are set when a new
+    black hole component is initialized in a halo.
    </description>
    <default>fixed</default>
    <method name="mass" >

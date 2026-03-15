@@ -43,7 +43,10 @@ module Cosmology_Parameters
   <functionClass>
    <name>cosmologyParameters</name>
    <descriptiveName>Cosmological Parameters</descriptiveName>
-   <description>Object providing various cosmological parameters.</description>
+   <description>Object providing the fundamental cosmological parameters that describe the background Universe: matter density
+    $\Omega_\mathrm{m}$, dark energy density $\Omega_\Lambda$, baryon density $\Omega_\mathrm{b}$, radiation density
+    $\Omega_\mathrm{r}$, curvature $\Omega_k$, Hubble constant $H_0$, and CMB temperature $T_\mathrm{CMB}$.
+    These parameters are used throughout \glc\ to compute cosmological distances, times, and densities.</description>
    <default>simple</default>
    <method name="OmegaMatter" >
     <description>Return the cosmological matter density in units of the critical density at the present day.</description>

@@ -34,7 +34,10 @@ module Black_Hole_Accretion_Rates
    <name>blackHoleAccretionRate</name>
    <descriptiveName>Black Hole Accretion Rates</descriptiveName>
    <description>
-    Class providing models of black hole accretion.
+    Class providing models of the mass accretion rates onto supermassive black holes from the spheroid, hot halo,
+    and nuclear star cluster components. Accretion drives black hole growth and AGN feedback. Implementations
+    typically adopt Bondi-type formulae, Eddington-limited accretion, or empirical models that parameterize the
+    accretion rate as a function of the available gas supply and the potential well depth.
    </description>
    <default>standard</default>
    <method name="rateAccretion" >

@@ -32,7 +32,11 @@ module Nodes_Operators
   <functionClass>
     <name>nodeOperator</name>
     <descriptiveName>Node Operators</descriptiveName>
-    <description>Class providing operators acting on nodes.</description>
+    <description>Class providing operators that act on merger tree nodes to implement physical processes. Node operators
+    are called at key moments during tree evolution---at tree construction, node initialization, derivative evaluation,
+    node merging, and promotion---to apply physics such as star formation, feedback, black hole growth, and structural
+    evolution. Multiple operators can be stacked in a multi-operator list to apply several physical processes
+    simultaneously.</description>
     <default>null</default>
     <method name="nodeInitialize" >
       <description>

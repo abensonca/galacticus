@@ -33,7 +33,11 @@ module Output_Analyses
   <functionClass>
    <name>outputAnalysis</name>
    <descriptiveName>Output Analysis</descriptiveName>
-   <description>Class providing on-the-fly analysis of outputs.</description>
+   <description>Class providing on-the-fly analysis of \glc\ model outputs, computing statistics such as stellar mass
+    functions, luminosity functions, size--mass relations, and other observational comparisons during the simulation
+    run rather than as a post-processing step. Analyses are finalized (e.g. accumulated across trees and MPI tasks)
+    after all trees have been processed, and results are written to the output \gls{hdf5} file. A log-likelihood
+    method enables use within posterior sampling frameworks.</description>
    <default>null</default>
    <method name="analyze" >
     <description>Analyze the given \mono{node}.</description>
