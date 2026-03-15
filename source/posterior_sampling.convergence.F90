@@ -32,7 +32,12 @@ module Posterior_Sampling_Convergence
   <functionClass>
    <name>posteriorSampleConvergence</name>
    <descriptiveName>Posterior Sampling Convergence Criteria</descriptiveName>
-   <description>Class providing convergence criteria for posterior sampling simulations.</description>
+   <description>Class providing convergence criteria for Bayesian posterior sampling simulations — diagnostics
+    that assess whether the Markov chains have adequately explored the posterior distribution and can
+    be declared converged. Methods return whether convergence has been reached (and at which step),
+    reset the convergence calculation when chains are restarted, log convergence diagnostics to file,
+    and identify outlier chains. The default implementation uses the Gelman-Rubin $\hat{R}$ statistic,
+    which compares within-chain and between-chain variances across all active walkers.</description>
    <default>gelmanRubin</default>
    <method name="isConverged" >
     <description>Returns true if the posterior sampling is deemed to be converged.</description>
