@@ -16,7 +16,7 @@ subprocess.run(f"mkdir -p {outputDirectory}", shell=True)
 
 # Find all regression parameter files and run them.
 overallStatus = "SUCCESS"
-for filePath in sorted(glob.glob("regressions/**/*.xml", recursive=True) + glob.glob("regressions/**/*.pl", recursive=True)):
+for filePath in sorted(glob.glob("regressions/**/*.xml", recursive=True) + glob.glob("regressions/**/*.py", recursive=True)):
     if filePath.endswith(".xml"):
         print(f"Running regression: {filePath}")
         subprocess.run(f"mkdir -p {outputDirectory}/{os.path.basename(filePath).replace('.xml', '')}", shell=True)
@@ -34,9 +34,9 @@ for filePath in sorted(glob.glob("regressions/**/*.xml", recursive=True) + glob.
             overallStatus = "FAILED"
         else:
             print(f"SUCCESS: regression '{filePath}'")
-    elif filePath.endswith(".pl"):
+    elif filePath.endswith(".py"):
         print(f"Running regression script: {filePath}")
-        status = subprocess.run(f"cd testSuite; perl {filePath}", shell=True)
+        status = subprocess.run(f"cd testSuite; python3 {filePath}", shell=True)
         if status.returncode != 0:
             print(f"FAILED: regression script '{filePath}'")
             overallStatus = "FAILED"

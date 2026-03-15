@@ -1384,12 +1384,12 @@ jobs:
       # Ensure all jobs are run, even if some fail.
       fail-fast: false
       matrix:
-        file: [ testSuite/regressions/bug1066052.pl,
+        file: [ testSuite/regressions/bug1066052.py,
                 testSuite/regressions/adaptiveSFHLengths.py,
-                testSuite/regressions/mergerTreeBoxSizeWeight.pl,
-                testSuite/regressions/satellitePresetBoundMassNonZero.pl,
-                testSuite/regressions/setProperties.pl,
-                testSuite/regressions/cosmicEmu.pl,
+                testSuite/regressions/mergerTreeBoxSizeWeight.py,
+                testSuite/regressions/satellitePresetBoundMassNonZero.py,
+                testSuite/regressions/setProperties.py,
+                testSuite/regressions/cosmicEmu.py,
                 testSuite/regressions/bug1053153.xml,
                 testSuite/regressions/bug711424.xml,
                 testSuite/regressions/bug725315.xml,
