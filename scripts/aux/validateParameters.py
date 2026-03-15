@@ -55,7 +55,17 @@ if format_version == 1:
             print(f"Parameter file fails XML schema validation\n{schema.error_log}", file=sys.stderr)
             sys.exit(1)
     except ImportError:
-        pass  # lxml not available; skip schema validation.
+        # lxml not available; skip schema validation.
+        pass
+    except (OSError, lxml_etree.XMLSchemaParseError, lxml_etree.XMLSyntaxError) as e:
+        # Fail with a clear, actionable error if the schema file cannot be opened
+        # or if the schema/document cannot be parsed.
+        print(
+            f"Failed to validate parameters using schema '{schema_file}' "
+            f"for parameter file '{args.file}': {e}",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
     # Check for duplicated entries.
     names = defaultdict(int)
