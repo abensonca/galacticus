@@ -34,9 +34,12 @@ module Satellite_Tidal_Stripping
   <functionClass>
    <name>satelliteTidalStripping</name>
    <descriptiveName>Tidal stripping models for satellites.</descriptiveName>
-   <description>
-    Class providing models of tidal stripping for satellites.
-   </description>
+   <description>Class providing models of tidal stripping for satellites — the gravitational removal of dark matter
+    and stellar mass from satellite halos as they orbit through the tidal field of their host halo. The tidal force
+    strips material outside the tidal radius, reducing the satellite mass over time at a rate (in $M_\odot$~Gyr$^{-1}$)
+    that depends on the satellite's orbit, concentration, and the host potential. This mass loss sets the subhalo
+    abundance, the galaxy-to-halo mass ratio in satellites, and drives the evolution of satellite galaxies
+    toward quiescence.</description>
    <default>zentner2005</default>
    <method name="massLossRate" >
     <description>Returns the rate of tidal mass loss for \mono{node} (in units of $M_\odot$/Gyr).</description>

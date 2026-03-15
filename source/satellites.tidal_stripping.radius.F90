@@ -34,9 +34,11 @@ module Satellite_Tidal_Stripping_Radii
   <functionClass>
    <name>satelliteTidalStrippingRadius</name>
    <descriptiveName>Tidal stripping radii models for satellites.</descriptiveName>
-   <description>
-    Class providing models of tidal stripping radii for satellites.
-   </description>
+   <description>Class providing models of tidal stripping radii for satellites — the radius (in Mpc) within which
+    material remains gravitationally bound to the satellite against the tidal field of the host halo. Beyond this
+    radius the tidal force exceeds the satellite's self-gravity, so mass is stripped away. The tidal radius depends
+    on the satellite mass, the host density at the satellite's orbital position, and the choice of tidal criterion
+    (e.g.\ King 1962 or Jacobi radius). It sets the outer boundary used by tidal stripping rate models.</description>
    <default>king1962</default>
    <method name="radius" >
     <description>Returns the tidal radius for \mono{node} (in units of Mpc).</description>
