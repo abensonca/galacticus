@@ -33,7 +33,12 @@ module Merger_Tree_Outputters
   <functionClass>
    <name>mergerTreeOutputter</name>
    <descriptiveName>Merger Tree Outputters</descriptiveName>
-   <description>Class providing outputters for merger trees.</description>
+   <description>Class providing outputters for merger trees — objects that write merger tree and galaxy
+    data to persistent storage at each requested output time. An outputter traverses the nodes of a
+    merger tree and serializes the desired set of galaxy/halo properties to HDF5 or other formats.
+    It also handles reduction across MPI processes (combining partial outputs from different CPU
+    ranks) and finalization at the end of the simulation. The standard outputter writes node
+    properties as defined by the active \refClass{nodePropertyExtractorClass} instances.</description>
    <default>standard</default>
    <method name="outputTree" >
     <description>Output a merger tree.</description>

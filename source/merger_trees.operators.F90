@@ -28,9 +28,12 @@ module Merger_Tree_Operators
   <functionClass>
    <name>mergerTreeOperator</name>
    <descriptiveName>Merger Tree Operators</descriptiveName>
-   <description>
-    Class providing operators acting on merger trees.
-   </description>
+   <description>Class providing operators that act on complete merger trees at well-defined points in the
+    simulation pipeline: before construction, before initialization, before evolution, and after evolution.
+    Tree operators enable arbitrary post-processing, analysis, or modification of merger trees at each
+    stage. Examples include adding constrained perturbations, computing halo statistics, applying tree
+    pruning, or writing intermediate outputs. Multiple operators can be chained via the multi-operator
+    implementation.</description>
    <default>null</default>
    <method name="operatePreConstruction" >
     <description>Perform an operation on the merger tree prior to construction.</description>
