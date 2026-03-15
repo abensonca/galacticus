@@ -40,7 +40,12 @@ module Mass_Distributions
   <functionClass>
    <name>massDistribution</name>
    <descriptiveName>Mass Distributions</descriptiveName>
-   <description>Class providing mass distributions.</description>
+   <description>Class providing mass distributions — fully general descriptions of the spatial distribution of mass
+    (dark matter, gas, stars, or black holes) in a galaxy or halo. Implementations provide the density profile
+    $\rho(\mathbf{x})$, gravitational potential $\Phi(\mathbf{x})$, enclosed mass $M(r)$, surface density, rotation
+    curve, and velocity dispersion via the Jeans equation. The class also tracks the component and mass type of the
+    distribution and supports arbitrary geometries, enabling self-consistent multi-component dynamical models of
+    galaxies and halos.</description>
    <destructor>
     <code>
      call kinematicsDistributionDestructor(self)
@@ -664,7 +669,11 @@ module Mass_Distributions
   <functionClass>
    <name>kinematicsDistribution</name>
    <descriptiveName>Kinematics Distributions</descriptiveName>
-   <description>Class providing kinematics distributions.</description>
+   <description>Class providing kinematics distributions for mass distribution components — the temperature,
+    velocity dispersion, and mean radial velocity of particles (or fluid elements) as a function of position.
+    For collisional (gaseous) components the temperature profile enters the cooling and feedback calculations;
+    for collisionless (stellar and dark matter) components the velocity dispersion is computed by solving the
+    spherical Jeans equation given the mass distribution and its potential.</description>
    <method name="isCollisional" >
     <description>Return true if the kinematics is collisional.</description>
     <type>logical</type>
@@ -808,7 +817,11 @@ module Mass_Distributions
   <functionClass>
    <name>massDistributionHeating</name>
    <descriptiveName>Heating of Mass Distributions</descriptiveName>
-   <description>Class providing heating models for mass distributions.</description>
+   <description>Class providing heating models for mass distributions — the specific energy deposited into the
+    dark matter or stellar distribution as a function of radius, arising from processes such as tidal heating,
+    dynamical friction, or baryonic feedback. The specific energy and its radial gradient are used to modify the
+    density profile of the mass distribution, capturing the effect of non-gravitational energy injection on the
+    structure of halos and galaxies.</description>
    <method name="specificEnergy" >
     <description>Return the specific energy at the given radius.</description>
     <type>double precision</type>
