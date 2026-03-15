@@ -80,6 +80,16 @@ elif format_version == 2:
 
     METADATA_TAGS = {'formatVersion', 'version', 'lastModified'}
 
+    def _split_tag(tag):
+        """
+        Split an ElementTree tag in Clark notation into (namespace_uri, localname).
+        Returns (None, tag) if the tag is not namespaced.
+        """
+        if tag and tag.startswith('{'):
+            uri, local = tag[1:].split('}', 1)
+            return uri, local
+        return None, tag
+
     # Group top-level children by tag.
     top_level = defaultdict(list)
     for child in root:
@@ -99,7 +109,13 @@ elif format_version == 2:
             continue
 
         # Check for duplicate top-level parameters.
-        if len(elements) > 1 and not is_nested and tag_name != 'xi:include':
+        # Treat XInclude <include> elements specially: they may appear multiple times.
+        is_xinclude = False
+        if elements:
+            ns_uri, localname = _split_tag(elements[0].tag)
+            if ns_uri == 'http://www.w3.org/2001/XInclude' and localname == 'include':
+                is_xinclude = True
+        if len(elements) > 1 and not is_nested and not is_xinclude:
             valid = 1
             print(f"Parameter '{tag_name}' appears {len(elements)} times - should appear only once")
             # Still validate each occurrence.
