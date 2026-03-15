@@ -32,7 +32,11 @@ module Computational_Domain_Volume_Integrators
   <functionClass>
    <name>computationalDomainVolumeIntegrator</name>
    <descriptiveName>Computational Domain Volume Integrators</descriptiveName>
-   <description>Class providing volume integrators over computational domains.</description>
+   <description>Class providing numerical volume integrators over computational domains, computing the
+    integral of a scalar function over the spatial domain. This is used e.g.\ to compute total
+    emission or absorption from all cells, or to normalize radiative transfer solutions. Implementations
+    provide the total domain volume and perform multi-dimensional quadrature using the domain's
+    coordinate system (Cartesian, spherical, etc.).</description>
    <default>cartesian3D</default>
    <method name="volume" >
     <description>Gives the volume of the integrated region.</description>

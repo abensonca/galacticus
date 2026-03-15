@@ -43,7 +43,12 @@ module Computational_Domains
   <functionClass>
    <name>computationalDomain</name>
    <descriptiveName>Computational Domains</descriptiveName>
-   <description>Class providing computational domains.</description>
+   <description>Class providing computational domains for Monte Carlo radiative transfer calculations —
+    discretized spatial grids that partition the simulation volume into cells, each carrying absorption
+    and emission properties. A computational domain supports iterating over cells, locating a position
+    within its cell structure, computing ray path lengths to cell boundaries, accumulating photon
+    packet absorptions, and solving for the local ionization and temperature state. Implementations
+    include Cartesian and spherical grids.</description>
    <default>cartesian3D</default>
    <method name="iterator" >
     <description>Return an iterator which can be used to iterate over the domain.</description>

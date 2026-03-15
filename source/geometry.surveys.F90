@@ -32,9 +32,12 @@ module Geometry_Surveys
   <functionClass>
    <name>surveyGeometry</name>
    <descriptiveName>Survey Geometry</descriptiveName>
-   <description>
-    Class providing galaxy survey geometries and related functions.
-   </description>
+   <description>Class providing galaxy survey geometries — the selection function of an observed galaxy
+    sample, including the survey solid angle, the minimum and maximum detection distances as a function
+    of galaxy mass, luminosity, or star formation rate, and the 3-D window functions needed for
+    clustering analyses. These quantities are used in the on-the-fly output analysis classes to compute
+    galaxy stellar mass functions, luminosity functions, and two-point correlation functions by
+    applying the appropriate $V_\mathrm{max}$ weighting and survey volume corrections.</description>
    <default>liWhite2009SDSS</default>
    <method name="fieldCount" >
     <description>Returns the number of distinct fields included in the survey.</description>
