@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <!-- Schema used to validate functionClass directives -->
+
+  <xs:element name="functionClass">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element name="name" type="xs:string" minOccurs="1" maxOccurs="1"/>
+	<xs:any minOccurs="0" maxOccurs="unbounded" processContents="lax"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>
