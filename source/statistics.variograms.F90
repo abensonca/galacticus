@@ -31,7 +31,12 @@ module Statistics_Variograms
   <functionClass>
    <name>variogram</name>
    <descriptiveName>Variograms</descriptiveName>
-   <description>Class providing variogram models for Gaussian Process regression.</description>
+   <description>Class providing variogram models for Gaussian Process (GP) regression — parametric functions
+    $\gamma(h)$ that describe how the variance of a random field increases with separation $h$ between
+    evaluation points. Variograms are fitted to empirical semi-variance data and used to define the
+    GP covariance kernel for interpolating or emulating expensive model predictions across parameter
+    space. Implementations include spherical, exponential, and Gaussian variogram families, with
+    methods to fit model parameters and evaluate the semi-variance at any separation.</description>
    <default>spherical</default>
    <data>double precision :: separationNormalization, semiVarianceNormalization</data>
    <method name="fit" >
