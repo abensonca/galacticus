@@ -61,7 +61,12 @@ module Radiation_Fields
   <functionClass>
    <name>radiationField</name>
    <descriptiveName>Radiation Fields</descriptiveName>
-   <description>Class providing radiation fields.</description>
+   <description>Class providing radiation fields — the specific intensity (flux per unit frequency per steradian,
+    in units of ergs~cm$^{-2}$~s$^{-1}$~Hz$^{-1}$~ster$^{-1}$) of a radiation background as a function of
+    wavelength and cosmic time. Radiation fields are used to compute photoionization and photodissociation
+    rates in the \gls{igm} and \gls{cgm} by integrating the flux weighted by relevant cross-sections over
+    wavelength. Implementations include the cosmic microwave background, ultraviolet and X-ray ionizing
+    backgrounds, and stellar radiation fields.</description>
    <default>null</default>
    <data>type(rateCoefficient), allocatable, dimension(:) :: rateCoefficients</data>
    <method name="flux">

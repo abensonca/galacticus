@@ -34,9 +34,12 @@ module Satellite_Merging_Mass_Movements
   <functionClass>
    <name>mergerMassMovements</name>
    <descriptiveName>Merger Mass Movements</descriptiveName>
-   <description>
-    Class providing models of the movements of mass during mergers.
-   </description>
+   <description>Class providing models of the movements of mass during galaxy mergers — the prescription for
+    where the gas and stellar components of the satellite and host galaxies are redistributed after a merger
+    event. Implementations specify the destination (disc, spheroid, or dominant component) for the gas and
+    stars of both the satellite and the host, and whether the merger should be classified as major or minor.
+    This drives the morphological transformation of merging galaxies, controlling bulge growth and triggering
+    starbursts during coalescence.</description>
    <default>simple</default>
    <method name="get" >
     <description>Determine movements of mass during mergers.</description>
