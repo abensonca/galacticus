@@ -29,7 +29,12 @@ module Statistics_Distributions_Discrete
   <functionClass>
    <name>distributionFunctionDiscrete1D</name>
    <descriptiveName>One-dimensional Discrete Distribution Functions</descriptiveName>
-   <description>Class providing discrete distribution functions of a single variable.</description>
+   <description>Class providing discrete probability distribution functions of a single integer variable —
+    the probability mass function $p(x)$ (and its logarithm), the cumulative distribution function
+    $P(x) = \sum_{x' \le x} p(x')$, and the quantile function $x(P)$. These distributions model
+    count data such as the number of galaxies in a halo or the number of star formation events, and
+    are used for drawing random variates and computing Poisson or binomial likelihoods in galaxy
+    statistics and N-body halo occupation analyses.</description>
    <default>binomial</default>
    <data>class(randomNumberGeneratorClass), pointer :: randomNumberGenerator_ => null()</data>
    <destructor>
