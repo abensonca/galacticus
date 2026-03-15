@@ -34,7 +34,12 @@ module HII_Region_Escape_Fraction
    <name>hiiRegionEscapeFraction</name>
    <descriptiveName>Escape fraction of HII regions</descriptiveName>
    <description>
-     Class providing calculations of escape fractions from HII regions.
+    Class providing models of the escape fraction $f_\mathrm{esc}$ of hydrogen-ionizing (Lyman-continuum)
+    photons from individual \gls{hii} regions — the fraction of photons produced by massive stars that
+    escape the \gls{hii} region into the surrounding \gls{ism} or \gls{igm} rather than being absorbed
+    by gas within the region. The escape fraction is returned as a function of \gls{hii} region age,
+    reflecting the time evolution as stellar winds and supernovae clear channels through the surrounding
+    gas. This quantity feeds into reionization models and galaxy ultraviolet photon budget calculations.
    </description>
    <default>fixed</default>
    <method name="escapeFraction" >

@@ -33,7 +33,12 @@ module Star_Formation_Rate_Surface_Density_Disks
    <name>starFormationRateSurfaceDensityDisks</name>
    <descriptiveName>Surface density rates of star formation in disks.</descriptiveName>
    <description>
-    Class providing models of the surface density rate of star formation in disks.
+    Class providing models of the radial profile of the star formation rate surface density
+    $\dot{\Sigma}_\star(r)$ (in $\mathrm{M}_\odot \, \mathrm{Gyr}^{-1} \, \mathrm{Mpc}^{-2}$) in
+    disk components of galaxies. The surface density is a function of radius and depends on the local
+    gas surface density, dynamical time, and molecular gas fraction according to the chosen star
+    formation law. It is integrated radially over the disk to yield the total disk star formation rate,
+    and is expected to vary strongly between implementations based on the assumed sub-grid physics.
    </description>
    <default>krumholz2009</default>
    <method name="intervals" >

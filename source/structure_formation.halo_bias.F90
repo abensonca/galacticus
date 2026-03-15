@@ -34,7 +34,13 @@ module Dark_Matter_Halo_Biases
    <name>darkMatterHaloBias</name>
    <descriptiveName>Dark matter halo biases.</descriptiveName>
    <description>
-    Class providing models of the bias of dark matter halos.
+    Class providing models of the linear bias factor $b(M, t)$ of dark matter halos — the ratio of
+    halo-to-matter overdensity on large scales, describing how strongly halos cluster relative to the
+    underlying dark matter distribution. More massive halos form in rarer, higher-$\nu$ peaks and are
+    therefore more strongly biased. The bias enters the two-halo term of the halo model power spectrum,
+    void-galaxy cross-correlations, and galaxy clustering predictions. Implementations typically follow
+    analytic fitting functions (e.g.\ \citealt{tinker_large_2010}) calibrated to N-body simulations
+    as a function of halo mass and redshift.
    </description>
    <default>tinker2010</default>
    <method name="biasByMass" >

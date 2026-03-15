@@ -33,7 +33,12 @@ module Stellar_Population_Spectra_Postprocess
    <name>stellarPopulationSpectraPostprocessor</name>
    <descriptiveName>Postprocessors for stellar population spectra</descriptiveName>
    <description>
-    Class providing postprocessors for stellar population spectra. Postprocessors apply effects such as absorption by the \gls{igm}.
+    Class providing postprocessors for stellar population spectra — multiplicative corrections to the
+    spectral energy distribution applied after the intrinsic stellar population spectrum is computed.
+    Each postprocessor returns a wavelength-, age-, and redshift-dependent multiplicative factor to
+    account for effects such as \gls{igm} absorption of Lyman-series photons, intergalactic dust
+    attenuation, or other propagation effects between the source and the observer. Multiple
+    postprocessors can be chained to apply cumulative corrections for different physical processes.
    </description>
    <default>inoue2014</default>
    <method name="multiplier" >
