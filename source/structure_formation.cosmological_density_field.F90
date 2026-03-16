@@ -477,6 +477,9 @@ contains
           ! Neither the mass or the node are provided, so we can use a simple tabulation of collapse thresholds for rapid
           ! inversion. Note that we do not tabulate lower than the requested threshold as in some cosmologies (e.g. with dark
           ! energy or a cosmological constant) this can require tabulating to extremely large cosmic times).
+          ! First confirm that the collapse time count is valid.
+          if (self%countTimeCollapsePerUnit <= 0.0d0) call Error_Report('`countTimeCollapsePerUnit` > 0 is required'//{introspection:location})
+          ! Now make the table if needed.
           remakeTable=.false.
           if (.not.self%collapseThresholdInitialized) then
              remakeTable                  =.true.
