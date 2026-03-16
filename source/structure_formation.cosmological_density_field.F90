@@ -40,6 +40,7 @@ module Cosmological_Density_Field
    <description>Object providing critical overdensities.</description>
    <default>sphericalCollapseClsnlssMttrCsmlgclCnstnt</default>
    <data>integer         (kind_int8                    )              :: lastUniqueID                =  -1_kind_int8, lastTreeID                 =-1_kind_int8</data>
+   <data>double precision                                             :: countTimeCollapsePerUnit    =   1.0d4                                                </data>
    <data>double precision                                             :: criticalOverdensityTarget                  , mass                                    </data>
    <data>double precision                                             :: time                                       , timeNow                    =-huge(0.0d0)</data>
    <data>double precision                                             :: timeOfCollapsePrevious      =  -huge(0.0d0), criticalOverdensityPrevious=-huge(0.0d0)</data>
@@ -362,7 +363,6 @@ contains
     integer                                   , intent(  out), optional             :: status
     double precision                          , parameter                           :: toleranceRelative                =1.0d-12, toleranceAbsolute       =0.0d0, &
          &                                                                             fractionTimeCollapseGrowthMinimum=1.0d-03
-    integer                                   , parameter                           :: countPerUnit                     =10000
     double precision                          , allocatable  , dimension(:)         :: threshold
     double precision                                                                :: timeBigCrunch                            , timeGuess                     , &
          &                                                                             collapseThresholdMinimum                 , collapseThresholdMaximum      , &
@@ -482,9 +482,9 @@ contains
              remakeTable                  =.true.
              self%collapseThresholdMinimum=      criticalOverdensity
              self%collapseThresholdMaximum=2.0d0*criticalOverdensity
-             countThresholds              =int(dble(countPerUnit)*(self%collapseThresholdMaximum-self%collapseThresholdMinimum))+2
+             countThresholds              =int(self%countTimeCollapsePerUnit*(self%collapseThresholdMaximum-self%collapseThresholdMinimum))+2
              ! Ensure the maximum of the table is precisely an integer number of steps above the minimum.
-             self%collapseThresholdMaximum=self%collapseThresholdMinimum+dble(countThresholds-1)/dble(countPerUnit)
+             self%collapseThresholdMaximum=self%collapseThresholdMinimum+dble(countThresholds-1)/self%countTimeCollapsePerUnit
              allocate(threshold(countThresholds))
              threshold=-huge(0.0d0)
           else if (criticalOverdensity < self%collapseThresholdMinimum .or. criticalOverdensity > self%collapseThresholdMaximum) then
@@ -494,12 +494,12 @@ contains
              ! Determine how many points the table must be extended by in each direction to span the new required range.
              countNewLower=0
              countNewUpper=0
-             if (self%collapseThresholdMinimum > collapseThresholdMinimum) countNewLower=int((+self%collapseThresholdMinimum-collapseThresholdMinimum)*dble(countPerUnit)+1.0d0)
-             if (self%collapseThresholdMaximum < collapseThresholdMaximum) countNewUpper=int((-self%collapseThresholdMaximum+collapseThresholdMaximum)*dble(countPerUnit)+1.0d0)
+             if (self%collapseThresholdMinimum > collapseThresholdMinimum) countNewLower=int((+self%collapseThresholdMinimum-collapseThresholdMinimum)*self%countTimeCollapsePerUnit+1.0d0)
+             if (self%collapseThresholdMaximum < collapseThresholdMaximum) countNewUpper=int((-self%collapseThresholdMaximum+collapseThresholdMaximum)*self%countTimeCollapsePerUnit+1.0d0)
              countThresholds=self%collapseThreshold%size()+countNewLower+countNewUpper
              ! Adjust the limits of the table by an integer number of steps.
-             self%collapseThresholdMinimum=self%collapseThresholdMinimum-dble(countNewLower)/dble(countPerUnit)
-             self%collapseThresholdMaximum=self%collapseThresholdMaximum+dble(countNewUpper)/dble(countPerUnit)
+             self%collapseThresholdMinimum=self%collapseThresholdMinimum-dble(countNewLower)/self%countTimeCollapsePerUnit
+             self%collapseThresholdMaximum=self%collapseThresholdMaximum+dble(countNewUpper)/self%countTimeCollapsePerUnit
              allocate(threshold(countThresholds))
              threshold=-huge(0.0d0)
              ! Populate the table with pre-existing results.
