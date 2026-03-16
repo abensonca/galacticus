@@ -43,7 +43,7 @@ Implements a gravitational lensing output analysis distribution operator class.
 
   !![
   <outputAnalysisDistributionOperator name="outputAnalysisDistributionOperatorGrvtnlLnsng">
-   <description>A gravitational lensing output analysis distribution operator class.</description>
+   <description>Applies gravitational lensing magnification to a specified galaxy property (luminosity or size) during output analysis, convolving with the lensing magnification distribution computed for a characteristic source size set by \mono{sizeSource}.</description>
   </outputAnalysisDistributionOperator>
   !!]
   type, extends(outputAnalysisDistributionOperatorClass) :: outputAnalysisDistributionOperatorGrvtnlLnsng
