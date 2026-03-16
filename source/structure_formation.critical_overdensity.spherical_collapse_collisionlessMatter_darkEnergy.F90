@@ -80,7 +80,6 @@ contains
     <objectBuilder class="cosmologicalMassVariance" name="cosmologicalMassVariance_" source="parameters"/>
     <objectBuilder class="darkMatterParticle"       name="darkMatterParticle_"       source="parameters"/>
     !!]
-    !!]
     if (parameters%isPresent('countTimeCollapsePerUnit')) then
        !![
        <inputParameter>

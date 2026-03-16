@@ -134,7 +134,6 @@ contains
     <objectBuilder class="darkMatterParticle"               name="darkMatterParticle_"               source="parameters"/>
     <objectBuilder class="intergalacticMediumFilteringMass" name="intergalacticMediumFilteringMass_" source="parameters"/>
     !!]
-        !!]
     if (parameters%isPresent('countTimeCollapsePerUnit')) then
        !![
        <inputParameter>
