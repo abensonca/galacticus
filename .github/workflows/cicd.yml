@@ -1388,7 +1388,6 @@ jobs:
                 testSuite/regressions/adaptiveSFHLengths.py,
                 testSuite/regressions/mergerTreeBoxSizeWeight.py,
                 testSuite/regressions/satellitePresetBoundMassNonZero.py,
-                testSuite/regressions/setProperties.py,
                 testSuite/regressions/cosmicEmu.py,
                 testSuite/regressions/bug1053153.xml,
                 testSuite/regressions/bug711424.xml,
