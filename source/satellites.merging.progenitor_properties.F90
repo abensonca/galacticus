@@ -41,7 +41,7 @@ module Satellite_Merging_Progenitor_Properties
     gas-spheroid masses used to compute the post-merger structure.</description>
    <default>standard</default>
    <method name="get" >
-    <description>alculates progenitor properties for merger calculations.</description>
+    <description>Calculates the effective masses, radii, and angular momentum factors of the satellite and host galaxy progenitors immediately before a merger event, providing the energy budget inputs required by remnant size calculators.</description>
     <type>void</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>

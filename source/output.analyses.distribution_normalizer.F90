@@ -41,7 +41,7 @@ module Output_Analysis_Distribution_Normalizers
     functions.</description>
    <default>identity</default>
    <method name="normalize" >
-    <description>Normalize a distribution.</description>
+    <description>Normalize the supplied binned distribution array and its covariance matrix in place, applying the bin-width or volume factors appropriate for this normalizer class.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>double precision, intent(inout), dimension(:  ), optional :: distribution</argument>

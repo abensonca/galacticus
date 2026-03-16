@@ -41,12 +41,12 @@ module Stellar_Populations_Initial_Mass_Functions
     and a tabulation suitable for numerical integration over the stellar population.</description>
    <default>chabrier2001</default>
    <method name="massMinimum" >
-    <description>Return the minimum mass in the initial mass function.</description>
+    <description>Return the minimum stellar mass (in $M_\odot$) in the initial mass function, i.e., the lowest mass star formed; below this mass the IMF is zero and no contribution to recycling or yields is included.</description>
     <type>double precision</type>
     <pass>yes</pass>
    </method>
    <method name="massMaximum" >
-    <description>Return the maximum mass in the initial mass function.</description>
+    <description>Return the maximum stellar mass (in $M_\odot$) in the initial mass function, i.e., the most massive star formed; above this mass the IMF is zero and stars above this threshold are assumed to form as black holes or fail to explode.</description>
     <type>double precision</type>
     <pass>yes</pass>
    </method>
@@ -69,7 +69,7 @@ module Stellar_Populations_Initial_Mass_Functions
     <pass>yes</pass>
    </method>
    <method name="label" >
-    <description>Return the label for this \gls{imf}.</description>
+    <description>Return a short human-readable string label identifying this initial mass function (e.g., ``Chabrier2001'', ``Kroupa2001''), used for constructing unique hashed descriptors and labeling output.</description>
     <type>type(varying_string)</type>
     <pass>yes</pass>
    </method>

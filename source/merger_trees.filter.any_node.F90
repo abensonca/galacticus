@@ -84,7 +84,7 @@ contains
        <inputParameter>
          <name>labelDescription</name>
          <source>parameters</source>
-         <description>A description of the label.</description>
+         <description>A human-readable description of the label applied to nodes that pass the galactic filter, used to document what physical property or criterion the label represents in this tree filter.</description>
        </inputParameter>
        !!]
     end if

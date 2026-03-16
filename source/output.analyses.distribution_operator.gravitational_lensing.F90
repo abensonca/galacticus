@@ -32,7 +32,7 @@ Implements a gravitational lensing output analysis distribution operator class.
   !![
   <enumeration>
    <name>lensedProperty</name>
-   <description>Enumeration of properties affected by gravitational lensing.</description>
+   <description>Enumeration of the galaxy properties that can be modified by gravitational lensing magnification, currently supporting luminosity and apparent size.</description>
    <encodeFunction>yes</encodeFunction>
    <validator>yes</validator>
    <visibility>public</visibility>

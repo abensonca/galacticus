@@ -74,12 +74,12 @@ contains
     <inputParameter>
       <name>massLow</name>
       <source>parameters</source>
-      <description>The lowest halo mass to pass.</description>
+      <description>The minimum halo mass (in $M_\odot$) that a node must have to pass the filter; nodes with mass below this threshold are rejected.</description>
     </inputParameter>
     <inputParameter>
       <name>massHigh</name>
       <source>parameters</source>
-      <description>The highest halo mass to pass.</description>
+      <description>The maximum halo mass (in $M_\odot$) that a node must have to pass the filter; nodes with mass above this threshold are rejected.</description>
     </inputParameter>
     <objectBuilder class="cosmologyFunctions"    name="cosmologyFunctions_"              source="parameters"                                                />
     <objectBuilder class="cosmologyParameters"   name="cosmologyParameters_"             source="parameters"                                                />

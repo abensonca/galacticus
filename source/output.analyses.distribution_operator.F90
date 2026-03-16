@@ -42,7 +42,7 @@ module Output_Analysis_Distribution_Operators
     or on an existing distribution (convolving it with a response function).</description>
    <default>identity</default>
    <method name="operateScalar" >
-    <description>Operate on a scalar to produce a distribution.</description>
+    <description>Map a single scalar galaxy property value to a smeared distribution across bins, applying the operator's response function (e.g.\ a Gaussian measurement error kernel) to produce a probability-weighted contribution to each bin.</description>
     <type>double precision, dimension(size(propertyValueMinimum))</type>
     <pass>yes</pass>
     <argument>double precision                                           , intent(in   )               :: propertyValue</argument>
@@ -52,7 +52,7 @@ module Output_Analysis_Distribution_Operators
     <argument>type            (treeNode                                 ), intent(inout)               :: node</argument>
    </method>
    <method name="operateDistribution" >
-    <description>Operate on a distribution to produce a distribution.</description>
+    <description>Transform an existing binned distribution by applying the operator's response function (e.g.\ convolution with a measurement error kernel or survey selection function), returning the modified distribution.</description>
     <type>double precision, dimension(size(propertyValueMinimum))</type>
     <pass>yes</pass>
     <argument>double precision                                           , intent(in   ), dimension(:) :: distribution</argument>

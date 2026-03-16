@@ -23,7 +23,7 @@
 
   !![
   <distributionFunction1D name="distributionFunction1DNegativeExponential">
-   <description>A negative exponential 1D distribution function class.</description>
+   <description>A 1D negative (or decaying) exponential distribution function class, implementing $p(x) \propto e^{-\lambda x}$ for $x \ge 0$, parameterized by the rate $\lambda > 0$ (the inverse of the mean $1/\lambda$).</description>
   </distributionFunction1D>
   !!]
   type, extends(distributionFunction1DClass) :: distributionFunction1DNegativeExponential

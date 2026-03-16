@@ -47,19 +47,19 @@ module Statistics_Distributions_Discrete
      <type>double precision</type>
      <pass>yes</pass>
      <argument>integer, intent(in   ) :: x</argument>
-     <description>Return the probability mass at \mono{x}.</description>
+     <description>Return the probability mass function $p(x)$, giving the probability that the discrete random variable takes the integer value \mono{x}.</description>
    </method>
    <method name="massLogarithmic" >
      <type>double precision</type>
      <pass>yes</pass>
      <argument>integer, intent(in   ) :: x</argument>
-     <description>Return the logarithm of the probability mass at \mono{x}.</description>
+     <description>Return the natural logarithm of the probability mass function $\ln p(x)$ evaluated at integer \mono{x}, which is more numerically stable for extremely small probabilities than computing $p(x)$ directly.</description>
    </method>
    <method name="cumulative" >
      <type>double precision</type>
      <pass>yes</pass>
      <argument>integer, intent(in   ) :: x</argument>
-     <description>Return the cumulative probability at \mono{x}.</description>
+     <description>Return the cumulative distribution function $P(x) = \sum_{x' \le x} p(x')$, giving the probability that the discrete random variable takes a value less than or equal to integer \mono{x}.</description>
    </method>
    <method name="inverse" >
      <type>integer</type>
@@ -71,7 +71,7 @@ module Statistics_Distributions_Discrete
      <type>integer</type>
      <pass>yes</pass>
      <argument>class(randomNumberGeneratorClass), intent(inout), optional :: randomNumberGenerator_</argument>
-     <description>Return a random deviate from the distribution.</description>
+     <description>Return a random integer deviate drawn from this discrete probability distribution, using the inverse CDF method by default (drawing a uniform random number and applying the quantile function).</description>
      <modules>Error</modules>
      <code>
       double precision :: uniformRandom
@@ -90,12 +90,12 @@ module Statistics_Distributions_Discrete
    <method name="minimum" >
      <type>integer</type>
      <pass>yes</pass>
-     <description>Returns the minimum possible value in the distribution.</description>
+     <description>Returns the minimum possible integer value in the support of this discrete distribution, i.e., the smallest integer $x$ for which the probability mass is non-zero.</description>
    </method>
    <method name="maximum" >
      <type>integer</type>
      <pass>yes</pass>
-     <description>Returns the maximum possible value in the distribution.</description>
+     <description>Returns the maximum possible integer value in the support of this discrete distribution, i.e., the largest integer $x$ for which the probability mass is non-zero.</description>
    </method>
   </functionClass>
   !!]

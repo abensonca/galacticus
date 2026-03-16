@@ -55,7 +55,7 @@
   !![
   <enumeration>
    <name>timeStepSmallest</name>
-   <description>Enumeration of smallest timestep.</description>
+   <description>Enumeration identifying which of the competing timestep criteria (\normalfont\ttfamily simple\normalfont, \normalfont\ttfamily satellite\normalfont, or \normalfont\ttfamily satelliteDestruction\normalfont) set the minimum timestep for a given node evolution step.</description>
    <entry label="simple"              />
    <entry label="satellite"           />
    <entry label="satelliteDestruction"/>

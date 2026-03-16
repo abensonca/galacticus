@@ -100,7 +100,7 @@
      </inputParameter>
      <inputParameter>
        <name>radiusCore</name>
-       <description>The soliton core radius.</description>
+       <description>The soliton core radius (in Mpc) characterizing the size of the central quantum pressure-supported core of the fuzzy dark matter halo before the profile transitions to the outer NFW envelope.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>

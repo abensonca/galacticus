@@ -110,7 +110,7 @@ contains
       <name>exponent</name>
       <defaultSource>\citep{kennicutt_global_1998}</defaultSource>
       <defaultValue>1.400d0</defaultValue>
-      <description>The exponent in the Kennicutt-Schmidt star formation law.</description>
+      <description>The power-law exponent $N$ in the Kennicutt-Schmidt star formation law $\dot{\Sigma}_\star \propto \Sigma_\mathrm{H}^N$, with a default value of 1.4 from \cite{kennicutt_global_1998}.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
@@ -129,14 +129,14 @@ contains
       <name>velocityDispersionDiskGas</name>
       <defaultSource>\citep{leroy_star_2008}</defaultSource>
       <defaultValue>10.0d0</defaultValue>
-      <description>The velocity dispersion of gas in disks.</description>
+      <description>The velocity dispersion of gas in galactic disks (in km/s), used to compute the critical gas surface density $\Sigma_\mathrm{crit}$ for Toomre stability and truncation of the Kennicutt-Schmidt star formation law at low surface densities.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>toomreParameterCritical</name>
       <defaultSource>\citep{kennicutt_star_1989}</defaultSource>
       <defaultValue>0.4d0</defaultValue>
-      <description>The critical Toomre parameter for star formation in disks.</description>
+      <description>The dimensionless critical Toomre stability parameter $q_\mathrm{crit}$ that sets the threshold gas surface density $\Sigma_\mathrm{crit} = q_\mathrm{crit}\kappa\sigma_\mathrm{gas}/(\pi G)$ below which star formation is suppressed in disks.</description>
       <source>parameters</source>
     </inputParameter>
     !!]

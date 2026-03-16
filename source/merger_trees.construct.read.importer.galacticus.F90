@@ -32,7 +32,7 @@
   !![
   <enumeration>
    <name>galacticusParticleEpochType</name>
-   <description>Particle epoch type enumerations.</description>
+   <description>Enumeration of the time coordinate types used to record particle epochs in Galacticus-format merger tree HDF5 files: \normalfont\ttfamily time\normalfont (cosmic time in Gyr), \normalfont\ttfamily expansionFactor\normalfont ($a$), or \normalfont\ttfamily redshift\normalfont ($z$).</description>
    <entry label="time"           />
    <entry label="expansionFactor"/>
    <entry label="redshift"       />

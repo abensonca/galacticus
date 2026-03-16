@@ -41,7 +41,7 @@ module Interfaces_AxionCAMB
   !![
   <enumeration>
    <name>axionCambSpecies</name>
-   <description>Particle species in AxionCAMB.</description>
+   <description>Enumeration of particle species tracked by the AxionCAMB Boltzmann code when computing transfer functions: \normalfont\ttfamily darkMatter\normalfont (total), \normalfont\ttfamily coldDarkMatter\normalfont, \normalfont\ttfamily fuzzyDarkMatter\normalfont (axion), and \normalfont\ttfamily baryons\normalfont, used to select which species' transfer function is returned.</description>
    <visibility>public</visibility>
    <indexing>1</indexing>
    <entry label="darkMatter"     />

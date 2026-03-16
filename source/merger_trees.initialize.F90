@@ -40,7 +40,7 @@ module Merger_Tree_Initialization
     independently.</description>
    <default>standard</default>
    <method name="initialize" >
-    <description>Initialize the given tree.</description>
+    <description>Set the initial conditions for all nodes in the given \mono{tree}, populating galaxy and halo properties (e.g.\ hot gas mass, dark matter halo state) at each node's formation time before ODE integration proceeds to \mono{timeEnd}.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type            (mergerTree), intent(inout) :: tree   </argument>

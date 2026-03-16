@@ -67,7 +67,7 @@ contains
     !![
     <inputParameter>
       <name>name</name>
-      <description>The name of the parameter.</description>
+      <description>The name of the inactive model parameter as it appears in the Galacticus parameter file; held at a fixed value during posterior sampling without contributing to the sampler's free parameter space.</description>
       <defaultValue>var_str('')</defaultValue>
       <source>parameters</source>
     </inputParameter>

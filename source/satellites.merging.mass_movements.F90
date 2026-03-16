@@ -42,7 +42,7 @@ module Satellite_Merging_Mass_Movements
     starbursts during coalescence.</description>
    <default>simple</default>
    <method name="get" >
-    <description>Determine movements of mass during mergers.</description>
+    <description>Determine the movements of stellar and gaseous mass components during a galaxy merger event, returning the destination (disk, spheroid, or dominant component) for each component of the satellite and host galaxies, and whether the merger should be classified as major or minor.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type   (treeNode                        ), intent(inout), target :: node                                                                                        </argument>
@@ -55,7 +55,7 @@ module Satellite_Merging_Mass_Movements
   !![
   <enumeration>
    <name>destinationMerger</name>
-   <description>Enumeration of possible destinations for mass in mergers.</description>
+   <description>Enumeration of possible destinations for stellar and gaseous mass components following a galaxy merger, including unmoved (left in place), dominant component, disk, and spheroid.</description>
    <encodeFunction>yes</encodeFunction>
    <entry label="unmoved" />
    <entry label="dominant"/>

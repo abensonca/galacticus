@@ -80,13 +80,13 @@ module Model_Parameters
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Map the parameter value.</description>
+     <description>Apply the bijective mapping to transform the physical parameter value \mono{x} onto the unconstrained real line used by the posterior sampler (e.g.\ logarithm for positive-definite parameters).</description>
    </method>
    <method name="unmap">
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Unmap the parameter value.</description>
+     <description>Apply the inverse bijective mapping to transform the sampler's unconstrained variable \mono{x} back to the physical parameter value used to evaluate the model.</description>
    </method>
   </functionClass>
   !!]

@@ -40,7 +40,7 @@ module Posterior_Sampling_Stopping_Criteria
     allowing the sampler to exit cleanly.</description>
    <default>never</default>
    <method name="stop" >
-    <description>Returns true if the posterior sampling should stop.</description>
+    <description>Returns true if the posterior sampling should terminate immediately given the current simulation state, allowing the sampler to exit cleanly before reaching the maximum step count.</description>
     <type>logical</type>
     <pass>yes</pass>
     <argument>class(posteriorSampleStateClass), intent(inout) :: simulationState</argument>

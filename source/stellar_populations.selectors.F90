@@ -43,7 +43,7 @@ module Stellar_Population_Selectors
     rates, allowing heterogeneous stellar populations within a single galaxy.</description>
    <default>fixed</default>
    <method name="select" >
-    <description>Return a stellar population.</description>
+    <description>Return the appropriate \refClass{stellarPopulationClass} object for a star formation event given the current star formation rate, the elemental abundances of the fuel, and the galaxy component type (disk, spheroid, etc.).</description>
     <type>class(stellarPopulationClass)</type>
     <pass>yes</pass>
     <argument>double precision               , intent(in   ) :: rateStarFormation</argument>

@@ -93,7 +93,7 @@ contains
     <inputParameter>
       <name>supernovaEnergy</name>
       <defaultValue>1.0d51</defaultValue>
-      <description>The energy produced by a supernova (in ergs).</description>
+      <description>The canonical energy released per supernova event (in ergs), used to compute the total mechanical energy input from the supernova population; the default value of $10^{51}$ erg corresponds to the standard core-collapse supernova energy.</description>
       <source>parameters</source>
     </inputParameter>
     !!]

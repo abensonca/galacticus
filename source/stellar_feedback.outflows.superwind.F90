@@ -78,7 +78,7 @@ contains
       <name>massLoading</name>
       <source>parameters</source>
       <defaultValue>2.0d0</defaultValue>
-      <description>The mass-loading of ``superwind'' outflows.</description>
+      <description>The mass-loading parameter $\beta_\mathrm{superwind}$ of the superwind outflow model, giving the outflow rate per unit stellar energy input normalized to a canonical $1\,M_\odot$ stellar population; larger values drive more gas out of the galaxy.</description>
     </inputParameter>
     !!]
     self=stellarFeedbackOutflowsSuperWind(velocityCharacteristic,massLoading)

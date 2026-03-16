@@ -41,7 +41,7 @@ module Posterior_Sampling_State_Samples
     probability at each grid point for plotting or convergence diagnostics.</description>
    <default>priorGrid</default>
    <method name="samples" >
-    <description>Return a list of states at which to sample the posterior.</description>
+    <description>Return the array of pre-defined parameter-space states at which the posterior probability will be evaluated, allocating the \mono{simulationStates} array according to the sampling scheme.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type(posteriorSampleStateSimple), intent(inout), dimension(:), allocatable :: simulationStates</argument>

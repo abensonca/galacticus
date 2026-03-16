@@ -73,7 +73,7 @@ contains
       <name>fraction</name>
       <source>parameters</source>
       <defaultValue>0.01d0</defaultValue>
-      <description>The ratio of outflow rate to star formation rate in disks.</description>
+      <description>The fixed fraction $f_\mathrm{outflow}$ of the stellar energy input rate (normalized to a canonical $1\,M_\odot$ population) that drives gas outflows, setting the mass loading factor for stellar feedback in the galaxy.</description>
     </inputParameter>
     !!]
     self=stellarFeedbackOutflowsFixed(fraction)

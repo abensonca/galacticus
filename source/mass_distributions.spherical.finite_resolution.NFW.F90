@@ -181,17 +181,17 @@ contains
     <inputParameter>
       <name>lengthResolution</name>
       <source>parameters</source>
-      <description>The resolution length scale.</description>
+      <description>The spatial resolution length scale (in Mpc) of the N-body simulation being modeled; sets the minimum effective radius below which the NFW density profile is softened.</description>
     </inputParameter>
     <inputParameter>
       <name>radiusScale</name>
       <source>parameters</source>
-      <description>The NFW scale radius.</description>
+      <description>The NFW scale radius (in Mpc) at which the density profile transitions from the inner $\rho \propto r^{-1}$ slope to the outer $\rho \propto r^{-3}$ slope.</description>
     </inputParameter>
     <inputParameter>
       <name>radiusVirial</name>
       <source>parameters</source>
-      <description>The virial radius.</description>
+      <description>The virial radius (in Mpc) of the halo, defining the outer boundary of the NFW profile at which the mean enclosed density equals the virial overdensity threshold.</description>
     </inputParameter>
     <inputParameter>
       <name>mass</name>

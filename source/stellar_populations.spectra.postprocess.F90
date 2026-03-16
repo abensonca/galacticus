@@ -42,13 +42,13 @@ module Stellar_Population_Spectra_Postprocess
    </description>
    <default>inoue2014</default>
    <method name="multiplier" >
-    <description>Return the multiplicative modification to the spectrum.</description>
+    <description>Return the multiplicative correction factor (between 0 and 1) to apply to the stellar population spectrum at the given wavelength (\AA), stellar population age (Gyr), and source redshift, accounting for propagation effects such as IGM absorption.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>double precision, intent(in   ) :: wavelength, age, redshift</argument>
    </method>
    <method name="isRedshiftDependent" >
-    <description>Return true if the postprocessor is redshift dependent.</description>
+    <description>Return true if this postprocessor's correction factor depends on the source redshift, allowing the ODE solver to determine whether the luminosity must be recomputed when the redshift changes rather than using a cached value.</description>
     <type>logical</type>
     <pass>yes</pass>
     <code>
@@ -81,7 +81,7 @@ module Stellar_Population_Spectra_Postprocess
    </description>
    <default>lookup</default>
    <method name="build" >
-    <description>Build and return a postprocessor.</description>
+    <description>Build and return a \refClass{stellarPopulationSpectraPostprocessorClass} object corresponding to the given string descriptor, acting as a factory that constructs the appropriate postprocessor (e.g., IGM absorption, dust) for each photometric filter.</description>
     <type>class(stellarPopulationSpectraPostprocessorClass)</type>
     <pass>yes</pass>
     <argument>type(varying_string), intent(in   ) :: descriptor</argument>

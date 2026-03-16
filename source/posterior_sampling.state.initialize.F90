@@ -42,7 +42,7 @@ module Posterior_Sampling_State_Initialize
     long burn-in periods.</description>
    <default>priorRandom</default>
    <method name="initialize" >
-    <description>Initialize the state of the posterior sampler.</description>
+    <description>Set the initial parameter vector of the simulation state before the main sampling loop begins, also returning the initial log-likelihood, log-posterior, and elapsed evaluation time for the starting point.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>class           (posteriorSampleStateClass     ), intent(inout)               :: simulationState</argument>

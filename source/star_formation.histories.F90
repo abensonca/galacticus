@@ -61,7 +61,7 @@ module Star_Formation_Histories
    </description>
    <default>null</default>
    <method name="create" >
-    <description>Create the star formation history object.</description>
+    <description>Create and initialize the star formation history object for the given node, allocating the age and metallicity bins spanning from the specified start time to the optional end time.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type            (treeNode), intent(inout), target   :: node</argument>
@@ -79,7 +79,7 @@ module Star_Formation_Histories
     <argument>type            (abundances), intent(in   ) :: abundancesStellar</argument>
    </method>
    <method name="rate" >
-    <description>Record the rate of star formation in this history.</description>
+    <description>Record the instantaneous rate of star formation in the history object for the given node, accumulating the stellar mass formed at the current time step into the appropriate age and metallicity bins.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type            (treeNode  ), intent(inout) :: node</argument>
@@ -118,7 +118,7 @@ module Star_Formation_Histories
     </code>
    </method>
    <method name="timeNext">
-     <description></description>
+     <description>Return the next time at which the star formation history bin structure changes for the given node, indicating when the history must be updated or extended to cover the next time interval.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>type(treeNode), intent(inout) :: node                </argument>
@@ -133,7 +133,7 @@ module Star_Formation_Histories
      </code>
    </method>
    <method name="masses" >
-    <description>Return an array of masses of stars formed for this history.</description>
+    <description>Return a 2D array (indexed by age bin and metallicity bin) of stellar masses formed for the given node's star formation history, representing the cumulative stellar mass in each age-metallicity cell.</description>
     <type>double precision, allocatable, dimension(:,:)</type>
     <pass>yes</pass>
     <argument>type   (treeNode), intent(inout)           :: node                </argument>
@@ -188,7 +188,7 @@ module Star_Formation_Histories
      </code>
    </method>
    <method name="move">
-     <description>Move one star formation history into another.</description>
+     <description>Move (transfer and reset) the star formation history from one node into another, incrementing the destination history with the source data and then resetting the source to zero, as needed during galaxy mergers.</description>
      <type>void</type>
      <pass>yes</pass>
      <argument>type(treeNode), intent(inout) :: node1                , node2                </argument>

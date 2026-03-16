@@ -66,12 +66,12 @@ contains
     !![
     <inputParameter>
       <name>probabilitySuccess</name>
-      <description>The probability of success for a single trial.</description>
+      <description>The probability $p \in (0,1]$ of success on a single Bernoulli trial; the distribution models the number of successes before $r$ failures occur, with mean $pr/(1-p)$.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>countFailures</name>
-      <description>The number of failures.</description>
+      <description>The target number of failures $r$ before the experiment stops; the distribution gives the number of successes $k$ observed before the $r$-th failure, with variance $pr/(1-p)^2$.</description>
       <source>parameters</source>
     </inputParameter>
     <objectBuilder class="randomNumberGenerator" name="randomNumberGenerator_" source="parameters"/>

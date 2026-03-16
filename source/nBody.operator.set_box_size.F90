@@ -60,7 +60,7 @@ contains
     <inputParameter>
       <name>boxSize</name>
       <source>parameters</source>
-      <description>The box size to set.</description>
+      <description>The side length of the periodic simulation box to assign to the dataset, in the same units as particle positions.</description>
     </inputParameter>
     !!]
     self=nbodyOperatorSetBoxSize(boxSize)

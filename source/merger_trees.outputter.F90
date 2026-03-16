@@ -41,7 +41,7 @@ module Merger_Tree_Outputters
     properties as defined by the active \refClass{nodePropertyExtractorClass} instances.</description>
    <default>standard</default>
    <method name="outputTree" >
-    <description>Output a merger tree.</description>
+    <description>Serialize all galaxy and halo properties from the given \mono{tree} to the output dataset corresponding to output index \mono{indexOutput} at cosmic time \mono{time}.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type            (mergerTree), intent(inout), target :: tree       </argument>
@@ -49,14 +49,14 @@ module Merger_Tree_Outputters
     <argument>double precision            , intent(in   )         :: time       </argument>
    </method>
    <method name="outputNode" >
-    <description>Output a single node.</description>
+    <description>Serialize galaxy and halo properties of the given individual \mono{node} to the output dataset corresponding to output index \mono{indexOutput}.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type   (treeNode), intent(inout) :: node       </argument>
     <argument>integer(c_size_t), intent(in   ) :: indexOutput</argument>
    </method>
    <method name="finalize" >
-    <description>Finalize output of merger trees.</description>
+    <description>Finalize the output of merger trees, flushing any buffered data to persistent storage and performing any post-processing required after all trees have been serialized.</description>
     <type>void</type>
     <pass>yes</pass>
    </method>

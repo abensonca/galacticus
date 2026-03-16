@@ -62,7 +62,7 @@ contains
       <name>multiplier</name>
       <source>parameters</source>
       <variable>multiplier</variable>
-      <description>Multiplying factor.</description>
+      <description>The fixed scalar value by which the galaxy property is multiplied, enabling unit conversions or rescaling before binning or likelihood computation.</description>
     </inputParameter>
     !!]
     self=outputAnalysisPropertyOperatorMultiply(multiplier)

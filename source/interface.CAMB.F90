@@ -39,7 +39,7 @@ module Interfaces_CAMB
   !![
   <enumeration>
    <name>cambSpecies</name>
-   <description>Particle species in CAMB.</description>
+   <description>Enumeration of particle species tracked by the CAMB Boltzmann code when computing transfer functions: \normalfont\ttfamily darkMatter\normalfont and \normalfont\ttfamily baryons\normalfont, used to select which species' transfer function is returned.</description>
    <visibility>public</visibility>
    <indexing>1</indexing>
    <entry label="darkMatter"/>

@@ -743,7 +743,7 @@ module Mass_Distributions
     </code>
    </method>
    <method name="jeansEquationIntegrand" >
-    <description>Integrand for Jeans equation.</description>
+    <description>Evaluate the integrand of the Jeans equation at the given \mono{radius}, returning $GM(r)\rho(r)/r^2$ needed for numerical integration of the spherical Jeans equation to obtain the line-of-sight velocity dispersion.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>double precision                       , intent(in   ) :: radius                                      </argument>

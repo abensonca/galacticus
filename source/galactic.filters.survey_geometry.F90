@@ -27,7 +27,7 @@ Implements a filter which passes only nodes that lie within a survey geometry.
   !![
   <enumeration>
    <name>positionType</name>
-   <description>Enumeration of position types.</description>
+   <description>Enumeration of node position types used when testing membership within a survey geometry: \normalfont\ttfamily position\normalfont uses the intrinsic node position, while \normalfont\ttfamily orbital\normalfont uses the node's orbital position.</description>
    <encodeFunction>yes</encodeFunction>
    <visibility>public</visibility>
    <entry label="position"/>

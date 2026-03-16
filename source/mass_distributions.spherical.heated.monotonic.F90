@@ -105,7 +105,7 @@ contains
     <inputParameter>
       <name>radiusVirial</name>
       <source>parameters</source>
-      <description>The virial radius of the halo.</description>
+      <description>The virial radius (in Mpc) of the halo, defining the outer boundary up to which the monotonic heating calculation tracks the energy-ordered shell mapping from the initial to heated density profile.</description>
     </inputParameter>
     <inputParameter>
       <name>nonAnalyticSolver</name>

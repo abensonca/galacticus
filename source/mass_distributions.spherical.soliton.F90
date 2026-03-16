@@ -85,7 +85,7 @@
      !![
      <inputParameter>
        <name>radiusCore</name>
-       <description>The soliton core radius.</description>
+       <description>The soliton core radius (in Mpc) characterizing the size of the quantum pressure-supported central core of the fuzzy dark matter halo; the density profile flattens inside this scale.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>

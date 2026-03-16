@@ -79,22 +79,22 @@ contains
     </inputParameter>
     <inputParameter>
       <name>redshift</name>
-      <description>The redshift of the halo.</description>
+      <description>The cosmological redshift of the halo, used to evaluate the cosmic time and the Lam~(2013) infall velocity profile at the appropriate epoch.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>massVirial</name>
-      <description>The virial mass of the halo.</description>
+      <description>The virial mass (in $M_\odot$) of the halo whose accretion flow kinematics are modeled by the Lam~(2013) framework.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>radiusVirial</name>
-      <description>The virial radius of the halo.</description>
+      <description>The virial radius (in Mpc) of the halo, setting the spatial scale for the Lam~(2013) radial infall velocity profile.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>overdensityCritical</name>
-      <description>The critical overdensity.</description>
+      <description>The critical linear overdensity threshold for collapse used in the Lam~(2013) accretion flow model to normalize the radial infall velocity.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

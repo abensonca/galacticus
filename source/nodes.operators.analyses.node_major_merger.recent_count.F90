@@ -27,7 +27,7 @@
   !![
   <enumeration>
    <name>intervalType</name>
-   <description>Options for ``recent'' major merger interval types.</description>
+   <description>Enumeration of the time units used to define the lookback interval for ``recent'' major mergers: absolute (Gyr) or dynamical (in units of the halo dynamical time).</description>
    <encodeFunction>yes</encodeFunction>
    <validator>yes</validator>
    <visibility>private</visibility>

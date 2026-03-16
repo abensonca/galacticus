@@ -90,12 +90,12 @@ contains
     <inputParameter>
       <name>separationMinimum</name>
       <source>parameters</source>
-      <description>The minimum separation to consider for pair counts.</description>
+      <description>The minimum pairwise separation (in the same units as particle positions) of pairs to include when counting and binning particle pairs.</description>
     </inputParameter>
     <inputParameter>
       <name>separationMaximum</name>
       <source>parameters</source>
-      <description>The maximum separation to consider for pair counts.</description>
+      <description>The maximum pairwise separation (in the same units as particle positions) of pairs to include when counting and binning particle pairs.</description>
     </inputParameter>
     <inputParameter>
       <name>separationCount</name>

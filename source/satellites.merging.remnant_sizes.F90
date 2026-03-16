@@ -40,7 +40,7 @@ module Satellite_Merging_Remnant_Sizes
     evolution of the stellar velocity dispersion and black hole mass in the remnant galaxy.</description>
    <default>covington2008</default>
    <method name="get" >
-    <description>Determine merger remnant size and related properties.</description>
+    <description>Determine the half-mass radius, circular velocity, and specific angular momentum of the spheroidal remnant formed when two galaxies merge, using energy and angular momentum conservation arguments applied to the progenitor masses, radii, and orbital parameters.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type            (treeNode), intent(inout) :: node                                             </argument>

@@ -74,7 +74,7 @@ contains
     <inputParameter>
       <name>indexSnapshot</name>
       <source>parameters</source>
-      <description>The snapshot index for which to compute the merger rate.</description>
+      <description>The snapshot index of the descendant epoch at which halo mergers are identified; progenitors from the immediately preceding snapshot are matched to descendants at this epoch.</description>
     </inputParameter>
     <inputParameter>
       <name>massMinimum</name>

@@ -137,7 +137,7 @@ contains
       <name>velocityDispersionDiskGas</name>
       <defaultSource>\citep{leroy_star_2008}</defaultSource>
       <defaultValue>10.0d0</defaultValue>
-      <description>The velocity dispersion of gas in disks.</description>
+      <description>The velocity dispersion of gas in galactic disks (in km/s), used to compute the hydrostatic midplane pressure that determines the molecular-to-atomic gas ratio in the \cite{blitz_role_2006} star formation model.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

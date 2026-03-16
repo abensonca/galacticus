@@ -39,7 +39,7 @@ module Posterior_Sampling_Simulation
     Differential Evolution MCMC algorithm for efficient high-dimensional sampling.</description>
    <default>differentialEvolution</default>
    <method name="simulate" >
-    <description>Perform the simulation.</description>
+    <description>Execute the full posterior sampling run, iterating the proposal, acceptance, and logging cycle until either the stopping criterion is met or the maximum step count is reached.</description>
     <type>void</type>
     <pass>yes</pass>
    </method>

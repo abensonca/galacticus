@@ -93,7 +93,7 @@ contains
       <name>frequencyStarFormation</name>
       <defaultSource>\citep{krumholz_star_2009}</defaultSource>
       <defaultValue>2.36d0</defaultValue>
-      <description>The star formation frequency (in units of Gyr).</description>
+      <description>The characteristic timescale for star formation in nuclear star clusters (in units of Gyr), corresponding to the normalization factor $(2.36~\mathrm{Gyr})^{-1}$ in the \cite{krumholz_star_2009} star formation rate law.</description>
       <source>parameters</source>
     </inputParameter>
     !!]

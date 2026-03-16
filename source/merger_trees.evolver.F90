@@ -41,7 +41,7 @@ module Merger_Trees_Evolve
     manages deadlock detection, work-sharing between CPU cores, and suspension of trees for I/O.</description>
    <default>standard</default>
    <method name="evolve" >
-    <description>Evolve a merger tree.</description>
+    <description>Evolve the given \mono{tree} from its current state to \mono{timeEnd}, updating all node properties by integrating ODE physics and returning \mono{treeDidEvolve} and \mono{suspendTree} to indicate progress and whether to defer further evolution.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>type            (mergerTree   ), target  , intent(inout) :: tree                           </argument>

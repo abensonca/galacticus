@@ -41,7 +41,7 @@ module Interface_Local_Group_DB
   !![
   <enumeration>
    <name>comparison</name>
-   <description>Comparison operators.</description>
+   <description>Enumeration of comparison operators used when filtering Local Group database entries by property value: \normalfont\ttfamily equals\normalfont, \normalfont\ttfamily greaterThan\normalfont, and \normalfont\ttfamily lessThan\normalfont.</description>
    <visibility>public</visibility>
    <entry label="equals"     />
    <entry label="greaterThan"/>
@@ -52,7 +52,7 @@ module Interface_Local_Group_DB
   !![
   <enumeration>
    <name>setOperator</name>
-   <description>Set operators.</description>
+   <description>Enumeration of set operators for combining Local Group database selections: \normalfont\ttfamily intersection\normalfont retains only common members, \normalfont\ttfamily union\normalfont combines all members, and \normalfont\ttfamily relativeComplement\normalfont removes members of one set from another.</description>
    <visibility>public</visibility>
    <entry label="intersection"/>
    <entry label="union"/>
@@ -63,7 +63,7 @@ module Interface_Local_Group_DB
   !![
   <enumeration>
    <name>attribute</name>
-   <description>Attribute types.</description>
+   <description>Enumeration of attribute types stored in the Local Group database for each property: \normalfont\ttfamily value\normalfont holds the measured quantity and \normalfont\ttfamily uncertainty\normalfont holds its associated measurement uncertainty.</description>
    <visibility>public</visibility>
    <entry label="value"      />
    <entry label="uncertainty"/>

@@ -47,13 +47,13 @@ module Statistics_Distributions
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Return the probability density at \mono{x}.</description>
+     <description>Return the probability density function $p(x)$ evaluated at the given value \mono{x}, representing the relative likelihood of the random variable taking that value.</description>
    </method>
    <method name="cumulative" >
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Return the cumulative probability at \mono{x}.</description>
+     <description>Return the cumulative distribution function $P(x) = \int_{-\infty}^x p(x')\,\mathrm{d}x'$, giving the probability that the random variable takes a value less than or equal to \mono{x}.</description>
    </method>
    <method name="inverse" >
      <type>double precision</type>
@@ -108,7 +108,7 @@ module Statistics_Distributions
      <type>double precision</type>
      <pass>yes</pass>
      <argument>class(randomNumberGeneratorClass), intent(inout), optional :: randomNumberGenerator_</argument>
-     <description>Return a random deviate from the distribution.</description>
+     <description>Return a random deviate drawn from this probability distribution, using the inverse CDF method by default (drawing a uniform random number and applying the quantile function).</description>
      <modules>Error</modules>
      <code>
       double precision :: uniformRandom
@@ -127,7 +127,7 @@ module Statistics_Distributions
    <method name="minimum" >
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Returns the minimum possible value in the distribution.</description>
+     <description>Returns the minimum possible value (lower bound) of the support of this distribution, i.e., the smallest value $x$ for which the probability density is non-zero. Returns $-\infty$ by default.</description>
      <code>
        distributionFunction1DMinimum=-huge(1.0d0)
      </code>
@@ -135,7 +135,7 @@ module Statistics_Distributions
    <method name="maximum" >
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Returns the maximum possible value in the distribution.</description>
+     <description>Returns the maximum possible value (upper bound) of the support of this distribution, i.e., the largest value $x$ for which the probability density is non-zero. Returns $+\infty$ by default.</description>
      <code>
        distributionFunction1DMaximum=+huge(1.0d0)
      </code>

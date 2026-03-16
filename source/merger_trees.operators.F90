@@ -80,7 +80,7 @@ module Merger_Tree_Operators
     </code>
    </method>
    <method name="finalize" >
-    <description>Finalize a merger tree operator.</description>
+    <description>Finalize the merger tree operator at the end of the simulation, performing any required cleanup, flushing accumulated statistics, and releasing resources held by the operator.</description>
     <type>void</type>
     <pass>yes</pass>
     <code>

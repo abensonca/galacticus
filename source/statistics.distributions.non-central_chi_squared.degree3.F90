@@ -67,7 +67,7 @@ contains
     !![
     <inputParameter>
       <name>lambda</name>
-      <description>Non centrality parameter</description>
+      <description>The non-centrality parameter $\lambda \ge 0$ of the non-central $\chi^2$ distribution with 3 degrees of freedom, equal to the sum of squares of the non-central normal means; when $\lambda = 0$ the distribution reduces to a central $\chi^2_3$.</description>
       <source>parameters</source>
     </inputParameter>
     <objectBuilder class="randomNumberGenerator" name="randomNumberGenerator_" source="parameters"/>

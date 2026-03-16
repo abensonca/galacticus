@@ -41,7 +41,7 @@ module Models_Likelihoods
     variance. The likelihood is combined with the prior from \refClass{modelParameterClass} objects to
     drive the posterior sampler toward the best-fit parameter region.</description>
    <method name="evaluate" >
-    <description>Evaluate the likelihood.</description>
+    <description>Evaluate the log-likelihood $\ln\mathcal{L}$ at the current \mono{simulationState} given the active and inactive model parameter lists, returning the log-likelihood value and optionally its variance for stochastic estimators.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>

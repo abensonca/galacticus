@@ -81,12 +81,12 @@ contains
     !![
     <inputParameter>
       <name>radiusCore</name>
-      <description>The soliton core radius.</description>
+      <description>The soliton core radius (in Mpc) that characterizes the size of the central quantum pressure-supported core of the fuzzy dark matter halo; density is approximately constant within this radius.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>radiusSoliton</name>
-      <description>The soliton radius.</description>
+      <description>The outer radius (in Mpc) of the soliton region, beyond which the profile transitions from the soliton core to the heated NFW outer envelope.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

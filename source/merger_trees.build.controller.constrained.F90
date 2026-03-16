@@ -119,7 +119,7 @@ contains
        <inputParameter>
          <name>labelDescription</name>
          <source>parameters</source>
-         <description>A description of the label.</description>
+         <description>A human-readable description of the label applied to constrained nodes in the merger tree, used to document what physical property or criterion the label represents.</description>
        </inputParameter>
        !!]
     end if

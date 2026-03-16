@@ -76,7 +76,7 @@ contains
     <inputParameter>
       <name>radius</name>
       <source>parameters</source>
-      <description>Radii at which the rotation curve should be computed.</description>
+      <description>An array of galactocentric radii (in the same units as particle positions) at which the circular velocity rotation curve will be evaluated.</description>
     </inputParameter>
     <inputParameter>
       <name>bootstrapSampleCount</name>

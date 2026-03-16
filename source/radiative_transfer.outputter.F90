@@ -42,7 +42,7 @@ module Radiative_Transfer_Outputters
     for subsequent analysis of the emergent spectrum or radiation field.</description>
    <default>null</default>
    <method name="reset" >
-    <description>Reset the outputter.</description>
+    <description>Reset the outputter to its initial state, clearing any accumulated photon packet statistics in preparation for a new iteration or output epoch.</description>
     <type>void</type>
     <pass>yes</pass>
     <code>

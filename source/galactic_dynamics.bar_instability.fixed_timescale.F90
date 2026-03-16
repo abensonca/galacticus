@@ -63,7 +63,7 @@ contains
     <inputParameter>
       <name>timescale</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The timescale for bar instability.</description>
+      <description>The fixed timescale (in Gyr) for bar instability; the disk is depleted exponentially on this timescale, with the redistributed mass transferred to the spheroid.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

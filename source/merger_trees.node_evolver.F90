@@ -42,7 +42,7 @@ module Merger_Trees_Evolve_Node
     converged to the required accuracy.</description>
    <default>standard</default>
    <method name="evolve" >
-    <description>Evolve a node merger tree.</description>
+    <description>Advance the physical properties of the given \mono{node} from its current time to \mono{timeEnd} by integrating the relevant ODE physics, setting \mono{interrupted} and \mono{functionInterrupt} if the evolution must be paused for an event such as node promotion or a merger.</description>
     <type>void</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>

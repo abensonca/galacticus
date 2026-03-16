@@ -273,7 +273,7 @@ contains
       <name>chunkSize</name>
       <source>parameters</source>
       <defaultValue>-1</defaultValue>
-      <description>HDF5 dataset chunk size.</description>
+      <description>The HDF5 dataset chunk size (in number of particles) used when writing particle data to the output file; set to $-1$ to disable chunking and write all particles in a single contiguous dataset.</description>
     </inputParameter>
     <objectBuilder class="cosmologyParameters"  name="cosmologyParameters_"  source="parameters"/>
     <objectBuilder class="cosmologyFunctions"   name="cosmologyFunctions_"   source="parameters"/>

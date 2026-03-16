@@ -41,7 +41,7 @@ module Satellite_Tidal_Stripping_Radii
     (e.g.\ King 1962 or Jacobi radius). It sets the outer boundary used by tidal stripping rate models.</description>
    <default>king1962</default>
    <method name="radius" >
-    <description>Returns the tidal radius for \mono{node} (in units of Mpc).</description>
+    <description>Returns the tidal stripping radius (in units of Mpc) for the given satellite node, i.e., the radius within which material remains gravitationally bound against the tidal field of the host halo.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>

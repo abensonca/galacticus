@@ -62,7 +62,7 @@ contains
     <inputParameter>
       <name>propertyName</name>
       <source>parameters</source>
-      <description>A named property on which to select.</description>
+      <description>The name of the integer particle property whose values will be compared against the allowed list to determine which particles to retain.</description>
     </inputParameter>
     !!]
     allocate(selectedValues(parameters%count('selectedValues')))
@@ -70,7 +70,7 @@ contains
     <inputParameter>
       <name>selectedValues</name>
       <source>parameters</source>
-      <description>A list of allowed values for the property</description>
+      <description>A list of integer values of the named property that a particle must match to be retained; particles whose property value is not in this list are removed.</description>
     </inputParameter>
     !!]
     self=nbodyOperatorSelectProperties(propertyName,selectedValues)

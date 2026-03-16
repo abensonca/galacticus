@@ -61,7 +61,7 @@ contains
     <inputParameter>
       <name>label</name>
       <source>parameters</source>
-      <description>The label upon which to filter.</description>
+      <description>The label string that a node must carry in order to pass this filter; only nodes assigned this exact label during tree construction or post-processing will be selected.</description>
     </inputParameter>
     !!]
     self=galacticFilterLabelled(label)

@@ -53,7 +53,7 @@
   !![
   <enumeration>
    <name>nodeReachability</name>
-   <description>Node reachability status.</description>
+   <description>Enumeration of node reachability status when traversing a merger tree read from file: \normalfont\ttfamily unreachable\normalfont nodes cannot be reached from the root of the tree structure, while \normalfont\ttfamily reachable\normalfont nodes can.</description>
    <entry label="unreachable"/>
    <entry label="reachable"  />
   </enumeration>
@@ -63,7 +63,7 @@
   !![
   <enumeration>
    <name>subhaloAngularMomentaMethod</name>
-   <description>Subhalo angular momentum methods.</description>
+   <description>Enumeration of methods for assigning angular momenta to subhalos when reading merger trees from file: \normalfont\ttfamily scale\normalfont uses the halo spin parameter, while \normalfont\ttfamily summation\normalfont sums contributions from child nodes.</description>
    <encodeFunction>yes</encodeFunction>
    <entry label="scale"    />
    <entry label="summation"/>

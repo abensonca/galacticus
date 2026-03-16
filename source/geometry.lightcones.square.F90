@@ -212,7 +212,7 @@ contains
       <name>origin</name>
       <source>parameters</source>
       <variable>origin</variable>
-      <description>The origin for the lightcone.</description>
+      <description>The 3D Cartesian position vector (in simulation box length units) of the observer's location from which the square lightcone extends along the direction defined by the unit vectors.</description>
     </inputParameter>
     <inputParameter>
       <name>unitVector1</name>

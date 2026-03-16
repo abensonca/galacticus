@@ -41,13 +41,13 @@ module Math_Operators_Unary
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Operate on the given value.</description>
+     <description>Apply the unary operator to the scalar input \mono{x}, returning the transformed value $f(x)$.</description>
    </method>
    <method name="unoperate" >
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: f</argument>
-     <description>Reverse the operation.</description>
+     <description>Reverse the unary operation by applying the inverse mapping $f^{-1}$ to the scalar input \mono{f}, returning the original value $x$ such that operate$(x) = f$.</description>
    </method>
   </functionClass>
   !!]

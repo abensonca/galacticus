@@ -103,7 +103,7 @@ contains
       <name>index</name>
       <variable>index_</variable>
       <defaultValue>4.0d0</defaultValue>
-      <description>The S\'ersic index.</description>
+      <description>The S\'ersic index $n$ that controls the shape of the surface brightness (or mass surface density) profile; $n=1$ gives an exponential profile, $n=4$ gives the de~Vaucouleurs profile, and larger $n$ produces more centrally concentrated profiles.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
