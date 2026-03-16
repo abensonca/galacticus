@@ -75,7 +75,7 @@ contains
       <name>efficiencyJet</name>
       <source>parameters</source>
       <defaultValue>0.1d0</defaultValue>
-      <description>The jet efficiency of the Eddington-limited accretion disk.</description>
+      <description>The jet efficiency of the Eddington-limited accretion disk, defined as the fraction of the accreted rest-mass energy $\dot{M}c^2$ that is channeled into a relativistic jet outflow.</description>
     </inputParameter>
     !!]
     self=accretionDisksEddingtonLimited(efficiencyRadiation,efficiencyJet)

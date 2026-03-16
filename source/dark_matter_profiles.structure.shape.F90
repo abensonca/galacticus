@@ -39,7 +39,7 @@ module Dark_Matter_Profiles_Shape
    </description>
    <default>gao2008</default>
    <method name="shape" >
-    <description>Returns the shape parameter for the given \mono{node}.</description>
+    <description>Returns the dimensionless shape parameter $\alpha$ of the Einasto dark matter density profile for the halo in \mono{node}, controlling the curvature of the inner profile with typical values in the range $0.1$--$0.3$ from N-body simulations.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>

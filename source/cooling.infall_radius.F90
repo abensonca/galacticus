@@ -40,7 +40,7 @@ module Cooling_Infall_Radii
     galactic disc.</description>
    <default>coolingRadius</default>
    <method name="radius" >
-    <description>Return the infall radius for \mono{node} (in units of Mpc).</description>
+    <description>Return the infall radius (in units of Mpc) for the halo in \mono{node}, i.e. the radius within which cooled gas can fall inward and join the galaxy disc or bulge, determining the angular momentum of accreting gas.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>

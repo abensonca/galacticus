@@ -34,7 +34,7 @@ module Black_Hole_Seeds
   !![
   <enumeration>
     <name>blackHoleFormationChannel</name>
-    <description>Enumeration of black hole formation channels.</description>
+    <description>Enumeration of the physical channels through which black hole seeds can form, including undetermined origin and formation via stellar cluster collapse leading to a massive seed black hole.</description>
     <decodeFunction>yes</decodeFunction>
     <validator>yes</validator>
     <visibility>public</visibility>

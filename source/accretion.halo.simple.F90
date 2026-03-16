@@ -155,7 +155,7 @@ contains
          <name>redshiftReionization</name>
          <defaultSource>(\citealt{hinshaw_nine-year_2012}; CMB$+H_0+$BAO)</defaultSource>
          <defaultValue>9.97d0</defaultValue>
-         <description>The redshift below which baryonic accretion is suppressed.</description>
+         <description>The redshift of reionization below which baryonic accretion onto halos is suppressed due to the ionizing background heating the intergalactic medium and preventing gas from accreting onto low-mass halos.</description>
          <source>parameters</source>
        </inputParameter>
        !!]

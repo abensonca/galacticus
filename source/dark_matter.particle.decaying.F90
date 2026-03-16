@@ -77,7 +77,7 @@ contains
       <name>lifetime</name>
       <source>parameters</source>
       <variable>lifetime</variable>
-      <description>Lifetime of the dark matter particle in Gyr.</description>
+      <description>The mean lifetime (in Gyr) of the decaying dark matter particle before it decays into lighter daughter particles, controlling the timescale over which dark matter density is reduced by decay.</description>
     </inputParameter>
     !!]
     if      (parameters%isPresent('massSplitting')) then
@@ -86,7 +86,7 @@ contains
        <inputParameter>
 	 <name>massSplitting</name>
 	 <source>parameters</source>
-	 <description>Mass splitting of the dark matter decay.</description>
+	 <description>The fractional mass splitting $\epsilon = \Delta m / m$ between the parent and daughter dark matter particles in the decay, used to compute the velocity kick imparted to the daughter particle.</description>
        </inputParameter>
        !!]
     else if (parameters%isPresent('velocityKick' )) then
@@ -94,7 +94,7 @@ contains
        <inputParameter>
 	 <name>velocityKick</name>
 	 <source>parameters</source>
-	 <description>Velocity kick imparted by dark matter decay.</description>
+	 <description>The velocity kick (in km/s) imparted to the daughter dark matter particle when the parent decays, which heats and disrupts the dark matter distribution in halos over time.</description>
        </inputParameter>
        !!]
     else

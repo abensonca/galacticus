@@ -40,7 +40,7 @@ module Cooling_Infall_Torques
     loss directly modulates the specific angular momentum assigned to the cooling gas.</description>
    <default>fixed</default>
    <method name="fractionAngularMomentumLoss" >
-    <description>Return the fraction of angular momentum lost during infall.</description>
+    <description>Return the fraction of specific angular momentum lost by infalling gas as it travels from the infall radius to the galaxy disc, where torques from the halo, galaxy, or gas dynamics reduce the angular momentum of the accreting gas.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>

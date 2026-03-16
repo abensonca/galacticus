@@ -23,7 +23,7 @@
 
   !![
   <accretionHalo name="accretionHaloZero">
-   <description>Accretion onto halos assuming no accretion.</description>
+   <description>A null implementation of halo accretion that assumes zero accretion of baryonic matter from the intergalactic medium onto halos at all times. Useful for isolating other physical processes or testing purposes.</description>
   </accretionHalo>
   !!]
   type, extends(accretionHaloClass) :: accretionHaloZero

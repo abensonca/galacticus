@@ -67,7 +67,7 @@ contains
     <inputParameter>
       <name>efficiencyWind</name>
       <defaultValue>2.2157d-3</defaultValue>
-      <description>The efficiency of the black hole accretion-driven wind.</description>
+      <description>The coupling efficiency of the black hole accretion-driven wind, defined as the fraction of the accreted rest-mass energy that is deposited as kinetic or thermal energy into the surrounding gas via AGN-driven outflows.</description>
       <source>parameters</source>
     </inputParameter>
     <objectBuilder class="blackHoleAccretionRate" name="blackHoleAccretionRate_" source="parameters"/>

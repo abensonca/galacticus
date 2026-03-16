@@ -40,7 +40,7 @@ module Accretion_Disks
    </description>
    <default>shakuraSunyaev</default>
    <method name="efficiencyRadiative" >
-    <description>Returns the radiative efficiency of the accretion disk.</description>
+    <description>Returns the radiative efficiency of the accretion disk, defined as the fraction of accreted rest-mass energy $\dot{M}c^2$ that is emitted as radiation, given the black hole properties and accretion rate.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>class           (nodeComponentBlackHole), intent(inout) :: blackHole</argument>

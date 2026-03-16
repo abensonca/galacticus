@@ -41,7 +41,7 @@ module Black_Hole_Accretion_Rates
    </description>
    <default>standard</default>
    <method name="rateAccretion" >
-    <description>Computes the mass accretion rate onto a black hole.</description>
+    <description>Computes the mass accretion rate onto a black hole from the spheroid, hot halo, and nuclear star cluster components, returning each contribution separately (in $M_\odot$ Gyr$^{-1}$).</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>class           (nodeComponentBlackHole), intent(inout) :: blackHole                                                                               </argument>

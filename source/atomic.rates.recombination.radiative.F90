@@ -30,7 +30,7 @@ module Atomic_Rates_Recombination_Radiative
   !![
   <enumeration>
    <name>recombinationCase</name>
-   <description>Enumeration of radiative recombination cases (A or B).</description>
+   <description>Enumeration of radiative recombination cases: Case A includes recombinations to all levels (appropriate for optically thin media), Case B excludes recombinations directly to the ground state (appropriate for optically thick media where Lyman series photons are immediately reabsorbed).</description>
    <visibility>public</visibility>
    <indexing>-2</indexing>
    <entry label="a"/>

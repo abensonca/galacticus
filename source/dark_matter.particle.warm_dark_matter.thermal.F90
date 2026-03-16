@@ -75,7 +75,7 @@ contains
       <source>parameters</source>
       <variable>massValue</variable>
       <defaultValue>1.0d0</defaultValue>
-      <description>The mass (in keV) of the thermal warm dark matter particle.</description>
+      <description>The mass (in keV) of the thermal warm dark matter particle, which determines the free-streaming length and the suppression of small-scale structure relative to cold dark matter; smaller masses give stronger suppression.</description>
     </inputParameter>
     <inputParameter>
       <name>degreesOfFreedomEffective</name>

@@ -39,7 +39,7 @@ module Dark_Matter_Profile_Scales
     scale radius from a concentration parameter, from energy conservation arguments, or from other empirical relations.</description>
    <default>concentration</default>
    <method name="radius" >
-    <description>Returns the scale radius for the given \mono{node}.</description>
+    <description>Returns the scale radius $r_\mathrm{s}$ (in Mpc) of the dark matter halo density profile for the halo in \mono{node}, the characteristic radius at which the logarithmic slope of the density profile transitions between inner and outer power laws.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>

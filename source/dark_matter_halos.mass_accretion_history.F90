@@ -39,7 +39,7 @@ module Dark_Matter_Halo_Mass_Accretion_Histories
    </description>
    <default>wechsler2002</default>
    <method name="time">
-    <description>Returns the time at which the given halo mass was reached.</description>
+    <description>Returns the cosmological time (in Gyr) at which the main progenitor of the halo in \mono{node} first reached the specified halo mass, found by root-finding on the mass accretion history.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
@@ -71,7 +71,7 @@ module Dark_Matter_Halo_Mass_Accretion_Histories
     </code>
    </method>
    <method name="mass">
-    <description>Returns the halo mass at the given halo time.</description>
+    <description>Returns the halo mass (in $M_\odot$) of the main progenitor of the halo in \mono{node} at the specified cosmological time, evaluated from the parametric mass accretion history model.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
@@ -103,7 +103,7 @@ module Dark_Matter_Halo_Mass_Accretion_Histories
     </code>
    </method>
    <method name="massAccretionRate">
-    <description>Returns the mass accretion rate at the specified time.</description>
+    <description>Returns the halo mass accretion rate (in $M_\odot$ Gyr$^{-1}$) of the main progenitor of the halo in \mono{node} at the specified cosmological time, computed as the time derivative of the mass accretion history.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type            (treeNode), intent(inout) :: node</argument>

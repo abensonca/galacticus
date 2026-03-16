@@ -65,7 +65,7 @@ contains
      <name>multiplier</name>
      <source>parameters</source>
      <defaultValue>0.0d0</defaultValue>
-     <description>The value by which cooling rates should be multiplied.</description>
+     <description>A constant multiplicative factor applied to cooling rates computed by the wrapped cooling rate object, allowing uniform rescaling of all cooling rates (e.g. to model suppressed or enhanced cooling).</description>
     </inputParameter>
     <objectBuilder class="coolingRate" name="coolingRate_" source="parameters"/>
     !!]

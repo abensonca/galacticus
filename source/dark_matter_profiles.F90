@@ -41,7 +41,7 @@ module Dark_Matter_Profiles
     does not account for baryonic back-reaction on the dark matter.</description>
    <default>adiabaticGnedin2004</default>
    <method name="get" >
-    <description>Return the mass distribution of the dark matter profile.</description>
+    <description>Return the mass distribution object describing the dark matter density profile of \mono{node}, accounting for baryonic effects such as adiabatic contraction. Optionally weight the profile by a specified quantity.</description>
     <type>class(massDistributionClass)</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>

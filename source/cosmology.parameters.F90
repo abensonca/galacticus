@@ -31,7 +31,7 @@ module Cosmology_Parameters
   !![
   <enumeration>
    <name>hubbleUnits</name>
-   <description>Specifies the units for the Hubble constant.</description>
+   <description>Enumeration of supported unit systems for the Hubble constant: standard SI-based units (km/s/Mpc), time units (inverse time), or the dimensionless little-$h$ convention where $H_0 = 100 h$ km/s/Mpc.</description>
    <visibility>public</visibility>
    <entry label="standard" />
    <entry label="time"     />

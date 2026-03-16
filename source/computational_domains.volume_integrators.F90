@@ -39,12 +39,12 @@ module Computational_Domain_Volume_Integrators
     coordinate system (Cartesian, spherical, etc.).</description>
    <default>cartesian3D</default>
    <method name="volume" >
-    <description>Gives the volume of the integrated region.</description>
+    <description>Returns the total volume of the integration region defined by the domain boundaries, used for normalizing volume-averaged quantities in the radiative transfer calculation.</description>
     <type>double precision</type>
     <pass>yes</pass>
    </method>
    <method name="integrate" >
-    <description>Integrate a function over the computational domain.</description>
+    <description>Numerically integrate a scalar function over the full extent of the computational domain using the appropriate coordinate system (Cartesian, cylindrical, or spherical), returning the total integral value.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
