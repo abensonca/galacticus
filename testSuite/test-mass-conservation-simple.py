@@ -67,10 +67,10 @@ for i, ci in enumerate(centrals):
 # Normalize central masses.
 normFactor = baryonFraction * props["massBertschinger"]
 massTotal = (
-    props["diskMassStellar"][centrals]       / normFactor[centrals]
-    + props["diskMassGas"][centrals]         / normFactor[centrals]
-    + props["hotHaloMass"][centrals]         / normFactor[centrals]
-    + props["hotHaloOutflowedMass"][centrals] / normFactor[centrals]
+      props["diskMassStellar"      ][centrals] / normFactor[centrals]
+    + props["diskMassGas"          ][centrals] / normFactor[centrals]
+    + props["hotHaloMass"          ][centrals] / normFactor[centrals]
+    + props["hotHaloOutflowedMass" ][centrals] / normFactor[centrals]
     + props["hotHaloUnaccretedMass"][centrals] / normFactor[centrals]
     + massSatellites
 )
