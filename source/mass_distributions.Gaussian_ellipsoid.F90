@@ -25,7 +25,7 @@
   
   !![
   <massDistribution name="massDistributionGaussianEllipsoid">
-   <description>A mass distribution class for Gaussian ellipsoids.</description>
+   <description>A mass distribution class for triaxial Gaussian ellipsoids following the parameterization of \cite{chandrasekhar_ellipsoidal_1987}. The density is a Gaussian function of the ellipsoidal radius, with independent scale lengths along each of the three principal axes, and the gravitational acceleration is computed via tabulated integrals.</description>
   </massDistribution>
   !!]
   type, public, extends(massDistributionClass) :: massDistributionGaussianEllipsoid

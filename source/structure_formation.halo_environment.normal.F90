@@ -31,7 +31,7 @@ Implements a normally-distributed halo environment.
 
   !![
   <haloEnvironment name="haloEnvironmentNormal">
-   <description>Implements a normally-distributed halo environment.</description>
+   <description>Implements a halo environment in which the large-scale overdensity follows a Gaussian (normal) probability distribution, modeling the statistical distribution of cosmic large-scale density fields around dark matter halos. The filtering scale and redshift at which the environment is defined are set by \mono{[massEnvironment]} or \mono{[radiusEnvironment]} and \mono{[redshift]}.</description>
    <deepCopy>
     <functionClass variables="sphericalCollapseSolver_, distributionOverdensity, distributionOverdensityMassive"/>
    </deepCopy>

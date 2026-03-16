@@ -26,7 +26,7 @@
   
   !![
   <nbodyOperator name="nbodyOperatorConcentrationDistributionFunction">
-   <description>An N-body data operator which computes mass functions.</description>
+   <description>An N-body data operator which computes the halo concentration distribution function by binning halos as a function of concentration within a specified mass and concentration range. Mass limits are set by \mono{[massMinimum]} and \mono{[massMaximum]}, concentration limits and binning by \mono{[concentrationMinimum]}, \mono{[concentrationMaximum]}, and \mono{[concentrationCountPerDecade]}.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorConcentrationDistributionFunction

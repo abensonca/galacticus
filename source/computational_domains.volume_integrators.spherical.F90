@@ -19,7 +19,7 @@
 
   !![
   <computationalDomainVolumeIntegrator name="computationalDomainVolumeIntegratorSpherical">
-   <description>A computational domain volume integrator for spherical cells.</description>
+   <description>Computes volume integrals over spherical shell cells, with the radial boundaries of the domain specified by \mono{[boundaries]}. Cell volumes are computed from the difference of the enclosed spherical volumes at the inner and outer radial boundaries of each shell.</description>
   </computationalDomainVolumeIntegrator>
   !!]
   type, extends(computationalDomainVolumeIntegratorClass) :: computationalDomainVolumeIntegratorSpherical

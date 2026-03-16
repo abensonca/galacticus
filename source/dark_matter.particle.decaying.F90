@@ -23,7 +23,7 @@ Implements a decaying dark matter particle class.
 
   !![
   <darkMatterParticle name="darkMatterParticleDecayingDarkMatter">
-   <description>Provides a decaying dark matter particle.</description>
+   <description>Provides a decaying dark matter particle candidate in which the parent particle decays to a lighter daughter particle plus radiation. The particle is characterized by its \mono{[lifetime]} in Gyr, the \mono{[massSplitting]} between parent and daughter, and the \mono{[velocityKick]} imparted to the daughter particle upon decay.</description>
   </darkMatterParticle>
   !!]
   type, extends(darkMatterParticleClass) :: darkMatterParticleDecayingDarkMatter

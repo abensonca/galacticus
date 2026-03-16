@@ -27,7 +27,7 @@
 
   !![
   <mergerTreeBuildMasses name="mergerTreeBuildMassesFixedMass">
-   <description>A merger tree masses class which uses a fixed mass for trees.</description>
+   <description>A merger tree masses class which assigns fixed, user-specified halo masses to merger trees for galaxy formation modeling. Multiple mass values and tree counts can be provided, with \mono{[masses]}, \mono{[treeCount]}, and \mono{[radii]} controlling the halo mass, number of trees per mass, and the reference radius within which masses are defined.</description>
   </mergerTreeBuildMasses>
   !!]
   type, extends(mergerTreeBuildMassesClass) :: mergerTreeBuildMassesFixedMass

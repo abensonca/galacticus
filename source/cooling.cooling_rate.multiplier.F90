@@ -24,7 +24,7 @@
 
   !![
   <coolingRate name="coolingRateMultiplier">
-   <description>A cooling rate class which modifies another cooling rate by multiplying the rate by a fixed value.</description>
+   <description>A cooling rate class which modifies the cooling rate from another class by multiplying it by a fixed constant factor specified via \mono{[multiplier]}. This allows a simple rescaling of any existing cooling rate model without altering its physical dependencies.</description>
   </coolingRate>
   !!]
   type, extends(coolingRateClass) :: coolingRateMultiplier

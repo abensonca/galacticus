@@ -23,7 +23,7 @@
 
   !![
   <kinematicsDistribution name="kinematicsDistributionIsothermal">
-   <description>An isothermal kinematic distribution class masses.</description>
+   <description>An isothermal kinematic distribution class for collisional gas components in which all particles share a single uniform temperature. The 1D velocity dispersion is derived from the gas temperature \mono{[temperature]} and mean atomic mass \mono{[massAtomicMean]}, appropriate for modelling thermally supported gas in hydrostatic equilibrium.</description>
   </kinematicsDistribution>
   !!]
   type, public, extends(kinematicsDistributionClass) :: kinematicsDistributionIsothermal

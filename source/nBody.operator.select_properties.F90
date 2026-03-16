@@ -23,7 +23,7 @@
   
   !![
   <nbodyOperator name="nbodyOperatorSelectProperties">
-   <description>An N-body data operator which selects particles matching a list of integer properties.</description>
+   <description>An N-body data operator which filters N-body particles by retaining only those whose named integer property matches one of a user-supplied list of allowed values, enabling selection of subsets such as particles belonging to specific halos or simulation runs.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorSelectProperties

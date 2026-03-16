@@ -19,7 +19,7 @@
 
   !![
   <computationalDomainVolumeIntegrator name="computationalDomainVolumeIntegratorCartesian3D">
-   <description>A computational domain volume integrator for 3D Cartesian cells.</description>
+   <description>Computes volume integrals over three-dimensional Cartesian grid cells, with the spatial extent of the domain defined by \mono{[xBoundaries]}, \mono{[yBoundaries]}, and \mono{[zBoundaries]}. Each cell volume is the product of its axis-aligned extents, enabling accurate integration of physical quantities over the full Cartesian domain.</description>
   </computationalDomainVolumeIntegrator>
   !!]
   type, extends(computationalDomainVolumeIntegratorClass) :: computationalDomainVolumeIntegratorCartesian3D

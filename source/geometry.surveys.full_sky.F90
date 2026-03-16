@@ -25,7 +25,7 @@ Implements survey geometries over the full sky.
 
   !![
   <surveyGeometry name="surveyGeometryFullSky">
-   <description>Implements survey geometries over the full sky.</description>
+   <description>Implements a survey geometry covering the full sky over a specified distance or redshift range. The survey volume is bounded by \mono{[redshiftMinimum]} and \mono{[redshiftMaximum]}, with all sky positions included, making this suitable for theoretical or volume-limited analyses without angular masking.</description>
   </surveyGeometry>
   !!]
   type, extends(surveyGeometryClass) :: surveyGeometryFullSky

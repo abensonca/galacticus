@@ -23,7 +23,7 @@
 
   !![
   <darkMatterHaloMassAccretionHistory name="darkMatterHaloMassAccretionHistoryHearin2021">
-   <description>Dark matter halo mass accretion histories using the rolling power-law model of \cite{hearin_differentiable_2021}.</description>
+   <description>Computes dark matter halo mass accretion histories using the differentiable rolling power-law model of \cite{hearin_differentiable_2021}, in which the mass growth rate transitions smoothly between early- and late-time power laws. The early- and late-time indices are set by \mono{[powerLawIndexEarly]} and \mono{[powerLawIndexLate]}, the transition rate by \mono{[rateRollOver]}, and the time of peak mass by \mono{[timeMaximum]}.</description>
   </darkMatterHaloMassAccretionHistory>
   !!]
   type, extends(darkMatterHaloMassAccretionHistoryClass) :: darkMatterHaloMassAccretionHistoryHearin2021

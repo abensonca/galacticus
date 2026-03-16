@@ -26,7 +26,7 @@ Implements an N-body data operator which determines the potential energy of each
   
   !![
   <nbodyOperator name="nbodyOperatorPotentialEnergy">
-   <description>An N-body data operator which determines the potential energy of each particle.</description>
+   <description>An N-body data operator which computes the gravitational potential energy of each particle in an N-body halo using a tree-based algorithm. Parameters control whether only self-bound particles contribute, the tree opening-angle criterion, particle sampling rate, and bootstrap resample count.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorPotentialEnergy

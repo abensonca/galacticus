@@ -26,7 +26,7 @@
   !![
   <blackHoleWind name="blackHoleWindSimple">
    <description>
-    A simple black hole winds model.
+    Models AGN accretion-driven winds in which a fixed fraction of the accreted rest-mass energy is injected as a mechanical wind into the host galaxy. The wind power is proportional to the black hole accretion rate, with the coupling efficiency set by the \mono{[efficiencyWind]} parameter.
    </description>
   </blackHoleWind>
   !!]

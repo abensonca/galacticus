@@ -26,7 +26,7 @@
 
   !![
   <modelParameter name="modelParameterActive">
-   <description>An active model parameter class.</description>
+   <description>An active model parameter class representing a free parameter that participates in posterior sampling, with a prior distribution, perturbation distribution, and optional mapping transformation. The parameter name is set by \mono{[name]}, with prior and perturbation distributions provided as objects, and a unary operator applied to transform the parameter value for model evaluation.</description>
   </modelParameter>
   !!]
   type, extends(modelParameterClass) :: modelParameterActive

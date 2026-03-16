@@ -32,7 +32,7 @@
   
   !![
   <computationalDomain name="computationalDomainCartesian3D">
-   <description>A computational domain using a 3D Cartesian grid.</description>
+   <description>Defines a computational domain on a three-dimensional Cartesian grid, with cell boundaries along each axis specified by \mono{[xBoundaries]}, \mono{[yBoundaries]}, and \mono{[zBoundaries]}, and the number of cells per dimension by \mono{[countCells]}. Convergence of cell quantities is assessed using a percentile criterion controlled by \mono{[convergencePercentile]} and \mono{[convergenceThreshold]}.</description>
   </computationalDomain>
   !!]
   type, extends(computationalDomainClass) :: computationalDomainCartesian3D

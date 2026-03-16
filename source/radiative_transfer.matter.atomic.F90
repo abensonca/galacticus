@@ -30,7 +30,7 @@
 
   !![
   <radiativeTransferMatter name="radiativeTransferMatterAtomic">
-   <description>A task which performs radiative transfer.</description>
+   <description>A radiative transfer matter class for atomic gas, computing photoionization, collisional ionization, recombination, and thermal equilibrium for hydrogen and helium. The abundance pattern and metallicity are set via the \mono{[abundancePattern]} and \mono{[metallicity]} parameters, and the temperature floor is controlled by \mono{[temperatureMinimum]}.</description>
   </radiativeTransferMatter>
   !!]
   type, extends(radiativeTransferMatterClass) :: radiativeTransferMatterAtomic

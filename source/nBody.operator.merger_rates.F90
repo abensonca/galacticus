@@ -25,7 +25,7 @@ Implements an N-body data operator which computes merger rates of halos.
 
   !![
   <nbodyOperator name="nbodyOperatorMergerRates">
-   <description>An N-body data operator which computes merger rates of halos.</description>
+   <description>An N-body data operator which computes halo--halo merger rates from N-body simulation snapshots. Parameters control the snapshot index, primary and secondary halo mass ranges, whether to consider only always-isolated halos, and an optional suffix for labeling multiple merger rate outputs.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorMergerRates

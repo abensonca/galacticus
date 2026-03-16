@@ -32,7 +32,7 @@
   
   !![
   <computationalDomain name="computationalDomainSpherical">
-   <description>A computational domain using a spherical grid.</description>
+   <description>Defines a computational domain on a one-dimensional spherical grid, with radial boundaries set by \mono{[boundaries]} and the number of radial cells by \mono{[countCells]}. Convergence of quantities within each shell is assessed using percentile and threshold criteria specified by \mono{[convergencePercentile]} and \mono{[convergenceThreshold]}.</description>
   </computationalDomain>
   !!]
   type, extends(computationalDomainClass) :: computationalDomainSpherical

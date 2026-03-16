@@ -29,7 +29,7 @@
 
   !![
   <criticalOverdensity name="criticalOverdensitySphericalCollapseBrynsDrkMttrDrkEnrgy">
-   <description>Critical overdensity for collapse based on the spherical collapse accounting for non-clustering of baryons.</description>
+   <description>Critical overdensity for the gravitational collapse of dark matter halos, computed by numerically solving the spherical collapse model in a universe containing baryons, collisionless dark matter, and dark energy. Baryons may be treated as non-clustering relative to dark matter. The normalization of the result can be adjusted via \mono{[normalization]}, and tabulation can be stored to file for efficiency.</description>
    <deepCopy>
     <functionClass variables="sphericalCollapseSolverClustered_, sphericalCollapseSolverUnclustered_"/>
    </deepCopy>

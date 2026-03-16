@@ -23,7 +23,7 @@
   
   !![
   <nbodyOperator name="nbodyOperatorSetBoxSize">
-   <description>An N-body data operator which sets the box size of the data set.</description>
+   <description>An N-body data operator which assigns or overrides the periodic simulation box size for an N-body data set. This is useful when the box size metadata is absent or incorrect in the original data. The \mono{boxSize} parameter specifies the side length to apply.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorSetBoxSize

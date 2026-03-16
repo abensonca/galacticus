@@ -26,7 +26,7 @@ Implements an N-body data operator which computes the rotation curve at a set of
 
   !![
   <nbodyOperator name="nbodyOperatorRotationCurve">
-   <description>An N-body data operator which computes the rotation curve at a set of given radii.</description>
+   <description>An N-body data operator which computes the circular velocity rotation curve of an N-body halo by summing enclosed particle mass at a set of user-specified radii. Parameters specify the radii at which the rotation curve is evaluated, whether to restrict to self-bound particles, and the bootstrap resample count.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorRotationCurve

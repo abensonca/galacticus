@@ -26,7 +26,7 @@ Implements an N-body data operator which computes mass functions.
 
   !![
   <nbodyOperator name="nbodyOperatorMassFunction">
-   <description>An N-body data operator which computes mass functions.</description>
+   <description>An N-body data operator which computes the halo mass function from N-body simulation data, binning halos logarithmically in mass. Parameters specify the minimum and maximum halo mass, the number of bins per decade, and metadata such as a description, reference, and URL for the simulation.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorMassFunction

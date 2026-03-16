@@ -26,7 +26,7 @@
 
   !![
   <kinematicsDistribution name="kinematicsDistributionLam2013">
-   <description>A kinematic distribution class for the \cite{lam_modeling_2013} model of halo accretion flows.</description>
+   <description>A kinematic distribution class implementing the \cite{lam_modeling_2013} model of radial velocity infall in halo accretion flows. The radial velocity profile is computed from the volume-averaged two-point correlation function and cosmological linear growth rate, encoding the infall dynamics around collapsed halos at a given redshift and virial mass.</description>
   </kinematicsDistribution>
   !!]
   type, public, extends(kinematicsDistributionCollisionless) :: kinematicsDistributionLam2013

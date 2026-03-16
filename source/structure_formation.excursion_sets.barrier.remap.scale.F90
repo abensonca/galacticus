@@ -24,7 +24,7 @@ Implements an excursion set barrier class which remaps another class by multiply
   !![
   <excursionSetBarrier name="excursionSetBarrierRemapScale">
    <description>
-    An excursion set barrier class which remaps another class by multiplying by a constant given by \mono{[factor]}.
+    An excursion set barrier class which remaps the barrier values from another class by multiplying by a constant scaling factor given by \mono{[factor]}, allowing the effective collapse threshold to be rescaled uniformly. The rescaling can be applied selectively to barrier evaluations used in rate calculations, other calculations, or both, as controlled by \mono{[applyTo]}.
    </description>
   </excursionSetBarrier>
   !!]

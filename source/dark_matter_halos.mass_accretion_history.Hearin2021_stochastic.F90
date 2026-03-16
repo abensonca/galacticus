@@ -57,7 +57,7 @@
 
   !![
   <darkMatterHaloMassAccretionHistory name="darkMatterHaloMassAccretionHistoryHearin2021Stochastic">
-   <description>Dark matter halo mass accretion histories using the rolling power-law model of \cite{hearin_differentiable_2021} with stochastic sampling of parameters.</description>
+   <description>Computes dark matter halo mass accretion histories using the rolling power-law model of \cite{hearin_differentiable_2021} with stochastic sampling of the early- and late-time power-law indices from population distributions. The fraction of late-forming halos at low and high halo mass is set by \mono{[fractionLateLow]} and \mono{[fractionLateHigh]}, and the roll-over rate by \mono{[rateRollOver]}.</description>
   </darkMatterHaloMassAccretionHistory>
   !!]
   type, extends(darkMatterHaloMassAccretionHistoryHearin2021) :: darkMatterHaloMassAccretionHistoryHearin2021Stochastic

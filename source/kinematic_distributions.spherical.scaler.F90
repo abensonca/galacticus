@@ -23,7 +23,7 @@
 
   !![
   <kinematicsDistribution name="kinematicsDistributionSphericalScaler">
-   <description>A spherical scaler kinematic distribution class masses.</description>
+   <description>A kinematic distribution decorator class that rescales the velocity dispersion of an underlying spherical kinematic distribution by applying independent scaling factors to the length and mass dimensions. The scale factors \mono{[factorScalingLength]} and \mono{[factorScalingMass]} allow the kinematic profile to be mapped between systems of different physical size or mass.</description>
   </kinematicsDistribution>
   !!]
   type, public, extends(kinematicsDistributionClass) :: kinematicsDistributionSphericalScaler

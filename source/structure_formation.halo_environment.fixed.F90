@@ -28,7 +28,7 @@ Implements a fixed halo environment.
 
   !![
   <haloEnvironment name="haloEnvironmentFixed">
-   <description>Implements a fixed halo environment.</description>
+   <description>Implements a halo environment with a fixed, user-specified overdensity, representing a deterministic large-scale density field around a halo. The environmental overdensity is set by \mono{[overdensity]}, while the filtering scale for variance computations is specified by either \mono{[radiusEnvironment]} or the corresponding environmental mass \mono{[massEnvironment]}.</description>
    <deepCopy>
     <functionClass variables="sphericalCollapseSolver_"/>
    </deepCopy>

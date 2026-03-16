@@ -23,7 +23,7 @@
 
   !![
   <radiationField name="radiationFieldBlackBody">
-   <description>A radiation field class for blackbody fields.</description>
+   <description>A radiation field class that models thermal blackbody radiation, computing the photon flux at a given wavelength and redshift using the Planck function. The radiation field intensity is controlled by the \mono{[temperature]} parameter specifying the blackbody temperature in Kelvin.</description>
   </radiationField>
   !!]
   type, extends(radiationFieldClass) :: radiationFieldBlackBody

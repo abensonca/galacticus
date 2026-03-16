@@ -53,7 +53,7 @@
 
   !![
   <mergerTreeImporter name="mergerTreeImporterSussing" abstract="yes">
-   <description>Importer for ``Sussing Merger Trees'' format merger tree files \citep{srisawat_sussing_2013}.</description>
+   <description>Importer for merger tree files in the ``Sussing Merger Trees'' format \citep{srisawat_sussing_2013}, reading halo properties from N-body simulation snapshots and constructing halo merger histories. Supports spatial subvolume splitting via \mono{[subvolumeCount]} and \mono{[subvolumeIndex]}, with cosmological parameter mismatch handling controlled by \mono{[fatalMismatches]}.</description>
   </mergerTreeImporter>
   !!]
   type, extends(mergerTreeImporterClass) :: mergerTreeImporterSussing

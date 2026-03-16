@@ -19,7 +19,7 @@
 
   !![
   <computationalDomainVolumeIntegrator name="computationalDomainVolumeIntegratorCylindrical">
-   <description>A computational domain volume integrator for cylindrical cells.</description>
+   <description>Computes volume integrals over cylindrical grid cells, accounting for the annular geometry of each cell. The radial and vertical extents of the domain are specified by \mono{[rBoundaries]} and \mono{[zBoundaries]}, with cell volumes computed from the cylindrical shell geometry.</description>
   </computationalDomainVolumeIntegrator>
   !!]
   type, extends(computationalDomainVolumeIntegratorClass) :: computationalDomainVolumeIntegratorCylindrical

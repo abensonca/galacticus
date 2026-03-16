@@ -26,7 +26,7 @@ Implements an N-body data operator which computes progenitor mass functions.
 
   !![
   <nbodyOperator name="nbodyOperatorProgenitorMassFunction">
-   <description>An N-body data operator which computes progenitor mass functions.</description>
+   <description>An N-body data operator which computes the progenitor mass function by tabulating mass ratios of progenitor halos relative to their parent halos in logarithmic bins. Parameters specify the parent and progenitor mass ranges, bin counts per decade, the snapshot indices for parent and progenitor selection, and simulation metadata.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorProgenitorMassFunction

@@ -28,7 +28,7 @@ Implements an N-body data operator which computes pairwise velocity statistics i
 
   !![
   <nbodyOperator name="nbodyOperatorPairwiseVelocityStatistics">
-   <description>An N-body data operator which computes pairwise velocity statistics in bins of separation.</description>
+   <description>An N-body data operator which computes statistics of pairwise relative velocities between particles in bins of physical separation, useful for constraining galaxy peculiar velocity fields. Parameters control the separation range, redshift, Hubble flow correction, sampling rate, and bootstrap resample count.</description>
   </nbodyOperator>
   !!]
   type, extends(nbodyOperatorClass) :: nbodyOperatorPairwiseVelocityStatistics

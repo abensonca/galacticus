@@ -104,7 +104,7 @@ Implements an N-body data importer for Rockstar files.
   
   !![
   <nbodyImporter name="nbodyImporterRockstar">
-   <description>An importer for Rockstar files.</description>
+   <description>An importer for dark matter halo catalog data in Rockstar halo finder output format, reading halo positions, velocities, masses, and other properties from ASCII text files. The input file is set by \mono{[fileName]}, with a simulation label by \mono{[label]}, and additional columns to import specified by \mono{[readColumns]}.</description>
    <runTimeFileDependencies paths="fileName"/>
   </nbodyImporter>
   !!]

@@ -24,7 +24,7 @@ errors are a power-law in halo mass.
 
   !![
   <nbodyHaloMassError name="nbodyHaloMassErrorPowerLaw">
-   <description>An N-body dark matter halo mass error class in which errors are a power-law in halo mass.</description>
+   <description>An N-body dark matter halo mass error class in which the fractional mass uncertainty is modeled as a power-law function of halo mass, useful for parameterizing simulation resolution effects. The model is characterized by the normalization parameters $\sigma_{12}$ and $\sigma_\infty$, and the power-law exponent with respect to mass.</description>
   </nbodyHaloMassError>
   !!]
   type, extends(nbodyHaloMassErrorClass) :: nbodyHaloMassErrorPowerLaw

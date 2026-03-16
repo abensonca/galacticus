@@ -32,7 +32,7 @@
   
   !![
   <computationalDomain name="computationalDomainCylindrical">
-   <description>A computational domain using a cylindrical grid.</description>
+   <description>Defines a computational domain on a cylindrical grid, with radial and vertical boundaries specified by \mono{[rBoundaries]} and \mono{[zBoundaries]}, and the number of cells in each dimension by \mono{[countCells]}. Convergence of integrated cell quantities is monitored using percentile and threshold criteria set by \mono{[convergencePercentile]} and \mono{[convergenceThreshold]}.</description>
   </computationalDomain>
   !!]
   type, extends(computationalDomainClass) :: computationalDomainCylindrical

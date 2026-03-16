@@ -23,7 +23,7 @@
 
   !![
   <modelParameter name="modelParameterDerived">
-   <description>A model parameter class in which the parameter value is derived from other parameters.</description>
+   <description>A model parameter class in which the parameter value is not sampled directly but instead derived algorithmically from other model parameters via a mathematical expression. The parameter name is set by \mono{[name]} and the derivation formula by \mono{[definition]}, enabling computed quantities to be tracked as named parameters during posterior sampling.</description>
   </modelParameter>
   !!]
   type, extends(modelParameterInactive) :: modelParameterDerived

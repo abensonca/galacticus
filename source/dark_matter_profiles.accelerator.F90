@@ -23,7 +23,7 @@
 
   !![
   <darkMatterProfile name="darkMatterProfileAccelerator">
-   <description>An accelerator class for non-dark-matter-only dark matter halo profiles.</description>
+   <description>An accelerator class for non-dark-matter-only dark matter halo profiles that caches and interpolates previously computed profile quantities to speed up repeated evaluations. The relative tolerance for accepting cached interpolations is set by \mono{[toleranceRelative]}, and the maximum interpolation factor in radius by \mono{[factorRadiusMaximum]}.</description>
   </darkMatterProfile>
   !!]
   type, extends(darkMatterProfileClass) :: darkMatterProfileAccelerator

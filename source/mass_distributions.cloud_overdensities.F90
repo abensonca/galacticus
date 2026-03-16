@@ -27,7 +27,7 @@
 
   !![
   <massDistribution name="massDistributionCloudOverdensities">
-   <description>A mass distribution class which overlays clouds on another mass distribution.</description>
+   <description>A mass distribution class that overlays a population of randomly placed, constant-density spherical clouds on top of an underlying smooth mass distribution. Cloud properties are set by \mono{[radius]}, \mono{[densityContrast]}, and \mono{[volumeFillingFactor]}, with inter-cloud gas characterized by \mono{[densityContrastIntercloud]}.</description>
   </massDistribution>
   !!]
   type, public, extends(massDistributionClass) :: massDistributionCloudOverdensities

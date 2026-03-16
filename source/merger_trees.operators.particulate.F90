@@ -63,7 +63,7 @@
 
   !![
   <mergerTreeOperator name="mergerTreeOperatorParticulate">
-   <description>Provides a merger tree operator which create particle representations of \glc\ halos.</description>
+   <description>Provides a merger tree operator which creates particle representations of Galacticus dark matter halos by sampling N-body particles from the halo density profile at a specified snapshot time. Particle mass is set by \mono{[massParticle]}, the snapshot time by \mono{[time]}, the truncation radius by \mono{[radiusTruncateOverRadiusVirial]}, and output by \mono{[outputFileName]}.</description>
   </mergerTreeOperator>
   !!]
   type, extends(mergerTreeOperatorClass) :: mergerTreeOperatorParticulate

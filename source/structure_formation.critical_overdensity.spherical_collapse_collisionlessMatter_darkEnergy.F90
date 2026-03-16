@@ -24,7 +24,7 @@
 
   !![
   <criticalOverdensity name="criticalOverdensitySphericalCollapseClsnlssMttrDrkEnrgy">
-   <description>Critical overdensity for collapse based on the spherical collapse in a matter plus dark energy universe.</description>
+   <description>Critical overdensity for gravitational collapse of dark matter halos, computed numerically via the spherical collapse model in a universe containing collisionless matter and dark energy. The normalization of the result can be adjusted via \mono{[normalization]}, and tabulated solutions can be stored to and restored from file for computational efficiency.</description>
   </criticalOverdensity>
   !!]
   type, extends(criticalOverdensitySphericalCollapseClsnlssMttrCsmlgclCnstnt) :: criticalOverdensitySphericalCollapseClsnlssMttrDrkEnrgy
