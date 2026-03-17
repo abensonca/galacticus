@@ -17,30 +17,32 @@ subprocess.run(f"mkdir -p {outputDirectory}", shell=True)
 # Find all regression parameter files and run them.
 overallStatus = "SUCCESS"
 for filePath in sorted(glob.glob("regressions/**/*.xml", recursive=True) + glob.glob("regressions/**/*.py", recursive=True)):
+    status      = None
+    logFilePath = None
     if filePath.endswith(".xml"):
         print(f"Running regression: {filePath}")
-        subprocess.run(f"mkdir -p {outputDirectory}/{os.path.basename(filePath).replace('.xml', '')}", shell=True)
-        with open(f"{outputDirectory}/{os.path.basename(filePath).replace('.xml', '')}.log", "w") as logFile:
+        logFilePath = f"{outputDirectory}/{os.path.basename(filePath).replace('.xml', '')}.log"
+        with open(logFilePath, "w") as logFile:
             status = subprocess.run(
                 f"cd ..; ./Galacticus.exe testSuite/{filePath}",
                 shell=True, stdout=logFile, stderr=subprocess.STDOUT
             )
-        logFilePath = f"{outputDirectory}/{os.path.basename(filePath).replace('.xml', '')}.log"
-        result = subprocess.run(f"grep -q -i -e fatal -e aborted {logFilePath}", shell=True)
-        if result.returncode == 0 or status.returncode != 0:
-            print(f"FAILED: regression '{filePath}'")
-            with open(logFilePath) as f:
-                print(f.read())
-            overallStatus = "FAILED"
-        else:
-            print(f"SUCCESS: regression '{filePath}'")
     elif filePath.endswith(".py"):
         print(f"Running regression script: {filePath}")
-        status = subprocess.run(f"cd testSuite; python3 {filePath}", shell=True)
-        if status.returncode != 0:
-            print(f"FAILED: regression script '{filePath}'")
+        logFilePath = f"{outputDirectory}/{os.path.basename(filePath).replace('.py', '')}.log"
+        with open(logFilePath, "w") as logFile:
+            status = subprocess.run(
+                f"cd ..; python3 testSuite/{filePath}",
+                shell=True, stdout=logFile, stderr=subprocess.STDOUT
+            )
+    result1 = subprocess.run(f"grep -q -i -e fatal -e aborted {logFilePath}", shell=True)
+    result2 = subprocess.run(f"grep -q FAIL {logFilePath}"                  , shell=True)
+    if result1.returncode == 0 or result2.returncode == 0 or status.returncode != 0:
+        print(f"FAILED: regression '{filePath}'")
+        with open(logFilePath) as f:
+            print(f.read())
             overallStatus = "FAILED"
-        else:
-            print(f"SUCCESS: regression script '{filePath}'")
+    else:
+        print(f"SUCCESS: regression '{filePath}'")
 
 print(f"{overallStatus}: regressions")
