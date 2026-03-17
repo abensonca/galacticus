@@ -122,7 +122,7 @@ def evaluate_expression(expression, nodeData, gravitationalConstant):
     # Replace indexed references first (more specific pattern).
     expr = re.sub(
         r'%\[([a-zA-Z0-9_]+)\{(\d+)\}\]',
-        lambda m: f"properties['{m.group(1)}'][{m.group(2)}]",
+        lambda m: f"properties['{m.group(1)}'][:,{m.group(2)}]",
         expr
     )
     # Replace plain references.
