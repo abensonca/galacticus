@@ -4,6 +4,7 @@ use warnings;
 use lib $ENV{'GALACTICUS_EXEC_PATH'}."/perl";
 use Galacticus::Options;
 use Class::Date qw(date now);
+use PDL;
 
 # Parse profiling information from a build log file.
 # Andrew Benson (21-June-2021)
