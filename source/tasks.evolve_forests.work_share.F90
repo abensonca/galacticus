@@ -18,12 +18,12 @@
 !!    along with Galacticus.  If not, see <http://www.gnu.org/licenses/>.
 
 !!{
-Contains a module which provides a class that implements general tasks to be performed by \glc.
+Contains a module which provides a class implementing work sharing strategies for the evolve forests task.
 !!}
 
 module Task_Evolve_Forests_Work_Shares
   !!{
-  Provides a class that implements general tasks to be performed by \glc.
+  Provides a class implementing work sharing strategies that assign merger tree forests to MPI processes and OpenMP threads for parallel execution in the evolve forests task.
   !!}
   use   , intrinsic :: ISO_C_Binding, only : c_size_t
   !$ use            :: OMP_Lib      , only : OMP_Get_Thread_Num
