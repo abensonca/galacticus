@@ -1,3 +1,7 @@
+import os
+
+# Ensure the outputs directory exists before any log files are opened.
+os.makedirs("outputs", exist_ok=True)
 #!/usr/bin/env python3
 import subprocess
 import sys
