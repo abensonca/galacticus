@@ -3,7 +3,6 @@ use strict;
 use warnings;
 use lib $ENV{'GALACTICUS_EXEC_PATH'}."/perl";
 use Galacticus::Options;
-use GnuPlot::PrettyPlots;
 use Class::Date qw(date now);
 
 # Parse profiling information from a build log file.
