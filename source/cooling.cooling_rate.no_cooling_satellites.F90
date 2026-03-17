@@ -24,7 +24,7 @@
 
   !![
   <coolingRate name="coolingRateNoCoolingSatellites">
-   <description>A cooling rate class which modifies another cooling rate by cutting off cooling in satellites</description>
+   <description>Wraps a \refClass{coolingRateClass} object and suppresses cooling in satellite halos, restricting gas cooling to isolated (field) halos only, modeling strangulation of satellite gas supply after infall.</description>
   </coolingRate>
   !!]
   type, extends(coolingRateClass) :: coolingRateNoCoolingSatellites

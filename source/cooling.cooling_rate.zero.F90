@@ -23,7 +23,7 @@
 
   !![
   <coolingRate name="coolingRateZero">
-   <description>A cooling rate class in which the cooling rate is always zero.</description>
+   <description>Returns a cooling rate of exactly zero for all nodes at all times, effectively disabling gas cooling and useful for testing, debugging, or modeling scenarios where cooling is artificially suppressed.</description>
   </coolingRate>
   !!]
   type, extends(coolingRateClass) :: coolingRateZero

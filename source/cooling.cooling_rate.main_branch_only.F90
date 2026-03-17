@@ -24,7 +24,7 @@
 
   !![
   <coolingRate name="coolingRateMainBranchOnly">
-   <description>A cooling rate class which modifies another cooling rate by cutting off cooling in side branches.</description>
+   <description>Wraps a \refClass{coolingRateClass} object and suppresses cooling in side branches of the merger tree, restricting gas cooling to the main progenitor branch only for studies of main branch evolution.</description>
   </coolingRate>
   !!]
   type, extends(coolingRateClass) :: coolingRateMainBranchOnly
