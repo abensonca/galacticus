@@ -42,7 +42,7 @@ def weighted_histogram(bins, values, weights):
     massFunctionError = np.zeros(n)
     binWidth = bins[1] - bins[0] if n > 1 else 1.0
     for i, binCenter in enumerate(bins):
-        selection = np.where((values >= binCenter) & (values < binCenter + binWidth))[0]
+        selection = np.where((values >= binCenter - 0.5*binWidth) & (values < binCenter + 0.5*binWidth))[0]
         if len(selection) > 0:
             massFunction[i]      = weights[selection].sum() / binWidth
             massFunctionError[i] = np.sqrt((weights[selection]**2).sum()) / binWidth
@@ -55,7 +55,8 @@ def test_mass_function_halo(modelName, modelDir, label, gitRevision):
         nodeData = model["Outputs/Output1/nodeData"]
         basicMass         = nodeData["basicMass"][:]
         mergerTreeWeight  = nodeData["mergerTreeWeight"][:]
-    massLog          = np.log10(basicMass)
+    with np.errstate(divide='ignore'):
+        massLog          = np.log10(basicMass)
     massFunction, _ = weighted_histogram(bins, massLog, mergerTreeWeight)
     massFunction    /= np.log(10.0)
     with open(f"{modelDir}/{label}_r{gitRevision}.txt", "w") as f:
@@ -78,7 +79,8 @@ def test_mass_function_stellar(modelName, modelDir, label, gitRevision):
         nodeData = model["Outputs/Output1/nodeData"]
         massStellar      = nodeData["diskMassStellar"][:] + nodeData.get("spheroidMassStellar", np.zeros(1))[:]
         mergerTreeWeight = nodeData["mergerTreeWeight"][:]
-    massLog          = np.log10(massStellar)
+    with np.errstate(divide='ignore'):
+        massLog          = np.log10(massStellar)
     massFunction, _ = weighted_histogram(bins, massLog, mergerTreeWeight)
     massFunction    /= np.log(10.0)
     with open(f"{modelDir}/{label}_r{gitRevision}.txt", "w") as f:
@@ -101,7 +103,8 @@ def test_mass_function_ism(modelName, modelDir, label, gitRevision):
         nodeData = model["Outputs/Output1/nodeData"]
         massColdGas      = nodeData["diskMassGas"][:] + nodeData.get("spheroidMassGas", np.zeros(1))[:]
         mergerTreeWeight = nodeData["mergerTreeWeight"][:]
-    massLog          = np.log10(massColdGas)
+    with np.errstate(divide='ignore'):
+        massLog          = np.log10(massColdGas)
     massFunction, _ = weighted_histogram(bins, massLog, mergerTreeWeight)
     massFunction    /= np.log(10.0)
     with open(f"{modelDir}/{label}_r{gitRevision}.txt", "w") as f:
@@ -125,11 +128,12 @@ def test_median_sizes(modelName, modelDir, label, gitRevision):
         diskRadius       = nodeData["diskRadius"][:]
         massStellar      = nodeData["diskMassStellar"][:] + nodeData.get("spheroidMassStellar", np.zeros(1))[:]
         mergerTreeWeight = nodeData["mergerTreeWeight"][:]
-    massLog   = np.log10(massStellar)
+    with np.errstate(divide='ignore'):
+        massLog   = np.log10(massStellar)
     binWidth  = bins[1] - bins[0] if len(bins) > 1 else 1.0
     quantiles = np.zeros(len(bins))
     for i, binCenter in enumerate(bins):
-        selection = np.where((massLog >= binCenter) & (massLog < binCenter + binWidth))[0]
+        selection = np.where((massLog >= binCenter - 0.5*binWidth) & (massLog < binCenter + 0.5*binWidth))[0]
         if len(selection) > 0:
             sortedIdx = np.argsort(diskRadius[selection])
             cumWeights = np.cumsum(mergerTreeWeight[selection][sortedIdx])
