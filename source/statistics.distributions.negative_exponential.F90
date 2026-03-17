@@ -63,7 +63,7 @@ contains
     !![
     <inputParameter>
       <name>rate</name>
-      <description>The rate parameter of the negative exponential distribution function.</description>
+      <description>The rate parameter $\lambda > 0$ of the negative exponential distribution, equal to the inverse of the mean $1/\lambda$; larger values give a more steeply decaying distribution concentrated near zero.</description>
       <source>parameters</source>
     </inputParameter>
     <objectBuilder class="randomNumberGenerator" name="randomNumberGenerator_" source="parameters"/>

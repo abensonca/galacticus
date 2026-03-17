@@ -23,7 +23,7 @@
 
   !![
   <distributionFunctionDiscrete1D name="distributionFunctionDiscrete1DNegativeBinomial">
-   <description>A negative binomial 1D discrete distribution function class.</description>
+   <description>A negative binomial 1D discrete distribution function class, modeling the number of successes $k$ observed before a fixed number of failures $r$ in a sequence of independent Bernoulli trials each with success probability $p$, with probability mass function $P(k) = \binom{k+r-1}{k} p^r (1-p)^k$. Note that the cumulative and inverse CDF methods are not currently implemented; only the probability mass function and its logarithm are available.</description>
   </distributionFunctionDiscrete1D>
   !!]
   type, extends(distributionFunctionDiscrete1DClass) :: distributionFunctionDiscrete1DNegativeBinomial
