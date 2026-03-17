@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 import subprocess
 import sys
-import os
 import h5py
 import numpy as np
 import xml.etree.ElementTree as ET
@@ -32,16 +31,6 @@ for slope in sorted(transferFunctionGilman.keys()):
     h            = 0.674
     # Set the half-mode mass.
     massHalfMode = 10.0**7.7 / h
-
-    # Update parameter values.
-    def set_param(path, value):
-        parts = path.split("/")
-        elem  = root
-        for part in parts:
-            elem = elem.find(part)
-            if elem is None:
-                return
-        elem.set("value", str(value))
 
     nPoints = len(wavenumberGilman)
     wavenumberMin = wavenumberGilman[0]  * h
