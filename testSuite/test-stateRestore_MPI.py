@@ -12,8 +12,8 @@ import numpy as np
 
 # Parse command line options.
 parser = argparse.ArgumentParser()
-parser.add_argument("--processesPerNode",  type=int, default=1)
-parser.add_argument("--allow-run-as-root", type=str, default="no")
+parser.add_argument("--processesPerNode", type=int, default=1   )
+parser.add_argument("--allowRunAsRoot"  , type=str, default="no")
 args, _ = parser.parse_known_args()
 
 # We need at least 8 processes to run this test.
@@ -21,7 +21,7 @@ if args.processesPerNode < 8:
     print("SKIPPED: at least 8 processes per node are required for this test")
     sys.exit(0)
 
-allowRunAsRoot = " --allow-run-as-root" if args.__dict__["allow-run-as-root"] == "yes" else ""
+allowRunAsRoot = " --allow-run-as-root" if args.allowRunAsRoot == "yes" else ""
 
 # Allow two run-throughs.
 for runPass in range(2):
