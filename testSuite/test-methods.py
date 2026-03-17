@@ -21,17 +21,19 @@ launchOptions = f"--launchMethod {args.launchMethod} --threadMaximum {args.threa
 dataDynamicPath = os.environ.get("GALACTICUS_DYNAMIC_DATA_PATH", os.environ.get("GALACTICUS_DATA_PATH", ""))
 
 # Remove automatically generated files to force them to be regenerated.
-# FSPS stellar population synthesis code and associated file.
-subprocess.run(f"rm -f {dataDynamicPath}/dynamic/stellarPopulations/SSP_Spectra_Conroy-et-al_v2.5_imfSalpeter.hdf5", shell=True)
-subprocess.run(f"rm -rf {dataDynamicPath}/dynamic/FSPS_v2.5", shell=True)
 # Core files (older than 7 days).
 for pattern in ("core.*", "vgcore.*"):
     subprocess.run(f"find ../ -name '{pattern}' -ctime +7 -exec rm {{}} \\;", shell=True)
-# Noninstantaneous recycling files (older than 14 days).
-for pattern in ("yield*.hdf5", "recycledFraction*.hdf5", "energyOutput*.hdf5"):
-    subprocess.run(f"find {dataDynamicPath}/dynamic/stellarPopulations -name '{pattern}' -ctime +14 -exec rm {{}} \\;", shell=True)
-# CAMB transfer function files (older than 14 days).
-subprocess.run(f"find {dataDynamicPath}/dynamic/largeScaleStructure -name 'transfer_function_CAMB_*.xml' -ctime +14 -exec rm {{}} \\;", shell=True)
+# Others are checked only if we have the dynamic datasets path.
+if dataDynamicPath != "":
+    # FSPS stellar population synthesis code and associated file.
+    subprocess.run(f"rm -f {dataDynamicPath}/dynamic/stellarPopulations/SSP_Spectra_Conroy-et-al_v2.5_imfSalpeter.hdf5", shell=True)
+    subprocess.run(f"rm -rf {dataDynamicPath}/dynamic/FSPS_v2.5", shell=True)
+    # Noninstantaneous recycling files (older than 14 days).
+    for pattern in ("yield*.hdf5", "recycledFraction*.hdf5", "energyOutput*.hdf5"):
+        subprocess.run(f"find {dataDynamicPath}/dynamic/stellarPopulations -name '{pattern}' -ctime +14 -exec rm {{}} \\;", shell=True)
+    # CAMB transfer function files (older than 14 days).
+    subprocess.run(f"find {dataDynamicPath}/dynamic/largeScaleStructure -name 'transfer_function_CAMB_*.xml' -ctime +14 -exec rm {{}} \\;", shell=True)
 
 # Simply run the models.
 subprocess.run(f"cd ..; scripts/aux/launch.pl testSuite/test-methods.xml {launchOptions}", shell=True)
