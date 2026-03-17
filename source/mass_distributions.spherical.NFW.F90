@@ -128,7 +128,7 @@ contains
     <inputParameter>
       <name>scaleLength</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The scale radius of the NFW profile.</description>
+      <description>The NFW scale radius (in Mpc) $r_\mathrm{s}$ at which the density profile transitions from the inner $\rho \propto r^{-1}$ to the outer $\rho \propto r^{-3}$ slope.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
@@ -140,13 +140,13 @@ contains
     <inputParameter>
       <name>concentration</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The concentration of the NFW profile.</description>
+      <description>The halo concentration parameter $c = r_\mathrm{vir}/r_\mathrm{s}$ of the NFW profile, controlling how centrally concentrated the dark matter density profile is.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>virialRadius</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The virial radius of the NFW profile.</description>
+      <description>The virial radius (in Mpc) $r_\mathrm{vir}$ of the NFW halo, which defines the outer boundary of the profile at which the mean enclosed density equals the virial overdensity threshold.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

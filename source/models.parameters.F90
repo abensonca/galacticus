@@ -42,18 +42,18 @@ module Model_Parameters
    <method name="name">
      <type>type(varying_string)</type>
      <pass>yes</pass>
-     <description>Return the name of this parameter.</description>
+     <description>Return the name of this parameter as it appears in the Galacticus parameter file and in output metadata, used to identify the parameter when applying posterior sampler updates.</description>
    </method>
    <method name="logPrior">
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Return the log-prior for this parameter.</description>
+     <description>Return the natural logarithm of the prior probability density evaluated at the physical parameter value \mono{x}, used in computing the log-posterior during Bayesian inference.</description>
    </method>
    <method name="priorSample">
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Sample from the parameter's prior.</description>
+     <description>Draw a random sample from the prior distribution for this parameter, returning a physical parameter value; used to initialize the posterior sampler or generate prior predictive samples.</description>
    </method>
    <method name="priorInvert">
      <type>double precision</type>

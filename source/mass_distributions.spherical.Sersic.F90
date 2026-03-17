@@ -26,7 +26,7 @@
 
   !![
   <massDistribution name="massDistributionSersic">
-   <description>A S\'ersic mass distribution class.</description>
+   <description>A S\'ersic mass distribution class implementing the spherically deprojected form of the S\'ersic surface brightness profile $I(R) \propto \exp(-b_n [(R/R_e)^{1/n}-1])$, where $n$ controls the profile shape.</description>
   </massDistribution>
   !!]
   type, public, extends(massDistributionSpherical) :: massDistributionSersic
@@ -109,13 +109,13 @@ contains
     <inputParameter>
       <name>radiusHalfMass</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The half mass radius of the S\'ersic profile.</description>
+      <description>The projected half-mass (effective) radius (in Mpc) of the S\'ersic profile, $R_e$, within which half the total projected mass is enclosed.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>mass</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The mass of the S\'ersic profile.</description>
+      <description>The total mass (in $M_\odot$) of the S\'ersic profile, used together with \mono{index} and \mono{radiusHalfMass} to set the overall normalization of the density distribution.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

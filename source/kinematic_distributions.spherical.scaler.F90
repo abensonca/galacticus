@@ -63,12 +63,12 @@ contains
     !![
     <inputParameter>
       <name>factorScalingLength</name>
-      <description>The factor by which to scale lengths.</description>
+      <description>The multiplicative factor applied to all length scales in the underlying kinematic distribution; used to rescale the distribution from one physical size to another.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>factorScalingMass</name>
-      <description>The factor by which to scale the mass.</description>
+      <description>The multiplicative factor applied to the mass normalization of the underlying kinematic distribution; used to rescale the distribution from one physical mass to another.</description>
       <source>parameters</source>
     </inputParameter>
     <objectBuilder class="kinematicsDistribution" name="kinematicsDistribution_" source="parameters"/>

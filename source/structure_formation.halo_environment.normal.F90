@@ -132,7 +132,7 @@ contains
       <name>redshift</name>
       <source>parameters</source>
       <defaultValue>0.0d0</defaultValue>
-      <description>The redshift at which the environment is defined.</description>
+      <description>The redshift at which the large-scale environmental overdensity is defined; the linear density variance and growth factor are evaluated at the corresponding cosmic time to normalize the Gaussian environmental PDF.</description>
     </inputParameter>
     !!]
     time=cosmologyFunctions_%cosmicTime(cosmologyFunctions_%expansionFactorFromRedshift(redshift))

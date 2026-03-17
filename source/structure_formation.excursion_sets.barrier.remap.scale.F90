@@ -70,7 +70,7 @@ contains
       <source>parameters</source>
       <variable>factor</variable>
       <defaultValue>1.0d0</defaultValue>
-      <description>The factor by which to rescale the excursion set barrier.</description>
+      <description>The multiplicative factor applied to the underlying excursion-set barrier value $B(\sigma^2)$, uniformly rescaling the collapse threshold across all mass scales to adjust branching rates or halo abundances.</description>
     </inputParameter>
     <inputParameter>
       <name>applyTo</name>

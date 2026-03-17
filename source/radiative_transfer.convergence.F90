@@ -32,7 +32,7 @@ module Radiative_Transfer_Convergences
   !![
   <enumeration>
    <name>statusCell</name>
-   <description>Specifies cell status for convergence testing.</description>
+   <description>Specifies whether a domain cell is the first cell, last cell, or an intermediate cell in a convergence test sweep, allowing implementations to perform special initialization or finalization actions at the domain boundaries.</description>
    <visibility>public</visibility>
    <entry label="first"/>
    <entry label="last" />
@@ -52,13 +52,13 @@ module Radiative_Transfer_Convergences
     be needed before convergence is declared and the final radiation field is recorded.</description>
    <default>always</default>
    <method name="photonPacketEscapes" >
-    <description>Process an escaping photon packet for convergence testing.</description>
+    <description>Process a photon packet that has escaped the computational domain, accumulating any statistics needed by the convergence criterion before the packet is discarded.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>class(radiativeTransferPhotonPacketClass), intent(inout) :: photonPacket</argument>
    </method>
    <method name="testConvergence" >
-    <description>Test a domain cell for convergence.</description>
+    <description>Test whether a single domain cell has converged by comparing its current radiation field or matter state against the previous iteration, setting the \mono{converged} flag accordingly.</description>
     <type>void</type>
     <pass>yes</pass>
     <argument>class  (radiativeTransferMatterClass     ), intent(inout) :: radiativeTransferMatter_</argument>

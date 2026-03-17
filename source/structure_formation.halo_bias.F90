@@ -51,7 +51,7 @@ module Dark_Matter_Halo_Biases
     <argument>double precision, intent(in   ), optional :: radius</argument>
    </method>
    <method name="biasByNode" >
-    <description>Returns the bias of the halo in the supplied \gls{node}.</description>
+    <description>Returns the large-scale linear bias factor $b$ of the dark matter halo represented by the supplied \gls{node}, extracted from the node's basic component for its mass and formation time.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type            (treeNode), intent(inout)           :: node</argument>

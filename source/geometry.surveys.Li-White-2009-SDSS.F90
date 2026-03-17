@@ -113,13 +113,13 @@ contains
       <name>redshiftMinimum</name>
       <source>parameters</source>
       <defaultValue>0.0d0</defaultValue>
-      <description>The minimum redshift for the survey.</description>
+      <description>The minimum redshift of the \cite{li_distribution_2009} survey volume; sources below this redshift are excluded from the survey sample.</description>
     </inputParameter>
     <inputParameter>
       <name>redshiftMaximum</name>
       <defaultValue>huge(1.0d0)</defaultValue>
       <source>parameters</source>
-      <description>The maximum redshift for the survey.</description>
+      <description>The maximum redshift of the \cite{li_distribution_2009} survey volume; sources above this redshift are excluded from the survey sample.</description>
     </inputParameter>
     !!]
     ! Build the object.

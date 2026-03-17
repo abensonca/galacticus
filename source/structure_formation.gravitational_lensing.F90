@@ -42,13 +42,13 @@ module Gravitational_Lensing
    </description>
    <default>takahashi2011</default>
    <method name="magnificationPDF" >
-    <description>Returns the differential probability function for magnification.</description>
+    <description>Returns the differential probability $\mathrm{d}P/\mathrm{d}\mu$ for a source at the given \mono{redshift} and angular size \mono{scaleSource} to be magnified by factor \mono{magnification} due to gravitational lensing.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>double precision, intent(in   ) :: magnification, redshift, scaleSource</argument>
    </method>
    <method name="magnificationCDF" >
-    <description>Returns the cumulative probability function for magnification.</description>
+    <description>Returns the cumulative probability $P(\mu' \le \mu)$ that a source at the given \mono{redshift} and angular size \mono{scaleSource} has a gravitational lensing magnification less than or equal to \mono{magnification}.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>double precision, intent(in   ) :: magnification, redshift, scaleSource</argument>

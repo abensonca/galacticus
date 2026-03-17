@@ -126,7 +126,7 @@ contains
     </inputParameter>
     <inputParameter>
       <name>massAccretionRate</name>
-      <description>The mass accretion rate of the halo.</description>
+      <description>The mass accretion rate (in $M_\odot$/Gyr) of the halo, used in the Shi~(2016) framework to set the amplitude of the outer accretion flow density profile.</description>
       <source>parameters</source>
     </inputParameter>
      <inputParameter>

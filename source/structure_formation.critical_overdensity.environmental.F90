@@ -75,7 +75,7 @@ contains
       <name>a</name>
       <source>parameters</source>
       <defaultValue>0.0d0</defaultValue>
-      <description>Parameter controlling environmental dependence of critical overdensity.</description>
+      <description>The linear coefficient $a$ that multiplies the large-scale environmental overdensity when computing the environment-dependent shift to the critical overdensity for halo collapse (a value of 0 gives no environmental dependence).</description>
     </inputParameter>
     <objectBuilder class="criticalOverdensity"      name="criticalOverdensity_"      source="parameters"/>
     <objectBuilder class="haloEnvironment"          name="haloEnvironment_"          source="parameters"/>

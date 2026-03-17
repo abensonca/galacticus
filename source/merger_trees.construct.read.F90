@@ -43,7 +43,7 @@
   !![
   <enumeration>
    <name>pushType</name>
-   <description>Cross-tree event type enumeration.</description>
+   <description>Enumeration of cross-tree event types used when reading merger trees: \normalfont\ttfamily branchJump\normalfont handles nodes that switch host branches between snapshots, while \normalfont\ttfamily subhaloPromotion\normalfont handles subhalos promoted to isolated status.</description>
    <entry label="branchJump"      />
    <entry label="subhaloPromotion"/>
   </enumeration>

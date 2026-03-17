@@ -93,7 +93,7 @@ module Radiation_Fields
      <pass>yes</pass>
    </method>
    <method name="timeSet">
-     <description>Set the time of the radiation field.</description>
+     <description>Set the cosmic time (in Gyr) at which the radiation field properties — such as the CMB temperature or the UV background intensity — should be evaluated for subsequent flux queries.</description>
      <type>void</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: time</argument>

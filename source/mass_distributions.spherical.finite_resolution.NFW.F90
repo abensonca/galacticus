@@ -196,7 +196,7 @@ contains
     <inputParameter>
       <name>mass</name>
       <source>parameters</source>
-      <description>The mass within the virial radius.</description>
+      <description>The total mass (in $M_\odot$) enclosed within the virial radius, used together with \mono{radiusScale} and \mono{radiusVirial} to normalize the NFW density profile.</description>
     </inputParameter>
     <inputParameter>
       <name>componentType</name>

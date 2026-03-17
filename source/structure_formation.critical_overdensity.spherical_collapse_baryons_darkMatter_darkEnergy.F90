@@ -106,13 +106,13 @@ contains
       <name>normalization</name>
       <source>parameters</source>
       <defaultValue>1.0d0</defaultValue>
-      <description>A normalizing factor to be applied to the critical overdensity.</description>
+      <description>A multiplicative normalization factor applied to the spherical collapse critical overdensity $\delta_\mathrm{c}$ returned by this class, allowing calibration against simulations or fitting functions.</description>
     </inputParameter>
     <inputParameter>
       <name>tableStore</name>
       <source>parameters</source>
       <defaultValue>.true.</defaultValue>
-      <description>If true, store/restore the tabulated solution to/from file when possible.</description>
+      <description>If true, store the tabulated spherical collapse solutions to a file and restore them on subsequent runs to avoid recomputing the numerical ODE integration from scratch.</description>
     </inputParameter>
     <inputParameter>
       <name>energyFixedAt</name>
@@ -126,7 +126,7 @@ contains
       <name>tablePointsPerOctave</name>
       <source>parameters</source>
       <defaultValue>300</defaultValue>
-      <description>The number of points per octave of time at which to tabulate solutions.</description>
+      <description>The number of evenly-spaced tabulation points per octave of cosmic time used when building the look-up table of spherical collapse critical overdensity vs.\ time; higher values give greater interpolation accuracy at the cost of longer initialization time.</description>
     </inputParameter>
     <objectBuilder class="cosmologyFunctions"               name="cosmologyFunctions_"               source="parameters"/>
     <objectBuilder class="cosmologyParameters"              name="cosmologyParameters_"              source="parameters"/>

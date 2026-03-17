@@ -92,7 +92,7 @@ contains
     <inputParameter>
       <name>overdensity</name>
       <source>parameters</source>
-      <description>The overdensity of the environment.</description>
+      <description>The fixed linear overdensity $\delta$ of the large-scale environment assigned uniformly to all halos; a positive value places halos in an overdense region, while negative values simulate voids.</description>
     </inputParameter>
     <inputParameter>
       <name>radiusEnvironment</name>

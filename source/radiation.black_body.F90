@@ -69,7 +69,7 @@ contains
     <inputParameter>
       <name>temperature</name>
       <variable>temperature_</variable>
-      <description>The temperature of the black body radiation field.</description>
+      <description>The temperature (in Kelvin) of the blackbody radiation field, which sets the peak wavelength and total emitted flux via the Planck function.</description>
       <source>parameters</source>
     </inputParameter>
     !!]

@@ -90,31 +90,31 @@
      </inputParameter>
      <inputParameter>
        <name>densitySolitonCentral</name>
-       <description>The central density of the soliton.</description>
+       <description>The central density (in $M_\odot$/Mpc$^3$) of the solitonic core at $r=0$, which sets the overall normalization of the density profile $\rho(r) = \rho_c [1+(r/r_c)^2]^{-8}$.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>
        <name>toleranceRelativePotential</name>
        <defaultValue>1.0d-3</defaultValue>
-       <description>The relative tolerance for numerical solutions.</description>
+       <description>The relative tolerance used in numerical ODE solutions for the gravitational potential of the solitonic core profile.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>
        <name>dimensionless</name>
        <defaultValue>.true.</defaultValue>
-       <description>If true the profile is dimensionless.</description>
+       <description>If true the soliton profile is treated as dimensionless (scale-free), allowing its radial and density quantities to be specified in arbitrary units.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>
        <name>componentType</name>
        <defaultValue>var_str('unknown')</defaultValue>
-       <description>The component type for the profile.</description>
+       <description>The galactic structure component type (e.g.\ dark matter halo, disk, spheroid) represented by this mass distribution, used for component-specific queries.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>
        <name>massType</name>
        <defaultValue>var_str('unknown')</defaultValue>
-       <description>The mass type for the profile.</description>
+       <description>The mass type (e.g.\ dark matter, baryonic, total) represented by this mass distribution, used for mass-type-specific queries.</description>
        <source>parameters</source>
      </inputParameter>
      <conditionalCall>

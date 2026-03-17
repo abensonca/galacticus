@@ -87,7 +87,7 @@ contains
     !![
     <inputParameter>
       <name>baseParametersFileName</name>
-      <description>The base set of parameters to use.</description>
+      <description>The path to the XML parameter file that provides the base configuration for each Galacticus model evaluation, to which parameter changes from the posterior sampler are then applied.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
@@ -143,7 +143,7 @@ contains
     </inputParameter>
     <inputParameter>
       <name>reportState</name>
-      <description>If true, report the state being evaluated.</description>
+      <description>If true, log a summary of the model parameter state to standard output at the beginning of each likelihood evaluation.</description>
       <defaultValue>.false.</defaultValue>
       <source>parameters</source>
     </inputParameter>
