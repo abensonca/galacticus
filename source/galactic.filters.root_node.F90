@@ -23,7 +23,7 @@ Implements a filter which passes only nodes that are roots of their merger tree.
 
   !![
   <galacticFilter name="galacticFilterRootNode">
-   <description>A filter which passes only nodes which are roots of their merger tree.</description>
+   <description>Passes only root nodes (the final descendant at the present day, with no further descendants), selecting the tip of each merger tree branch that represents the surviving halo at the final output time, for present-epoch galaxy property analyses.</description>
   </galacticFilter>
   !!]
   type, extends(galacticFilterClass) :: galacticFilterRootNode
