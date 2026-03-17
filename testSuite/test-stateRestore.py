@@ -54,10 +54,10 @@ for runPass in range(2):
         sys.exit(1)
 
     if not os.path.exists("outputs/stateRetrieve.hdf5"):
-        print("FAILED: stateStore.hdf5 file is missing")
+        print("FAILED: stateRetrieve.hdf5 file is missing")
         sys.exit(1)
     if not os.path.exists("outputs/stateStore.hdf5"):
-        print("FAILED: stateRetrieve.hdf5 file is missing")
+        print("FAILED: stateStore.hdf5 file is missing")
         sys.exit(1)
 
     with h5py.File("outputs/stateStore.hdf5", "r") as store, \
