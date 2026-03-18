@@ -7,7 +7,7 @@ import os
 # Andrew Benson (ported to Python)
 
 # Validate the default parameter file.
-status = subprocess.run("cd ..; scripts/aux/validateParameters.py parameters.xml", shell=True)
+status = subprocess.run("cd ..; ./scripts/aux/validateParameters.py parameters.xml", shell=True)
 if status.returncode == 0:
     print("PASSED: validation of default parameter file")
 else:
@@ -22,7 +22,7 @@ if os.path.isdir(validationDir):
         if m:
             validity = m.group(1)
             status = subprocess.run(
-                f"cd ../../..; scripts/aux/validateParameters.py testSuite/parameters/validation/{fileName}",
+                f"cd ..; ./scripts/aux/validateParameters.py testSuite/parameters/validation/{fileName}",
                 shell=True
             )
             if (status.returncode == 0 and validity == "valid") or (status.returncode != 0 and validity == "invalid"):
