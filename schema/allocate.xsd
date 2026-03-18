@@ -5,8 +5,9 @@
   <xs:element name="allocate">
     <xs:complexType>
       <xs:attribute name="variable" use="required"/>
-      <xs:attribute name="size"                  />
-      <xs:attribute name="shape"                 />
+      <xs:attribute name="size"                   />
+      <xs:attribute name="shape"                  />
+      <xs:attribute name="rank"                   />
     </xs:complexType>
   </xs:element>
   
