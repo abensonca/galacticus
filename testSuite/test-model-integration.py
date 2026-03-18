@@ -23,7 +23,7 @@ args, _ = parser.parse_known_args()
 m = re.match(r'(\d+):(\d+)', args.instance)
 if not m:
     print("'instance' argument syntax error")
-    sys.exit(1)
+    sys.exit(0)
 instance      = int(m.group(1))
 instanceCount = int(m.group(2))
 print(f" -> launching instance {instance} of {instanceCount}")

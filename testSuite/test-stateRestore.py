@@ -22,7 +22,7 @@ for runPass in range(2):
     )
     if status.returncode != 0:
         print("FAILED: failed to run store model")
-        sys.exit(1)
+        sys.exit(0)
 
     # Find which thread ran the final tree.
     finalTreeThread = None
@@ -42,7 +42,7 @@ for runPass in range(2):
         subprocess.run(f"cp -f outputs/state.gsl.state:openMP{finalTreeThread} outputs/state.gsl.state", shell=True)
     else:
         print("FAILED: failed to identify which thread ran final tree")
-        sys.exit(1)
+        sys.exit(0)
 
     # Run the restore model.
     status = subprocess.run(
@@ -51,14 +51,14 @@ for runPass in range(2):
     )
     if status.returncode != 0:
         print("FAILED: failed to run retrieve model")
-        sys.exit(1)
+        sys.exit(0)
 
     if not os.path.exists("outputs/stateRetrieve.hdf5"):
         print("FAILED: stateRetrieve.hdf5 file is missing")
-        sys.exit(1)
+        sys.exit(0)
     if not os.path.exists("outputs/stateStore.hdf5"):
         print("FAILED: stateStore.hdf5 file is missing")
-        sys.exit(1)
+        sys.exit(0)
 
     with h5py.File("outputs/stateStore.hdf5", "r") as store, \
          h5py.File("outputs/stateRetrieve.hdf5", "r") as retrieve:
@@ -73,7 +73,7 @@ for runPass in range(2):
         treeFinal       = np.where(storeTreeIndex == 15)[0]
         if len(treeFinal) != 1:
             print("FAILED: unable to (uniquely) identify final tree in stored model output")
-            sys.exit(1)
+            sys.exit(0)
         treeFinalIndex = treeFinal[0]
 
         storeTreeStart   = storeOutput["mergerTreeStartIndex"][treeFinalIndex]

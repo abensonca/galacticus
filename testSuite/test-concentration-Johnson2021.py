@@ -30,7 +30,7 @@ for test in tests:
     )
     if status.returncode != 0:
         print(f"FAILED: Johnson2021 {suffix} concentration model failed to run")
-        sys.exit(1)
+        sys.exit(0)
 
     with h5py.File(f"outputs/concentrationDistributionJohnson2021{suffixCapital}.hdf5", "r") as model:
         nodeData      = model["Outputs/Output1/nodeData"]

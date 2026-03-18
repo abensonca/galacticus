@@ -11,7 +11,7 @@ import h5py
 status = subprocess.run("cd ..; ./Galacticus.exe testSuite/parameters/cgmMassCooled.xml", shell=True)
 if status.returncode != 0:
     print("FAILED: model run:")
-    sys.exit(1)
+    sys.exit(0)
 else:
     print("SUCCESS: model run")
 

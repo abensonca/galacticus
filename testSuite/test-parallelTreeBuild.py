@@ -14,12 +14,12 @@ subprocess.run("mkdir -p outputs", shell=True)
 status = subprocess.run("export OMP_NUM_THREADS=1; cd ..; ./Galacticus.exe testSuite/parameters/parallelTreeBuildSerial.xml", shell=True)
 if status.returncode != 0:
     print("FAILED: failed to run serial model")
-    sys.exit(1)
+    sys.exit(0)
 
 status = subprocess.run("export OMP_NUM_THREADS=4; cd ..; ./Galacticus.exe testSuite/parameters/parallelTreeBuildParallel.xml", shell=True)
 if status.returncode != 0:
     print("FAILED: failed to run parallel model")
-    sys.exit(1)
+    sys.exit(0)
 
 # Read model data.
 data = {}

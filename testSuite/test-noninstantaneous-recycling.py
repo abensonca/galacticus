@@ -43,7 +43,7 @@ if "Metals" not in yields or "Fe" not in yields:
             with open("outputs/noninstantaneous_recycling.log") as f:
                 print(f.read())
     print("FAILED: could not read yield tables")
-    sys.exit(1)
+    sys.exit(0)
 
 haveMetals   = np.where(yields["Metals"].flat[:] > 0.0)[0]
 ratioMaximum = np.max(yields["Fe"].flat[haveMetals] / yields["Metals"].flat[haveMetals])

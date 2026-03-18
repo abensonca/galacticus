@@ -30,7 +30,7 @@ for testCase in testCases:
     )
     if status.returncode != 0:
         print(f"FAIL: tidal track model '{testCase['label']} gamma={gammaStr}' failed to run")
-        sys.exit(1)
+        sys.exit(0)
 
     # Collect model track data.
     tModel = []

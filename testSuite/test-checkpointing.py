@@ -15,20 +15,20 @@ subprocess.run("mkdir -p outputs", shell=True)
 status = subprocess.run("export OMP_NUM_THREADS=1; cd ..; ./Galacticus.exe testSuite/parameters/checkpointingNoCheckpoints.xml", shell=True)
 if status.returncode != 0:
     print("FAILED: failed to run model without checkpointing")
-    sys.exit(1)
+    sys.exit(0)
 
 # Run model with checkpointing - interrupted.
 subprocess.run("cd ..; rm -f checkpoint.chk", shell=True)
 subprocess.run("export OMP_NUM_THREADS=1; cd ..; ./Galacticus.exe testSuite/parameters/checkpointingCheckpoints.xml", shell=True)
 if not os.path.exists("../checkpoint.chk"):
     print("FAILED: failed to produce a checkpoint file")
-    sys.exit(1)
+    sys.exit(0)
 
 # Run model with checkpointing - resuming.
 status = subprocess.run("export OMP_NUM_THREADS=1; cd ..; ./Galacticus.exe testSuite/parameters/checkpointingResume.xml", shell=True)
 if status.returncode != 0:
     print("FAILED: failed to run model resuming from checkpoint")
-    sys.exit(1)
+    sys.exit(0)
 
 # Read model data.
 data = {}

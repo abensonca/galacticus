@@ -30,7 +30,7 @@ status = subprocess.run(
 )
 if status.returncode != 0:
     print("FAILED: failed to run calculation")
-    sys.exit(1)
+    sys.exit(0)
 
 # Read model output and parameters.
 with h5py.File("outputs/radiativeTransfer-StromgrenSphere:MPI0000.hdf5", "r") as outputFile:

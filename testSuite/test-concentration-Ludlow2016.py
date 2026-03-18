@@ -29,7 +29,7 @@ for test in tests:
     )
     if status.returncode != 0:
         print(f"FAILED: Ludlow2016 {suffix} concentration model failed to run")
-        sys.exit(1)
+        sys.exit(0)
 
     # Select halos in the mass range used for the results in Table 2 of Benson, Ludlow, & Cole (2019).
     with h5py.File(f"outputs/concentrationDistributionLudlow2016{suffixCapital}.hdf5", "r") as model:

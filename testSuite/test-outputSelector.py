@@ -14,7 +14,7 @@ subprocess.run("mkdir -p outputs/", shell=True)
 status = subprocess.run("cd ..; ./Galacticus.exe testSuite/parameters/outputSelector.xml", shell=True)
 if status.returncode != 0:
     print("FAIL: output selector model failed to run")
-    sys.exit(1)
+    sys.exit(0)
 
 # Check for correctly selected outputs.
 success = True

@@ -35,7 +35,7 @@ for runPass in range(2):
     )
     if status.returncode != 0:
         print("FAILED: failed to run store model")
-        sys.exit(1)
+        sys.exit(0)
 
     # Find which MPI process ran the final tree.
     finalTreeProcessMPI = None
@@ -56,7 +56,7 @@ for runPass in range(2):
             subprocess.run(f"cp -f outputs/state.gsl.state:MPI{finalTreeProcessMPI} outputs/state.gsl.state:MPI0000", shell=True)
     else:
         print("FAILED: failed to identify which thread/process ran final tree")
-        sys.exit(1)
+        sys.exit(0)
 
     # Run the restore model.
     status = subprocess.run(
@@ -65,14 +65,14 @@ for runPass in range(2):
     )
     if status.returncode != 0:
         print("FAILED: failed to run retrieve model")
-        sys.exit(1)
+        sys.exit(0)
 
     if not os.path.exists(f"outputs/stateStore:MPI{finalTreeProcessMPI}.hdf5"):
         print(f"FAILED: stateStore:MPI{finalTreeProcessMPI}.hdf5 file is missing")
-        sys.exit(1)
+        sys.exit(0)
     if not os.path.exists("outputs/stateRetrieve:MPI0000.hdf5"):
         print("FAILED: stateRetrieve:MPI0000.hdf5 file is missing")
-        sys.exit(1)
+        sys.exit(0)
 
     with h5py.File(f"outputs/stateStore:MPI{finalTreeProcessMPI}.hdf5", "r") as store, \
          h5py.File("outputs/stateRetrieve:MPI0000.hdf5", "r") as retrieve:

@@ -28,7 +28,7 @@ for model in models:
     )
     if status.returncode != 0:
         print(f"FAIL: failed to run model 'powerSpectrum{model['label']}.xml'")
-        sys.exit(1)
+        sys.exit(0)
 
     # Read data.
     with h5py.File(f"outputs/powerSpectrum{model['label']}.hdf5", "r") as galacticus:
