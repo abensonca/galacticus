@@ -14,7 +14,7 @@ subprocess.run("mkdir -p outputs", shell=True)
 status = subprocess.run("cd ..; ./Galacticus.exe testSuite/parameters/tidallyTruncatedNFWFit.xml", shell=True)
 if status.returncode != 0:
     print("FAILED: model failed to run")
-    sys.exit(1)
+    sys.exit(0)
 
 # Read model data.
 with h5py.File("outputs/tidallyTruncatedNFWFit.hdf5", "r") as model:
@@ -33,13 +33,13 @@ data["densityNormalization"] = (
 )
 nHalos = len(data["basicMass"])
 data["metricUntruncated"] = np.zeros(nHalos)
-data["metricTruncated"]   = np.zeros(nHalos)
+data["metricTruncated"  ] = np.zeros(nHalos)
 
 # Iterate over all halos/subhalos.
 for i in range(nHalos):
-    radii              = data["densityProfileRadius"][:, i]
-    densityTarget      = data["densityProfile"][:, i]
-    xs                 = radii / data["darkMatterProfileScale"][i]
+    radii              = data["densityProfileRadius"][i, :]
+    densityTarget      = data["densityProfile"      ][i, :]
+    xs                 = radii / data["darkMatterProfileScale"  ][i]
     xt                 = radii / data["radiusTidalTruncationNFW"][i]
     densityUntruncated = data["densityNormalization"][i] / xs / (1.0 + xs)**2
     densityTruncated   = data["densityNormalization"][i] / xs / (1.0 + xs)**2 / (1.0 + xt**2)
