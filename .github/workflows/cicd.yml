@@ -1449,7 +1449,7 @@ jobs:
       file: test-stateRestore_MPI.py
       artifact: galacticus-exec-MPI
       runPath: ./testSuite
-      options: --processesPerNode 8 --allow-run-as-root yes
+      options: --processesPerNode 8 --allowRunAsRoot yes
     secrets: inherit
   MPI-Radiative-Transfer-Stromgren-Sphere:
     needs: Build-Executables-MPI-Linux
@@ -1458,7 +1458,7 @@ jobs:
       file: test-radiativeTransfer-StromgrenSphere_MPI.py
       artifact: galacticus-exec-MPI
       runPath: ./testSuite
-      options: --processesPerNode 4 --allow-run-as-root yes
+      options: --processesPerNode 4 --allowRunAsRoot yes
     secrets: inherit
   MPI-MCMC:
     needs: Build-Executables-MPI-Linux
