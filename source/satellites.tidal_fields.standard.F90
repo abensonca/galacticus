@@ -18,7 +18,7 @@
 !!    along with Galacticus.  If not, see <http://www.gnu.org/licenses/>.
 
   !!{
-  Implements a model of the tidal field acting on a satellite for arbitrary geomtery in the host.
+  Implements a model of the tidal field acting on a satellite for arbitrary geometry in the host.
   !!}
 
   use :: Dark_Matter_Halo_Scales, only : darkMatterHaloScaleClass
@@ -165,12 +165,9 @@ contains
     !!{
     Return the tidal tensor for satellite halos in arbitrary host geometry.
     !!}
-    use :: Coordinates                     , only : coordinateCartesian           , assignment(=)
-    use :: Numerical_Constants_Math        , only : Pi
-    use :: Numerical_Constants_Astronomical, only : gravitationalConstant_internal
-    use :: Mass_Distributions              , only : massDistributionClass
-    use :: Tensors                         , only : tensorNullR2D3Sym             , assignment(=), operator(*)
-    use :: Vectors                         , only : Vector_Outer_Product
+    use :: Coordinates       , only : coordinateCartesian  , assignment(=)
+    use :: Mass_Distributions, only : massDistributionClass
+    use :: Tensors           , only : tensorNullR2D3Sym    , assignment(=), operator(*)
     implicit none
     type            (tensorRank2Dimension3Symmetric)                                  :: tidalTensor
     class           (satelliteTidalFieldStandard   ), intent(inout)                   :: self
