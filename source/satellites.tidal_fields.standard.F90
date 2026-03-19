@@ -35,7 +35,7 @@
   !!]
   type, extends(satelliteTidalFieldClass) :: satelliteTidalFieldStandard
      !!{
-     Implementation of a satellite tidal friction class in arbitrary geometry.
+     Implementation of a satellite tidal field class in arbitrary geometry.
      !!}
      private
      class(darkMatterHaloScaleClass), pointer :: darkMatterHaloScale_ => null()
@@ -365,7 +365,7 @@ contains
     ! of the eigenvector is exactly the eigenvalue corresponding to that eigenvector, we simply take the largest eigenvalue.
     ! For spherical mass distributions this reduces to:
     !
-    ! -2GM(r)r⁻³ + 4πGρ(r)
+    ! +2GM(r)r⁻³ - 4πGρ(r)
     if (isSphericallySymmetric) then
        ! For spherically-symmetric mass distributions we can avoid the expense of solving for the eigenvalues. We simply
        ! evaluate the tidal tensor at [r,0,0] (since the distribution is spherically-symmetric we can evaluate at any
