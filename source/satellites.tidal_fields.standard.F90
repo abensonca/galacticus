@@ -18,7 +18,7 @@
 !!    along with Galacticus.  If not, see <http://www.gnu.org/licenses/>.
 
   !!{
-  Implements a model of the tidal field acting on a satellite for arbitrary geomtry in the host.
+  Implements a model of the tidal field acting on a satellite for arbitrary geomtery in the host.
   !!}
 
   use :: Dark_Matter_Halo_Scales, only : darkMatterHaloScaleClass
