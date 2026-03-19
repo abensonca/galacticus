@@ -274,7 +274,8 @@ contains
 
   double precision function sphericalSymmetryTidalTensorDominant(self,node,nodeHost,atPericenter,includeCentrifugalAcceleration) result(tidalTensorDominant)
     !!{
-    Return the radial part of the tidal tensor for satellite halos assuming spherical symmetry of the host.
+    Return the dominant eigenvalue of the tidal tensor for satellite halos assuming spherical symmetry of the host (in this case equal to the radial
+    component, computed via the \mono{tidalTensorRadial} method).
     !!}
     class  (satelliteTidalFieldSphericalSymmetry), intent(inout)                   :: self
     type   (treeNode                            ), intent(inout)                   :: node
