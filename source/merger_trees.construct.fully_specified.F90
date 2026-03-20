@@ -123,8 +123,8 @@
      content is specified via an element with the short-name of the element (e.g. \mono{Fe} for iron).
     \end{description}
 
-    The parameter \mono{[countRealizations]} (defaulting to 1) controls how many realizations of each merger tree are
-    simulated.
+    The parameter \mono{[countRealizations]} (defaulting to 1) controls how many merger tree realizations are
+    simulated for each input tree.
    </description>
    <deepCopy>
      <increment variables="document%copyCount" atomic="yes"/>
@@ -188,7 +188,7 @@ contains
     </inputParameter>
     <inputParameter>
       <name>countRealizations</name>
-      <description>The number of replications of each tree to generate.</description>
+      <description>The number of realizations of each tree to generate.</description>
       <source>parameters</source>
       <defaultValue>1_c_size_t</defaultValue>
     </inputParameter>
