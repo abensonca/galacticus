@@ -489,13 +489,13 @@ contains
     ! orphan satellite population. For non-isolated halos, no buffer is required. In addition, for non-isolated halos, limit
     ! the time over which they will be checked for intersection with the lightcone to the maximum time for which they have a
     ! defined position.
+    radiusBuffer=0.0d0
     if (self%bufferIsolatedHalos) then
        ! Store current parent of the node.
        nodeParent => node%parent
        ! Handle satellites and centrals.
        if (node%isSatellite()) then
           ! No buffer is required for a satellite node.
-          radiusBuffer=0.0d0
           ! Find the extent of the position history known for this node. Limit the merging time to the final time for which
           ! position is known (or the current time if no position history is available). Record the current time of merging
           ! so that it can be reset after testing for intersection.
