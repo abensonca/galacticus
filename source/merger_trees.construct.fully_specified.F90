@@ -242,7 +242,7 @@ contains
     ! Get the list of trees.
     call XML_Get_Elements_By_Tag_Name(self%document%doc,"tree",self%trees)
     ! Count the number of trees.
-    self%treeCount=+size(self%trees            ) &
+    self%treeCount=+size(self%trees            ,kind=c_size_t) &
          &         *     self%countRealizations
     if (self%treeCount <= 0) call Error_Report('no trees were specified'//{introspection:location})
     !$omp end critical (FoX_DOM_Access)
