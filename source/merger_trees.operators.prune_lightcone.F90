@@ -30,7 +30,7 @@
      \refClass{mergerTreeOperatorPruneLightconeSnapshots} class.
 
      Trees which have no nodes which lie within the lightcone are completely pruned away. If the parameter \mono{[splitTrees]} is
-     set to \mono{true} then any parts of a merger tree which does intersect the light that exist after the latest time at which a
+     set to \mono{true} then any parts of a merger tree which does intersect the lightcone that exist after the latest time at which a
      constituent node of the tree intersects the lightcone will be pruned away also (possibly causing the tree to be split into
      multiple trees in a forest).
    </description>
