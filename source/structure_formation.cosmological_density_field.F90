@@ -39,29 +39,16 @@ module Cosmological_Density_Field
    <descriptiveName>Critical Overdensity</descriptiveName>
    <description>Object providing critical overdensities.</description>
    <default>sphericalCollapseClsnlssMttrCsmlgclCnstnt</default>
-   <data>integer         (kind_int8                    )              :: lastUniqueID                =  -1_kind_int8, lastTreeID                 =-1_kind_int8</data>
-   <data>double precision                                             :: countTimeCollapsePerUnit    =   1.0d4                                                </data>
-   <data>double precision                                             :: criticalOverdensityTarget                  , mass                                    </data>
-   <data>double precision                                             :: time                                       , timeNow                    =-huge(0.0d0)</data>
-   <data>double precision                                             :: timeOfCollapsePrevious      =  -huge(0.0d0), criticalOverdensityPrevious=-huge(0.0d0)</data>
-   <data>double precision                                             :: massPrevious                =  -huge(0.0d0)                                          </data>
-   <data>type            (table1DLinearLinear          )              :: collapseThreshold                                                                    </data>
-   <data>double precision                                             :: collapseThresholdMinimum                   , collapseThresholdMaximum                </data>
-   <data>logical                                                      :: collapseThresholdInitialized=.false.                                                 </data>
-   <data>type            (treeNode                     ), pointer     :: node                                                                                 </data>
-   <data>logical                                                      :: massPresent                                , nodePresent                             </data>
-   <data>logical                                                      :: treePresent                                                                          </data>
-   <data>logical                                                      :: dependenciesInitialized     =  .false.     , isMassDependent_                        </data>
-   <data>logical                                                      :: isNodeDependent_                           , isTreeDependent_                        </data>
-   <data>class           (cosmologyFunctionsClass      ), pointer     :: cosmologyFunctions_         => null()                                                </data>
-   <data>class           (linearGrowthClass            ), pointer     :: linearGrowth_               => null()                                                </data>
-   <data>class           (cosmologicalMassVarianceClass), pointer     :: cosmologicalMassVariance_   => null()                                                </data>
-   <data>type            (rootFinder                   ), allocatable :: finderTimeOfCollapse                                                                 </data>
-   <data>
-    <scope>module</scope>
-    <threadprivate>yes</threadprivate>
-    <content>class(criticalOverdensityClass), pointer :: globalSelf => null()</content>
-   </data>
+   <destructor>
+    <modules>
+     <name>Events_Hooks</name>
+     <only>calculationResetEvent, openMPThreadBindingAllLevels</only>
+    </modules>
+    <code>
+     if (calculationResetEvent%isAttached(self,criticalOverdensityCalculationReset)) call calculationResetEvent%detach(self,criticalOverdensityCalculationReset)
+     return
+    </code>
+   </destructor>
    <method name="value" >
     <description>Return the critical overdensity at the given time and mass.</description>
     <type>double precision</type>
@@ -86,10 +73,10 @@ module Cosmological_Density_Field
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
+    <modules>Root_Finder Error</modules>
     <argument>double precision          , intent(in   ), optional         :: time      , expansionFactor</argument>
     <argument>logical                   , intent(in   ), optional         :: collapsing                 </argument>
     <argument>type            (treeNode), intent(inout), optional, target :: node                       </argument>
-    <modules>Root_Finder Error</modules>
     <code>
      double precision            , parameter :: massGuess        =1.0d+13, toleranceAbsolute=0.0d+00, &amp;
           &amp;                                 toleranceRelative=1.0d-06, massTiny         =1.0d-30
@@ -155,6 +142,29 @@ module Cosmological_Density_Field
     <type>logical</type>
     <pass>yes</pass>
    </method>
+   <data>integer         (kind_int8                    )              :: lastUniqueID                =  -1_kind_int8, lastTreeID                 =-1_kind_int8</data>
+   <data>double precision                                             :: countTimeCollapsePerUnit    =   1.0d4                                                </data>
+   <data>double precision                                             :: criticalOverdensityTarget                  , mass                                    </data>
+   <data>double precision                                             :: time                                       , timeNow                    =-huge(0.0d0)</data>
+   <data>double precision                                             :: timeOfCollapsePrevious      =  -huge(0.0d0), criticalOverdensityPrevious=-huge(0.0d0)</data>
+   <data>double precision                                             :: massPrevious                =  -huge(0.0d0)                                          </data>
+   <data>type            (table1DLinearLinear          )              :: collapseThreshold                                                                    </data>
+   <data>double precision                                             :: collapseThresholdMinimum                   , collapseThresholdMaximum                </data>
+   <data>logical                                                      :: collapseThresholdInitialized=.false.                                                 </data>
+   <data>type            (treeNode                     ), pointer     :: node                                                                                 </data>
+   <data>logical                                                      :: massPresent                                , nodePresent                             </data>
+   <data>logical                                                      :: treePresent                                                                          </data>
+   <data>logical                                                      :: dependenciesInitialized     =  .false.     , isMassDependent_                        </data>
+   <data>logical                                                      :: isNodeDependent_                           , isTreeDependent_                        </data>
+   <data>class           (cosmologyFunctionsClass      ), pointer     :: cosmologyFunctions_         => null()                                                </data>
+   <data>class           (linearGrowthClass            ), pointer     :: linearGrowth_               => null()                                                </data>
+   <data>class           (cosmologicalMassVarianceClass), pointer     :: cosmologicalMassVariance_   => null()                                                </data>
+   <data>type            (rootFinder                   ), allocatable :: finderTimeOfCollapse                                                                 </data>
+   <data>
+    <scope>module</scope>
+    <threadprivate>yes</threadprivate>
+    <content>class(criticalOverdensityClass), pointer :: globalSelf => null()</content>
+   </data>
    <autoHook>
     <modules>
      <name>Events_Hooks</name>
@@ -165,16 +175,6 @@ module Cosmological_Density_Field
      return
     </code>
    </autoHook>
-   <destructor>
-    <modules>
-     <name>Events_Hooks</name>
-     <only>calculationResetEvent, openMPThreadBindingAllLevels</only>
-    </modules>
-    <code>
-     if (calculationResetEvent%isAttached(self,criticalOverdensityCalculationReset)) call calculationResetEvent%detach(self,criticalOverdensityCalculationReset)
-     return
-    </code>
-   </destructor>
   </functionClass>
   !!]
 
@@ -234,21 +234,21 @@ module Cosmological_Density_Field
    <method name="pdf" >
     <description>Return the \gls{pdf} of the environmental overdensity for the given overdensity.</description>
     <type>double precision</type>
-    <argument>double precision, intent(in   ) :: overdensity</argument>
     <pass>yes</pass>
+    <argument>double precision, intent(in   ) :: overdensity</argument>
    </method>
    <method name="cdf" >
     <description>Return the \gls{cdf} of the environmental overdensity for the given overdensity.</description>
     <type>double precision</type>
-    <argument>double precision, intent(in   ) :: overdensity</argument>
     <pass>yes</pass>
+    <argument>double precision, intent(in   ) :: overdensity</argument>
    </method>
    <method name="overdensityLinearSet" >
     <description>Set the environmental overdensity for the give node.</description>
     <type>void</type>
+    <pass>yes</pass>
     <argument>type            (treeNode), intent(inout) :: node</argument>
     <argument>double precision          , intent(in   ) :: overdensity</argument>
-    <pass>yes</pass>
    </method>
    <method name="overdensityIsSettable" >
     <description>Return true if the overdensity is settable.</description>

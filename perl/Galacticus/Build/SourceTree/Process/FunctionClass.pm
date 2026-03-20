@@ -73,24 +73,6 @@ sub Process_FunctionClass {
 		    %methods = %{$directive->{'method'}};
 		}
 	    }
-	    # Load any functionClassType that the base class extends.
-	    my $functionClassType;
-	    if ( exists($directive->{'extends'}) ) {
-		(my $functionClassTypeFileName) = map {$_->{'name'} eq $directive->{'extends'} ? $_->{'file'} : ()} &List::ExtraUtils::as_array($stateStorables->{'functionClassTypes'});
-		die('failed to find file containing functionClassType "'.$directive->{'extends'}.'"')
-		    unless ( defined($functionClassTypeFileName) );
-		$functionClassType->{'tree'} = &Galacticus::Build::SourceTree::ParseFile($functionClassTypeFileName);
-		my $classNode  = $functionClassType->{'tree'};
-		my $classDepth = 0;
-		while ( $classNode ) {
-		    if ( $classNode->{'type'} eq "type" ) {
-			if ( $classNode->{'name'} eq $directive->{'extends'} ) {
-			    $functionClassType->{'node'} = $classNode;
-			}
-		    }
-		    $classNode = &Galacticus::Build::SourceTree::Walk_Tree($classNode,\$classDepth);
-		}
-	    }
 	    # Find class locations.
 	    my @classLocations = &List::ExtraUtils::as_array($directiveLocations->{$directive->{'name'}}->{'file'})
 		if ( exists($directiveLocations->{$directive->{'name'}}) );
@@ -285,16 +267,6 @@ sub Process_FunctionClass {
 		    die("Galacticus::Build::SourceTree::Process::FunctionClass::Process_FunctionClass(): unable to parse variable declaration")
 			unless ( defined($declaration) );
 		    &potentialDescriptorParameters($declaration,$nonAbstractClass,$potentialNames);
-		}
-		# Add any names declared in the functionClassType.
-		if ( defined($functionClassType) ) {
-		    # Search the node for declarations.
-		    my $node = $functionClassType->{'node'}->{'firstChild'};
-		    while ( $node ) {
-			&potentialDescriptorParameters($node->{'declarations'},$nonAbstractClass,$potentialNames)
-			    if ( $node->{'type'} eq "declaration" );
-			$node = $node->{'type'} eq "contains" ? $node->{'firstChild'} : $node->{'sibling'};
-		    }
 		}
 		# Search the tree for this class to find the interface to the parameters constructor.
 		my $node = $nonAbstractClass->{'tree'}->{'firstChild'};
@@ -1240,17 +1212,6 @@ CODE
 		    my @ignore      = ();
 		    &deepCopyDeclarations($class,$nonAbstractClass,$node,$declaration,\@ignore,$lineNumber,$deepCopy,$foundDeepCopyNames);
 		}
-		# Add any objects declared in the functionClassType class.
-		if ( defined($functionClassType) ) {
-		    # Search the node for declarations.
-		    my @ignore = ();
-		    my $node   = $functionClassType->{'node'}->{'firstChild'};
-		    while ( $node ) {
-			&deepCopyDeclarations($class,$nonAbstractClass,$node,$node->{'declarations'},\@ignore,$lineNumber,$deepCopy,$foundDeepCopyNames)
-			    if ( $node->{'type'} eq "declaration" );
-			$node = $node->{'sibling'};
-		    }
-		}
 		# Check that the type of the destination matches, and perform the copy. Reset the reference count to the copy.
 		$deepCopy->{'code'} .= "type is (".$nonAbstractClass->{'name'}.")\n";
 		$deepCopy->{'code'} .= "select type (destination)\n";
@@ -1452,15 +1413,6 @@ CODE
 		    die("Galacticus::Build::SourceTree::Process::FunctionClass::Process_FunctionClass(): unable to parse variable declaration")
 			unless ( defined($declaration) );
 		    &stateStoreVariables($stateStores,$stateStore,undef(),$declaration,$explicitNamesFound);
-		}
-		# Add any variables declared in the functionClassType class.
-		if ( defined($functionClassType) ) {
-		    my $node = $functionClassType->{'node'}->{'firstChild'};
-		    while ( $node ) {
-			&stateStoreVariables($stateStores,$stateStore,undef(),$node->{'declarations'},$explicitNamesFound)
-			    if ( $node->{'type'} eq "declaration" );
-			$node = $node->{'type'} eq "contains" ? $node->{'firstChild'} : $node->{'sibling'};
-		    }
 		}
 		# Check that all explicit variables were found.
 		{
