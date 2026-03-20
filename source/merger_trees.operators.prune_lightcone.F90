@@ -169,7 +169,9 @@ contains
     ! Test for intersection with the lightcone.
     basic                   => node                   %basic                (                                       )
     timeLightconeCrossing   =  self%geometryLightcone_%timeLightconeCrossing(node,basic%time(),timeEnd,timesCrossing)
-    nodeIntersectsLightcone =  timeLightconeCrossing <= timeEnd
+    nodeIntersectsLightcone =   allocated(timesCrossing)     &
+         &                     .and.                         &
+         &                      size     (timesCrossing) > 0
     if (nodeIntersectsLightcone) then
        timeIntersect=maxval(timesCrossing)
     else
