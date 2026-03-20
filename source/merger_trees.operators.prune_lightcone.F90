@@ -139,7 +139,7 @@ contains
     if (haveSubhaloPromotion) then
        basic => node%basic()
        ! Check if the time of this promotion event coincides with the time of this node. If it does, we do not process this node.
-       if (basic%time() == event%time) processNode=.false.
+       if (basic%time() == timeSubhaloPromotion) processNode=.false.
     end if
     return
   end function pruneLightconeProcessNode
