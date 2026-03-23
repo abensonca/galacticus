@@ -460,7 +460,7 @@ contains
                          end if
                          ! Check for interrupt.
                          if     (                                                         &
-                              &   interrupted                                             & ! An interrupt occured.
+                              &   interrupted                                             & ! An interrupt occurred.
                               &  .and.                                                    &
                               &   (                                                       &
                               &    basic%time() < timeEndThisNode                         & ! The end of the timestep was not reached.
