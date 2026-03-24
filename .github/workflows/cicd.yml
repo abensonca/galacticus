@@ -444,6 +444,22 @@ jobs:
           dsymutil -o Galacticus.exe.dSYM Galacticus.exe
           zip -r debugSymbolsMacOS.zip Galacticus.exe.dSYM
           mv Galacticus.exe Galacticus_MacOS.exe
+      - name: Sign Galacticus executable
+        env:
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          MACOS_KEYCHAIN_PASSWORD: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
+        run: |
+          security create-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          echo "$MACOS_CERTIFICATE" | base64 --decode > certificate.p12
+          security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          rm certificate.p12
+          codesign --force --options runtime --entitlements .github/entitlements.plist \
+            --sign "Developer ID Application" Galacticus_MacOS.exe
+          codesign --verify --deep --strict --verbose=2 Galacticus_MacOS.exe
       - name: Upload Galacticus executable
         uses: actions/upload-artifact@v7
         with:
@@ -479,6 +495,22 @@ jobs:
           dsymutil -o Galacticus.exe.dSYM Galacticus.exe
           zip -r debugSymbolsMacOS-M1.zip Galacticus.exe.dSYM
           mv Galacticus.exe Galacticus_MacOS-M1.exe
+      - name: Sign Galacticus executable
+        env:
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          MACOS_KEYCHAIN_PASSWORD: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
+        run: |
+          security create-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          echo "$MACOS_CERTIFICATE" | base64 --decode > certificate.p12
+          security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          rm certificate.p12
+          codesign --force --options runtime --entitlements .github/entitlements.plist \
+            --sign "Developer ID Application" Galacticus_MacOS-M1.exe
+          codesign --verify --deep --strict --verbose=2 Galacticus_MacOS-M1.exe
       - name: Upload Galacticus executable
         uses: actions/upload-artifact@v7
         with:
@@ -592,6 +624,59 @@ jobs:
             dynamic/fsps-${fspsVersion}/OUTPUTS \
             dynamic/fsps-${fspsVersion}/ISOCHRONES \
             dynamic/mangle-${mangleVersion}/bin/harmonize
+      - name: Sign tool executables
+        env:
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          MACOS_KEYCHAIN_PASSWORD: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
+        run: |
+          # Set up temporary keychain for code signing
+          security create-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          echo "$MACOS_CERTIFICATE" | base64 --decode > certificate.p12
+          security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          rm certificate.p12
+          # Read dependency versions
+          cambVersion=$(awk '{if ($1 == "camb:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          classVersion=$(awk '{if ($1 == "class:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          fspsVersion=$(awk '{if ($1 == "fsps:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          cloudyVersion=$(awk '{if ($1 == "cloudy:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          mangleVersion=$(awk '{if ($1 == "mangle:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          # Sign each tool executable with hardened runtime
+          cd "${GALACTICUS_DATA_PATH}"
+          for exe in \
+            "dynamic/CAMB-${cambVersion}/fortran/camb" \
+            "dynamic/AxionCAMB/camb" \
+            "dynamic/class_public-${classVersion}/class" \
+            "dynamic/RecFast/recfast.exe" \
+            "dynamic/c${cloudyVersion}/source/cloudy.exe" \
+            "dynamic/fsps-${fspsVersion}/src/autosps.exe" \
+            "dynamic/mangle-${mangleVersion}/bin/harmonize"; do
+            codesign --force --options runtime \
+              --entitlements "${GALACTICUS_EXEC_PATH}/.github/entitlements.plist" \
+              --sign "Developer ID Application" "$exe"
+            codesign --verify --deep --strict "$exe"
+          done
+          # Re-package the zip with the signed executables
+          rm toolsMacOS.zip
+          zip -r toolsMacOS.zip \
+            dynamic/CAMB-${cambVersion}/fortran/camb \
+            dynamic/AxionCAMB/camb \
+            dynamic/class_public-${classVersion}/class \
+            dynamic/RecFast/recfast.exe \
+            dynamic/RecFast/currentVersion \
+            dynamic/c${cloudyVersion}/source/cloudy.exe \
+            dynamic/c${cloudyVersion}/data \
+            dynamic/fsps-${fspsVersion}/src/autosps.exe \
+            dynamic/fsps-${fspsVersion}/dust \
+            dynamic/fsps-${fspsVersion}/data \
+            dynamic/fsps-${fspsVersion}/nebular \
+            dynamic/fsps-${fspsVersion}/SPECTRA \
+            dynamic/fsps-${fspsVersion}/OUTPUTS \
+            dynamic/fsps-${fspsVersion}/ISOCHRONES \
+            dynamic/mangle-${mangleVersion}/bin/harmonize
       - name: Upload Galacticus executable
         uses: actions/upload-artifact@v7
         with:
@@ -653,6 +738,59 @@ jobs:
           cd $GALACTICUS_DATA_PATH/dynamic/mangle-${mangleVersion}/bin/
           $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o harmonize' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH
+          zip -r toolsMacOSM1.zip \
+            dynamic/CAMB-${cambVersion}/fortran/camb \
+            dynamic/AxionCAMB/camb \
+            dynamic/class_public-${classVersion}/class \
+            dynamic/RecFast/recfast.exe \
+            dynamic/RecFast/currentVersion \
+            dynamic/c${cloudyVersion}/source/cloudy.exe \
+            dynamic/c${cloudyVersion}/data \
+            dynamic/fsps-${fspsVersion}/src/autosps.exe \
+            dynamic/fsps-${fspsVersion}/dust \
+            dynamic/fsps-${fspsVersion}/data \
+            dynamic/fsps-${fspsVersion}/nebular \
+            dynamic/fsps-${fspsVersion}/SPECTRA \
+            dynamic/fsps-${fspsVersion}/OUTPUTS \
+            dynamic/fsps-${fspsVersion}/ISOCHRONES \
+            dynamic/mangle-${mangleVersion}/bin/harmonize
+      - name: Sign tool executables
+        env:
+          MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
+          MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
+          MACOS_KEYCHAIN_PASSWORD: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
+        run: |
+          # Set up temporary keychain for code signing
+          security create-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          echo "$MACOS_CERTIFICATE" | base64 --decode > certificate.p12
+          security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$MACOS_KEYCHAIN_PASSWORD" build.keychain
+          rm certificate.p12
+          # Read dependency versions
+          cambVersion=$(awk '{if ($1 == "camb:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          classVersion=$(awk '{if ($1 == "class:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          fspsVersion=$(awk '{if ($1 == "fsps:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          cloudyVersion=$(awk '{if ($1 == "cloudy:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          mangleVersion=$(awk '{if ($1 == "mangle:") print $2}' "${GALACTICUS_EXEC_PATH}/aux/dependencies.yml")
+          # Sign each tool executable with hardened runtime
+          cd "${GALACTICUS_DATA_PATH}"
+          for exe in \
+            "dynamic/CAMB-${cambVersion}/fortran/camb" \
+            "dynamic/AxionCAMB/camb" \
+            "dynamic/class_public-${classVersion}/class" \
+            "dynamic/RecFast/recfast.exe" \
+            "dynamic/c${cloudyVersion}/source/cloudy.exe" \
+            "dynamic/fsps-${fspsVersion}/src/autosps.exe" \
+            "dynamic/mangle-${mangleVersion}/bin/harmonize"; do
+            codesign --force --options runtime \
+              --entitlements "${GALACTICUS_EXEC_PATH}/.github/entitlements.plist" \
+              --sign "Developer ID Application" "$exe"
+            codesign --verify --deep --strict "$exe"
+          done
+          # Re-package the zip with the signed executables
+          rm toolsMacOSM1.zip
           zip -r toolsMacOSM1.zip \
             dynamic/CAMB-${cambVersion}/fortran/camb \
             dynamic/AxionCAMB/camb \
