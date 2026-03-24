@@ -96,6 +96,7 @@
      procedure :: names                   => emissionLineLuminosityNames
      procedure :: descriptions            => emissionLineLuminosityDescriptions
      procedure :: unitsInSI               => emissionLineLuminosityUnitsInSI
+     procedure :: metaData                => emissionLineLuminosityMetaData
      procedure :: luminosityMean          => emissionLineLuminosityMean
      procedure :: indexTemplateTime       => emissionLineLuminosityIndexTemplateTime
      procedure :: indexTemplateNode       => emissionLineLuminosityIndexTemplateNode 
@@ -560,6 +561,22 @@ contains
     unitsInSI=ergs
     return
   end function emissionLineLuminosityUnitsInSI
+
+  subroutine emissionLineLuminosityMetaData(self,node,indexProperty,metaDataRank0,metaDataRank1)
+    !!{
+    Interface for tuple property meta-data.
+    !!}
+    implicit none
+    class  (nodePropertyExtractorLuminosityEmissionLine), intent(inout) :: self
+    type   (treeNode                                   ), intent(inout) :: node
+    integer                                             , intent(in   ) :: indexProperty
+    type   (doubleHash                                 ), intent(inout) :: metaDataRank0
+    type   (rank1DoubleHash                            ), intent(inout) :: metaDataRank1
+    !$GLC attributes unused :: node, indexProperty, metaDataRank1
+
+    call metaDataRank0%set('wavelength',self%wavelengths(indexProperty))
+    return
+  end subroutine emissionLineLuminosityMetaData
 
   integer function emissionLineLuminosityIndexTemplateTime(self,time) result(indexTemplate)
     !!{
