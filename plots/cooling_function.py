@@ -5,7 +5,6 @@ import h5py
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 
 # Make a plot of the specified cooling function file.
@@ -45,7 +44,7 @@ for iMetallicity, metallicity in enumerate(metallicities):
 fig, ax = plt.subplots(figsize=(5.0, 3.3))
 
 nMetallicities = len(metallicities)
-cmap           = cm.get_cmap('rainbow')
+cmap           = plt.get_cmap('rainbow')
 norm           = mcolors.Normalize(vmin=lZMin, vmax=lZMax)
 
 for iMetallicity in range(nMetallicities):
@@ -55,7 +54,7 @@ for iMetallicity in range(nMetallicities):
         color = cmap(0.0)
     else:
         color = cmap(norm(metallicity))
-    ax.plot(temperatures, coolingFunctions[iMetallicity, :], color=color, linewidth=1.5)
+    ax.plot(temperatures, coolingFunctions[:, iMetallicity], color=color, linewidth=1.5)
 
 ax.set_xscale('log')
 ax.set_yscale('log')
@@ -63,7 +62,7 @@ ax.set_xlim(316.0, 1.0e9)
 ax.set_ylim(3.0e-30, 1.0e-19)
 ax.set_xlabel('Temperature [K]')
 ax.set_ylabel(r'$\Lambda(T)$ [erg cm$^3$ s$^{-1}$]')
-ax.set_title(description + r', colored by $\log_{10}(Z/Z_\odot)$')
+ax.set_title(description)
 
 sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 sm.set_array([])
