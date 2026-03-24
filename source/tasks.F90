@@ -38,7 +38,6 @@ module Tasks
     calculation. The \mono{perform} method carries out the task and optionally returns an exit status,
     while \mono{requiresOutputFile} indicates whether HDF5 output should be opened beforehand.</description>
    <default>evolveForests</default>
-   <functionClassDestroy>no</functionClassDestroy>
    <method name="perform" >
     <description>Perform the task.</description>
     <type>void</type>

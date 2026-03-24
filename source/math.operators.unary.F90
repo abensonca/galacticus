@@ -38,16 +38,16 @@ module Math_Operators_Unary
     observations (e.g.\ converting between linear and logarithmic scales).</description>
    <default>identity</default>
    <method name="operate" >
+     <description>Apply the unary operator to the scalar input \mono{x}, returning the transformed value $f(x)$.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Apply the unary operator to the scalar input \mono{x}, returning the transformed value $f(x)$.</description>
    </method>
    <method name="unoperate" >
+     <description>Reverse the unary operation by applying the inverse mapping $f^{-1}$ to the scalar input \mono{f}, returning the original value $x$ such that operate$(x) = f$.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: f</argument>
-     <description>Reverse the unary operation by applying the inverse mapping $f^{-1}$ to the scalar input \mono{f}, returning the original value $x$ such that operate$(x) = f$.</description>
    </method>
   </functionClass>
   !!]

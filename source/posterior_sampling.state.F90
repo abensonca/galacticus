@@ -38,7 +38,6 @@ module Posterior_Sampling_State
     The state is updated at each MCMC step and queried by the likelihood function to evaluate the
     model at the proposed parameter values.</description>
    <default>simple</default>
-   <data>integer :: parameterCount, stepCount, chainIndexValue</data>
    <method name="parameterCountSet" >
     <description>Set the number of active parameters that this state vector will track, allocating internal storage for the parameter vector of the given dimension.</description>
     <type>void</type>
@@ -122,6 +121,7 @@ module Posterior_Sampling_State
     <argument>double precision, intent(in   ), dimension(:) :: stateVector</argument>
     <argument>logical         , intent(in   )               :: first</argument>
    </method>
+   <data>integer :: parameterCount, stepCount, chainIndexValue</data>
   </functionClass>
   !!]
 

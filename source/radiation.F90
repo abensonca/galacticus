@@ -68,7 +68,6 @@ module Radiation_Fields
     wavelength. Implementations include the cosmic microwave background, ultraviolet and X-ray ionizing
     backgrounds, and stellar radiation fields.</description>
    <default>null</default>
-   <data>type(rateCoefficient), allocatable, dimension(:) :: rateCoefficients</data>
    <method name="flux">
     <description>Return the flux (in units of ergs cm$^{-2}$ s$^{-1}$ Hz$^{-1}$ ster$^{-1}$) of the given radiation field.</description>
     <type>double precision</type>
@@ -103,6 +102,7 @@ module Radiation_Fields
      <type>logical</type>
      <pass>yes</pass>
    </method>
+   <data>type(rateCoefficient), allocatable, dimension(:) :: rateCoefficients</data>
   </functionClass>
   !!]
 

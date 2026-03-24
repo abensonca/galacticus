@@ -36,14 +36,6 @@ module Halo_Mass_Functions
     quantity in models of large-scale structure and galaxy formation, encoding the statistics of gravitational collapse from a
     given primordial density field.</description>
    <default>tinker2008</default>
-   <data>double precision                                    :: time_                         </data>
-   <data>class           (cosmologyParametersClass), pointer :: cosmologyParameters_ => null()</data>
-   <data>type            (treeNode                ), pointer :: node                 => null()</data>
-   <data>
-    <scope>module</scope>
-    <threadprivate>yes</threadprivate>
-    <content>class(haloMassFunctionClass), pointer :: globalSelf</content>
-   </data>
    <method name="differential" >
     <description>Return the differential halo mass function for \mono{mass} [$M_\odot$] at \mono{time} [Gyr].</description>
     <type>double precision</type>
@@ -57,9 +49,9 @@ module Halo_Mass_Functions
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
+    <modules>Numerical_Integration</modules>
     <argument>double precision          , intent(in   )                   :: time, massLow, massHigh</argument>
     <argument>type            (treeNode), intent(inout), target, optional :: node                   </argument>
-    <modules>Numerical_Integration</modules>
     <code>
      double precision             :: logMassHigh, logMassLow
      type            (integrator) :: integrator_
@@ -82,9 +74,9 @@ module Halo_Mass_Functions
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
+    <modules>Numerical_Integration</modules>
     <argument>double precision          , intent(in   )                   :: time, massLow, massHigh</argument>
     <argument>type            (treeNode), intent(inout), target, optional :: node                   </argument>
-    <modules>Numerical_Integration</modules>
     <code>
      double precision             :: logMassHigh, logMassLow
      type            (integrator) :: integrator_
@@ -106,6 +98,14 @@ module Halo_Mass_Functions
      return
     </code>
    </method>
+   <data>double precision                                    :: time_                         </data>
+   <data>class           (cosmologyParametersClass), pointer :: cosmologyParameters_ => null()</data>
+   <data>type            (treeNode                ), pointer :: node                 => null()</data>
+   <data>
+    <scope>module</scope>
+    <threadprivate>yes</threadprivate>
+    <content>class(haloMassFunctionClass), pointer :: globalSelf</content>
+   </data>
   </functionClass>
   !!]
 

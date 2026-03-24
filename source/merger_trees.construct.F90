@@ -52,6 +52,8 @@ module Merger_Tree_Construction
    </method>
    <method name="randomSequenceNonDeterministicWarn" >
     <description>Display a warning if the merger tree random number generator sequence is non-deterministic.</description>
+    <type>void</type>
+    <pass>yes</pass>
     <modules>
       <name>Display</name>
       <only>displayMessage, displayMagenta, displayReset</only>
@@ -64,8 +66,6 @@ module Merger_Tree_Construction
       <name>OMP_Lib</name>
       <only>OMP_Get_Max_Threads</only>
     </modules>
-    <type>void</type>
-    <pass>yes</pass>
     <argument>type(mergerTree), intent(inout) :: tree</argument>
     <code>
      logical, save :: nonDeterministicWarned=.false.

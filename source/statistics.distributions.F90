@@ -36,7 +36,6 @@ module Statistics_Distributions
     and computing likelihoods. Implementations include uniform, Gaussian, log-normal, Poisson, and
     truncated variants, with a numerical inverse-CDF fallback for arbitrary densities.</description>
    <default>uniform</default>
-   <data>class(randomNumberGeneratorClass), pointer :: randomNumberGenerator_ => null()</data>
    <destructor>
     <code>
      call distributionFunction1DFinalize(self)
@@ -44,24 +43,24 @@ module Statistics_Distributions
     </code>
    </destructor>
    <method name="density" >
+     <description>Return the probability density function $p(x)$ evaluated at the given value \mono{x}, representing the relative likelihood of the random variable taking that value.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Return the probability density function $p(x)$ evaluated at the given value \mono{x}, representing the relative likelihood of the random variable taking that value.</description>
    </method>
    <method name="cumulative" >
+     <description>Return the cumulative distribution function $P(x) = \int_{-\infty}^x p(x')\,\mathrm{d}x'$, giving the probability that the random variable takes a value less than or equal to \mono{x}.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Return the cumulative distribution function $P(x) = \int_{-\infty}^x p(x')\,\mathrm{d}x'$, giving the probability that the random variable takes a value less than or equal to \mono{x}.</description>
    </method>
    <method name="inverse" >
+     <description>Return the value of the independent variable corresponding to cumulative probability \mono{p}.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <selfTarget>yes</selfTarget>
-     <argument>double precision, intent(in   ) :: p</argument>
-     <description>Return the value of the independent variable corresponding to cumulative probability \mono{p}.</description>
      <modules>Root_Finder Error</modules>
+     <argument>double precision, intent(in   ) :: p</argument>
      <code>
        ! Numerically solve for the inverse.
        type            (rootFinder), save      :: finder
@@ -105,11 +104,11 @@ module Statistics_Distributions
      </code>
    </method>
    <method name="sample" >
+     <description>Return a random deviate drawn from this probability distribution, using the inverse CDF method by default (drawing a uniform random number and applying the quantile function).</description>
      <type>double precision</type>
      <pass>yes</pass>
-     <argument>class(randomNumberGeneratorClass), intent(inout), optional :: randomNumberGenerator_</argument>
-     <description>Return a random deviate drawn from this probability distribution, using the inverse CDF method by default (drawing a uniform random number and applying the quantile function).</description>
      <modules>Error</modules>
+     <argument>class(randomNumberGeneratorClass), intent(inout), optional :: randomNumberGenerator_</argument>
      <code>
       double precision :: uniformRandom
       ! Draw a random number uniformly from 0 to 1 and use the inverse of our self to get the
@@ -125,21 +124,22 @@ module Statistics_Distributions
      </code>
    </method>
    <method name="minimum" >
+     <description>Returns the minimum possible value (lower bound) of the support of this distribution, i.e., the smallest value $x$ for which the probability density is non-zero. Returns $-\infty$ by default.</description>
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Returns the minimum possible value (lower bound) of the support of this distribution, i.e., the smallest value $x$ for which the probability density is non-zero. Returns $-\infty$ by default.</description>
      <code>
        distributionFunction1DMinimum=-huge(1.0d0)
      </code>
    </method>
    <method name="maximum" >
+     <description>Returns the maximum possible value (upper bound) of the support of this distribution, i.e., the largest value $x$ for which the probability density is non-zero. Returns $+\infty$ by default.</description>
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Returns the maximum possible value (upper bound) of the support of this distribution, i.e., the largest value $x$ for which the probability density is non-zero. Returns $+\infty$ by default.</description>
      <code>
        distributionFunction1DMaximum=+huge(1.0d0)
      </code>
    </method>
+   <data>class(randomNumberGeneratorClass), pointer :: randomNumberGenerator_ => null()</data>
   </functionClass>
   !!]
 

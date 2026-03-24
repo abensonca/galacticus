@@ -43,7 +43,6 @@ module Stellar_Populations
     approximations are supported. The spectra method returns the associated \refClass{stellarPopulationSpectraClass}
     object for computing integrated luminosities.</description>
    <default>standard</default>
-   <data>integer(c_size_t) :: uniqueID_=-1_c_size_t</data>
    <method name="rateRecycling" >
     <description>Return the rate of mass recycling (per unit initial stellar mass formed, per unit time) from this stellar population back to the ISM over the age interval $[\mathrm{ageMinimum}, \mathrm{ageMaximum}]$ for the given elemental abundances.</description>
     <type>double precision</type>
@@ -90,6 +89,7 @@ module Stellar_Populations
     <type>class(stellarPopulationSpectraClass)</type>
     <pass>yes</pass>
    </method>
+   <data>integer(c_size_t) :: uniqueID_=-1_c_size_t</data>
   </functionClass>
   !!]
 

@@ -62,12 +62,12 @@
     (for \mono{X}$=2$ and 3). The \mono{redshift} parameters must list the redshifts of
     available outputs.
    </description>
-   <stateStore>
-     <stateStore variables="nodeOperator_" store="nodeOperatorStateStore_" restore="nodeOperatorStateRestore_" module="Functions_Global"/>
-   </stateStore>
    <deepCopy>
      <ignore variables="nodeOperator_"/>
    </deepCopy>
+   <stateStore>
+     <stateStore variables="nodeOperator_" store="nodeOperatorStateStore_" restore="nodeOperatorStateRestore_" module="Functions_Global"/>
+   </stateStore>
   </geometryLightcone>
   !!]
   type, extends(geometryLightconeClass) :: geometryLightconeSquare

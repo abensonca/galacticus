@@ -40,7 +40,6 @@ module Task_Evolve_Forests_Work_Shares
     (FCFS) dynamic scheduling and static pre-assignment, with load balancing optionally guided by
     tree processing time estimates from \refClass{metaTreeProcessingTimeClass}.</description>
    <default>FCFS</default>
-   <data>integer :: workerIDOffset_=-1, workerCount_=-1</data>
    <method name="forestNumber" >
     <description>Return the number of the forest to process.</description>
     <type>integer(c_size_t)</type>
@@ -68,6 +67,7 @@ module Task_Evolve_Forests_Work_Shares
      evolveForestsWorkShareWorkerCount=self%workerCount_
     </code>
    </method>
+   <data>integer :: workerIDOffset_=-1, workerCount_=-1</data>
   </functionClass>
   !!]
 

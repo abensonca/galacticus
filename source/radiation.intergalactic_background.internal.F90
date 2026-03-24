@@ -41,6 +41,9 @@
    <deepCopy>
      <ignore variables="accretionDiskSpectra_"/>
    </deepCopy>
+   <stateStore>
+     <stateStore variables="accretionDiskSpectra_" store="accretionDiskSpectraStateStore_" restore="accretionDiskSpectraStateRestore_" module="Functions_Global"/>
+   </stateStore>
   </radiationField>
   !!]
   type, extends(radiationFieldIntergalacticBackground) :: radiationFieldIntergalacticBackgroundInternal

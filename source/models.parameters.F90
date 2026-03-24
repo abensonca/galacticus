@@ -40,53 +40,53 @@ module Model_Parameters
     inference, and fixed parameters held at constant values.</description>
    <default>active</default>
    <method name="name">
+     <description>Return the name of this parameter as it appears in the Galacticus parameter file and in output metadata, used to identify the parameter when applying posterior sampler updates.</description>
      <type>type(varying_string)</type>
      <pass>yes</pass>
-     <description>Return the name of this parameter as it appears in the Galacticus parameter file and in output metadata, used to identify the parameter when applying posterior sampler updates.</description>
    </method>
    <method name="logPrior">
+     <description>Return the natural logarithm of the prior probability density evaluated at the physical parameter value \mono{x}, used in computing the log-posterior during Bayesian inference.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Return the natural logarithm of the prior probability density evaluated at the physical parameter value \mono{x}, used in computing the log-posterior during Bayesian inference.</description>
    </method>
    <method name="priorSample">
+     <description>Draw a random sample from the prior distribution for this parameter, returning a physical parameter value; used to initialize the posterior sampler or generate prior predictive samples.</description>
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Draw a random sample from the prior distribution for this parameter, returning a physical parameter value; used to initialize the posterior sampler or generate prior predictive samples.</description>
    </method>
    <method name="priorInvert">
-     <type>double precision</type>
-     <argument>double precision, intent(in   ) :: f</argument>
-     <pass>yes</pass>
      <description>Invert the prior, returning the parameter value given the cumulative probability.</description>
+     <type>double precision</type>
+     <pass>yes</pass>
+     <argument>double precision, intent(in   ) :: f</argument>
    </method>
    <method name="priorMinimum">
+     <description>Return the minimum non-zero value of the prior for this parameter.</description>
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Return the minimum non-zero value of the prior for this parameter.</description>
    </method>
    <method name="priorMaximum">
+     <description>Return the maximum non-zero value of the prior for this parameter.</description>
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Return the maximum non-zero value of the prior for this parameter.</description>
    </method>
    <method name="randomPerturbation">
+     <description>Return a random perturbation for this parameter.</description>
      <type>double precision</type>
      <pass>yes</pass>
-     <description>Return a random perturbation for this parameter.</description>
    </method>
    <method name="map">
+     <description>Apply the bijective mapping to transform the physical parameter value \mono{x} onto the unconstrained real line used by the posterior sampler (e.g.\ logarithm for positive-definite parameters).</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Apply the bijective mapping to transform the physical parameter value \mono{x} onto the unconstrained real line used by the posterior sampler (e.g.\ logarithm for positive-definite parameters).</description>
    </method>
    <method name="unmap">
+     <description>Apply the inverse bijective mapping to transform the sampler's unconstrained variable \mono{x} back to the physical parameter value used to evaluate the model.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: x</argument>
-     <description>Apply the inverse bijective mapping to transform the sampler's unconstrained variable \mono{x} back to the physical parameter value used to evaluate the model.</description>
    </method>
   </functionClass>
   !!]

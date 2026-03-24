@@ -38,7 +38,6 @@ module Statistics_Variograms
     space. Implementations include spherical, exponential, and Gaussian variogram families, with
     methods to fit model parameters and evaluate the semi-variance at any separation.</description>
    <default>spherical</default>
-   <data>double precision :: separationNormalization, semiVarianceNormalization</data>
    <method name="fit" >
      <description>Fit the variogram model parameters to the provided empirical semi-variance data (separation distances and corresponding semi-variances), using the default fitting strategy for this model.</description>
      <type>void</type>
@@ -64,8 +63,8 @@ module Statistics_Variograms
    <method name="modelInitialGuess" >
      <description>Provide an initial guess for the parameters, $C$, of the variogram model.</description>
      <type>double precision, allocatable, dimension(:)</type>
-     <argument>double precision, intent(in   ), dimension(:) :: separations, semiVariances</argument>
      <pass>yes</pass>
+     <argument>double precision, intent(in   ), dimension(:) :: separations, semiVariances</argument>
    </method>
    <method name="modelF" >
      <description>Evaluate the loss function, $f$, of the variogram model for the given parameters, $C$, and separations and semi-variances.</description>
@@ -99,6 +98,7 @@ module Statistics_Variograms
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: separation</argument>
    </method>
+   <data>double precision :: separationNormalization, semiVarianceNormalization</data>
   </functionClass>
   !!]
 

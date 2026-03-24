@@ -38,7 +38,6 @@ module Transfer_Functions
     that the linear power spectrum at late times is $P(k) \propto k^{n_s} T^2(k)$. Implementations may also return the
     wavenumber at which $T(k)$ is suppressed by a given factor, characterizing the small-scale cutoff scale.</description>
    <default>eisensteinHu1999</default>
-   <data>class(cosmologyParametersClass), pointer :: cosmologyParameters_ => null()</data>
    <method name="value" >
     <description>Return the transfer function for $k=$\mono{wavenumber} [Mpc$^{-1}$].</description>
     <type>double precision</type>
@@ -92,8 +91,8 @@ module Transfer_Functions
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
-    <argument>double precision, intent(in   ) :: mass</argument>
     <modules>Numerical_Constants_Math</modules>
+    <argument>double precision, intent(in   ) :: mass</argument>
     <code>
       double precision :: densityMatter
 
@@ -109,6 +108,7 @@ module Transfer_Functions
        &amp;                              )**(1.0d0/3.0d0)
     </code>
    </method>
+   <data>class(cosmologyParametersClass), pointer :: cosmologyParameters_ => null()</data>
   </functionClass>
   !!]
 

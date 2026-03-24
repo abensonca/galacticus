@@ -44,28 +44,16 @@ module Cosmological_Density_Field
     overdensity enters the Press-Schechter and excursion-set formalisms that predict the halo mass function
     and merger tree branching probabilities.</description>
    <default>sphericalCollapseClsnlssMttrCsmlgclCnstnt</default>
-   <data>integer         (kind_int8                    )              :: lastUniqueID                =  -1_kind_int8, lastTreeID                 =-1_kind_int8</data>
-   <data>double precision                                             :: criticalOverdensityTarget                  , mass                                    </data>
-   <data>double precision                                             :: time                                       , timeNow                    =-huge(0.0d0)</data>
-   <data>double precision                                             :: timeOfCollapsePrevious      =  -huge(0.0d0), criticalOverdensityPrevious=-huge(0.0d0)</data>
-   <data>double precision                                             :: massPrevious                =  -huge(0.0d0)                                          </data>
-   <data>type            (table1DLinearLinear          )              :: collapseThreshold                                                                    </data>
-   <data>double precision                                             :: collapseThresholdMinimum                   , collapseThresholdMaximum                </data>
-   <data>logical                                                      :: collapseThresholdInitialized=.false.                                                 </data>
-   <data>type            (treeNode                     ), pointer     :: node                                                                                 </data>
-   <data>logical                                                      :: massPresent                                , nodePresent                             </data>
-   <data>logical                                                      :: treePresent                                                                          </data>
-   <data>logical                                                      :: dependenciesInitialized     =  .false.     , isMassDependent_                        </data>
-   <data>logical                                                      :: isNodeDependent_                           , isTreeDependent_                        </data>
-   <data>class           (cosmologyFunctionsClass      ), pointer     :: cosmologyFunctions_         => null()                                                </data>
-   <data>class           (linearGrowthClass            ), pointer     :: linearGrowth_               => null()                                                </data>
-   <data>class           (cosmologicalMassVarianceClass), pointer     :: cosmologicalMassVariance_   => null()                                                </data>
-   <data>type            (rootFinder                   ), allocatable :: finderTimeOfCollapse                                                                 </data>
-   <data>
-    <scope>module</scope>
-    <threadprivate>yes</threadprivate>
-    <content>class(criticalOverdensityClass), pointer :: globalSelf => null()</content>
-   </data>
+   <destructor>
+    <modules>
+     <name>Events_Hooks</name>
+     <only>calculationResetEvent, openMPThreadBindingAllLevels</only>
+    </modules>
+    <code>
+     if (calculationResetEvent%isAttached(self,criticalOverdensityCalculationReset)) call calculationResetEvent%detach(self,criticalOverdensityCalculationReset)
+     return
+    </code>
+   </destructor>
    <method name="value" >
     <description>Return the linear theory critical overdensity $\delta_\mathrm{c}$ for gravitational collapse at the specified cosmic time and optional halo mass, accepting either a cosmic time or expansion factor to identify the epoch.</description>
     <type>double precision</type>
@@ -90,10 +78,10 @@ module Cosmological_Density_Field
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
+    <modules>Root_Finder Error</modules>
     <argument>double precision          , intent(in   ), optional         :: time      , expansionFactor</argument>
     <argument>logical                   , intent(in   ), optional         :: collapsing                 </argument>
     <argument>type            (treeNode), intent(inout), optional, target :: node                       </argument>
-    <modules>Root_Finder Error</modules>
     <code>
      double precision            , parameter :: massGuess        =1.0d+13, toleranceAbsolute=0.0d+00, &amp;
           &amp;                                 toleranceRelative=1.0d-06, massTiny         =1.0d-30
@@ -159,6 +147,29 @@ module Cosmological_Density_Field
     <type>logical</type>
     <pass>yes</pass>
    </method>
+   <data>integer         (kind_int8                    )              :: lastUniqueID                =  -1_kind_int8, lastTreeID                 =-1_kind_int8</data>
+   <data>double precision                                             :: countTimeCollapsePerUnit    =   1.0d4                                                </data>
+   <data>double precision                                             :: criticalOverdensityTarget                  , mass                                    </data>
+   <data>double precision                                             :: time                                       , timeNow                    =-huge(0.0d0)</data>
+   <data>double precision                                             :: timeOfCollapsePrevious      =  -huge(0.0d0), criticalOverdensityPrevious=-huge(0.0d0)</data>
+   <data>double precision                                             :: massPrevious                =  -huge(0.0d0)                                          </data>
+   <data>type            (table1DLinearLinear          )              :: collapseThreshold                                                                    </data>
+   <data>double precision                                             :: collapseThresholdMinimum                   , collapseThresholdMaximum                </data>
+   <data>logical                                                      :: collapseThresholdInitialized=.false.                                                 </data>
+   <data>type            (treeNode                     ), pointer     :: node                                                                                 </data>
+   <data>logical                                                      :: massPresent                                , nodePresent                             </data>
+   <data>logical                                                      :: treePresent                                                                          </data>
+   <data>logical                                                      :: dependenciesInitialized     =  .false.     , isMassDependent_                        </data>
+   <data>logical                                                      :: isNodeDependent_                           , isTreeDependent_                        </data>
+   <data>class           (cosmologyFunctionsClass      ), pointer     :: cosmologyFunctions_         => null()                                                </data>
+   <data>class           (linearGrowthClass            ), pointer     :: linearGrowth_               => null()                                                </data>
+   <data>class           (cosmologicalMassVarianceClass), pointer     :: cosmologicalMassVariance_   => null()                                                </data>
+   <data>type            (rootFinder                   ), allocatable :: finderTimeOfCollapse                                                                 </data>
+   <data>
+    <scope>module</scope>
+    <threadprivate>yes</threadprivate>
+    <content>class(criticalOverdensityClass), pointer :: globalSelf => null()</content>
+   </data>
    <autoHook>
     <modules>
      <name>Events_Hooks</name>
@@ -169,16 +180,6 @@ module Cosmological_Density_Field
      return
     </code>
    </autoHook>
-   <destructor>
-    <modules>
-     <name>Events_Hooks</name>
-     <only>calculationResetEvent, openMPThreadBindingAllLevels</only>
-    </modules>
-    <code>
-     if (calculationResetEvent%isAttached(self,criticalOverdensityCalculationReset)) call calculationResetEvent%detach(self,criticalOverdensityCalculationReset)
-     return
-    </code>
-   </destructor>
   </functionClass>
   !!]
 
@@ -243,21 +244,21 @@ module Cosmological_Density_Field
    <method name="pdf" >
     <description>Return the \gls{pdf} of the environmental overdensity for the given overdensity.</description>
     <type>double precision</type>
-    <argument>double precision, intent(in   ) :: overdensity</argument>
     <pass>yes</pass>
+    <argument>double precision, intent(in   ) :: overdensity</argument>
    </method>
    <method name="cdf" >
     <description>Return the \gls{cdf} of the environmental overdensity for the given overdensity.</description>
     <type>double precision</type>
-    <argument>double precision, intent(in   ) :: overdensity</argument>
     <pass>yes</pass>
+    <argument>double precision, intent(in   ) :: overdensity</argument>
    </method>
    <method name="overdensityLinearSet" >
     <description>Set the linear environmental overdensity for the given \mono{node}, allowing external code (e.g., constrained realization samplers) to assign a specific large-scale density to the node's host region.</description>
     <type>void</type>
+    <pass>yes</pass>
     <argument>type            (treeNode), intent(inout) :: node</argument>
     <argument>double precision          , intent(in   ) :: overdensity</argument>
-    <pass>yes</pass>
    </method>
    <method name="overdensityIsSettable" >
     <description>Return true if the environmental overdensity can be set externally via \mono{overdensityLinearSet}, allowing the caller to determine at runtime whether the environment model supports direct assignment.</description>
@@ -376,7 +377,6 @@ contains
     integer                                   , intent(  out), optional             :: status
     double precision                          , parameter                           :: toleranceRelative                =1.0d-12, toleranceAbsolute       =0.0d0, &
          &                                                                             fractionTimeCollapseGrowthMinimum=1.0d-03
-    integer                                   , parameter                           :: countPerUnit                     =10000
     double precision                          , allocatable  , dimension(:)         :: threshold
     double precision                                                                :: timeBigCrunch                            , timeGuess                     , &
          &                                                                             collapseThresholdMinimum                 , collapseThresholdMaximum      , &
@@ -491,14 +491,17 @@ contains
           ! Neither the mass or the node are provided, so we can use a simple tabulation of collapse thresholds for rapid
           ! inversion. Note that we do not tabulate lower than the requested threshold as in some cosmologies (e.g. with dark
           ! energy or a cosmological constant) this can require tabulating to extremely large cosmic times).
+          ! First confirm that the collapse time count is valid.
+          if (self%countTimeCollapsePerUnit <= 0.0d0) call Error_Report('`countTimeCollapsePerUnit` > 0 is required'//{introspection:location})
+          ! Now make the table if needed.
           remakeTable=.false.
           if (.not.self%collapseThresholdInitialized) then
              remakeTable                  =.true.
              self%collapseThresholdMinimum=      criticalOverdensity
              self%collapseThresholdMaximum=2.0d0*criticalOverdensity
-             countThresholds              =int(dble(countPerUnit)*(self%collapseThresholdMaximum-self%collapseThresholdMinimum))+2
+             countThresholds              =int(self%countTimeCollapsePerUnit*(self%collapseThresholdMaximum-self%collapseThresholdMinimum))+2
              ! Ensure the maximum of the table is precisely an integer number of steps above the minimum.
-             self%collapseThresholdMaximum=self%collapseThresholdMinimum+dble(countThresholds-1)/dble(countPerUnit)
+             self%collapseThresholdMaximum=self%collapseThresholdMinimum+dble(countThresholds-1)/self%countTimeCollapsePerUnit
              allocate(threshold(countThresholds))
              threshold=-huge(0.0d0)
           else if (criticalOverdensity < self%collapseThresholdMinimum .or. criticalOverdensity > self%collapseThresholdMaximum) then
@@ -508,12 +511,12 @@ contains
              ! Determine how many points the table must be extended by in each direction to span the new required range.
              countNewLower=0
              countNewUpper=0
-             if (self%collapseThresholdMinimum > collapseThresholdMinimum) countNewLower=int((+self%collapseThresholdMinimum-collapseThresholdMinimum)*dble(countPerUnit)+1.0d0)
-             if (self%collapseThresholdMaximum < collapseThresholdMaximum) countNewUpper=int((-self%collapseThresholdMaximum+collapseThresholdMaximum)*dble(countPerUnit)+1.0d0)
+             if (self%collapseThresholdMinimum > collapseThresholdMinimum) countNewLower=int((+self%collapseThresholdMinimum-collapseThresholdMinimum)*self%countTimeCollapsePerUnit+1.0d0)
+             if (self%collapseThresholdMaximum < collapseThresholdMaximum) countNewUpper=int((-self%collapseThresholdMaximum+collapseThresholdMaximum)*self%countTimeCollapsePerUnit+1.0d0)
              countThresholds=self%collapseThreshold%size()+countNewLower+countNewUpper
              ! Adjust the limits of the table by an integer number of steps.
-             self%collapseThresholdMinimum=self%collapseThresholdMinimum-dble(countNewLower)/dble(countPerUnit)
-             self%collapseThresholdMaximum=self%collapseThresholdMaximum+dble(countNewUpper)/dble(countPerUnit)
+             self%collapseThresholdMinimum=self%collapseThresholdMinimum-dble(countNewLower)/self%countTimeCollapsePerUnit
+             self%collapseThresholdMaximum=self%collapseThresholdMaximum+dble(countNewUpper)/self%countTimeCollapsePerUnit
              allocate(threshold(countThresholds))
              threshold=-huge(0.0d0)
              ! Populate the table with pre-existing results.

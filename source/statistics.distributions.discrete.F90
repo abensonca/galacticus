@@ -36,7 +36,6 @@ module Statistics_Distributions_Discrete
     are used for drawing random variates and computing Poisson or binomial likelihoods in galaxy
     statistics and N-body halo occupation analyses.</description>
    <default>binomial</default>
-   <data>class(randomNumberGeneratorClass), pointer :: randomNumberGenerator_ => null()</data>
    <destructor>
     <code>
      call distributionFunctionDiscrete1DFinalize(self)
@@ -44,35 +43,35 @@ module Statistics_Distributions_Discrete
     </code>
    </destructor>
    <method name="mass" >
+     <description>Return the probability mass function $p(x)$, giving the probability that the discrete random variable takes the integer value \mono{x}.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>integer, intent(in   ) :: x</argument>
-     <description>Return the probability mass function $p(x)$, giving the probability that the discrete random variable takes the integer value \mono{x}.</description>
    </method>
    <method name="massLogarithmic" >
+     <description>Return the natural logarithm of the probability mass function $\ln p(x)$ evaluated at integer \mono{x}, which is more numerically stable for extremely small probabilities than computing $p(x)$ directly.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>integer, intent(in   ) :: x</argument>
-     <description>Return the natural logarithm of the probability mass function $\ln p(x)$ evaluated at integer \mono{x}, which is more numerically stable for extremely small probabilities than computing $p(x)$ directly.</description>
    </method>
    <method name="cumulative" >
+     <description>Return the cumulative distribution function $P(x) = \sum_{x' \le x} p(x')$, giving the probability that the discrete random variable takes a value less than or equal to integer \mono{x}.</description>
      <type>double precision</type>
      <pass>yes</pass>
      <argument>integer, intent(in   ) :: x</argument>
-     <description>Return the cumulative distribution function $P(x) = \sum_{x' \le x} p(x')$, giving the probability that the discrete random variable takes a value less than or equal to integer \mono{x}.</description>
    </method>
    <method name="inverse" >
+     <description>Return the value of the independent variable corresponding to cumulative probability \mono{p}.</description>
      <type>integer</type>
      <pass>yes</pass>
      <argument>double precision, intent(in   ) :: p</argument>
-     <description>Return the value of the independent variable corresponding to cumulative probability \mono{p}.</description>
    </method>
    <method name="sample" >
+     <description>Return a random integer deviate drawn from this discrete probability distribution, using the inverse CDF method by default (drawing a uniform random number and applying the quantile function).</description>
      <type>integer</type>
      <pass>yes</pass>
-     <argument>class(randomNumberGeneratorClass), intent(inout), optional :: randomNumberGenerator_</argument>
-     <description>Return a random integer deviate drawn from this discrete probability distribution, using the inverse CDF method by default (drawing a uniform random number and applying the quantile function).</description>
      <modules>Error</modules>
+     <argument>class(randomNumberGeneratorClass), intent(inout), optional :: randomNumberGenerator_</argument>
      <code>
       double precision :: uniformRandom
       ! Draw a random number uniformly from 0 to 1 and use the inverse of our self to get the
@@ -88,15 +87,16 @@ module Statistics_Distributions_Discrete
      </code>
    </method>
    <method name="minimum" >
+     <description>Returns the minimum possible integer value in the support of this discrete distribution, i.e., the smallest integer $x$ for which the probability mass is non-zero.</description>
      <type>integer</type>
      <pass>yes</pass>
-     <description>Returns the minimum possible integer value in the support of this discrete distribution, i.e., the smallest integer $x$ for which the probability mass is non-zero.</description>
    </method>
    <method name="maximum" >
+     <description>Returns the maximum possible integer value in the support of this discrete distribution, i.e., the largest integer $x$ for which the probability mass is non-zero.</description>
      <type>integer</type>
      <pass>yes</pass>
-     <description>Returns the maximum possible integer value in the support of this discrete distribution, i.e., the largest integer $x$ for which the probability mass is non-zero.</description>
    </method>
+   <data>class(randomNumberGeneratorClass), pointer :: randomNumberGenerator_ => null()</data>
   </functionClass>
   !!]
 
