@@ -31,8 +31,8 @@ module Satellites_Tidal_Fields
   !![
   <functionClass>
    <name>satelliteTidalField</name>
-   <descriptiveName>Satellite halo tidal field models.</descriptiveName>
-   <description>Class providing models of tidal fields experienced by satellite halos — the second-order spatial
+   <descriptiveName>Satellite Tidal Fields</descriptiveName>
+   <description>Class providing models of tidal fields experienced by satellite halos---the second-order spatial
     derivatives of the gravitational potential that characterize the differential force stretching or compressing
     the satellite. The key quantity returned is the radial component $\Phi_\mathrm{rr}$ of the tidal tensor
     $\Phi_\mathrm{ab} = \partial^2\Phi/\partial x_a \partial x_b$, evaluated at the satellite's orbital position.

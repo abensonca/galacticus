@@ -28,7 +28,7 @@ module Merger_Tree_Walkers
   <functionClass>
    <name>mergerTreeWalker</name>
    <descriptiveName>Merger Tree Walkers</descriptiveName>
-   <description>Class providing walkers for merger trees — iterator objects that traverse the nodes of
+   <description>Class providing walkers for merger trees---iterator objects that traverse the nodes of
     a merger tree in a defined order. A walker maintains a current node pointer and advances it to the
     next node in the traversal sequence. Different implementations visit different subsets of nodes
     (all nodes, isolated halos only, branch-by-branch, construction-order) and are used by the evolver,

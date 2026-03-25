@@ -31,7 +31,7 @@ module Star_Formation_Rate_Surface_Density_Disks
   !![
   <functionClass>
    <name>starFormationRateSurfaceDensityDisks</name>
-   <descriptiveName>Surface density rates of star formation in disks.</descriptiveName>
+   <descriptiveName>Surface Density Rates of Star Formation in Disks</descriptiveName>
    <description>
     Class providing models of the radial profile of the star formation rate surface density
     $\dot{\Sigma}_\star(r)$ (in $\mathrm{M}_\odot \, \mathrm{Gyr}^{-1} \, \mathrm{Mpc}^{-2}$) in
@@ -69,7 +69,7 @@ module Star_Formation_Rate_Surface_Density_Disks
     </code>
    </method>
    <method name="rate" >
-    <description>Returns the star formation rate surface density (in $M_\odot$ Gyr$^{-1}$ Mpc$^{-2}$) in the disk component of \mono{node} at the given \mono{radius}.</description>
+    <description>Returns the star formation rate surface density (in $\mathrm{M}_\odot$ Gyr$^{-1}$ Mpc$^{-2}$) in the disk component of \mono{node} at the given \mono{radius}.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type            (treeNode), intent(inout) :: node</argument>

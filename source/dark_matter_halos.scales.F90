@@ -80,13 +80,13 @@ module Dark_Matter_Halo_Scales
     <argument>type(treeNode), intent(inout) :: node</argument>
    </method>
    <method name="densityMean" >
-    <description>Returns the mean interior density (in $M_\odot$ Mpc$^{-3}$) of the dark matter halo associated with \mono{node}, computed as the halo mass divided by its virial volume, representing the average density within the virial radius.</description>
+    <description>Returns the mean interior density (in $\mathrm{M}_\odot$ Mpc$^{-3}$) of the dark matter halo associated with \mono{node}, computed as the halo mass divided by its virial volume, representing the average density within the virial radius.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>
    </method>
    <method name="densityMeanGrowthRate" >
-    <description>Returns the time derivative of the mean interior density (in $M_\odot$ Mpc$^{-3}$ Gyr$^{-1}$) of the dark matter halo associated with \mono{node}, reflecting how the balance between mass accretion and volume growth changes over time.</description>
+    <description>Returns the time derivative of the mean interior density (in $\mathrm{M}_\odot$ Mpc$^{-3}$ Gyr$^{-1}$) of the dark matter halo associated with \mono{node}, reflecting how the balance between mass accretion and volume growth changes over time.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>

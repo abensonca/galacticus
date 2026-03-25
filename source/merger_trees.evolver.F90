@@ -34,7 +34,7 @@ module Merger_Trees_Evolve
   <functionClass>
    <name>mergerTreeEvolver</name>
    <descriptiveName>Merger Tree Evolvers</descriptiveName>
-   <description>Class providing evolvers for merger trees — the top-level driver that integrates the full
+   <description>Class providing evolvers for merger trees---the top-level driver that integrates the full
     system of ODEs for all nodes in a merger tree from an initial time to a specified end time. The evolver
     loops over nodes, determines the next timestep using the \refClass{mergerTreeEvolveTimestepClass}, calls
     the node evolver to advance each node, and handles events such as node promotions and mergers. It also

@@ -29,7 +29,7 @@ Implements a node property extractor class for absolute magnitudes.
     A property extractor that returns stellar absolute magnitudes (AB system) in all broadband
     filters currently activated in the stellar luminosities structure, for a specified galaxy
     \mono{component} (disk or spheroid). Output datasets are named
-    \mono{\meta{component}MagnitudeAbsoluteStellar:\meta{filterName}:\meta{filterType}} for each
+    \mono{componentMagnitudeAbsoluteStellar:filterName:filterType} for each
     active filter and output time. Non-positive luminosities (unresolved or dark galaxies) are
     returned as the maximum representable double-precision value.
    </description>

@@ -23,7 +23,7 @@
 
   !![
   <distributionFunction1D name="distributionFunction1DGamma">
-   <description>A 1D gamma distribution function class, implementing the gamma distribution $p(x) \propto x^{k-1} e^{-\lambda x}$ with shape parameter $k$ and rate parameter $\lambda$, optionally truncated to a finite interval $[x_\mathrm{min}, x_\mathrm{max}]$.</description>
+   <description>A 1D gamma distribution function class, implementing the gamma distribution $p(x) \propto x^{k-1} \mathrm{e}^{-\lambda x}$ with shape parameter $k$ and rate parameter $\lambda$, optionally truncated to a finite interval $[x_\mathrm{min}, x_\mathrm{max}]$.</description>
   </distributionFunction1D>
   !!]
   type, extends(distributionFunction1DClass) :: distributionFunction1DGamma

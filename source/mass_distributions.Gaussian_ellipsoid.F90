@@ -97,7 +97,7 @@ contains
     !![
     <inputParameter>
       <name>mass</name>
-      <description>The total mass (in $M_\odot$) of the triaxial Gaussian ellipsoid, used together with the scale lengths to set the peak density normalization of the distribution.</description>
+      <description>The total mass (in $\mathrm{M}_\odot$) of the triaxial Gaussian ellipsoid, used together with the scale lengths to set the peak density normalization of the distribution.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

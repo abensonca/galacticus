@@ -242,7 +242,7 @@ contains
 
   double precision function simpleDensityCritical(self)
     !!{
-    Return the present day critical density of the Universe in units of $M_\odot$/Mpc$^3$.
+    Return the present day critical density of the Universe in units of $\mathrm{M}_\odot$/Mpc$^3$.
     !!}
     use :: Numerical_Constants_Math        , only : Pi
     use :: Numerical_Constants_Astronomical, only : gravitationalConstant_internal

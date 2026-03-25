@@ -76,7 +76,7 @@ contains
     !![
     <inputParameter>
       <name>mass</name>
-      <description>The virial mass (in $M_\odot$) of the halo whose accretion flow is being modeled via the 2-halo correlation function.</description>
+      <description>The virial mass (in $\mathrm{M}_\odot$) of the halo whose accretion flow is being modeled via the 2-halo correlation function.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

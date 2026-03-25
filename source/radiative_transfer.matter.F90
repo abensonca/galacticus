@@ -43,7 +43,7 @@ module Radiative_Transfer_Matters
   <functionClass>
    <name>radiativeTransferMatter</name>
    <descriptiveName>Radiative Transfer Matter</descriptiveName>
-   <description>Class providing matter types for Monte Carlo radiative transfer calculations — the physical
+   <description>Class providing matter types for Monte Carlo radiative transfer calculations---the physical
     description of the gas and dust that photon packets interact with as they propagate through the
     computational domain. Methods populate domain cells with matter properties (density, temperature,
     ionization fractions), compute the absorption coefficient at each packet wavelength, accumulate

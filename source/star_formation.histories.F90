@@ -53,7 +53,7 @@ module Star_Formation_Histories
    <descriptiveName>Star Formation Histories</descriptiveName>
    <description>
     Class providing models for recording and outputting the star formation history of galaxy components
-    — the star formation rate as a function of lookback time, binned by stellar age and metallicity.
+   ---the star formation rate as a function of lookback time, binned by stellar age and metallicity.
     Implementations define how ages are discretized (fixed globally, fixed per output, or arbitrarily
     varying between galaxies), and provide methods to create, accumulate, and retrieve the history
     array. These histories are used to compute spectral energy distributions by convolving with stellar

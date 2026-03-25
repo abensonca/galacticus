@@ -38,13 +38,13 @@ module Accretion_Halo_Totals
    </description>
    <default>simple</default>
    <method name="accretionRate" >
-    <description>Return the total baryonic plus dark matter accretion rate (in $M_\odot$ Gyr$^{-1}$) onto the halo corresponding to the given \mono{node}, i.e. the mass which would be accreted in a dark matter-only universe scaled to the total mass.</description>
+    <description>Return the total baryonic plus dark matter accretion rate (in $\mathrm{M}_\odot$ Gyr$^{-1}$) onto the halo corresponding to the given \mono{node}, i.e. the mass which would be accreted in a dark matter-only universe scaled to the total mass.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>
    </method>
    <method name="accretedMass" >
-    <description>Return the cumulative total accreted mass (in $M_\odot$) in the halo corresponding to the given \mono{node}, representing all mass accreted over the halo's history.</description>
+    <description>Return the cumulative total accreted mass (in $\mathrm{M}_\odot$) in the halo corresponding to the given \mono{node}, representing all mass accreted over the halo's history.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>

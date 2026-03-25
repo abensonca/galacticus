@@ -35,9 +35,6 @@
   !![
   <radiationField name="radiationFieldIntergalacticBackgroundInternal">
    <description>A radiation field class that computes the intergalactic background radiation field internally, tracking the buildup of ultraviolet and infrared photons from stellar and other sources across cosmic time. The wavelength grid is controlled by \mono{[wavelengthsPerDecade]}, \mono{[wavelengthMinimum]}, and \mono{[wavelengthMaximum]}, while the time resolution is set by \mono{[timesPerDecade]}.</description>
-   <stateStore>
-     <stateStore variables="accretionDiskSpectra_" store="accretionDiskSpectraStateStore_" restore="accretionDiskSpectraStateRestore_" module="Functions_Global"/>
-   </stateStore>
    <deepCopy>
      <ignore variables="accretionDiskSpectra_"/>
    </deepCopy>

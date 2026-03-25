@@ -31,7 +31,7 @@ module Posterior_Sampling_Simulation
   <functionClass>
    <name>posteriorSampleSimulation</name>
    <descriptiveName>Posterior Sampling Simulations</descriptiveName>
-   <description>Class providing simulators for Bayesian posterior sampling — algorithms that draw samples from
+   <description>Class providing simulators for Bayesian posterior sampling---algorithms that draw samples from
     the joint posterior distribution of model parameters given observational constraints. Implementations
     orchestrate the Markov Chain Monte Carlo or other stochastic exploration strategy, managing the
     collection of walkers or chains, proposing new parameter vectors, evaluating the likelihood and prior,

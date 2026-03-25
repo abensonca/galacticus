@@ -34,7 +34,7 @@ module Posterior_Sample_Differential_Random_Jump
    <name>posteriorSampleDffrntlEvltnRandomJump</name>
    <descriptiveName>Posterior Sampling Differential Evolution Random Jumps</descriptiveName>
    <description>Class providing the stochastic random-jump component added to proposals in differential
-    evolution Markov chain Monte Carlo (DE-MCMC) posterior samplers — a small perturbation vector
+    evolution Markov chain Monte Carlo (DE-MCMC) posterior samplers---a small perturbation vector
     drawn from some distribution (e.g.\ uniform or Gaussian) that is added to the deterministic
     differential evolution proposal to ensure ergodicity and prevent the chain from becoming trapped
     in a lower-dimensional subspace. The \mono{sample} method returns a jump vector in parameter space,

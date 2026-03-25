@@ -23,7 +23,7 @@ Implements a galactic filter class which is the ``any'' combination of a set of 
 
   !![
   <galacticFilter name="galacticFilterAny">
-   <description>Implements a logical OR combination of multiple \refClass{galacticFilterClass} objects, passing nodes that satisfy at least one filter in the list, enabling flexible union-based selection criteria from simpler component filters.</description>
+   <description>Implements a logical \mono{OR} combination of multiple \refClass{galacticFilterClass} objects, passing nodes that satisfy at least one filter in the list, enabling flexible union-based selection criteria from simpler component filters.</description>
    <linkedList type="filterList" variable="filters" next="next" object="filter_" objectType="galacticFilterClass"/>
   </galacticFilter>
   !!]

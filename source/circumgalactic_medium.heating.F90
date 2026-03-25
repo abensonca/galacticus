@@ -33,10 +33,8 @@ module Circumgalactic_Medium_Heating
   <functionClass>
    <name>circumgalacticMediumHeating</name>
    <descriptiveName>Circumgalactic Medium Heating</descriptiveName>
-   <description>Class providing models of the heating rate (in $M_\odot$ km$^2$ s$^{-1}$) deposited into
-    the \gls{cgm} by processes other than direct AGN feedback (which is handled separately by the
-    \refClass{blackHoleCGMHeatingClass}). This includes contributions from supernova-driven outflows,
-    photoionization heating from the \gls{uvb}, and streaming cosmic rays. The \gls{cgm} heating
+   <description>Class providing models of the heating rate (in $\mathrm{M}_\odot$ km$^2$ s$^{-1}$) deposited into
+    the \gls{cgm}. This may include contributions from AGN feedback, for example. The \gls{cgm} heating
     rate directly affects the cooling rate and hence the gas supply available for star formation in
     the central galaxy.</description>
    <default>zero</default>

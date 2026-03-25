@@ -34,7 +34,7 @@ module Intergalactic_Medium_State
   <functionClass>
    <name>intergalacticMediumState</name>
    <descriptiveName>Intergalactic Medium State</descriptiveName>
-   <description>Class providing the thermal and ionization state of the \gls{igm} — the hydrogen and helium
+   <description>Class providing the thermal and ionization state of the \gls{igm}---the hydrogen and helium
     neutral, singly-ionized, and doubly-ionized fractions, the electron fraction, the temperature, and the
     electron-scattering optical depth as functions of cosmic time. These quantities evolve through the epoch
     of reionization and affect the cooling rates, photo-ionization suppression, and the UV background

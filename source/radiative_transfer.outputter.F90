@@ -34,7 +34,7 @@ module Radiative_Transfer_Outputters
   <functionClass>
    <name>radiativeTransferOutputter</name>
    <descriptiveName>Radiative Transfer Outputters</descriptiveName>
-   <description>Class providing outputters for Monte Carlo radiative transfer calculations — routines that
+   <description>Class providing outputters for Monte Carlo radiative transfer calculations---routines that
     collect and record photon packet statistics as packets propagate through the computational domain.
     Methods handle escaped photon packets (recording their wavelength, direction, and weight), output
     properties of the source distribution, and optionally record intermediate quantities such as the

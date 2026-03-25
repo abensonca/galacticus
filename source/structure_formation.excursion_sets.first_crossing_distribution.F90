@@ -35,7 +35,7 @@ module Excursion_Sets_First_Crossings
    <descriptiveName>Excursion Set First Crossing Statistics</descriptiveName>
    <description>
     Class providing the first-crossing distribution in the extended Press-Schechter excursion set
-    framework — the probability that a random walk in the density field, starting from variance
+    framework---the probability that a random walk in the density field, starting from variance
     $\sigma^2_0$ at time $t$, first crosses the collapse barrier at a larger variance $\sigma^2 >
     \sigma^2_0$. This distribution gives the halo mass function (via the unconditional first-crossing
     probability) and the conditional mass function of progenitors (via the transition rate between

@@ -29,14 +29,14 @@
     A star formation rate surface density class which assumes that the Kennicutt-Schmidt law holds
     \citep{schmidt_rate_1959,kennicutt_global_1998}:
     \begin{equation}
-    \dot{\Sigma}_\star = A \left({\Sigma_\mathrm{H} \over M_\odot \hbox{pc}^{-2}} \right)^N,
+    \dot{\Sigma}_\star = A \left({\Sigma_\mathrm{H} \over \mathrm{M}_\odot \hbox{pc}^{-2}} \right)^N,
     \end{equation}
     where $A=$\mono{[normalization]} and $N=$\mono{[exponent]} are parameters. Optionally, if
     the \mono{[truncate]} parameter is set to true, then the star formation rate is truncated below a critical
     surface density such that
     \begin{equation}
-    \dot{\Sigma}_\star = \left\{ \begin{array}{ll} A \left({\Sigma_\mathrm{H} \over M_\odot \hbox{pc}^{-2}} \right)^N &amp;
-    \hbox{ if } \Sigma_\mathrm{gas,disk} &gt; \Sigma_\mathrm{crit} \\ A \left({\Sigma_\mathrm{H} \over M_\odot \hbox{pc}^{-2}}
+    \dot{\Sigma}_\star = \left\{ \begin{array}{ll} A \left({\Sigma_\mathrm{H} \over \mathrm{M}_\odot \hbox{pc}^{-2}} \right)^N &amp;
+    \hbox{ if } \Sigma_\mathrm{gas,disk} &gt; \Sigma_\mathrm{crit} \\ A \left({\Sigma_\mathrm{H} \over \mathrm{M}_\odot \hbox{pc}^{-2}}
     \right)^N \left(\Sigma_\mathrm{gas,disk}/\Sigma_\mathrm{crit}\right)^\alpha &amp; \hbox{ otherwise.} \end{array} \right.
     \end{equation}
     Here, $\alpha=$\mono{[exponentTruncated]} and $\Sigma_\mathrm{crit}$ is a critical surface density for
@@ -46,8 +46,7 @@
     \end{equation}
     where $\kappa$ is the epicyclic frequency in the disk, $\sigma_\mathrm{gas}$ is the velocity dispersion of gas in the disk
     and $q_\mathrm{crit}=$\mono{[toomreParameterCritical]} is a dimensionless constant of order unity which
-    controls where the critical density occurs. We assume that $\sigma_\mathrm{gas}$ is a constant equal to {\normalfont
-    \ttfamily [velocityDispersionDiskGas]} and that the disk has a flat rotation curve such that $\kappa = \sqrt{2} V/R$.
+    controls where the critical density occurs. We assume that $\sigma_\mathrm{gas}$ is a constant equal to \mono{[velocityDispersionDiskGas]} and that the disk has a flat rotation curve such that $\kappa = \sqrt{2} V/R$.
    </description>
   </starFormationRateSurfaceDensityDisks>
   !!]
@@ -103,7 +102,7 @@ contains
       <name>normalization</name>
       <defaultSource>\citep{kennicutt_global_1998}</defaultSource>
       <defaultValue>0.147d0</defaultValue>
-      <description>The normalization of the Kennicutt-Schmidt star formation law [$M_\odot$ Gyr$^{-1}$pc$^{-2}$].</description>
+      <description>The normalization of the Kennicutt-Schmidt star formation law [$\mathrm{M}_\odot$ Gyr$^{-1}$pc$^{-2}$].</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
@@ -212,9 +211,9 @@ contains
 
   double precision function kennicuttSchmidtRate(self,node,radius)
     !!{
-    Returns the star formation rate surface density  (in $M_\odot$ Gyr$^{-1}$ Mpc$^{-2}$) for star formation in the galactic disk of \mono{node}. The disk is assumed to obey the Kennicutt-Schmidt law:
+    Returns the star formation rate surface density  (in $\mathrm{M}_\odot$ Gyr$^{-1}$ Mpc$^{-2}$) for star formation in the galactic disk of \mono{node}. The disk is assumed to obey the Kennicutt-Schmidt law:
     \begin{equation}
-    \Sigma_\star = A \left(x_\mathrm{H} {\Sigma_\mathrm{gas}\over M_\odot \hbox{pc}^{-2}}\right)^N,
+    \Sigma_\star = A \left(x_\mathrm{H} {\Sigma_\mathrm{gas}\over \mathrm{M}_\odot \hbox{pc}^{-2}}\right)^N,
     \end{equation}
     where $A=$\mono{[normalization]} and $N=$\mono{[exponent]}. Optionally, star formation is truncated for gas surface densities below a critical density of:
     \begin{equation}

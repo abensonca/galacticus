@@ -198,7 +198,7 @@ module Cosmology_Functions
     <argument>double precision, intent(in   ), optional :: distanceLuminosity, distanceModulus, distanceModulusKCorrected, redshift</argument>
    </method>
    <method name="redshiftFromExpansionFactor" >
-    <description>Returns the cosmological redshift $z = 1/a - 1$ corresponding to the given expansion factor $a$, where $a=1$ corresponds to the present day ($z=0$).</description>
+    <description>Returns the cosmological redshift, typically $z = 1/a - 1$, corresponding to the given expansion factor $a$, where $a=1$ corresponds to the present day ($z=0$).</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>double precision, intent(in   ) :: expansionFactor</argument>
@@ -208,7 +208,7 @@ module Cosmology_Functions
     </code>
    </method>
    <method name="expansionFactorFromRedshift" >
-    <description>Returns the cosmological expansion factor $a = 1/(1+z)$ corresponding to the given redshift $z$, where $a=1$ at the present day and $a\rightarrow 0$ at the Big Bang.</description>
+    <description>Returns the cosmological expansion factor, typically $a = 1/(1+z)$, corresponding to the given redshift $z$, where $a=1$ at the present day and $a\rightarrow 0$ at the Big Bang.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>double precision, intent(in   ) :: redshift</argument>

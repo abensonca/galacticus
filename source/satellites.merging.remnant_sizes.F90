@@ -33,7 +33,7 @@ module Satellite_Merging_Remnant_Sizes
   <functionClass>
    <name>mergerRemnantSize</name>
    <descriptiveName>Merger Remnant Sizes</descriptiveName>
-   <description>Class providing models of merger remnant sizes — the half-mass radius, circular velocity, and
+   <description>Class providing models of merger remnant sizes---the half-mass radius, circular velocity, and
     specific angular momentum of the spheroid formed when two galaxies merge. Energy and angular momentum
     conservation arguments relate the remnant size to the progenitor radii, masses, and orbital parameters.
     These quantities set the structural properties of merger-built bulges and determine the subsequent

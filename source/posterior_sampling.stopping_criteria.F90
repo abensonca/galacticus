@@ -32,7 +32,7 @@ module Posterior_Sampling_Stopping_Criteria
   <functionClass>
    <name>posteriorSampleStoppingCriterion</name>
    <descriptiveName>Posterior Sampling Stopping Criteria</descriptiveName>
-   <description>Class providing stopping criteria for Bayesian posterior sampling simulations — conditions that
+   <description>Class providing stopping criteria for Bayesian posterior sampling simulations---conditions that
     terminate the MCMC run before the convergence criterion is satisfied. Implementations might stop
     after a fixed number of steps, upon reaching a target log-likelihood, when an external signal is
     received, or when a user-defined condition on the simulation state is met. The \mono{stop} method

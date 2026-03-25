@@ -31,8 +31,8 @@ module Star_Formation_Rates_Disks
   !![
   <functionClass>
    <name>starFormationRateDisks</name>
-   <descriptiveName>Rates for star formation in disks.</descriptiveName>
-   <description>Class providing models of the star formation rate (in $M_\odot$ Gyr$^{-1}$) in the disk component of a
+   <descriptiveName>Star Formation Rates in Disks</descriptiveName>
+   <description>Class providing models of the star formation rate (in $\mathrm{M}_\odot$ Gyr$^{-1}$) in the disk component of a
     galaxy. The star formation rate typically depends on the available cold gas mass, the disk surface density, and the
     dynamical state of the disk. Implementations may integrate over surface density profiles, apply empirical Schmidt-Kennicutt
     type relations, or use dynamical instability thresholds to determine where and how quickly stars form.</description>

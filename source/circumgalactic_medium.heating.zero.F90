@@ -24,7 +24,7 @@
   !![
   <circumgalacticMediumHeating name="circumgalacticMediumHeatingZero">
    <description>
-    A null implementation of the circumgalactic medium heating class that returns zero heating rate at all times. Useful for disabling CGM heating while testing other physical processes or for models in which feedback heating of the hot gas halo is neglected.
+    A null implementation of the circumgalactic medium heating class that returns zero heating rate at all times. Useful for disabling \gls{cgm} heating while testing other physical processes or for models in which feedback heating of the hot gas halo is neglected.
    </description>
   </circumgalacticMediumHeating>
   !!]

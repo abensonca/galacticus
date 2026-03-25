@@ -32,7 +32,7 @@ module Output_Analysis_Distribution_Normalizers
   <functionClass>
    <name>outputAnalysisDistributionNormalizer</name>
    <descriptiveName>Output Analysis Distribution Normalizer</descriptiveName>
-   <description>Class providing normalizers for binned distributions in on-the-fly output analysis — operations
+   <description>Class providing normalizers for binned distributions in on-the-fly output analysis---operations
     that convert a raw histogram (e.g.\ galaxy counts per bin) into the desired normalized quantity
     (e.g.\ a number density per unit dex or a probability distribution). The \mono{normalize} method
     accepts the distribution array and its covariance matrix and modifies them in place, applying

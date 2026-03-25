@@ -97,7 +97,7 @@ contains
 
   double precision function mainBranchOnlyRate(self,node)
     !!{
-    Returns the cooling rate (in $M_\odot$ Gyr$^{-1}$) in the hot atmosphere for a model in which this rate is cut off
+    Returns the cooling rate (in $\mathrm{M}_\odot$ Gyr$^{-1}$) in the hot atmosphere for a model in which this rate is cut off
     in side branches.
     !!}
     implicit none

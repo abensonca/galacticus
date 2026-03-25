@@ -33,7 +33,7 @@ module Merger_Tree_Evolve_Profilers
   <functionClass>
    <name>mergerTreeEvolveProfiler</name>
    <descriptiveName>Merger Tree Evolver Profiler</descriptiveName>
-   <description>Class providing profilers for merger tree evolution — diagnostic objects that record
+   <description>Class providing profilers for merger tree evolution---diagnostic objects that record
     timing and performance information for each ODE integration step. For each differential evolution
     step, a profiler receives the node being evolved, the time range, the number of function
     evaluations, the property values and rates, and the wall-clock CPU time. This information can

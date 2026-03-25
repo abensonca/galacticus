@@ -37,7 +37,7 @@ module Halo_Mass_Functions
     given primordial density field.</description>
    <default>tinker2008</default>
    <method name="differential" >
-    <description>Return the differential halo mass function for \mono{mass} [$M_\odot$] at \mono{time} [Gyr].</description>
+    <description>Return the differential halo mass function for \mono{mass} [$\mathrm{M}_\odot$] at \mono{time} [Gyr].</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
@@ -45,7 +45,7 @@ module Halo_Mass_Functions
     <argument>type            (treeNode), intent(inout), optional :: node      </argument>
    </method>
    <method name="integrated" >
-    <description>Return the halo mass function at \mono{time} [Gyr] integrated between \mono{massLow} and \mono{massHigh} [$M_\odot$].</description>
+    <description>Return the halo mass function at \mono{time} [Gyr] integrated between \mono{massLow} and \mono{massHigh} [$\mathrm{M}_\odot$].</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
@@ -70,7 +70,7 @@ module Halo_Mass_Functions
     </code>
    </method>
    <method name="massFraction" >
-    <description>Return the halo mass fraction at \mono{time} [Gyr] integrated between \mono{massLow} and \mono{massHigh} [$M_\odot$].</description>
+    <description>Return the halo mass fraction at \mono{time} [Gyr] integrated between \mono{massLow} and \mono{massHigh} [$\mathrm{M}_\odot$].</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>

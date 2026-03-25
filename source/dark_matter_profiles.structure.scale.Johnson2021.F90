@@ -234,7 +234,7 @@ contains
       <defaultValue>0.797d0</defaultValue>
       <defaultSource>\citep{johnson_random_2021}</defaultSource>
       <source>parameters</source>
-      <description>A multiplicative boost factor applied to the orbital energy in the Johnson et al. (2021) scale radius model, calibrated to match the energy budget of merging halos in N-body simulations.</description>
+      <description>A multiplicative boost factor applied to the orbital energy in the \citep{johnson_random_2021} scale radius model, calibrated to match the energy budget of merging halos in N-body simulations.</description>
     </inputParameter>
     <inputParameter>
       <name>massExponent</name>
@@ -247,7 +247,7 @@ contains
       <name>peakHeightExponent</name>
       <defaultValue>0.0d0</defaultValue>
       <source>parameters</source>
-      <description>The exponent of the peak height $\nu$ (a dimensionless measure of halo rarity relative to the mass function) in the orbital energy term of the Johnson et al. (2021) scale radius model; controls the dependence of scale radius on halo formation epoch.</description>
+      <description>The exponent of the peak height $\nu$ (a dimensionless measure of halo rarity relative to the mass function) in the orbital energy term of the \citep{johnson_random_2021} scale radius model; controls the dependence of scale radius on halo formation epoch.</description>
     </inputParameter>
     <inputParameter>
       <name>unresolvedEnergy</name>
@@ -302,7 +302,7 @@ contains
       <name>applySubsamplingWeights</name>
       <defaultValue>.true.</defaultValue>
       <source>parameters</source>
-      <description>If true, account for halo subsampling weights when computing population-averaged quantities in the Johnson et al. (2021) model, necessary when the merger tree was constructed using subsampled halo catalogs.</description>
+      <description>If true, account for halo subsampling weights when computing population-averaged quantities in the \citep{johnson_random_2021} model, necessary when the merger tree was constructed using subsampled halo catalogs.</description>
     </inputParameter>
     <inputParameter>
       <name>acceptUnboundOrbits</name>

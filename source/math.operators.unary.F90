@@ -31,7 +31,7 @@ module Math_Operators_Unary
   <functionClass>
    <name>operatorUnary</name>
    <descriptiveName>Unary Operators</descriptiveName>
-   <description>Class providing unary operators — invertible scalar mappings $f: \mathbb{R} \to \mathbb{R}$
+   <description>Class providing unary operators---invertible scalar mappings $f: \mathbb{R} \to \mathbb{R}$
     that transform a value and can be reversed. Common examples include the identity, logarithm,
     and various monotonic reparametrizations. These operators are used in parameter estimation and
     output analysis to transform model parameters or property values before comparison with

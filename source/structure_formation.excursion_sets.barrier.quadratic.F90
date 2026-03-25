@@ -24,9 +24,6 @@ Implements a quadratic excursion set barrier class.
   !![
   <excursionSetBarrier name="excursionSetBarrierQuadratic">
    <description>
-  !!]
-
-  !![
     A quadratic excursion set barrier class. The barrier is given by:
     \begin{equation}
     B(S) = B_0 + B_1 S + B_2 S^2,

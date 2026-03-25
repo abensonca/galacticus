@@ -95,7 +95,7 @@ contains
     <inputParameter>
       <name>massResolution</name>
       <source>parameters</source>
-       <description>The mass resolution $\Delta M$ (in $M_\odot$) of the N-body simulation, representing the minimum halo mass that can be resolved; profiles of halos near this limit are softened to account for particle discreteness effects.</description>
+       <description>The mass resolution $\Delta M$ (in $\mathrm{M}_\odot$) of the N-body simulation, representing the minimum halo mass that can be resolved; profiles of halos near this limit are softened to account for particle discreteness effects.</description>
     </inputParameter>
     <inputParameter>
       <name>resolutionIsComoving</name>

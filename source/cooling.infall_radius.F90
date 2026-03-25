@@ -33,14 +33,14 @@ module Cooling_Infall_Radii
   <functionClass>
    <name>coolingInfallRadius</name>
    <descriptiveName>Cooling Infall Radius</descriptiveName>
-   <description>Class providing models of the infall radius (in Mpc) — the radius from which gas in the hot halo
-    actually falls in to join the galaxy disc or bulge. Different implementations take this to be, e.g., the
+   <description>Class providing models of the infall radius (in Mpc)---the radius from which gas in the hot halo
+    actually falls in to join the galaxy disk or bulge. Different implementations take this to be, e.g., the
     cooling radius, the minimum of the cooling and freefall radii, or some other combination. The infall radius
     and its growth rate determine the angular momentum of accreting gas and hence the size of the resulting
     galactic disc.</description>
    <default>coolingRadius</default>
    <method name="radius" >
-    <description>Return the infall radius (in units of Mpc) for the halo in \mono{node}, i.e. the radius within which cooled gas can fall inward and join the galaxy disc or bulge, determining the angular momentum of accreting gas.</description>
+    <description>Return the infall radius (in units of Mpc) for the halo in \mono{node}, i.e. the radius within which cooled gas can fall inward and join the galaxy disk or bulge, determining the angular momentum of accreting gas.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type(treeNode), intent(inout) :: node</argument>

@@ -32,7 +32,7 @@ module Satellite_Oprhan_Distributions
   <functionClass>
    <name>satelliteOrphanDistribution</name>
    <descriptiveName>Satellite Orphan Distributions</descriptiveName>
-   <description>Class providing distributions for orphan satellites — galaxies whose host dark matter subhalo has been
+   <description>Class providing distributions for orphan satellites---galaxies whose host dark matter subhalo has been
     disrupted or fallen below the mass resolution limit, so they no longer have an explicit subhalo tracked in the
     merger tree. Since orphans retain stellar mass and continue to orbit, their positions and velocities must be
     modelled statistically. Implementations return the spatial extent of the orphan distribution, and sample

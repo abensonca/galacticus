@@ -42,7 +42,7 @@ module Conditional_Mass_Functions
   <functionClass>
    <name>conditionalMassFunction</name>
    <descriptiveName>Conditional Mass Function</descriptiveName>
-   <description>Class providing empirical models of the conditional stellar mass function (CSMF) — the mean
+   <description>Class providing empirical models of the conditional stellar mass function (CSMF)---the mean
     number of galaxies $\langle N(M_\star|M_\mathrm{halo})\rangle$ of stellar mass $M_\star$ hosted by
     a dark matter halo of mass $M_\mathrm{halo}$, separately for central and satellite galaxies. The
     CSMF is the key ingredient of halo occupation distribution (HOD) and stellar-to-halo mass relation

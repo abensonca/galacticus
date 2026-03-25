@@ -64,7 +64,7 @@ contains
     <inputParameter>
       <name>mass</name>
       <defaultValue>100.0d0</defaultValue>
-      <description>The fixed mass (in $M_\odot$) assigned to all newly-formed seed black holes in this implementation, representing the initial black hole mass when a halo first forms a central black hole.</description>
+      <description>The fixed mass (in $\mathrm{M}_\odot$) assigned to all newly-formed seed black holes in this implementation, representing the initial black hole mass when a halo first forms a central black hole.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

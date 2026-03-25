@@ -31,7 +31,7 @@ module Intergalactic_Medium_Filtering_Masses
   <functionClass>
    <name>intergalacticMediumFilteringMass</name>
    <descriptiveName>Intergalactic Medium Filtering Mass</descriptiveName>
-   <description>Class providing models of the \gls{igm} filtering mass — the characteristic halo mass scale below
+   <description>Class providing models of the \gls{igm} filtering mass---the characteristic halo mass scale below
     which photo-ionization heating of the \gls{igm} suppresses gas accretion. Photo-ionization by the UV
     background raises the \gls{igm} temperature to $\sim 10^4$~K, increasing the Jeans mass and preventing
     low-mass halos from accreting their full cosmic baryon fraction. Implementations return the filtering mass

@@ -28,7 +28,7 @@ Implements an intracluster medium cooling power in band property extractor class
   !![
   <nodePropertyExtractor name="nodePropertyExtractorICMCoolingPowerInBand">
    <description>A property extractor that returns the fraction of the hot halo (ICM) radiative
-    cooling power emitted within a specified X-ray photon energy band — the ratio of in-band to
+    cooling power emitted within a specified X-ray photon energy band---the ratio of in-band to
     bolometric cooling luminosity, integrated over the virial radius. The \mono{energyLow} and
     \mono{energyHigh} parameters specify the energy band boundaries in keV (e.g.\ 0.5--2.0~keV for
     soft X-ray). The \mono{label} suffix distinguishes multiple instances of this extractor.

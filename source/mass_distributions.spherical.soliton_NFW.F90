@@ -110,12 +110,12 @@
      </inputParameter>
      <inputParameter>
        <name>densitySolitonCentral</name>
-       <description>The central density (in $M_\odot$/Mpc$^3$) of the solitonic core at $r=0$, which sets the normalization of the soliton density profile $\rho(r) = \rho_c [1+(r/r_c)^2]^{-8}$.</description>
+       <description>The central density (in $\mathrm{M}_\odot$/Mpc$^3$) of the solitonic core at $r=0$, which sets the normalization of the soliton density profile $\rho(r) = \rho_\mathrm{c} [1+(r/r_c)^2]^{-8}$.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>
        <name>densityNormalizationNFW</name>
-       <description>The density normalization $\rho_0$ (in $M_\odot$/Mpc$^3$) of the outer NFW component, setting the amplitude of the $\rho(r) = \rho_0/[(r/r_s)(1+r/r_s)^2]$ profile.</description>
+       <description>The density normalization $\rho_0$ (in $\mathrm{M}_\odot$/Mpc$^3$) of the outer NFW component, setting the amplitude of the $\rho(r) = \rho_0/[(r/r_\mathrm{s})(1+r/r_\mathrm{s})^2]$ profile.</description>
        <source>parameters</source>
      </inputParameter>
      <inputParameter>

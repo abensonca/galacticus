@@ -32,15 +32,15 @@ module Model_Parameters
   <functionClass>
    <name>modelParameter</name>
    <descriptiveName>Model Parameters</descriptiveName>
-   <description>Class providing model parameters for Bayesian inference — the individual free parameters of a
-    Galacticus model that are explored during parameter estimation (e.g.\ via MCMC). Each parameter has a name,
+   <description>Class providing model parameters for Bayesian inference---the individual free parameters of a
+    \glc\ model that are explored during parameter estimation (e.g.\ via MCMC). Each parameter has a name,
     a prior distribution (with \mono{logPrior}, \mono{priorSample}, \mono{priorInvert}, \mono{priorMinimum},
     and \mono{priorMaximum} methods), and a bijective mapping to an unconstrained real line for efficient
     sampling (via \mono{map}/\mono{unmap}). Implementations include active parameters that vary during
     inference, and fixed parameters held at constant values.</description>
    <default>active</default>
    <method name="name">
-     <description>Return the name of this parameter as it appears in the Galacticus parameter file and in output metadata, used to identify the parameter when applying posterior sampler updates.</description>
+     <description>Return the name of this parameter as it appears in the \glc\ parameter file and in output metadata, used to identify the parameter when applying posterior sampler updates.</description>
      <type>type(varying_string)</type>
      <pass>yes</pass>
    </method>

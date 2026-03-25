@@ -31,12 +31,12 @@ module Star_Formation_Active_Masses
   !![
   <functionClass>
    <name>starFormationActiveMass</name>
-   <descriptiveName>Active masses for star formation</descriptiveName>
+   <descriptiveName>Active Masses for Star Formation</descriptiveName>
    <description>Class providing models of the actively star-forming gas mass in a galactic component —
-    the mass (in $M_\odot$) of gas that is eligible to form stars, which may differ from the total
+    the mass (in $\mathrm{M}_\odot$) of gas that is eligible to form stars, which may differ from the total
     ISM mass depending on the star formation model. For example, only molecular gas or gas above a
     threshold density may be considered active. This active mass is passed to the star formation
-    rate law to determine the overall rate of star formation in the disc or spheroid, and is the
+    rate law to determine the overall rate of star formation in the disk or spheroid, and is the
     key coupling between the gas reservoir and the stellar mass growth rate.</description>
    <default>totalISM</default>
    <method name="massActive" >

@@ -34,7 +34,7 @@ module Merger_Tree_Construction
    <name>mergerTreeConstructor</name>
    <descriptiveName>Merger Tree Constructors</descriptiveName>
    <description>
-    Class providing merger tree constructors — any process by which a representation of a dark matter
+    Class providing merger tree constructors---any process by which a representation of a dark matter
     halo merger tree is created and made available within \glc\ for subsequent galaxy formation
     calculations. Implementations include stochastic Monte Carlo tree building algorithms (which
     generate trees on-the-fly from excursion set merger rates), reading pre-computed trees from N-body

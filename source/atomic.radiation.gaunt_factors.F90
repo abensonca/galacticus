@@ -31,7 +31,7 @@ module Atomic_Radiation_Gaunt_Factors
   <functionClass>
    <name>gauntFactor</name>
    <descriptiveName>Gaunt Factors</descriptiveName>
-   <description>Class providing thermally averaged Gaunt factors $\bar{g}(T, Z, N_e)$ for free-free (bremsstrahlung)
+   <description>Class providing thermally averaged Gaunt factors $\bar{g}(T, Z, N_\mathrm{e})$ for free-free (bremsstrahlung)
     radiation from a plasma of given atomic number and ionization state at temperature $T$. Gaunt factors are quantum
     mechanical correction factors to the classical free-free emission rate and enter into the computation of
     bremsstrahlung cooling and thermal emission spectra from hot gas.</description>

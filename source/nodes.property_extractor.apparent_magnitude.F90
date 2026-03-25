@@ -32,7 +32,7 @@ Implements a node property extractor class for apparent magnitudes.
     \mono{component} (disk or spheroid). The distance modulus is computed from the luminosity
     distance (from \refClass{cosmologyFunctionsClass}) with a $+2.5\log_{10}(1+z)$ K-correction
     for photon frequency compression. Output dataset names follow the pattern
-    \mono{\meta{component}MagnitudeApparentStellar:\meta{filterName}:\meta{filterType}}.
+    \mono{componentMagnitudeApparentStellar:filterName:filterType}.
    </description>
   </nodePropertyExtractor>
   !!]

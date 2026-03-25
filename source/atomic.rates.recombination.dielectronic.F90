@@ -32,7 +32,7 @@ module Atomic_Rates_Recombination_Dielectronic
   !![
   <functionClass>
    <name>atomicRecombinationRateDielectronic</name>
-   <descriptiveName>Atomic dielectronic recombination rates.</descriptiveName>
+   <descriptiveName>Atomic Dielectronic Recombination Rates</descriptiveName>
    <description>Class providing dielectronic recombination rate coefficients (in cm$^3$ s$^{-1}$) for ions of given
     atomic number and electron number at a specified electron temperature. Dielectronic recombination proceeds via
     simultaneous capture of a free electron and excitation of a bound electron, followed by radiative stabilization;

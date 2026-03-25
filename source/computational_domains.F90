@@ -43,12 +43,11 @@ module Computational_Domains
   <functionClass>
    <name>computationalDomain</name>
    <descriptiveName>Computational Domains</descriptiveName>
-   <description>Class providing computational domains for Monte Carlo radiative transfer calculations —
-    discretized spatial grids that partition the simulation volume into cells, each carrying absorption
-    and emission properties. A computational domain supports iterating over cells, locating a position
-    within its cell structure, computing ray path lengths to cell boundaries, accumulating photon
-    packet absorptions, and solving for the local ionization and temperature state. Implementations
-    include Cartesian and spherical grids.</description>
+   <description>Class providing computational domains for Monte Carlo radiative transfer calculations--- discretized spatial grids
+    that partition the simulation volume into cells, each carrying absorption and emission properties. A computational domain
+    supports iterating over cells, locating a position within its cell structure, computing ray path lengths to cell boundaries,
+    accumulating photon packet absorptions, and solving for the local ionization and temperature state. Implementations include
+    Cartesian and spherical grids.</description>
    <default>cartesian3D</default>
    <method name="iterator" >
     <description>Return an iterator which can be used to iterate over the domain.</description>
@@ -57,12 +56,14 @@ module Computational_Domains
     <argument>class(domainIterator), intent(inout), allocatable :: iterator</argument>
    </method>
    <method name="initialize" >
-    <description>Initialize the computational domain, setting up internal data structures and allocating resources required before radiative transfer iterations begin.</description>
+    <description>Initialize the computational domain, setting up internal data structures and allocating resources required before
+    radiative transfer iterations begin.</description>
     <type>void</type>
     <pass>yes</pass>
    </method>
    <method name="reset" >
-    <description>Reset the computational domain state prior to beginning a new radiative transfer iteration, clearing accumulated photon packet statistics while preserving the domain geometry and cell structure.</description>
+    <description>Reset the computational domain state prior to beginning a new radiative transfer iteration, clearing accumulated
+    photon packet statistics while preserving the domain geometry and cell structure.</description>
     <type>void</type>
     <pass>yes</pass>
    </method>

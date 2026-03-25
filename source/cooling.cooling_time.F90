@@ -35,12 +35,12 @@ module Cooling_Times
   !![
   <functionClass>
    <name>coolingTime</name>
-   <descriptiveName>Cooling times.</descriptiveName>
+   <descriptiveName>Cooling Times</descriptiveName>
    <description>Class providing models of the cooling time (in Gyr) for gas in the hot halo surrounding a galaxy,
     defined as the ratio of the thermal energy density to the radiative cooling rate. Given temperature, density,
-    elemental abundances, chemical species densities, and an ambient radiation field, each implementation evaluates
+    elemental abundances, chemical species densities, and an ambient radiation field, implementations typically evaluate
     $t_\mathrm{cool} = (3/2) n k_\mathrm{B} T / \mathcal{L}$. The logarithmic gradients with respect to density
-    and temperature are also provided for use in stability analyses and implicit ODE solvers that integrate the
+    and temperature are also provided for use in implicit ODE solvers that integrate the
     cooling flow equations.</description>
    <default>simple</default>
    <method name="time" >

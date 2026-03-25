@@ -30,7 +30,7 @@ module Atomic_Cross_Sections_Ionization_Photo
   !![
   <functionClass>
    <name>atomicCrossSectionIonizationPhoto</name>
-   <descriptiveName>Atomic cross sections for photo-ionization.</descriptiveName>
+   <descriptiveName>Atomic Cross-sections for Photo-ionization</descriptiveName>
    <description>Class providing photo-ionization cross sections (in cm$^2$) for atoms of a given atomic number in a
     specified ionization state and electron shell, as a function of photon wavelength (in \AA). These cross sections
     are used in radiative transfer and \gls{igm} ionization calculations to compute the rate at which photons are

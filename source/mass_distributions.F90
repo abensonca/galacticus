@@ -40,7 +40,7 @@ module Mass_Distributions
   <functionClass>
    <name>massDistribution</name>
    <descriptiveName>Mass Distributions</descriptiveName>
-   <description>Class providing mass distributions — fully general descriptions of the spatial distribution of mass
+   <description>Class providing mass distributions---fully general descriptions of the spatial distribution of mass
     (dark matter, gas, stars, or black holes) in a galaxy or halo. Implementations provide the density profile
     $\rho(\mathbf{x})$, gravitational potential $\Phi(\mathbf{x})$, enclosed mass $M(r)$, surface density, rotation
     curve, and velocity dispersion via the Jeans equation. The class also tracks the component and mass type of the
@@ -669,7 +669,7 @@ module Mass_Distributions
   <functionClass>
    <name>kinematicsDistribution</name>
    <descriptiveName>Kinematics Distributions</descriptiveName>
-   <description>Class providing kinematics distributions for mass distribution components — the temperature,
+   <description>Class providing kinematics distributions for mass distribution components---the temperature,
     velocity dispersion, and mean radial velocity of particles (or fluid elements) as a function of position.
     For collisional (gaseous) components the temperature profile enters the cooling and feedback calculations;
     for collisionless (stellar and dark matter) components the velocity dispersion is computed by solving the
@@ -743,7 +743,7 @@ module Mass_Distributions
     </code>
    </method>
    <method name="jeansEquationIntegrand" >
-    <description>Evaluate the integrand of the Jeans equation at the given \mono{radius}, returning $GM(r)\rho(r)/r^2$ needed for numerical integration of the spherical Jeans equation to obtain the line-of-sight velocity dispersion.</description>
+    <description>Evaluate the integrand of the Jeans equation at the given \mono{radius}, returning $\mathrm{G}M(r)\rho(r)/r^2$ needed for numerical integration of the spherical Jeans equation to obtain the line-of-sight velocity dispersion.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <modules>Numerical_Constants_Astronomical Coordinates</modules>
@@ -817,7 +817,7 @@ module Mass_Distributions
   <functionClass>
    <name>massDistributionHeating</name>
    <descriptiveName>Heating of Mass Distributions</descriptiveName>
-   <description>Class providing heating models for mass distributions — the specific energy deposited into the
+   <description>Class providing heating models for mass distributions---the specific energy deposited into the
     dark matter or stellar distribution as a function of radius, arising from processes such as tidal heating,
     dynamical friction, or baryonic feedback. The specific energy and its radial gradient are used to modify the
     density profile of the mass distribution, capturing the effect of non-gravitational energy injection on the

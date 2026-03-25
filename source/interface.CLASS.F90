@@ -39,7 +39,7 @@ module Interfaces_CLASS
   !![
   <enumeration>
    <name>classSpecies</name>
-   <description>Enumeration of particle species tracked by the CLASS Boltzmann code when computing transfer functions: \normalfont\ttfamily photons\normalfont, \normalfont\ttfamily darkMatter\normalfont, and \normalfont\ttfamily baryons\normalfont, used to select which species' transfer function is returned.</description>
+   <description>Enumeration of particle species tracked by the CLASS Boltzmann code when computing transfer functions: \mono{photons}, \mono{darkMatter}, and \mono{baryons}, used to select which species' transfer function is returned.</description>
    <visibility>public</visibility>
    <indexing>1</indexing>
    <entry label="photons"   />

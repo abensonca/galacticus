@@ -32,7 +32,7 @@ module NBody_Operators
   <functionClass>
    <name>nbodyOperator</name>
    <descriptiveName>N-Body Simulation Data Operators</descriptiveName>
-   <description>Class providing operators that act on data from N-body simulations — post-processing
+   <description>Class providing operators that act on data from N-body simulations---post-processing
     transformations applied sequentially to the \mono{nBodyData} objects imported by
     \refClass{nbodyImporterClass}. Typical operations include computing halo masses, spin parameters,
     concentrations, merger histories, or galaxy occupation fractions from the raw particle data.

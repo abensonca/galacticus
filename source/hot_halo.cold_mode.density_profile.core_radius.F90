@@ -34,7 +34,7 @@ module Hot_Halo_Cold_Mode_Density_Core_Radii
    <descriptiveName>Cold Mode Hot Halo Mass Distributions Core Radii</descriptiveName>
    <description>Class providing the core radius (in Mpc) for cored cold-mode hot halo density profiles.
     Analogous to the \refClass{hotHaloMassDistributionCoreRadiusClass} for the hot component, this sets the
-    inner flattening radius for the cold-mode gas distribution. The core radius is typically expressed as a
+    inner flattening radius for the cold-mode gas distribution. The core radius mayb be expressed, for example, as a
     fraction of a characteristic halo length scale (e.g.\ virial radius) and affects the central density and
     cooling rate of the cold-mode component.</description>
    <default>virialFraction</default>

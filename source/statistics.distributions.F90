@@ -29,9 +29,9 @@ module Statistics_Distributions
   <functionClass>
    <name>distributionFunction1D</name>
    <descriptiveName>One-dimensional Distribution Functions</descriptiveName>
-   <description>Class providing probability distribution functions of a single continuous variable — the
+   <description>Class providing probability distribution functions of a single continuous variable---the
     probability density $p(x)$, the cumulative distribution function $P(x) = \int_{-\infty}^x p(x')\,\mathrm{d}x'$,
-    and its inverse $x(P)$ (the quantile function). These distributions are used throughout Galacticus
+    and its inverse $x(P)$ (the quantile function). These distributions are used throughout \glc\
     for drawing random variates (via the inverse CDF method), defining priors over model parameters,
     and computing likelihoods. Implementations include uniform, Gaussian, log-normal, Poisson, and
     truncated variants, with a numerical inverse-CDF fallback for arbitrary densities.</description>

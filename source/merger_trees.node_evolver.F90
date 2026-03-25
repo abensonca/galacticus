@@ -34,7 +34,7 @@ module Merger_Trees_Evolve_Node
   <functionClass>
    <name>mergerTreeNodeEvolver</name>
    <descriptiveName>Merger Tree Node Evolvers</descriptiveName>
-   <description>Class providing evolvers for individual nodes in a merger tree — the objects responsible
+   <description>Class providing evolvers for individual nodes in a merger tree---the objects responsible
     for integrating the ODEs that govern the physical properties of a single halo or galaxy from one
     timestep to the next. The node evolver advances all state variables (mass, spin, metallicity, etc.)
     using the relevant physics modules and handles special events such as node promotion (when a node's

@@ -18,7 +18,7 @@
 !!    along with Galacticus.  If not, see <http://www.gnu.org/licenses/>.
 
 !!{
-Contains a module which provides IO in \gls{irate} format. The \gls{irate} (Initial Conditions Reformat and Analysis Tool Environment)
+Contains a module which provides IO in \gls{irate} format. The \gls{irate} (IRvine Astrophysical simulaTion structurE)
 format is an HDF5-based format for storing halo catalogs and simulation data, with standardized groups for snapshots,
 cosmological parameters, and simulation properties.
 !!}

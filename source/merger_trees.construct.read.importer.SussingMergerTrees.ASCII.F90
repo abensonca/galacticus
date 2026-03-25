@@ -118,7 +118,7 @@
   !![
   <enumeration>
    <name>sussingHaloFormat</name>
-   <description>Enumeration of supported halo catalog file format versions for the ``Sussing Merger Trees'' ASCII importer: \normalfont\ttfamily old\normalfont and \normalfont\ttfamily new\normalfont refer to distinct AHF column layouts, while \normalfont\ttfamily all\normalfont accepts either format.</description>
+   <description>Enumeration of supported halo catalog file format versions for the ``Sussing Merger Trees'' ASCII importer: \mono{old} and \mono{new} refer to distinct AHF column layouts, while \mono{all} accepts either format.</description>
    <entry label="old"/>
    <entry label="new"/>
    <entry label="all"/>

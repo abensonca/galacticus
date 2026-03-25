@@ -25,7 +25,7 @@ XPath-like element lookup, data array extraction, and XInclude reference resolut
 module IO_XML
   !!{
   Implements various utility functions for extracting data from XML files using the FoX DOM library, including element
-  search by tag name, array data reading, XPath-style path traversal, and recursive resolution of {\tt xi:include} directives.
+  search by tag name, array data reading, XPath-style path traversal, and recursive resolution of \mono{xi:include} directives.
   !!}
   use :: FoX_dom           , only : node
   use :: ISO_Varying_String, only : varying_string
@@ -57,7 +57,7 @@ module IO_XML
   
   type :: xincludeNode
      !!{
-     Type used to track a pending {\tt xi:include} element while resolving XInclude references during XML parsing, storing
+     Type used to track a pending \mono{xi:include} element while resolving XInclude references during XML parsing, storing
      the parent node, the include element itself, the file to be included, and an optional XPointer expression.
      !!}
      type(node          ), pointer :: nodeParent => null(), nodeXInclude => null()

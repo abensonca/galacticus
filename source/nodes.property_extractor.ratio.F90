@@ -23,7 +23,7 @@ Implements a ratio output analysis property extractor class.
 
   !![
   <nodePropertyExtractor name="nodePropertyExtractorRatio">
-   <description>A property extractor that returns the ratio of two scalar node properties — the
+   <description>A property extractor that returns the ratio of two scalar node properties---the
     value extracted by \mono{nodePropertyExtractorNumerator} divided by that extracted by
     \mono{nodePropertyExtractorDenominator}. The output dataset \mono{name} and \mono{description}
     are specified directly as parameters, allowing arbitrary dimensionless ratios (e.g.\ disk-to-total

@@ -37,12 +37,11 @@ module Cosmological_Density_Field
   <functionClass>
    <name>criticalOverdensity</name>
    <descriptiveName>Critical Overdensity</descriptiveName>
-   <description>Object providing critical overdensities for gravitational collapse — the linear theory overdensity
-    $\delta_\mathrm{c}$ that a region must have at the present epoch in order to have collapsed by a given
-    cosmic time. In the Einstein-de~Sitter cosmology $\delta_\mathrm{c} \approx 1.686$; implementations may
-    include corrections for dark energy, ellipsoidal collapse, or environmental density. The critical
-    overdensity enters the Press-Schechter and excursion-set formalisms that predict the halo mass function
-    and merger tree branching probabilities.</description>
+   <description>Object providing critical overdensities for gravitational collapse---the linear theory overdensity
+    $\delta_\mathrm{c}$ that a region must have in order to have collapsed by a given cosmic time. In the Einstein-de~Sitter
+    cosmology $\delta_\mathrm{c} \approx 1.686$; implementations may include corrections for dark energy, ellipsoidal collapse, or
+    environmental density. The critical overdensity enters the Press-Schechter and excursion-set formalisms that predict the halo
+    mass function and merger tree branching probabilities.</description>
    <default>sphericalCollapseClsnlssMttrCsmlgclCnstnt</default>
    <destructor>
     <modules>
@@ -187,7 +186,7 @@ module Cosmological_Density_Field
   <functionClass>
    <name>haloEnvironment</name>
    <descriptiveName>Halo Environment</descriptiveName>
-   <description>Class providing models of the large-scale environment of dark matter halos — the linear and
+   <description>Class providing models of the large-scale environment of dark matter halos---the linear and
     non-linear overdensity of the surrounding density field on a characteristic smoothing scale (typically
     several Mpc). Environmental overdensity modulates halo formation rates (assembly bias), the critical
     overdensity for collapse, and the \gls{igm} photo-ionization background. Implementations provide the
@@ -219,7 +218,7 @@ module Cosmological_Density_Field
     <pass>yes</pass>
    </method>
    <method name="environmentMass" >
-    <description>Return the mean mass (in $M_\odot$) enclosed within the environmental smoothing region, equal to the background matter density times the volume of the sphere of radius \mono{environmentRadius}.</description>
+    <description>Return the mean mass (in $\mathrm{M}_\odot$) enclosed within the environmental smoothing region, equal to the background matter density times the volume of the sphere of radius \mono{environmentRadius}.</description>
     <type>double precision</type>
     <pass>yes</pass>
    </method>  
@@ -303,7 +302,7 @@ module Cosmological_Density_Field
   <functionClass>
    <name>cosmologicalMassVariance</name>
    <descriptiveName>Mass Variance of Cosmological Density Field</descriptiveName>
-   <description>Class providing the rms mass variance $\sigma(M,t)$ of the cosmological density field — the
+   <description>Class providing the rms mass variance $\sigma(M,t)$ of the cosmological density field---the
     standard deviation of the linear density contrast when smoothed on the scale enclosing mass $M$ at
     cosmic time $t$. The variance is the fundamental ingredient of the Press-Schechter and excursion-set
     formalisms: the halo mass function, merger tree branching rates, and bias all depend on $\sigma(M)$ and

@@ -151,7 +151,7 @@ contains
       <name>surfaceDensityCritical</name>
       <defaultSource>\citep{bigiel_star_2008}</defaultSource>
       <defaultValue>200.0d0</defaultValue>
-      <description>The surface density (in units of $M_\odot$ pc$^{-2}$) in the \cite{blitz_role_2006} star formation timescale calculation at which low-density truncation begins.</description>
+      <description>The surface density (in units of $\mathrm{M}_\odot$ pc$^{-2}$) in the \cite{blitz_role_2006} star formation timescale calculation at which low-density truncation begins.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
@@ -319,7 +319,7 @@ contains
 
   double precision function blitz2006Rate(self,node,radius)
     !!{
-    Returns the star formation rate surface density (in $M_\odot$ Gyr$^{-1}$ Mpc$^{-2}$) for star formation
+    Returns the star formation rate surface density (in $\mathrm{M}_\odot$ Gyr$^{-1}$ Mpc$^{-2}$) for star formation
     in the galactic disk of \mono{node}. The disk is assumed to obey the
     \cite{blitz_role_2006} star formation rule.
     !!}

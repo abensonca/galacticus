@@ -31,7 +31,7 @@ module Correlation_Functions_Two_Point
   <functionClass>
    <name>correlationFunctionTwoPoint</name>
    <descriptiveName>Two-point Correlation Functions</descriptiveName>
-   <description>Class providing two-point correlation functions $\xi(r,t)$ — the excess probability above
+   <description>Class providing two-point correlation functions $\xi(r,t)$---the excess probability above
     Poisson of finding a pair of dark matter particles or galaxies separated by comoving distance $r$ at
     cosmic time $t$. The correlation function is the Fourier transform of the matter power spectrum
     $P(k)$, and both its volume-averaged form $\bar{\xi}(r)$ and point form are used in analyses of

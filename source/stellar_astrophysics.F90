@@ -31,7 +31,7 @@ module Stellar_Astrophysics
   <functionClass>
    <name>stellarAstrophysics</name>
    <descriptiveName>Stellar Astrophysics</descriptiveName>
-   <description>Class providing individual stellar astrophysics — the properties of single stars as a function of
+   <description>Class providing individual stellar astrophysics---the properties of single stars as a function of
     initial mass and metallicity, including the stellar lifetime, the mass ejected (returned to the \gls{ism}) at
     death, and the metal mass yielded. These per-star quantities are integrated over the \gls{imf} and star
     formation history to compute the net recycling, yield, and energy input for a stellar population. Implementations

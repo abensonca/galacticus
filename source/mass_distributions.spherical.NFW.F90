@@ -134,7 +134,7 @@ contains
     <inputParameter>
       <name>mass</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The total mass (in $M_\odot$) of the NFW profile, used to set the density normalization when the concentration and virial radius are provided.</description>
+      <description>The total mass (in $\mathrm{M}_\odot$) of the NFW profile, used to set the density normalization when the concentration and virial radius are provided.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

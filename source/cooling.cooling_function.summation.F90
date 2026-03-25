@@ -23,8 +23,10 @@
 
   !![
   <coolingFunction name="coolingFunctionSummation">
-   <description>Computes the total cooling function as a sum over multiple \refClass{coolingFunctionClass} objects, enabling construction of composite cooling functions from individual contributions (e.g., line cooling plus bremsstrahlung).</description>
-   <linkedList type="coolantList" variable="coolants" next="next" object="coolingFunction" objectType="coolingFunctionClass"/>
+    <description>Computes the total cooling function as a sum over multiple \refClass{coolingFunctionClass} objects, enabling
+    construction of composite cooling functions from individual contributions (e.g., atomic cooling plus CMB Compton
+    scattering).</description>
+    <linkedList type="coolantList" variable="coolants" next="next" object="coolingFunction" objectType="coolingFunctionClass"/>
   </coolingFunction>
   !!]
 

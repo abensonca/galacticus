@@ -34,7 +34,7 @@ module Atomic_Rates_Ionization_Collisional
    <description>Class providing collisional ionization rate coefficients (in cm$^3$ s$^{-1}$) for atoms of given
     atomic number and ionization state at a specified electron temperature. Collisional ionization by free
     electrons competes with photoionization and recombination to set the ionization balance of gas in
-    \gls{hii} regions, the \gls{igm}, and the \gls{cgm}.</description>
+    H\textsc{ii} regions, the \gls{igm}, and the \gls{cgm}.</description>
    <default>verner1996</default>
    <method name="rate" >
     <description>Returns the radiative recombination rate in units of cm$^3$ s$^{-1}$.</description>

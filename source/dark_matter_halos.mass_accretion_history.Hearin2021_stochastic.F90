@@ -24,7 +24,7 @@
   !![
   <enumeration>
    <name>mass</name>
-   <description>Enumeration of halo mass bins (low and high mass) used to parameterize the population distributions of mass accretion history parameters in the stochastic Hearin et al. (2021) model.</description>
+   <description>Enumeration of halo mass bins (low and high mass) used to parameterize the population distributions of mass accretion history parameters in the stochastic \cite{hearin_differentiable_2021} model.</description>
    <decodeFunction>yes</decodeFunction>
    <indexing>1</indexing>
    <entry label="low" />
@@ -35,7 +35,7 @@
   !![
   <enumeration>
    <name>formation</name>
-   <description>Enumeration of halo formation epoch types (early-forming and late-forming) used to classify halos and select the appropriate parameter distribution in the stochastic Hearin et al. (2021) MAH model.</description>
+   <description>Enumeration of halo formation epoch types (early-forming and late-forming) used to classify halos and select the appropriate parameter distribution in the stochastic \cite{hearin_differentiable_2021} MAH model.</description>
    <decodeFunction>yes</decodeFunction>
    <indexing>1</indexing>
    <entry label="early"/>
@@ -247,7 +247,7 @@ contains
     </inputParameter>
     <inputParameter>
       <name>rateRollOver</name>
-      <description>The roll-over rate parameter $k$ in the stochastic Hearin et al. (2021) MAH model, controlling how rapidly the power law index transitions from its early-time to late-time value across the population.</description>
+      <description>The roll-over rate parameter $k$ in the stochastic \cite{hearin_differentiable_2021} MAH model, controlling how rapidly the power law index transitions from its early-time to late-time value across the population.</description>
       <source>parameters</source>
       <defaultValue>3.5d0</defaultValue>
     <type>real</type>

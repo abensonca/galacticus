@@ -34,7 +34,7 @@ module Output_Analysis_Distribution_Operators
   <functionClass>
    <name>outputAnalysisDistributionOperator</name>
    <descriptiveName>Output Analysis Distribution Operator</descriptiveName>
-   <description>Class providing operators on distributions for on-the-fly output analysis — transformations
+   <description>Class providing operators on distributions for on-the-fly output analysis---transformations
     applied to the binned histogram of galaxy properties to convert it from an ideal theoretical distribution
     to the distribution that would be observed. Typical operations include convolution with a Gaussian
     measurement error kernel (to model photometric scatter), projection effects, or survey selection

@@ -33,7 +33,7 @@ module Satellite_Merging_Progenitor_Properties
   <functionClass>
    <name>mergerProgenitorProperties</name>
    <descriptiveName>Merger Progenitor Properties</descriptiveName>
-   <description>Class providing models of the effective properties of merger progenitors — the masses, radii,
+   <description>Class providing models of the effective properties of merger progenitors---the masses, radii,
     and angular momentum factors of the satellite and host galaxies immediately before a merger event,
     which are passed to the remnant size calculator. The progenitor properties determine the energy
     budget available to the merger remnant: the satellite mass, host spheroid mass, pre-merger host

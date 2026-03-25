@@ -32,9 +32,9 @@ module Dark_Matter_Halo_Biases
   !![
   <functionClass>
    <name>darkMatterHaloBias</name>
-   <descriptiveName>Dark matter halo biases.</descriptiveName>
+   <descriptiveName>Dark Matter Halo Biases</descriptiveName>
    <description>
-    Class providing models of the linear bias factor $b(M, t)$ of dark matter halos — the ratio of
+    Class providing models of the linear bias factor $b(M, t)$ of dark matter halos---the ratio of
     halo-to-matter overdensity on large scales, describing how strongly halos cluster relative to the
     underlying dark matter distribution. More massive halos form in rarer, higher-$\nu$ peaks and are
     therefore more strongly biased. The bias enters the two-halo term of the halo model power spectrum,
@@ -44,7 +44,7 @@ module Dark_Matter_Halo_Biases
    </description>
    <default>tinker2010</default>
    <method name="biasByMass" >
-    <description>Returns the bias of a halo specified by a mass (in $M_\odot$) and time (in Gyr).</description>
+    <description>Returns the bias of a halo specified by a mass (in $\mathrm{M}_\odot$) and time (in Gyr).</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>double precision, intent(in   )           :: mass, time</argument>

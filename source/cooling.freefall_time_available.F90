@@ -32,7 +32,7 @@ module Cooling_Freefall_Times_Available
   !![
   <functionClass>
    <name>freefallTimeAvailable</name>
-   <descriptiveName>Freefall time available.</descriptiveName>
+   <descriptiveName>Freefall Time Available</descriptiveName>
    <description>Class providing models of the time available for freefall (in Gyr) in the cooling flow calculation,
     analogous to the cooling time available class but governing the freefall radius. This time, typically anchored
     to halo formation, enters the computation of the freefall radius and thereby determines which cooling regime

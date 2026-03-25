@@ -55,7 +55,7 @@ Implements the survey geometry of the SDSS sample used by \cite{li_distribution_
                 &amp; &amp; + 2.852\times 10^{-2} m^3 - 6.783 \times 10^{-4} m^4,
      \label{eq:DepthPolynomial}
     \end{eqnarray}
-    where $m= \log_{10}(M_\star/M_\odot)$. We use this polynomial fit to determine the depth of the sample as a function of
+    where $m= \log_{10}(M_\star/\mathrm{M}_\odot)$. We use this polynomial fit to determine the depth of the sample as a function of
     stellar mass. We adopt a solid angle of $2.1901993$~sr \citep{percival_shape_2007} for the sample.
     
     \begin{figure}

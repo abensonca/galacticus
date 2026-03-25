@@ -30,7 +30,7 @@
   !![
   <enumeration>
    <name>sussingBadValueTest</name>
-   <description>Enumeration of comparison operators used to detect invalid or sentinel halo property values in ``Sussing Merger Trees'' files: \normalfont\ttfamily lessThan\normalfont flags values below a threshold, \normalfont\ttfamily greaterThan\normalfont flags values above a threshold.</description>
+   <description>Enumeration of comparison operators used to detect invalid or sentinel halo property values in ``Sussing Merger Trees'' files: \mono{lessThan} flags values below a threshold, \mono{greaterThan} flags values above a threshold.</description>
    <encodeFunction>yes</encodeFunction>
    <entry label="lessThan"   />
    <entry label="greaterThan"/>
@@ -41,7 +41,7 @@
   !![
   <enumeration>
    <name>sussingMassOption</name>
-   <description>Enumeration of halo mass definition options for the ``Sussing Merger Trees'' importer, selecting which mass column to use: \normalfont\ttfamily default\normalfont, \normalfont\ttfamily FoF\normalfont (friends-of-friends), \normalfont\ttfamily 200Mean\normalfont, \normalfont\ttfamily 200Crit\normalfont, or \normalfont\ttfamily topHat\normalfont.</description>
+   <description>Enumeration of halo mass definition options for the ``Sussing Merger Trees'' importer, selecting which mass column to use: \mono{default}, \mono{FoF} (friends-of-friends), \mono{200Mean}, \mono{200Crit}, or \mono{topHat}.</description>
    <encodeFunction>yes</encodeFunction>
    <entry label="default"/>
    <entry label="FoF"    />

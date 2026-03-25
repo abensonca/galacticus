@@ -32,7 +32,7 @@ module Black_Hole_Binary_Mergers
   <functionClass>
    <name>blackHoleBinaryMerger</name>
    <descriptiveName>Black Hole Binaries Merger</descriptiveName>
-   <description>Class providing models of black hole binary mergers — the outcome (final mass and spin) of
+   <description>Class providing models of black hole binary mergers---the outcome (final mass and spin) of
     the coalescence of two black holes of given masses and spins. When two galaxies merge their central black
     holes eventually form a bound binary and spiral together via dynamical friction, eventually merging through
     gravitational wave emission. The merger product mass and spin determine the subsequent evolution of the

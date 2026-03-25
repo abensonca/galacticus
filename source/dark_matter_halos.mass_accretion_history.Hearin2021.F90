@@ -85,22 +85,22 @@ contains
     !![
     <inputParameter>
       <name>powerLawIndexEarly</name>
-      <description>The power law index governing halo mass growth at early times in the Hearin et al. (2021) rolling power-law MAH model; positive values correspond to a rapidly assembling halo at high redshift.</description>
+      <description>The power law index governing halo mass growth at early times in the \cite{hearin_differentiable_2021} rolling power-law MAH model; positive values correspond to a rapidly assembling halo at high redshift.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>powerLawIndexLate</name>
-      <description>The power law index governing halo mass growth at late times in the Hearin et al. (2021) rolling power-law MAH model; negative values correspond to halos that have ceased mass growth or are losing mass via tidal stripping.</description>
+      <description>The power law index governing halo mass growth at late times in the \cite{hearin_differentiable_2021} rolling power-law MAH model; negative values correspond to halos that have ceased mass growth or are losing mass via tidal stripping.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>rateRollOver</name>
-      <description>The roll-over rate parameter $k$ in the Hearin et al. (2021) MAH model, controlling how rapidly the power law index transitions from its early-time to late-time value; larger $k$ gives a sharper transition.</description>
+      <description>The roll-over rate parameter $k$ in the \cite{hearin_differentiable_2021} MAH model, controlling how rapidly the power law index transitions from its early-time to late-time value; larger $k$ gives a sharper transition.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>timeMaximum</name>
-      <description>The cosmological time (in Gyr) at which the halo reaches its peak mass in the Hearin et al. (2021) MAH model, marking the transition between mass assembly and mass loss regimes.</description>
+      <description>The cosmological time (in Gyr) at which the halo reaches its peak mass in the \cite{hearin_differentiable_2021} MAH model, marking the transition between mass assembly and mass loss regimes.</description>
       <source>parameters</source>
     </inputParameter>
     !!]

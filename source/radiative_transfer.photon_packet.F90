@@ -31,7 +31,7 @@ module Radiative_Transfer_Photon_Packet
   <functionClass>
    <name>radiativeTransferPhotonPacket</name>
    <descriptiveName>Radiative Transfer Photon Packets</descriptiveName>
-   <description>Class providing photon packets for Monte Carlo radiative transfer calculations — discrete bundles
+   <description>Class providing photon packets for Monte Carlo radiative transfer calculations---discrete bundles
     of photon energy that are launched from sources and propagated through the computational domain,
     interacting with matter via absorption and scattering. Each packet carries a wavelength (in \AA),
     a wavelength range, a luminosity (in $L_\odot$), a 3-D position, a direction of propagation, and

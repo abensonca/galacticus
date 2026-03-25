@@ -187,7 +187,7 @@ contains
        <inputParameter>
          <name>massConstrained</name>
          <source>parameters</source>
-         <description>The halo mass ($M_\odot$) of the constrained progenitor at the end of the Brownian bridge; converted internally to a mass variance $\sigma^2(M)$ that pins the excursion-set random walk to a specific progenitor scale.</description>
+         <description>The halo mass ($\mathrm{M}_\odot$) of the constrained progenitor at the end of the Brownian bridge; converted internally to a mass variance $\sigma^2(M)$ that pins the excursion-set random walk to a specific progenitor scale.</description>
        </inputParameter>
        !!]
        expansionFactor               =+self%cosmologyFunctions_      %expansionFactorFromRedshift(redshift       =redshiftConstrained                 )

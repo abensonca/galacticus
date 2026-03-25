@@ -72,13 +72,13 @@ contains
     <inputParameter>
       <name>massTreeMinimum</name>
       <defaultValue>1.0d10</defaultValue>
-      <description>The minimum mass of merger tree base halos to consider when sampled masses from a distribution, in units of $M_\odot$.</description>
+      <description>The minimum mass of merger tree base halos to consider when sampled masses from a distribution, in units of $\mathrm{M}_\odot$.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>massTreeMaximum</name>
       <defaultValue>1.0d15</defaultValue>
-      <description>The maximum mass of merger tree base halos to consider when sampled masses from a distribution, in units of $M_\odot$.</description>
+      <description>The maximum mass of merger tree base halos to consider when sampled masses from a distribution, in units of $\mathrm{M}_\odot$.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

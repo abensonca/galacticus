@@ -33,7 +33,7 @@ module Task_Evolve_Forests_Work_Shares
   <functionClass>
    <name>evolveForestsWorkShare</name>
    <descriptiveName>Evolve Forests Work Share</descriptiveName>
-   <description>Class providing work sharing strategies for the evolve forests task — the algorithm that
+   <description>Class providing work sharing strategies for the evolve forests task---the algorithm that
     assigns merger tree forests to individual MPI processes and OpenMP threads for parallel execution.
     Implementations return the index of the next forest to be processed by the calling worker, a
     unique worker identifier, and the total worker count. Strategies include first-come-first-served

@@ -122,7 +122,7 @@ contains
     <inputParameter>
       <name>outlierCountMaximum</name>
       <defaultValue>0</defaultValue>
-      <description>The maximum number of chains whose current state may be identified as statistical outliers before convergence is considered unachievable and sampling is halted.</description>
+      <description>The maximum number of chains whose current state may be identified as statistical outliers when computing the convergence statistic.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

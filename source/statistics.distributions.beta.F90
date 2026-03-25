@@ -73,12 +73,12 @@ contains
     !![
     <inputParameter>
       <name>alpha</name>
-      <description>The first shape parameter $\alpha > 0$ of the beta distribution; when $\alpha > 1$ the density rises towards 1, when $\alpha < 1$ it diverges towards 0, and when $\alpha = 1$ it is uniform along that axis.</description>
+      <description>The first shape parameter $\alpha > 0$ of the beta distribution; when $\alpha > 1$ the density rises towards 1, when $\alpha &lt; 1$ it diverges towards 0, and when $\alpha = 1$ it is uniform along that axis.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
       <name>beta</name>
-      <description>The second shape parameter $\beta > 0$ of the beta distribution; when $\beta > 1$ the density rises towards 0, when $\beta < 1$ it diverges towards 1, and when $\beta = 1$ it is uniform along that axis.</description>
+      <description>The second shape parameter $\beta > 0$ of the beta distribution; when $\beta > 1$ the density rises towards 0, when $\beta &lt; 1$ it diverges towards 1, and when $\beta = 1$ it is uniform along that axis.</description>
       <source>parameters</source>
     </inputParameter>
     <objectBuilder class="randomNumberGenerator" name="randomNumberGenerator_" source="parameters"/>

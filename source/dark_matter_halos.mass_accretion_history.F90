@@ -71,7 +71,7 @@ module Dark_Matter_Halo_Mass_Accretion_Histories
     </code>
    </method>
    <method name="mass">
-    <description>Returns the halo mass (in $M_\odot$) of the main progenitor of the halo in \mono{node} at the specified cosmological time, evaluated from the parametric mass accretion history model.</description>
+    <description>Returns the halo mass (in $\mathrm{M}_\odot$) of the main progenitor of the halo in \mono{node} at the specified cosmological time, evaluated from the parametric mass accretion history model.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <selfTarget>yes</selfTarget>
@@ -103,7 +103,7 @@ module Dark_Matter_Halo_Mass_Accretion_Histories
     </code>
    </method>
    <method name="massAccretionRate">
-    <description>Returns the halo mass accretion rate (in $M_\odot$ Gyr$^{-1}$) of the main progenitor of the halo in \mono{node} at the specified cosmological time, computed as the time derivative of the mass accretion history.</description>
+    <description>Returns the halo mass accretion rate (in $\mathrm{M}_\odot$ Gyr$^{-1}$) of the main progenitor of the halo in \mono{node} at the specified cosmological time, computed as the time derivative of the mass accretion history.</description>
     <type>double precision</type>
     <pass>yes</pass>
     <argument>type            (treeNode), intent(inout) :: node</argument>

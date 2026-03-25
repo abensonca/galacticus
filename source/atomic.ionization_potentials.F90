@@ -32,7 +32,7 @@ module Atomic_Ionization_Potentials
   !![
   <functionClass>
    <name>atomicIonizationPotential</name>
-   <descriptiveName>Atomic ionization potentials.</descriptiveName>
+   <descriptiveName>Atomic Ionization Potentials</descriptiveName>
    <description>Class providing atomic ionization potentials (in eV) for atoms of given atomic number in a specified
     ionization state (i.e. with a given number of remaining electrons). Ionization potentials set the energy
     threshold for photo-ionization and are used in computing photo-ionization rates from a given radiation field

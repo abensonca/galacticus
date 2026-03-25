@@ -32,12 +32,12 @@ module Output_Analysis_Molecular_Ratios
   <functionClass>
    <name>outputAnalysisMolecularRatio</name>
    <descriptiveName>Output Analysis Molecular Ratio</descriptiveName>
-   <description>Class providing models of the H$_2$-to-\ion{H}{i} molecular ratio $R_\mathrm{mol} = M_{\mathrm{H}_2}/M_{\mathrm{H\,I}}$
-    for on-the-fly output analysis — the fraction of cold interstellar gas in molecular form, which
+   <description>Class providing models of the H$_2$-to-H\textsc{i} molecular ratio $R_\mathrm{mol} = M_{\mathrm{H}_2}/M_{\mathrm{H\,I}}$
+    for on-the-fly output analysis---the fraction of cold interstellar gas in molecular form, which
     governs the H$_2$ mass function and the molecular gas content of galaxies. Methods return both the
     mean ratio (as a function of ISM mass and galaxy properties) and its logarithmic scatter, allowing
     the molecular gas distribution to be convolved with the total ISM mass distribution when predicting
-    \ion{H}{i} and H$_2$ mass functions.</description>
+    H\textsc{i} and H$_2$ mass functions.</description>
    <default>obreschkow2009</default>
    <method name="ratio" >
     <description>Return the molecular ratio, $R_\mathrm{mol}=M_\mathrm{H_2}/M_\mathrm{HI}$.</description>

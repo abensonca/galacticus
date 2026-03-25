@@ -115,7 +115,7 @@ contains
     <inputParameter>
       <name>mass</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The total mass (in $M_\odot$) of the S\'ersic profile, used together with \mono{index} and \mono{radiusHalfMass} to set the overall normalization of the density distribution.</description>
+      <description>The total mass (in $\mathrm{M}_\odot$) of the S\'ersic profile, used together with \mono{index} and \mono{radiusHalfMass} to set the overall normalization of the density distribution.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

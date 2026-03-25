@@ -44,7 +44,7 @@ module Radiative_Transfer_Convergences
   <functionClass>
    <name>radiativeTransferConvergence</name>
    <descriptiveName>Radiative Transfer Convergence Criteria</descriptiveName>
-   <description>Class providing convergence criteria for Monte Carlo radiative transfer calculations — diagnostics
+   <description>Class providing convergence criteria for Monte Carlo radiative transfer calculations---diagnostics
     that assess whether the iterative solution (radiation field, ionization state, or dust temperature)
     has converged to a stable solution after sufficient photon packets have been propagated. Methods
     process escaping photon packets, test individual domain cells for convergence, and determine whether

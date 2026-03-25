@@ -32,7 +32,7 @@ module Merger_Trees_Merge_Node
   <functionClass>
    <name>mergerTreeNodeMerger</name>
    <descriptiveName>Merger Tree Node Merger Processing</descriptiveName>
-   <description>Class providing models for processing merger tree nodes at the moment of merger — when
+   <description>Class providing models for processing merger tree nodes at the moment of merger---when
     a satellite halo's evolution time reaches that of its parent and the two are combined. The merger
     processor transfers mass, metals, angular momentum, and other properties between the merging
     components according to the chosen prescription, and decides how to restructure the tree (e.g.

@@ -33,7 +33,7 @@ module Gravitational_Lensing
    <descriptiveName>Gravitational Lensing</descriptiveName>
    <description>
     Class providing models of the gravitational lensing magnification distribution due to intervening
-    large-scale structure along a line of sight — the probability density and cumulative distribution
+    large-scale structure along a line of sight---the probability density and cumulative distribution
     of the magnification factor $\mu$ as a function of source redshift and angular source size. Strong
     lensing by massive halos can boost observed fluxes significantly, affecting number counts and
     luminosity functions at the bright end. Implementations typically follow fitting functions calibrated

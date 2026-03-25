@@ -37,7 +37,7 @@
      !!{
      Implements a power law prescription for the stellar mass--stellar radius relation of disks. Specifically:
      \begin{equation}
-       r_\mathrm{s} = \gamma \left( \frac{M_\star}{M_\odot} \right)^\alpha \left( 1 + \frac{M_\star}{M_0}^{\beta-\alpha} \right), 
+       r_\mathrm{s} = \gamma \left( \frac{M_\star}{\mathrm{M}_\odot} \right)^\alpha \left( 1 + \frac{M_\star}{M_0}^{\beta-\alpha} \right), 
      \end{equation}
      where $r_\mathrm{s}$ is the disk scale radius, $M_\star$ is the stellar mass of the disk, and $M_0$, $\alpha$, $\beta$, and $\gamma$
      are free parameters.

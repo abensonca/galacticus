@@ -34,7 +34,7 @@ module Output_Analysis_Property_Operators
   <functionClass>
    <name>outputAnalysisPropertyOperator</name>
    <descriptiveName>Output Analysis Property Operator</descriptiveName>
-   <description>Class providing operators on galaxy or halo properties for on-the-fly output analysis — scalar
+   <description>Class providing operators on galaxy or halo properties for on-the-fly output analysis---scalar
     transformations applied to a raw property value (e.g.\ stellar mass, luminosity, or velocity) before it
     is binned or compared with observations. Typical operations include logarithmic transformations, dust
     attenuation corrections, aperture corrections, or random scatter to simulate observational measurement

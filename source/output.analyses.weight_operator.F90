@@ -34,7 +34,7 @@ module Output_Analysis_Weight_Operators
   <functionClass>
    <name>outputAnalysisWeightOperator</name>
    <descriptiveName>Output Analysis Weight Operator</descriptiveName>
-   <description>Class providing operators on statistical weights for on-the-fly output analysis — transformations
+   <description>Class providing operators on statistical weights for on-the-fly output analysis---transformations
     applied to the per-galaxy weight (e.g.\ $1/V_\mathrm{max}$ or merger tree weight) before accumulating
     it into binned statistics such as mass functions or luminosity functions. Weight operators can implement
     survey completeness corrections, volume corrections for non-representative samples, or reweighting by

@@ -31,7 +31,7 @@ module Posterior_Sampling_State
   <functionClass>
    <name>posteriorSampleState</name>
    <descriptiveName>Posterior Sampling State</descriptiveName>
-   <description>Class providing the state vector during Bayesian posterior sampling simulations — the current
+   <description>Class providing the state vector during Bayesian posterior sampling simulations---the current
     position of a Markov chain in parameter space, together with its chain index, step count, and parameter
     count. Implementations store and retrieve the parameter vector (via \mono{get}/\mono{set}), advance
     the step counter, and optionally maintain a history of chain positions for convergence diagnostics.

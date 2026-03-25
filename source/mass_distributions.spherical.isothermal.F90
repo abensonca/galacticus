@@ -105,7 +105,7 @@ contains
     <inputParameter>
       <name>mass</name>
       <defaultValue>1.0d0</defaultValue>
-      <description>The total mass (in $M_\odot$) enclosed within the reference radius, used to normalize the $\rho \propto r^{-2}$ density profile when \mono{densityNormalization} is not supplied.</description>
+      <description>The total mass (in $\mathrm{M}_\odot$) enclosed within the reference radius, used to normalize the $\rho \propto r^{-2}$ density profile when \mono{densityNormalization} is not supplied.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>

@@ -106,7 +106,7 @@ contains
 
   double precision function multiplierRate(self,node)
     !!{
-    Returns the cooling rate (in $M_\odot$ Gyr$^{-1}$) in the hot atmosphere for a model in which this rate is multiplied by
+    Returns the cooling rate (in $\mathrm{M}_\odot$ Gyr$^{-1}$) in the hot atmosphere for a model in which this rate is multiplied by
     some fixed value.
     !!}
     implicit none

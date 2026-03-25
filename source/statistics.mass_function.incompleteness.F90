@@ -32,7 +32,7 @@ module Mass_Function_Incompletenesses
    <name>massFunctionIncompleteness</name>
    <descriptiveName>Mass Function Incompletenesses</descriptiveName>
    <description>
-    Class providing models of the survey completeness fraction for observed mass functions — the
+    Class providing models of the survey completeness fraction for observed mass functions---the
     probability that an object of a given mass is included in an observational sample. Incompleteness
     arises from flux limits, surface brightness thresholds, or volume corrections, and causes the
     observed number counts to fall below the true underlying mass function at low masses. The

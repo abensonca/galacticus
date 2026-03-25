@@ -33,8 +33,8 @@ module Satellite_Dynamical_Friction
   !![
   <functionClass>
    <name>satelliteDynamicalFriction</name>
-   <descriptiveName>Dynamical friction models.</descriptiveName>
-   <description>Class providing models of the satellite vector acceleration due to dynamical friction — the
+   <descriptiveName>Dynamical Friction</descriptiveName>
+   <description>Class providing models of the satellite vector acceleration due to dynamical friction---the
     gravitational drag force that decelerates a satellite as it moves through the background distribution of
     dark matter particles and substructures. The Chandrasekhar dynamical friction formula scales as
     $\mathbf{a}_\mathrm{df} \propto -\rho \ln\Lambda\, \mathbf{v}_\mathrm{sat}/v_\mathrm{sat}^3$, where

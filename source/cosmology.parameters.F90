@@ -31,7 +31,7 @@ module Cosmology_Parameters
   !![
   <enumeration>
    <name>hubbleUnits</name>
-   <description>Enumeration of supported unit systems for the Hubble constant: standard SI-based units (km/s/Mpc), time units (inverse time), or the dimensionless little-$h$ convention where $H_0 = 100 h$ km/s/Mpc.</description>
+   <description>Enumeration of supported unit systems for the Hubble constant: standard cosmolgical units (km/s/Mpc), time units (inverse time), or the dimensionless little-$h$ convention where $H_0 = 100 h$ km/s/Mpc.</description>
    <visibility>public</visibility>
    <entry label="standard" />
    <entry label="time"     />
@@ -85,7 +85,7 @@ module Cosmology_Parameters
     <pass>yes</pass>
    </method>
    <method name="densityCritical" >
-    <description>Return the critical density at the present day in units of $M_\odot/$Mpc$^3$.</description>
+    <description>Return the critical density at the present day in units of $\mathrm{M}_\odot/$Mpc$^3$.</description>
     <type>double precision</type>
     <pass>yes</pass>
    </method>

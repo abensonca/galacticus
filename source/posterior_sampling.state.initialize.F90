@@ -34,10 +34,10 @@ module Posterior_Sampling_State_Initialize
   <functionClass>
    <name>posteriorSampleStateInitialize</name>
    <descriptiveName>Posterior Sampling State Initialization</descriptiveName>
-   <description>Class providing state initialization for Bayesian posterior sampling simulations — the strategy
+   <description>Class providing state initialization for Bayesian posterior sampling simulations---the strategy
     for choosing the starting point of each Markov chain before the main sampling loop begins. Implementations
     draw initial parameter vectors from the prior (random prior sampling), from a multivariate Gaussian
-    centred on a maximum-likelihood estimate, or from a user-supplied restart file. Proper initialization
+    centered on a maximum-likelihood estimate, or from a user-supplied restart file. Proper initialization
     helps the chains reach the high-probability region quickly and avoids premature convergence or
     long burn-in periods.</description>
    <default>priorRandom</default>

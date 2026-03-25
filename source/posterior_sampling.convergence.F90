@@ -32,7 +32,7 @@ module Posterior_Sampling_Convergence
   <functionClass>
    <name>posteriorSampleConvergence</name>
    <descriptiveName>Posterior Sampling Convergence Criteria</descriptiveName>
-   <description>Class providing convergence criteria for Bayesian posterior sampling simulations — diagnostics
+   <description>Class providing convergence criteria for Bayesian posterior sampling simulations---diagnostics
     that assess whether the Markov chains have adequately explored the posterior distribution and can
     be declared converged. Methods return whether convergence has been reached (and at which step),
     reset the convergence calculation when chains are restarted, log convergence diagnostics to file,

@@ -78,7 +78,7 @@ contains
     <inputParameter>
       <name>massResolution</name>
       <source>parameters</source>
-      <description>The mass resolution $\Delta M$ (in $M_\odot$) of the N-body simulation, used to determine the finite-resolution softening of the NFW profile for halos near the resolution limit.</description>
+      <description>The mass resolution $\Delta M$ (in $\mathrm{M}_\odot$) of the N-body simulation, used to determine the finite-resolution softening of the NFW profile for halos near the resolution limit.</description>
     </inputParameter>
     <inputParameter>
       <name>resolutionIsComoving</name>

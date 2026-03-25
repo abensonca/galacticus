@@ -38,7 +38,7 @@
      !!{
      Implements a power law prescription for the stellar mass--stellar radius relation of spheroids. Specifically:
      \begin{equation}
-       r_\mathrm{s} = \beta \left( \frac{M_\star}{M_\odot} \right)^\alpha, 
+       r_\mathrm{s} = \beta \left( \frac{M_\star}{\mathrm{M}_\odot} \right)^\alpha, 
      \end{equation}
      where $r_\mathrm{s}$ is the spheroid scale radius, $M_\star$ is the stellar mass of the spheroid, and $\alpha$ and $\beta$
      are free parameters.
