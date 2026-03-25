@@ -34,7 +34,7 @@ module Statistics_NBody_Halo_Mass_Errors
    <description>Class providing models of measurement errors on dark matter halo masses in N-body simulations
    ---the fractional uncertainty $\delta M/M$ arising from finite particle sampling, halo finder
     systematics, or projection effects. Methods return the fractional mass error and the correlation
-    between mass errors of pairs of halos. These errors are used when comparing Galacticus halo mass
+    between mass errors of pairs of halos. These errors are used when comparing \glc\ halo mass
     function predictions with N-body halo counts, or when fitting model parameters to clustering or
     abundance statistics derived from N-body simulations.</description>
    <default>null</default>

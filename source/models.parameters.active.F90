@@ -75,7 +75,7 @@ contains
     !![
     <inputParameter>
       <name>name</name>
-      <description>The name of the active model parameter as it appears in the Galacticus parameter file and output metadata; used to identify and retrieve the parameter during posterior sampling runs.</description>
+      <description>The name of the active model parameter as it appears in the \glc\ parameter file and output metadata; used to identify and retrieve the parameter during posterior sampling runs.</description>
       <defaultValue>var_str('')</defaultValue>
       <source>parameters</source>
     </inputParameter>

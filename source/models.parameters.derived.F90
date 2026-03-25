@@ -64,7 +64,7 @@ contains
     !![
     <inputParameter>
       <name>name</name>
-      <description>The name of the derived model parameter as it appears in the Galacticus parameter file and posterior sampling output; used to identify this computed quantity in the parameter chain.</description>
+      <description>The name of the derived model parameter as it appears in the \glc\ parameter file and posterior sampling output; used to identify this computed quantity in the parameter chain.</description>
       <source>parameters</source>
     </inputParameter>
     <inputParameter>
