@@ -245,7 +245,7 @@ contains
              else
                 basic => node       %basic()
              end if
-             timeInLightconeLatest  =max(timeInLightconeLatest,basic%time())
+             timeInLightconeLatest  =max(timeInLightconeLatest,timeIntersect)
              treeIntersectsLightcone=.true.
           else
              ! Trees are not being split - this tree is in the lightcone, so can not be pruned - we can simply return.
