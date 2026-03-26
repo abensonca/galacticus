@@ -446,6 +446,7 @@ jobs:
           mv Galacticus.exe Galacticus_MacOS.exe
       - name: Sign Galacticus executable
         uses: ./.github/actions/codeSignMacOS
+        with:
           files: Galacticus_MacOS.exe
       - name: Upload Galacticus executable
         uses: actions/upload-artifact@v7
@@ -484,6 +485,7 @@ jobs:
           mv Galacticus.exe Galacticus_MacOS-M1.exe
       - name: Sign Galacticus executable
         uses: ./.github/actions/codeSignMacOS
+        with:
           files: Galacticus_MacOS-M1.exe
       - name: Upload Galacticus executable
         uses: actions/upload-artifact@v7
@@ -608,6 +610,7 @@ jobs:
             echo "mangle=dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
+        with:
           files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs. }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
       - name: Repackage
         run: |          
@@ -716,6 +719,7 @@ jobs:
             echo "mangle=dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
+        with:
           files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs. }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
       - name: Repackage
         run: |          
