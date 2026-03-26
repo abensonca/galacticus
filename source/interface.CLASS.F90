@@ -229,7 +229,7 @@ contains
        allocate(perturbations(size(wavenumbers),3,size(redshifts)))
        speciesGroup=classOutput%openGroup('darkMatter')
        do i=1,size(redshifts)
-          datasetName='perturbationsZ'//trim(adjustl(redshiftLabels(redshiftRanks(i))))
+          datasetName='perturbationsZ'//trim(adjustl(redshiftLabels(i)))
           if (speciesGroup%hasDataset(datasetName)) then
              call speciesGroup%readDatasetStatic(datasetName,perturbations(:,classSpeciesDarkMatter%ID,i))
           else
@@ -239,7 +239,7 @@ contains
        call speciesGroup%close()
        speciesGroup=classOutput%openGroup('baryons')
        do i=1,size(redshifts)
-          datasetName='perturbationsZ'//trim(adjustl(redshiftLabels(redshiftRanks(i))))
+          datasetName='perturbationsZ'//trim(adjustl(redshiftLabels(i)))
           if (speciesGroup%hasDataset(datasetName)) then
              call speciesGroup%readDatasetStatic(datasetName,perturbations(:,classSpeciesBaryons   %ID,i))
           else
@@ -486,7 +486,7 @@ contains
        allocate(transferFunctions(size(wavenumbers),3,size(redshifts)))
        speciesGroup=classOutput%openGroup('darkMatter')
        do i=1,size(redshifts)
-          datasetName='transferFunctionZ'//trim(adjustl(redshiftLabels(redshiftRanks(i))))
+          datasetName='transferFunctionZ'//trim(adjustl(redshiftLabels(i)))
           if (speciesGroup%hasDataset(datasetName)) then
              call speciesGroup%readDatasetStatic(datasetName,transferFunctions(:,classSpeciesDarkMatter%ID,i))
           else
@@ -496,7 +496,7 @@ contains
        call speciesGroup%close()
        speciesGroup=classOutput%openGroup('baryons')
        do i=1,size(redshifts)
-          datasetName='transferFunctionZ'//trim(adjustl(redshiftLabels(redshiftRanks(i))))
+          datasetName='transferFunctionZ'//trim(adjustl(redshiftLabels(i)))
           if (speciesGroup%hasDataset(datasetName)) then
              call speciesGroup%readDatasetStatic(datasetName,transferFunctions(:,classSpeciesBaryons   %ID,i))
           else
