@@ -6,11 +6,13 @@ inputs:
     required: true
 runs:
   using: 'composite'
+  steps:
     - name: Sign Galacticus executable
       env:
         MACOS_CERTIFICATE: ${{ secrets.MACOS_CERTIFICATE }}
         MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
         MACOS_KEYCHAIN_PASSWORD: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
+        MACOS_DEVELOPER_ID: ${{ secrets.MACOS_DEVELOPER_ID }}
       run: |
         ORIGINAL_DEFAULT_KEYCHAIN=$(security default-keychain | sed 's/^ *"//; s/"$//')
         trap 'security default-keychain -s "$ORIGINAL_DEFAULT_KEYCHAIN"; security delete-keychain build.keychain' EXIT
@@ -24,11 +26,10 @@ runs:
         for file in ${{ inputs.files }}; do
           if [ -f "$file" ]; then
             codesign --force --options runtime --entitlements "${GITHUB_WORKSPACE}/.github/entitlements.plist" \
-              --sign "Developer ID Application" ${file}
+              --sign "$MACOS_DEVELOPER_ID" ${file}
             codesign --verify --deep --strict --verbose=2 ${file}
           else
             echo File ${file} not found for code-signing
             exit 1
           fi
         done
-        
