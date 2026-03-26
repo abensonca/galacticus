@@ -74,8 +74,7 @@ jobs:
           set -o pipefail
           make GALACTICUS_BUILD_OPTION=compileprof -j4 Galacticus.exe 2>&1 | tee build.log
           set +o pipefail
-          chmod u=wrx ./scripts/build/buildProfiler.pl
-          ./scripts/build/buildProfiler.pl build.log buildProfile.html --durationMinimum 20
+          python3 ./scripts/build/buildProfiler.py build.log buildProfile.html --durationMinimum 20
           grep -vqzi error:          build.log || (echo "FAIL: errors found in build.log"          && false)
           grep -vqzi warning:        build.log || (echo "FAIL: warnings found in build.log"        && false)
           grep -vqzi 'is up to date' build.log || (echo "FAIL: 'is up to date' found in build.log" && false)
