@@ -4,12 +4,10 @@ import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+import latex_spellcheck
 
 # Perform checks on embedded XML and LaTeX.
 # Andrew Benson (28-February-2023) [Python port]
-
-sys.path.insert(0, os.path.dirname(__file__))
-import latex_spellcheck
 
 # Optional lxml for XSD validation; fall back to skipping validation if absent.
 try:

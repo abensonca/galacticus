@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 import os
 import sys
+import latex_spellcheck
 
 # Perform spell checking of files.
 # Andrew Benson (28-February-2023) [Python port]
-
-sys.path.insert(0, os.path.dirname(__file__))
-import latex_spellcheck
 
 if len(sys.argv) != 3:
     print("Usage: spellChecker.py <fileName> <warningFile>", file=sys.stderr)
