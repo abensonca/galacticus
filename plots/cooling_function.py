@@ -29,27 +29,31 @@ with h5py.File(coolingFunctionFile, 'r') as data:
 # Build plot titles and find metallicity range (excluding primordial).
 lZMin = +1.0e100
 lZMax = -1.0e100
-plotTitles = []
 for iMetallicity, metallicity in enumerate(metallicities):
     if metallicity > -999.0:
         if metallicity > lZMax:
             lZMax = metallicity
         if metallicity < lZMin:
             lZMin = metallicity
-
+useColorBar = lZMin < lZMax
+            
 # Make the plot.
 fig, ax = plt.subplots(figsize=(5.0, 3.3))
 
 nMetallicities = len(metallicities)
-cmap           = plt.get_cmap('rainbow')
-norm           = mcolors.Normalize(vmin=lZMin, vmax=lZMax)
+if useColorBar:
+    cmap = plt.get_cmap('rainbow')
+    norm = mcolors.Normalize(vmin=lZMin, vmax=lZMax)
 
 for iMetallicity in range(nMetallicities):
     metallicity = metallicities[iMetallicity]
-    if metallicity <= -999.0:
-        color = cmap(0.0)
+    if useColorBar:
+        if metallicity <= -999.0:
+            color = cmap(0.0)
+        else:
+            color = cmap(norm(metallicity))
     else:
-        color = cmap(norm(metallicity))
+        color = 'red'
     ax.plot(temperatures, coolingFunctions[:, iMetallicity], color=color, linewidth=1.5)
 
 ax.set_xscale('log')
@@ -60,9 +64,10 @@ ax.set_xlabel('Temperature [K]')
 ax.set_ylabel(r'$\Lambda(T)$ [erg cm$^3$ s$^{-1}$]')
 ax.set_title(description)
 
-sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
-sm.set_array([])
-fig.colorbar(sm, ax=ax, label=r'$\log_{10}(Z/Z_\odot)$')
+if useColorBar:
+    sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
+    sm.set_array([])
+    fig.colorbar(sm, ax=ax, label=r'$\log_{10}(Z/Z_\odot)$')
 
 plt.tight_layout()
 plt.savefig(pdfFile)
