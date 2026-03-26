@@ -17,6 +17,9 @@ if len(sys.argv) != 3:
 modelFile    = sys.argv[1]
 outputFolder = sys.argv[2]
 
+# Create the directory.
+os.mkdirs(outputFolder, exist_ok=True)
+
 # Open the file containing the meta-data.
 with h5py.File(modelFile, 'r') as HDFfile:
     if 'metaData' not in HDFfile:
