@@ -777,7 +777,7 @@ jobs:
         run: |
           cd $GALACTICUS_EXEC_PATH
           git config --global --add safe.directory $GALACTICUS_EXEC_PATH
-          ./scripts/aux/updateMonitor.pl ${{ steps.changed-files.outputs.all_changed_files }}
+          python3 scripts/aux/updateMonitor.py ${{ steps.changed-files.outputs.all_changed_files }}
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v3
