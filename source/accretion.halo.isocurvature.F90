@@ -455,6 +455,7 @@ contains
        end do
        ! Build the interpolator.
        self%correlation=interpolator(log(mass),correlation)
+       self%initialized=.true.
     end if
     ! Evaluate the relative baryon fraction (eqn. 9 of Jessop et al.; 2026; arXiv:2512.02127)/
     fraction=+  1.0d0                                                           &
@@ -511,7 +512,7 @@ contains
 
   double precision function integrandCross(wavenumber)
     !!{
-    Integrand to compute the CDM--CDM autocorrelation:
+    Integrand to compute the baryon--CDM cross-correlation:
     \begin{equation}
       \int \mathrm{d}k 4 \pi k^2 |W(k|M)|^2 \delta_\mathrm{bc}(k) \delta_\mathrm{c}(k).
     \end{equation}
