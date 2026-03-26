@@ -450,6 +450,8 @@ jobs:
           MACOS_CERTIFICATE_PASSWORD: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
           MACOS_KEYCHAIN_PASSWORD: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
         run: |
+          ORIGINAL_DEFAULT_KEYCHAIN=$(security default-keychain | sed 's/^ *"//; s/"$//')
+          trap 'security default-keychain -s "$ORIGINAL_DEFAULT_KEYCHAIN"; security delete-keychain build.keychain' EXIT
           security create-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
           security default-keychain -s build.keychain
           security unlock-keychain -p "$MACOS_KEYCHAIN_PASSWORD" build.keychain
@@ -457,7 +459,7 @@ jobs:
           security import certificate.p12 -k build.keychain -P "$MACOS_CERTIFICATE_PASSWORD" -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: -s -k "$MACOS_KEYCHAIN_PASSWORD" build.keychain
           rm certificate.p12
-          codesign --force --options runtime --entitlements .github/entitlements.plist \
+          codesign --force --options runtime --entitlements "${GITHUB_WORKSPACE}/.github/entitlements.plist" \
             --sign "Developer ID Application" Galacticus_MacOS.exe
           codesign --verify --deep --strict --verbose=2 Galacticus_MacOS.exe
       - name: Upload Galacticus executable
@@ -654,7 +656,7 @@ jobs:
             "dynamic/c${cloudyVersion}/source/cloudy.exe" \
             "dynamic/fsps-${fspsVersion}/src/autosps.exe" \
             "dynamic/mangle-${mangleVersion}/bin/harmonize"; do
-            codesign --force --options runtime \
+            codesign --force --options runtime --timestamp \
               --entitlements "${GALACTICUS_EXEC_PATH}/.github/entitlements.plist" \
               --sign "Developer ID Application" "$exe"
             codesign --verify --deep --strict "$exe"
