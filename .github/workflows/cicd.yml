@@ -611,7 +611,7 @@ jobs:
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
-          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs. }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
+          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
       - name: Repackage
         run: |          
           # Re-package the zip with the signed executables
@@ -720,7 +720,7 @@ jobs:
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
-          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs. }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
+          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
       - name: Repackage
         run: |          
           # Re-package the zip with the signed executables
