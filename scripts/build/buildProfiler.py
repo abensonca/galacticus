@@ -223,7 +223,8 @@ with open(args.profileFile, 'w') as out:
     out.write("    var chartContent = ''\n")
     for task in tasks:
         cls = "bold" if task['isMaximumCost'] else ""
-        out.write(f"    chartContent += '<tr><th class=\"headcol{cls}\">{task['description']}</th>'\n")
+        description = task['description'].replace("'", "\\'")
+        out.write(f"    chartContent += '<tr><th class=\"headcol{cls}\">{description}</th>'\n")
         cell = {'count': 0, 'type': None}
         for i in range(time_maximum + 1):
             if i < task['start']:
