@@ -268,7 +268,7 @@ contains
        redshiftsCombined(1:size(redshifts))=redshifts
        do i=1,size(datasetNames)
           if (extract(datasetNames(i),1,14) == 'perturbationsZ') then
-             redshiftLabel=extract(datasetNames(i),18,len(datasetNames(i)))
+             redshiftLabel=extract(datasetNames(i),15,len(datasetNames(i)))
              read (redshiftLabel,*) redshiftsCombined(size(redshifts)+i)
           else
              call Error_Report("unknown dataset '"//datasetNames(i)//"' in file '"//fileName_//"'"//{introspection:location})
