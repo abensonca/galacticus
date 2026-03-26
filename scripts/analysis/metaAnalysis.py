@@ -68,8 +68,8 @@ timeCPUInterruptedFrequencyCumulative          = np.cumsum(timeCPUInterruptedFre
 
 # Find ranges for the timestep plot.
 allFrequencies  = np.concatenate([timeStepFrequency, timeStepWeightedFrequency,
-                                   timeStepInterruptedFrequencyCumulative,
-                                   timeStepInterruptedWeightedFrequencyCumulative])
+                                  timeCPUFrequency, timeStepInterruptedFrequency, 
+                                  timeStepInterruptedWeightedFrequency, timeCPUInterruptedFrequency])
 nonZero         = allFrequencies > 0.0
 timestepMinimum = 10.0 ** np.floor(np.log10(timeSteps[ 0]))
 timestepMaximum = 10.0 ** np.ceil (np.log10(timeSteps[-1]))
