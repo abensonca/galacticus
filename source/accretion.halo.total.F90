@@ -18,7 +18,8 @@
 !!    along with Galacticus.  If not, see <http://www.gnu.org/licenses/>.
 
 !!{
-Contains a module which provides a class for calculations of the intergalactic medium thermal and ionization state.
+Contains a module which provides a class for calculations of the total accretion rate onto halos for use by the halo
+accretion classes which compute the accretion rates of baryonic material.
 !!}
 
 module Accretion_Halo_Totals
