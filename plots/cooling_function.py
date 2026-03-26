@@ -31,10 +31,7 @@ lZMin = +1.0e100
 lZMax = -1.0e100
 plotTitles = []
 for iMetallicity, metallicity in enumerate(metallicities):
-    if metallicity <= -999.0:
-        plotTitles.append("Primordial")
-    else:
-        plotTitles.append(r"$\log_{10}(Z/Z_\odot) = " + str(metallicity) + "$")
+    if metallicity > -999.0:
         if metallicity > lZMax:
             lZMax = metallicity
         if metallicity < lZMin:
@@ -49,7 +46,6 @@ norm           = mcolors.Normalize(vmin=lZMin, vmax=lZMax)
 
 for iMetallicity in range(nMetallicities):
     metallicity = metallicities[iMetallicity]
-    cFrac       = iMetallicity / max(nMetallicities - 1, 1)
     if metallicity <= -999.0:
         color = cmap(0.0)
     else:
