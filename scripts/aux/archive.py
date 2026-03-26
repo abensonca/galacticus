@@ -46,7 +46,7 @@ def link_finder(file_name, full_path):
                 if re.search(r'\.(F90|Inc)$', file_name):
                     m = re.match(r'^\s*call\s+download\s*\(\s*(["\'][^,]+)', line)
                     if m:
-                        link = m.group(1).strip("\"'")
+                        link = re.sub(r'["\']', '', m.group(1))
                         # Replace dependency version placeholders.
                         def replace_major(match):
                             name = match.group(1)
@@ -65,7 +65,7 @@ def link_finder(file_name, full_path):
                 if re.search(r'\.py$', file_name):
                     m = re.match(r'^\s*urllib\.request\.urlretrieve\s*\(\s*(["\'][^,]+)', line)
                     if m:
-                        link = m.group(1).strip("\"'")
+                        link = re.sub(r'["\']', '', m.group(1))
                         links.append(link)
                 # Makefiles.
                 if os.path.basename(file_name) == 'Makefile':
