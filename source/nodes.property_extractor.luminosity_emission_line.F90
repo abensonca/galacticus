@@ -572,7 +572,7 @@ contains
     integer                                             , intent(in   ) :: indexProperty
     type   (doubleHash                                 ), intent(inout) :: metaDataRank0
     type   (rank1DoubleHash                            ), intent(inout) :: metaDataRank1
-    !$GLC attributes unused :: node, indexProperty, metaDataRank1
+    !$GLC attributes unused :: node, metaDataRank1
 
     call metaDataRank0%set('wavelength',self%wavelengths(indexProperty))
     return
