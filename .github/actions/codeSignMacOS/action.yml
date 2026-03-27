@@ -7,7 +7,7 @@ inputs:
   macos_certificate:
     description: 'Base-64 encoded signing certificate'
     required: true
-  macos_certificate_pasword:
+  macos_certificate_password:
     description: 'Password for the signing certificate'
     required: true
   macos_keychain_password:
