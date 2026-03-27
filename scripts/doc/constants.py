@@ -71,10 +71,11 @@ with open(output_file, 'w') as out:
         for constant in sorted_constants:
             if 'value' not in constant:
                 continue
-            if 'referenceURL' in constant:
-                reference = f"\\href{{{constant['referenceURL']}}}{{{constant['reference']}}}"
+            ref_text = constant.get('reference', '')
+            if 'referenceURL' in constant and ref_text:
+                reference = f"\\href{{{constant['referenceURL']}}}{{{ref_text}}}"
             else:
-                reference = constant.get('reference', '')
+                reference = ref_text
             reference = reference.replace('&', '\\&')
             variable  = constant.get('variable', '').replace('_', '\\_')
             external  = (

@@ -79,28 +79,29 @@ with open(args.buildLogFile) as f:
             time_latest = stop_time
         # Simplify the command to a more human-readable form where possible.
         elements = command.split()
-        if elements[0] == "./scripts/build/preprocess.pl":
+        if len(elements) > 1 and elements[0] == "./scripts/build/preprocess.pl":
             elements[1] = elements[1].replace("source/", "")
             command = elements[1] + " (preprocess)"
-        elif elements[0] == "gfortran":
+        elif len(elements) > 4 and elements[0] == "gfortran":
             elements[4] = elements[4].replace("./work/build/", "")
             command = elements[4] + " (compile)"
-        elif elements[0] == "./scripts/build/sourceDigests.pl":
+        elif len(elements) > 2 and elements[0] == "./scripts/build/sourceDigests.pl":
             elements[2] = elements[2].replace("./work/build/", "").replace("'", "")
             command = elements[2] + " (source digests)"
-        elif elements[0] == "./scripts/build/parameterDependencies.pl":
+        elif len(elements) > 2 and elements[0] == "./scripts/build/parameterDependencies.pl":
             elements[2] = elements[2].replace("./work/build/", "").replace("'", "")
             command = elements[2] + " (parameter dependencies)"
-        elif elements[0] == "./scripts/build/buildCode.pl":
+        elif len(elements) > 2 and elements[0] == "./scripts/build/buildCode.pl":
             elements[2] = elements[2].replace("./work/build/", "").replace("'", "")
             command = elements[2] + " (build)"
-        elif len(elements) > 1 and elements[1] == "-MRegexp::Common":
+        elif len(elements) > 8 and elements[1] == "-MRegexp::Common":
             elements[8] = elements[8].replace("work/build/", "")
             command = elements[8] + " (cpp)"
         else:
-            mb = re.match(r'\./scripts/build/(.*)\.pl', elements[0])
-            if mb:
-                command = mb.group(1)
+            if elements:
+                mb = re.match(r'\./scripts/build/(.*)\.pl', elements[0])
+                if mb:
+                    command = mb.group(1)
         tasks.append({
             'description': command,
             'startTime':   start_time,
@@ -122,10 +123,20 @@ for task in tasks:
 # Find the number of threads running during each second of the build.
 thread_count_maximum = 0
 thread_count = [0] * (time_maximum + 1)
+# Use a sweep-line / difference-array approach to compute thread_count in O(tasks + seconds).
+# diff[i] represents the change in thread count at time i.
+diff = [0] * (time_maximum + 2)
+for task in tasks:
+    start = task['start']
+    end = task['end']
+    if 0 <= start <= time_maximum:
+        diff[start] += 1
+    if end + 1 <= time_maximum:
+        diff[end + 1] -= 1
+current = 0
 for i in range(time_maximum + 1):
-    for task in tasks:
-        if task['start'] <= i <= task['end']:
-            thread_count[i] += 1
+    current += diff[i]
+    thread_count[i] = current
     if thread_count[i] > thread_count_maximum:
         thread_count_maximum = thread_count[i]
 

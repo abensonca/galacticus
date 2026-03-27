@@ -124,25 +124,18 @@ def _is_trivial_body_line(line):
 def _function_is_empty(body_lines):
     """Return True if the body (a list of logical lines) contains no meaningful
     code — i.e. every line is trivial AND there are no XML directive blocks."""
-    in_xml = False
     in_docstring = False
     for line in body_lines:
         if re.match(r'^\s*!!\[', line):
             # Any XML directive block makes the function non-empty.
             return False
-        if re.match(r'^\s*!!\]', line):
-            in_xml = False
-            continue
-        if re.match(r'^\s*!!\[', line):
-            in_xml = True
-            continue
         if re.match(r'^\s*!!\}', line):
             in_docstring = False
             continue
         if re.match(r'^\s*!!\{', line):
             in_docstring = True
             continue
-        if in_xml or in_docstring:
+        if in_docstring:
             continue
         if not _is_trivial_body_line(line):
             return False

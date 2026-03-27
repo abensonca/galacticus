@@ -42,11 +42,12 @@ for workflow in workflows:
         )
         if check.returncode != 0:
             continue
-        if run["conclusion"] == "":
+        conclusion = run.get("conclusion")
+        if conclusion in (None, ""):
             status = ":clock2:"
-        elif run["conclusion"] == "failure":
+        elif conclusion == "failure":
             status = ":x:"
-        elif run["conclusion"] == "success":
+        elif conclusion == "success":
             status = ":white_check_mark:"
         if status != ":question:":
             break
