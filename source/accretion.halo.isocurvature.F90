@@ -34,7 +34,7 @@
    <description>
     An accretion onto halos decorator class which reduces the mass accreted to account for the effects of isocurvature
     perturbations following the model of \cite{jessop_ripples_2026}. \gls{class} is used to compute perturbations in baryons and
-    cold dark matter, $\delta_\mathrm{b} and $\delta_\mathrm{c} respectively, as a function of wavenumber. The correlation between
+    cold dark matter, $\delta_\mathrm{b}$ and $\delta_\mathrm{c}$ respectively, as a function of wavenumber. The correlation between
     these two is then computed using \citep[][eqn.~4]{jessop_ripples_2026}:
     \begin{equation}
      \alpha_0 = \frac{\int_0^\infty 4 \pi k^2 |\tilde{W}(k|M)|^2 \delta_\mathrm{bc}(k) \delta_\mathrm{c}(k) \mathrm{d}k}{\int_0^\infty 4 \pi k^2 |\tilde{W}(k|M)|^2 \delta_\mathrm{c}^2(k) \mathrm{d}k},
