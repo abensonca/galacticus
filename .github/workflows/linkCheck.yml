@@ -28,10 +28,15 @@ jobs:
           key: linkCheckFailures-${{ github.run_id }}
           restore-keys: |
             linkCheckFailures
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: 'pip' # Speeds up runs by caching dependencies
       - name: Install tools
         run: |
-          sudo apt -y update
-          sudo apt install -y python3-pypdf2 perl libregexp-common-perl curl git libwww-curl-perl libjson-pp-perl libxml-simple-perl
+           python -m pip install --upgrade pip
+           pip install PyPDF2 requests lxml
       - name: Check for broken links
         if: ${{ env.adstoken != '' }}
         id: check_links

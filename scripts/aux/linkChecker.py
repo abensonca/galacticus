@@ -11,6 +11,7 @@ import random
 import time
 import xml.etree.ElementTree as ET
 import requests
+from PyPDF2 import PdfReader
 
 
 def load_failures(filename):
@@ -306,17 +307,12 @@ def main():
             f'https://github.com/galacticusorg/galacticus/releases/download/'
             f'bleeding-edge/{pdf_file}',
         ], check=False)
-        subprocess.run(
-            ['./scripts/aux/pdfDestinationsExtract.py', pdf_file, dests_file],
-            check=False)
-        pdf_destinations[suffix] = {}
-        try:
-            with open(dests_file, 'r') as f:
-                for line in f:
-                    dest = line.rstrip('\n')
-                    pdf_destinations[suffix][dest] = 1
-        except OSError:
-            pass
+
+        with open('Galacticus_'+suffix+'.pdf','rb') as file:
+            reader = PdfReader(file)
+            pdf_destinations[suffix] = {}
+            for dest in reader.named_destinations:
+                pdf_destinations[suffix][dest] = 1
 
     # Load existing consecutive-failure records.
     failures_file = 'linkCheckFailures.xml'
@@ -353,7 +349,8 @@ def main():
 
     # Check all collected URLs.
     status, bad_urls = check_urls(urls, pdf_destinations, api_token, failures)
-
+    print(bad_urls)
+    
     # Persist updated failure records.
     save_failures(failures, failures_file)
 
