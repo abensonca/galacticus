@@ -13,7 +13,7 @@ from xml.dom import minidom
 # Create a working directory.
 execPath = os.environ.get('GALACTICUS_EXEC_PATH', '')
 dataPath = os.environ.get('GALACTICUS_DATA_PATH', '')
-workDirectory = os.path.join(execPath, 'aux', 'WMAP-9')
+workDirectory = os.path.join(dataPath, 'dynamic', 'WMAP-9')
 os.makedirs(workDirectory, exist_ok=True)
 
 # Download the Monte Carlo Markov Chains.
@@ -118,7 +118,7 @@ urls = [
 for url in urls:
     ET.SubElement(root, 'url').text = url
 
-for creator in ['Galacticus', 'scripts/aux/WMAP9_Parameter_Covariance.py']:
+for creator in ['Galacticus', 'scripts/aux/parameterCovarianceWMAP9.py']:
     ET.SubElement(root, 'createdBy').text = creator
 
 ET.SubElement(root, 'source').text = 'Computed from Monte Carlo Markov Chains.'

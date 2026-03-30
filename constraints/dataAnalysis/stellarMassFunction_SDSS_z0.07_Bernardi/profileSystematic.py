@@ -25,7 +25,7 @@ models = [
         'gamma'   : 0.053
     },
     {
-        'name'    : "S\\'ersic",
+        'name'    : "Sérsic",
         'phiStar' : 1.040e-2,
         'mStar'   : 0.0094e9,
         'alpha'   : 1.665   ,
@@ -35,7 +35,7 @@ models = [
         'gamma'   : 0.296
     },
     {
-        'name'    : "S\\'erExp",
+        'name'    : "SérExp",
         'phiStar' : 0.892e-2,
         'mStar'   : 0.0014e9,
         'alpha'   : 2.330   ,
@@ -45,7 +45,7 @@ models = [
         'gamma'   : 0.305
     },
     {
-        'name'    : "S\\'ersic (Simard)",
+        'name'    : "Sérsic (Simard)",
         'phiStar' : 0.820e-2,
         'mStar'   : 0.0847e9,
         'alpha'   : 1.755   ,

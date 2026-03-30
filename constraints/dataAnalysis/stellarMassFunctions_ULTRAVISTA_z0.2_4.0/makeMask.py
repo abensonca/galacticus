@@ -7,17 +7,15 @@ import sys
 import subprocess
 import numpy as np
 
-execPath = os.environ.get('GALACTICUS_EXEC_PATH', '')
-
-def galacticusPath():
-    return execPath.rstrip('/') + '/'
+execPath = os.environ.get('GALACTICUS_EXEC_PATH', '').rstrip('/') + '/'
+dataPath = os.environ.get('GALACTICUS_DATA_PATH', '').rstrip('/') + '/'
 
 # Define data directory.
-dataDirectoryName = galacticusPath() + 'constraints/dataAnalysis/stellarMassFunctions_ULTRAVISTA_z0.2_4.0/'
+dataDirectoryName = execPath + 'constraints/dataAnalysis/stellarMassFunctions_ULTRAVISTA_z0.2_4.0/'
 # Define work directory.
 workDirectoryName = dataDirectoryName + 'work/'
 # Define mangle directory.
-mangle = galacticusPath() + 'aux/mangle/bin/'
+mangle = dataPath + 'dynamic/mangle-2.3.3/bin/'
 
 os.makedirs(workDirectoryName, exist_ok=True)
 

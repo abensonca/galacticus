@@ -10,27 +10,24 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
 
-execPath = os.environ.get('GALACTICUS_EXEC_PATH', '')
-sys.path.insert(0, os.path.join(execPath, 'python'))
-
-def galacticusPath():
-    return execPath.rstrip('/') + '/'
+execPath = os.environ.get('GALACTICUS_EXEC_PATH', '').rstrip('/') + '/'
+dataPath = os.environ.get('GALACTICUS_DATA_PATH', '').rstrip('/') + '/'
 
 # Define a working directory.
-workDirectory = galacticusPath() + 'constraints/dataAnalysis/stellarMassFunction_GAMA_z0.03/'
+workDirectory = execPath + 'constraints/dataAnalysis/stellarMassFunction_GAMA_z0.03/'
 
 # Define survey solid angle.
 squareDegreesPerSteradian = 3282.80635
 solidAngle = 143.0 / squareDegreesPerSteradian
 
 # Read the stellar mass function.
-xmlFile = galacticusPath() + 'data/observations/massFunctionsStellar/Stellar_Mass_Function_GAMA_2012.xml'
+xmlFile = dataPath + 'static/observations/massFunctionsStellar/Stellar_Mass_Function_GAMA_2012.xml'
 tree = ET.parse(xmlFile)
 root = tree.getroot()
 columns = root.find('massFunction').find('columns')
-logarithmicMass = np.array([float(x) for x in columns.find('mass'        ).findall('datum')], dtype=float)
-massFunction    = np.array([float(x) for x in columns.find('massFunction').findall('datum')], dtype=float)
-number          = np.array([float(x) for x in columns.find('number'      ).findall('datum')], dtype=float)
+logarithmicMass = np.array([float(x.text) for x in columns.find('mass'        ).findall('datum')], dtype=float)
+massFunction    = np.array([float(x.text) for x in columns.find('massFunction').findall('datum')], dtype=float)
+number          = np.array([float(x.text) for x in columns.find('number'      ).findall('datum')], dtype=float)
 binWidth        = np.full(len(massFunction), 0.2)
 binWidth[0:2]   = 0.5
 

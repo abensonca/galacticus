@@ -11,10 +11,8 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-execPath = os.environ.get('GALACTICUS_EXEC_PATH', '')
-
-def galacticusPath():
-    return execPath.rstrip('/') + '/'
+execPath = os.environ.get('GALACTICUS_EXEC_PATH', '').rstrip('/') + '/'
+dataPath = os.environ.get('GALACTICUS_DATA_PATH', '').rstrip('/') + '/'
 
 # Tabulated data provided by Mariangela Bernardi.
 log10MassStellar = np.array([  # Stellar masses are in units of M_Solar.
@@ -95,16 +93,27 @@ volumeMaximum = np.array([  # Comoving volumes are in units of 10^9 Mpc^3.
 ])
 
 # Solid angle of the sample.
-solidAngleHDF5 = galacticusPath() + 'constraints/dataAnalysis/stellarMassFunction_SDSS_z0.07_Bernardi/solidAngle.hdf5'
-subprocess.run([
-    galacticusPath() + 'scripts/aux/mangleRansack.pl',
-    galacticusPath() + 'constraints/dataAnalysis/stellarMassFunction_SDSS_z0.07_Bernardi/sdss_dr72safe0_res6d.pol',
-    solidAngleHDF5,
-    '0'
-], check=True)
-with h5py.File(solidAngleHDF5, 'r') as f:
-    solidAngles = f['solidAngle'][:]
-solidAngle = solidAngles.sum()
+solidAngle = None
+polygonFile = execPath + 'constraints/dataAnalysis/stellarMassFunction_SDSS_z0.07_Bernardi/sdss_dr72safe0_res6d.pol'
+if not os.path.exists(polygonFile):
+    subprocess.run([
+        'wget',
+        'https://zenodo.org/records/10998446/files/sdss_dr72safe0_res6d.pol.gz',
+        '-O',  polygonFile + '.gz'
+    ], check=True)
+    subprocess.run([
+        'gunzip',
+        polygonFile + '.gz'
+    ], check=True)
+result = subprocess.run([
+    dataPath + 'dynamic/mangle-2.3.3/bin/harmonize',
+    execPath + 'constraints/dataAnalysis/stellarMassFunction_SDSS_z0.07_Bernardi/sdss_dr72safe0_res6d.pol',
+    '/dev/null'
+], check=True, capture_output=True)
+for line in result.stdout.splitlines():
+    match = re.search(r'^area of \(weighted\) region is ([0-9\.]+) str/',line)
+    if match:
+        solidAngle = match.group(1)
 
 # Convert volumes to maximum distance.
 log10DistanceMaximum = np.log10((3.0 * volumeMaximum * 1.0e9 / solidAngle) ** (1.0 / 3.0))
@@ -139,6 +148,6 @@ ax.plot(10.0 ** fitMass, 10.0 ** fitDistance,
         color='goldenrod', linewidth=2.5, label='fit')
 ax.legend(loc='upper left')
 plt.tight_layout()
-plotFile = galacticusPath() + 'constraints/dataAnalysis/stellarMassFunction_SDSS_z0.07_Bernardi/massDistanceRelation.pdf'
+plotFile = execPath + 'constraints/dataAnalysis/stellarMassFunction_SDSS_z0.07_Bernardi/massDistanceRelation.pdf'
 plt.savefig(plotFile)
 plt.close()

@@ -12,10 +12,8 @@ import matplotlib.pyplot as plt
 import xml.etree.ElementTree as ET
 from xml.dom import minidom
 
-execPath = os.environ.get('GALACTICUS_EXEC_PATH', '')
-
-def galacticusPath():
-    return execPath.rstrip('/') + '/'
+execPath = os.environ.get('GALACTICUS_EXEC_PATH', '').rstrip('/') + '/'
+dataPath = os.environ.get('GALACTICUS_DATA_PATH', '').rstrip('/') + '/'
 
 # Number of sigma above sky for detection (arbitrary - will scale out of the results).
 sigma = 3.0
@@ -32,7 +30,7 @@ bins = [
 ]
 
 # Load the existing data file.
-dataFile = galacticusPath() + 'data/observations/massFunctionsStellar/Stellar_Mass_Functions_UKIDSS_UDS_2011.xml'
+dataFile = dataPath + 'static/observations/massFunctionsStellar/Stellar_Mass_Functions_UKIDSS_UDS_2011.xml'
 tree = ET.parse(dataFile)
 root = tree.getroot()
 
@@ -97,7 +95,7 @@ for iBin, binData in enumerate(bins):
 
 ax.legend(loc='lower left')
 plt.tight_layout()
-plotFile = galacticusPath() + 'constraints/dataAnalysis/stellarMassFunctions_UKIDSS_UDS_z3_5/completeness.pdf'
+plotFile = execPath + 'constraints/dataAnalysis/stellarMassFunctions_UKIDSS_UDS_z3_5/completeness.pdf'
 plt.savefig(plotFile)
 plt.close()
 

@@ -17,7 +17,7 @@ fields = [
     {'name': 'NMBS'    },
     {'name': 'ZFOURGE' },
 ]
-data = np.loadtxt('zfourge-SMF-supplemental/masslimits.dat', usecols=(0, 1, 2))
+data = np.loadtxt('constraints/dataAnalysis/stellarMassFunctions_ZFOURGE_z0.2_2.5/zfourge-SMF-supplemental/masslimits.dat', usecols=(0, 1, 2))
 redshift     = data[:, 0]
 massNMBS     = data[:, 1]
 massZFOURGE  = data[:, 2]

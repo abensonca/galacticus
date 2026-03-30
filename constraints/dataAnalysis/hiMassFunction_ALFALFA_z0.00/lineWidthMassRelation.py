@@ -41,11 +41,20 @@ with open(csvClean, 'r') as f:
         parts = line.strip().split(',')
         if len(parts) > 14:
             try:
-                W50              .append(float(parts[ 7]))
-                errorW50         .append(float(parts[ 8]))
-                logarithmicMassHI.append(float(parts[14]))
+                W50_               = float(parts[ 7])
             except ValueError:
                 continue
+            try:
+                errorW50_          = float(parts[ 8])
+            except ValueError:
+                continue
+            try:
+                logarithmicMassHI_ = float(parts[14])
+            except ValueError:
+                continue
+            W50              .append(W50_              )
+            errorW50         .append(errorW50_         )
+            logarithmicMassHI.append(logarithmicMassHI_)
 
 W50               = np.array(W50              )
 errorW50          = np.array(errorW50         )

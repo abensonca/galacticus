@@ -12,19 +12,17 @@ import xml.etree.ElementTree as ET
 from astropy.cosmology import LambdaCDM
 import astropy.units as u
 
-execPath = os.environ.get('GALACTICUS_EXEC_PATH', '')
-
-def galacticusPath():
-    return execPath.rstrip('/') + '/'
+execPath = os.environ.get('GALACTICUS_EXEC_PATH', '').rstrip('/') + '/'
+dataPath = os.environ.get('GALACTICUS_DATA_PATH', '').rstrip('/') + '/'
 
 # Define a working directory.
-workDirectory = galacticusPath() + 'constraints/dataAnalysis/stellarMassFunctions_VIPERS_z0_1/'
+workDirectory = execPath + 'constraints/dataAnalysis/stellarMassFunctions_VIPERS_z0_1/'
 
 # Define survey solid angle (computed from mangle polygons).
 solidAngle = 0.003137
 
 # Read the stellar mass function.
-xmlFile = galacticusPath() + 'data/observations/massFunctionsStellar/Stellar_Mass_Functions_VIPERS_2013.xml'
+xmlFile = dataPath + 'static/observations/massFunctionsStellar/Stellar_Mass_Functions_VIPERS_2013.xml'
 tree = ET.parse(xmlFile)
 root = tree.getroot()
 
@@ -51,17 +49,17 @@ ax.set_ylim(2000.0, 4000.0)
 colors1 = ['steelblue', 'darkorange', 'green']
 colors2 = ['navy',      'saddlebrown', 'darkgreen']
 
-massFunctions = root.findall('massFunction')
-for iMF, mfElem in enumerate(massFunctions):
+massFunction = root.find('massFunction')
+columns = massFunction.findall('columns')
+for iMF, column in enumerate(columns):
     redshiftBin = iMF
-    columns = mfElem.find('columns')
 
-    logarithmicMass = np.array([float(d.text) for d in columns.find('mass'        ).findall('datum')])
-    massFunction    = np.array([float(d.text) for d in columns.find('massFunction').findall('datum')])
-    number          = np.array([float(d.text) for d in columns.find('number'      ).findall('datum')])
+    logarithmicMass = np.array([float(d.text) for d in column.find('mass'        ).findall('datum')])
+    massFunction    = np.array([float(d.text) for d in column.find('massFunction').findall('datum')])
+    number          = np.array([float(d.text) for d in column.find('number'      ).findall('datum')])
     binWidth        = np.full(len(massFunction), 0.2)
-    redshiftMinimum = float(mfElem.find('redshiftLow' ).text)
-    redshiftMaximum = float(mfElem.find('redshiftHigh').text)
+    redshiftMinimum = float(column.find('redshiftLow' ).text)
+    redshiftMaximum = float(column.find('redshiftHigh').text)
     redshiftLabel   = f'${redshiftMinimum:.1f}<z<{redshiftMaximum:.1f}$'
 
     # Find distance to minimum and maximum redshifts.
