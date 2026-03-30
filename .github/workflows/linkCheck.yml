@@ -44,7 +44,7 @@ jobs:
         run: |
           cd $GALACTICUS_EXEC_PATH
           git config --global --add safe.directory $GALACTICUS_EXEC_PATH
-          ./scripts/aux/linkChecker.pl ${{ secrets.NASA_ADS_API_TOKEN }} badURLs.md
+          ./scripts/aux/linkChecker.py ${{ secrets.NASA_ADS_API_TOKEN }} badURLs.md
       - name: Check file existence
         id: check_files
         uses: andstor/file-existence-action@v3
