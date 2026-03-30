@@ -15,6 +15,9 @@ import matplotlib.pyplot as plt
 
 execPath = os.environ.get('GALACTICUS_EXEC_PATH', '').rstrip('/') + '/'
 
+myMillenniumUser   = os.environ.get('MYMILLENNIUM_USER'  , '')
+myMillenniumPasswd = os.environ.get('MYMILLENNIUM_PASSWD', '')
+
 # Define a working directory.
 workDirectory = execPath + 'constraints/dataAnalysis/stellarMassFunctions_UKIDSS_UDS_z3_5/massLuminosityWork/'
 os.makedirs(workDirectory, exist_ok=True)
@@ -45,7 +48,7 @@ sqlQuery = (
 csvFile = workDirectory + 'millenniumDB.csv'
 if not os.path.exists(csvFile):
     subprocess.run([
-        'wget', '--http-user=abenson', '--http-passwd=n70KZIVc',
+        'wget', '--http-user='+myMillenniumUser, '--http-passwd='+myMillenniumPasswd,
         databaseURL + sqlQuery, '-O', csvFile
     ], check=True)
 
