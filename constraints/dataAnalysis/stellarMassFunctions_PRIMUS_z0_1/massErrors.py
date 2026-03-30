@@ -8,7 +8,7 @@ import numpy as np
 import h5py
 from astropy.io import fits
 
-dataPath = os.environ.get('GALACTICUS_DATA_PATH', '')
+execPath = os.environ.get('GALACTICUS_EXEC_PATH', '')
 
 # Get field solid angles.
 with h5py.File(dataPath + '/static/surveyGeometry/PRIMUS/solidAngles.hdf5', 'r') as f:
@@ -39,7 +39,7 @@ sequence = [
 
 for iField, fileName in enumerate(fileNames):
     fieldNum  = iField + 1
-    filePath  = dataPath + '/static/surveyGeometry/PRIMUS/' + fileName
+    filePath  = execPath + '/constraints/dataAnalysis/stellarMassFunctions_PRIMUS_z0_1/' + fileName
     if not os.path.exists(filePath):
         raise FileNotFoundError(
             f'massErrors.py: this script requires the PRIMUS data tables be available ({filePath})'
