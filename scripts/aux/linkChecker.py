@@ -370,7 +370,6 @@ def main():
 
     # Check all collected URLs.
     status, bad_urls = check_urls(urls, pdf_destinations, api_token, failures)
-    print(bad_urls)
     
     # Persist updated failure records.
     save_failures(failures, failures_file)
