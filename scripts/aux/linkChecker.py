@@ -103,20 +103,41 @@ def scan_file(file_name, path, urls):
         print(f"Warning: could not read {path}/{file_name}: {e}")
 
 
+def _find_closing_paren(s, open_pos):
+    """Return the index of the ')' that balances the '(' at open_pos."""
+    depth = 0
+    for i in range(open_pos, len(s)):
+        if s[i] == '(':
+            depth += 1
+        elif s[i] == ')':
+            depth -= 1
+            if depth == 0:
+                return i
+    return -1
+
+
 def scan_wiki(file_name, path, urls):
     """Scan a wiki Markdown file for links."""
     line_number = 0
+    # Matches [text]( — the URL portion is then extracted with balanced-paren logic.
+    _link_start_re = re.compile(r'\[([^\]]*)\]\(')
     try:
         with open(os.path.join(path, file_name), 'r', errors='replace') as f:
             for line in f:
                 line_number += 1
-                # Markdown [text](url) patterns
+                # Markdown [text](url) patterns — use balanced () to handle
+                # URLs that themselves contain parentheses, e.g.
+                # https://en.wikipedia.org/wiki/Destructor_(computer_programming)
                 while True:
-                    m = re.search(r'\[([^\]]*)\]\(([^)]+)\)', line)
+                    m = _link_start_re.search(line)
                     if not m:
                         break
-                    url = m.group(2)
-                    line = line[:m.start()] + line[m.end():]
+                    open_pos = m.end() - 1   # index of the '(' in line
+                    close_pos = _find_closing_paren(line, open_pos)
+                    if close_pos == -1:
+                        break
+                    url = line[open_pos + 1:close_pos]
+                    line = line[:m.start()] + line[close_pos + 1:]
                     urls.setdefault(url, []).append(
                         {'file': file_name, 'path': path, 'lineNumber': line_number})
     except OSError as e:
