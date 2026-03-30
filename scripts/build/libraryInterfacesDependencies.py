@@ -51,7 +51,7 @@ for name in class_names:
         f"\t@mkdir -p {build_path}/moduleBuild\n"
         f"\t$(FCCOMPILER) -c {build_path}libgalacticus/{name}.p.F90"
         f" -o {build_path}libgalacticus/{name}.o $(FCFLAGS) 2>&1"
-        f" | ./scripts/build/postprocess.pl {build_path}libgalacticus/{name}.p.F90\n"
+        f" | ./scripts/build/postprocess.py {build_path}libgalacticus/{name}.p.F90\n"
         f"\n"
     )
 

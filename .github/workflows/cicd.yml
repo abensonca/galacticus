@@ -439,8 +439,8 @@ jobs:
         run: |
           set -o pipefail
           make -j`sysctl -n hw.activecpu` USEGIT2=no Galacticus.exe tests.hashes.cryptographic.exe 2>&1 | tee build.log
-          ./scripts/build/staticRelinker.pl `grep '\-o Galacticus.exe' build.log`
-          ./scripts/build/staticRelinker.pl `grep '\-o tests.hashes.cryptographic.exe' build.log`
+          ./scripts/build/staticRelinker.py `grep '\-o Galacticus.exe' build.log`
+          ./scripts/build/staticRelinker.py `grep '\-o tests.hashes.cryptographic.exe' build.log`
           dsymutil -o Galacticus.exe.dSYM Galacticus.exe
           zip -r debugSymbolsMacOS.zip Galacticus.exe.dSYM
           mv Galacticus.exe Galacticus_MacOS.exe
@@ -475,7 +475,7 @@ jobs:
         run: |
           set -o pipefail
           make -j`sysctl -n hw.activecpu` USEGIT2=no Galacticus.exe 2>&1 | tee build.log
-          ./scripts/build/staticRelinker.pl `grep '\-o Galacticus.exe' build.log`
+          ./scripts/build/staticRelinker.py `grep '\-o Galacticus.exe' build.log`
           dsymutil -o Galacticus.exe.dSYM Galacticus.exe
           zip -r debugSymbolsMacOS-M1.zip Galacticus.exe.dSYM
           mv Galacticus.exe Galacticus_MacOS-M1.exe
@@ -562,19 +562,19 @@ jobs:
           set -o pipefail
           ./Galacticus.exe parameters/buildTools.xml 2>&1 | tee build.log
           cd $GALACTICUS_DATA_PATH/dynamic/CAMB-${cambVersion}/fortran/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl gfortran-12 -cpp -Ofast -fopenmp -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib -JRelease -IRelease/ -I"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" Release/inidriver.o Release/libcamb.a  -L"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" -lforutils -o camb
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py gfortran-12 -cpp -Ofast -fopenmp -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib -JRelease -IRelease/ -I"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" Release/inidriver.o Release/libcamb.a  -L"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" -lforutils -o camb
           cd $GALACTICUS_DATA_PATH/dynamic/AxionCAMB/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl gfortran-12 -O3 -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib constants.o utils.o  subroutines.o inifile.o power_tilt.o recfast_axion.o reionization.o modules.o bessels.o equations_ppf.o halofit_ppf.o lensing.o SeparableBispectrum.o cmbmain.o camb.o axion_background.o inidriver_axion.F90 -o camb          
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py gfortran-12 -O3 -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib constants.o utils.o  subroutines.o inifile.o power_tilt.o recfast_axion.o reionization.o modules.o bessels.o equations_ppf.o halofit_ppf.o lensing.o SeparableBispectrum.o cmbmain.o camb.o axion_background.o inidriver_axion.F90 -o camb          
           cd $GALACTICUS_DATA_PATH/dynamic/class_public-${classVersion}/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o class ' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o class ' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/RecFast/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl gfortran-12 recfast.for -o recfast.exe -O3 -ffixed-form -ffixed-line-length-none
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py gfortran-12 recfast.for -o recfast.exe -O3 -ffixed-form -ffixed-line-length-none
           cd $GALACTICUS_DATA_PATH/dynamic/c${cloudyVersion}/source/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o cloudy.exe' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o cloudy.exe' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/fsps-${fspsVersion}/src
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o autosps.exe' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o autosps.exe' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/mangle-${mangleVersion}/bin/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o harmonize' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o harmonize' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH
           zip -r toolsMacOS.zip \
             dynamic/CAMB-${cambVersion}/fortran/camb \
@@ -617,7 +617,7 @@ jobs:
       - name: Build Galacticus
         run: |
           make -j`sysctl -n hw.activecpu` USEGIT2=no Galacticus.exe 2>&1 | tee build.log
-          ./scripts/build/staticRelinker.pl `grep '\-o Galacticus.exe' build.log`
+          ./scripts/build/staticRelinker.py `grep '\-o Galacticus.exe' build.log`
       - name: Build tools
         run: |
           export GALACTICUS_EXEC_PATH=`pwd`
@@ -639,19 +639,19 @@ jobs:
           set -o pipefail
           ./Galacticus.exe parameters/buildTools.xml 2>&1 | tee build.log
           cd $GALACTICUS_DATA_PATH/dynamic/CAMB-${cambVersion}/fortran/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl gfortran-12 -cpp -Ofast -fopenmp -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib -JRelease -IRelease/ -I"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" Release/inidriver.o Release/libcamb.a  -L"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" -lforutils -o camb
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py gfortran-12 -cpp -Ofast -fopenmp -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib -JRelease -IRelease/ -I"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" Release/inidriver.o Release/libcamb.a  -L"/Users/runner/work/galacticus/galacticus/datasets/dynamic/CAMB-${cambVersion}/fortran/../forutils/Release/" -lforutils -o camb
           cd $GALACTICUS_DATA_PATH/dynamic/AxionCAMB/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl gfortran-12 -O3 -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib constants.o utils.o  subroutines.o inifile.o power_tilt.o recfast_axion.o reionization.o modules.o bessels.o equations_ppf.o halofit_ppf.o lensing.o SeparableBispectrum.o cmbmain.o camb.o axion_background.o inidriver_axion.F90 -o camb          
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py gfortran-12 -O3 -fintrinsic-modules-path /usr/local/include -L/usr/local/lib -L/opt/local/lib constants.o utils.o  subroutines.o inifile.o power_tilt.o recfast_axion.o reionization.o modules.o bessels.o equations_ppf.o halofit_ppf.o lensing.o SeparableBispectrum.o cmbmain.o camb.o axion_background.o inidriver_axion.F90 -o camb          
           cd $GALACTICUS_DATA_PATH/dynamic/class_public-${classVersion}/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o class ' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o class ' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/RecFast/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl gfortran-12 recfast.for -o recfast.exe -O3 -ffixed-form -ffixed-line-length-none
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py gfortran-12 recfast.for -o recfast.exe -O3 -ffixed-form -ffixed-line-length-none
           cd $GALACTICUS_DATA_PATH/dynamic/c${cloudyVersion}/source/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o cloudy.exe' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o cloudy.exe' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/fsps-${fspsVersion}/src
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o autosps.exe' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o autosps.exe' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/mangle-${mangleVersion}/bin/
-          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o harmonize' $GALACTICUS_EXEC_PATH/build.log`
+          $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.py `grep -E '\-o harmonize' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH
           zip -r toolsMacOSM1.zip \
             dynamic/CAMB-${cambVersion}/fortran/camb \
