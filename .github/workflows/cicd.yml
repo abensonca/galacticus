@@ -592,30 +592,13 @@ jobs:
           $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o autosps.exe' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/mangle-${mangleVersion}/bin/
           $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o harmonize' $GALACTICUS_EXEC_PATH/build.log`
-          cd $GALACTICUS_DATA_PATH
-          zip -r toolsMacOS.zip \
-            dynamic/CAMB-${cambVersion}/fortran/camb \
-            dynamic/AxionCAMB/camb \
-            dynamic/class_public-${classVersion}/class \
-            dynamic/RecFast/recfast.exe \
-            dynamic/RecFast/currentVersion \
-            dynamic/c${cloudyVersion}/source/cloudy.exe \
-            dynamic/c${cloudyVersion}/data \
-            dynamic/fsps-${fspsVersion}/src/autosps.exe \
-            dynamic/fsps-${fspsVersion}/dust \
-            dynamic/fsps-${fspsVersion}/data \
-            dynamic/fsps-${fspsVersion}/nebular \
-            dynamic/fsps-${fspsVersion}/SPECTRA \
-            dynamic/fsps-${fspsVersion}/OUTPUTS \
-            dynamic/fsps-${fspsVersion}/ISOCHRONES \
-            dynamic/mangle-${mangleVersion}/bin/harmonize
-            echo "camb=${GALACTICUS_DATA_PATH}/dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
-            echo "axioncamb=${GALACTICUS_DATA_PATH}/dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
-            echo "class=${GALACTICUS_DATA_PATH}/dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
-            echo "recfast=${GALACTICUS_DATA_PATH}/dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
-            echo "cloudy=${GALACTICUS_DATA_PATH}/dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
-            echo "fsps=${GALACTICUS_DATA_PATH}/dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
-            echo "mangle=${GALACTICUS_DATA_PATH}/dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
+          echo "camb=${GALACTICUS_DATA_PATH}/dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
+          echo "axioncamb=${GALACTICUS_DATA_PATH}/dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
+          echo "class=${GALACTICUS_DATA_PATH}/dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
+          echo "recfast=${GALACTICUS_DATA_PATH}/dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
+          echo "cloudy=${GALACTICUS_DATA_PATH}/dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
+          echo "fsps=${GALACTICUS_DATA_PATH}/dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
+          echo "mangle=${GALACTICUS_DATA_PATH}/dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
@@ -624,10 +607,10 @@ jobs:
           macos_certificate_password: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
           macos_keychain_password: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
           macos_developer_id: ${{ secrets.MACOS_DEVELOPER_ID }}
-      - name: Repackage
+      - name: Package
         run: |          
-          # Re-package the zip with the signed executables
-          rm toolsMacOS.zip
+          # Package the zip with the signed executables
+          cd $GALACTICUS_DATA_PATH
           zip -r toolsMacOS.zip \
             dynamic/CAMB-${cambVersion}/fortran/camb \
             dynamic/AxionCAMB/camb \
@@ -705,30 +688,13 @@ jobs:
           $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o autosps.exe' $GALACTICUS_EXEC_PATH/build.log`
           cd $GALACTICUS_DATA_PATH/dynamic/mangle-${mangleVersion}/bin/
           $GALACTICUS_EXEC_PATH/scripts/build/staticRelinker.pl `grep -E '\-o harmonize' $GALACTICUS_EXEC_PATH/build.log`
-          cd $GALACTICUS_DATA_PATH
-          zip -r toolsMacOSM1.zip \
-            dynamic/CAMB-${cambVersion}/fortran/camb \
-            dynamic/AxionCAMB/camb \
-            dynamic/class_public-${classVersion}/class \
-            dynamic/RecFast/recfast.exe \
-            dynamic/RecFast/currentVersion \
-            dynamic/c${cloudyVersion}/source/cloudy.exe \
-            dynamic/c${cloudyVersion}/data \
-            dynamic/fsps-${fspsVersion}/src/autosps.exe \
-            dynamic/fsps-${fspsVersion}/dust \
-            dynamic/fsps-${fspsVersion}/data \
-            dynamic/fsps-${fspsVersion}/nebular \
-            dynamic/fsps-${fspsVersion}/SPECTRA \
-            dynamic/fsps-${fspsVersion}/OUTPUTS \
-            dynamic/fsps-${fspsVersion}/ISOCHRONES \
-            dynamic/mangle-${mangleVersion}/bin/harmonize
-            echo "camb=${GALACTICUS_DATA_PATH}/dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
-            echo "axioncamb=${GALACTICUS_DATA_PATH}/dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
-            echo "class=${GALACTICUS_DATA_PATH}/dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
-            echo "recfast=${GALACTICUS_DATA_PATH}/dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
-            echo "cloudy=${GALACTICUS_DATA_PATH}/dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
-            echo "fsps=${GALACTICUS_DATA_PATH}/dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
-            echo "mangle=${GALACTICUS_DATA_PATH}/dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
+          echo "camb=${GALACTICUS_DATA_PATH}/dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
+          echo "axioncamb=${GALACTICUS_DATA_PATH}/dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
+          echo "class=${GALACTICUS_DATA_PATH}/dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
+          echo "recfast=${GALACTICUS_DATA_PATH}/dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
+          echo "cloudy=${GALACTICUS_DATA_PATH}/dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
+          echo "fsps=${GALACTICUS_DATA_PATH}/dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
+          echo "mangle=${GALACTICUS_DATA_PATH}/dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
@@ -740,7 +706,7 @@ jobs:
       - name: Repackage
         run: |          
           # Re-package the zip with the signed executables
-          rm toolsMacOSM1.zip
+          cd $GALACTICUS_DATA_PATH
           zip -r toolsMacOSM1.zip \
             dynamic/CAMB-${cambVersion}/fortran/camb \
             dynamic/AxionCAMB/camb \
