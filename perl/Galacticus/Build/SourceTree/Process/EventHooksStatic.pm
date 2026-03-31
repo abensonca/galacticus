@@ -11,6 +11,7 @@ use XML::Simple;
 use Storable;
 use List::ExtraUtils;
 use Galacticus::Build::Directives;
+use Galacticus::Build::Dependencies;
 
 # Insert hooks for our functions.
 $Galacticus::Build::SourceTree::Hooks::processHooks{'eventHooksStatic'} = \&Process_EventHooksStatic;
@@ -28,7 +29,7 @@ sub Process_EventHooksStatic {
     unless ( @eventHookNames ) {
 	if ( -e $ENV{'BUILDPATH'}."/eventHooksStatic.blob" ) {
 	    @eventHookNames = @{retrieve($ENV{'BUILDPATH'}."/eventHooksStatic.blob")};
-	} else {	  
+	} else {
 	    @eventHookNames = map {$_->{'name'}} map {&Galacticus::Build::Directives::Extract_Directives($_,'eventHookStatic')} &List::ExtraUtils::as_array($directiveLocations->{'eventHookStatic'}->{'file'});
 	    store(\@eventHookNames,$ENV{'BUILDPATH'}."/eventHooksStatic.blob");
 	}
@@ -41,7 +42,7 @@ sub Process_EventHooksStatic {
     while ( $node ) {
 	# Locate the containing module.
 	$moduleNode = $node
-	    if ( $node->{'type'} eq "module" );	     
+	    if ( $node->{'type'} eq "module" );
 	# Handle eventHookStatic directives by creating code to call any hooked functions.
 	if ( $node->{'type'} eq "eventHookStatic" && ! $node->{'directive'}->{'processed'} ) {
 	    $node->{'directive'}->{'processed'} =  1;
@@ -56,24 +57,63 @@ sub Process_EventHooksStatic {
 		my $eventHookedDepth = 0;
 		my $moduleName;
 		my $functionName;
+		my $after;
+		my $before;
+		my $useGlobal;
 		while ( $eventHookedNode ) {
 		    $moduleName = $eventHookedNode->{'name'}
 		        if ( $eventHookedNode->{'type'} eq "module" );
-		    $functionName = $eventHookedNode->{'directive'}->{'function'}
-		        if ( $eventHookedNode->{'type'} eq $node->{'directive'}->{'name'} );
+		    if ( $eventHookedNode->{'type'} eq $node->{'directive'}->{'name'} ) {
+			$functionName = $eventHookedNode->{'directive'}->{'function'};
+			$after        = $eventHookedNode->{'directive'}->{'after'    }
+			    if ( exists($eventHookedNode->{'directive'}->{'after'   }) );
+			$before       = $eventHookedNode->{'directive'}->{'before'   }
+			    if ( exists($eventHookedNode->{'directive'}->{'before'  }) );
+			$useGlobal    = $eventHookedNode->{'directive'}->{'useGlobal'}
+			    if ( exists($eventHookedNode->{'directive'}->{'useGlobal'}) );
+		    }
 		    $eventHookedNode = &Galacticus::Build::SourceTree::Walk_Tree($eventHookedNode,\$eventHookedDepth);
 		}
 		die("Galacticus::Build::SourceTree::Process::EventHooksStatic: unable to find module containing hooked function")
 		    unless ( defined($moduleName  ) );
 		die("Galacticus::Build::SourceTree::Process::EventHooksStatic: unable to find name of hooked function"          )
 		    unless ( defined($functionName) );
-		push(@hookedFunctions,{function => $functionName, module => $moduleName});
+		# Handle useGlobal: append "_" to function name and import from Functions_Global module.
+		if ( defined($useGlobal) && $useGlobal eq "yes" ) {
+		    $functionName .= "_";
+		    $moduleName    = "Functions_Global";
+		}
+		push(@hookedFunctions,{function => $functionName, module => $moduleName, after => $after, before => $before});
 	    }
+	    # Sort hooked functions by dependency order if any have after/before constraints.
+	    if ( grep { defined($_->{'after'}) || defined($_->{'before'}) } @hookedFunctions ) {
+		my %tasks;
+		foreach my $hf ( @hookedFunctions ) {
+		    $tasks{$hf->{'function'}} = {};
+		    $tasks{$hf->{'function'}}->{'after' } = $hf->{'after' }
+		        if ( defined($hf->{'after' }) );
+		    $tasks{$hf->{'function'}}->{'before'} = $hf->{'before'}
+		        if ( defined($hf->{'before'}) );
+		}
+		my %sortData;
+		&Galacticus::Build::Dependencies::Dependency_Sort(\%tasks, \%sortData);
+		my %functionByName = map { $_->{'function'} => $_ } @hookedFunctions;
+		@hookedFunctions = map { exists($functionByName{$_}) ? $functionByName{$_} : () } @{$sortData{'unitNames'}};
+	    }
+	    # Get callWith and onReturn from the directive.
+	    my $callWith = exists($node->{'directive'}->{'callWith'}) ? $node->{'directive'}->{'callWith'} : '';
+	    my $onReturn = exists($node->{'directive'}->{'onReturn'}) ? $node->{'directive'}->{'onReturn'} : '';
 	    # Insert the code.
+	    my @callLines;
+	    foreach my $hf ( @hookedFunctions ) {
+		push(@callLines, "call ".$hf->{'function'}."(".$callWith.")");
+		push(@callLines, $onReturn)
+		    if ( $onReturn ne '' );
+	    }
 	    my $newNode =
 	    {
 		type       => "code",
-		content    => join("\n",map {"call ".$_->{'function'}."()"} @hookedFunctions)."\n",
+		content    => join("\n",@callLines)."\n",
 		firstChild => undef(),
 		source     => "Galacticus::Build::SourceTree::Process::EventHooksStatic::Process_EventHooksStatic()",
 		line       => 1

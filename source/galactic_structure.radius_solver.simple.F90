@@ -195,18 +195,6 @@ contains
     use :: Calculations_Resets       , only : Calculations_Reset
     use :: Error                     , only : Error_Report
     use :: Galactic_Structure_Options, only : enumerationComponentTypeType
-    !![
-    <include directive="radiusSolverTask" type="moduleUse">
-    !!]
-    include 'galactic_structure.radius_solver.tasks.modules.inc'
-    !![
-    </include>
-    <include directive="radiusSolverPlausibility" type="moduleUse">
-    !!]
-    include 'galactic_structure.radius_solver.plausible.modules.inc'
-    !![
-    </include>
-    !!]
     implicit none
     class           (galacticStructureSolverSimple), intent(inout)           :: self
     type            (treeNode                     ), intent(inout), target   :: node
@@ -226,12 +214,9 @@ contains
     node%isPhysicallyPlausible=.true.
     node%isSolvable           =.true.
     !![
-    <include directive="radiusSolverPlausibility" type="functionCall" functionType="void">
-     <functionArgs>node</functionArgs>
-    !!]
-    include 'galactic_structure.radius_solver.plausible.inc'
-    !![
-    </include>
+    <eventHookStatic name="radiusSolverPlausibility">
+     <callWith>node</callWith>
+    </eventHookStatic>
     !!]
     if (node%isPhysicallyPlausible .and. .not.plausibilityOnly_) then
        ! Determine which node to use for halo properties.
@@ -244,13 +229,10 @@ contains
        ! Solve for each component.
        call Calculations_Reset(node)
        !![
-       <include directive="radiusSolverTask" type="functionCall" functionType="void">
-        <functionArgs>node,componentActive,component,specificAngularMomentumRequired,specificAngularMomentum,radiusGet,radiusSet,velocityGet,velocitySet</functionArgs>
+       <eventHookStatic name="radiusSolverTask">
+        <callWith>node,componentActive,component,specificAngularMomentumRequired,specificAngularMomentum,radiusGet,radiusSet,velocityGet,velocitySet</callWith>
         <onReturn>if (componentActive) call radiusSolve(node,component,specificAngularMomentum,radiusGet,radiusSet,velocityGet,velocitySet)</onReturn>
-       !!]
-       include 'galactic_structure.radius_solver.tasks.inc'
-       !![
-       </include>
+       </eventHookStatic>
        !!]
     end if
     return

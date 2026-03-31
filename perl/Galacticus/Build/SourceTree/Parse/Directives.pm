@@ -245,7 +245,10 @@ SCHEMA
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="{$name}">
     <xs:complexType>
-      <xs:attribute name="function" use="required"/>
+      <xs:attribute name="function"  use="required"/>
+      <xs:attribute name="after"     use="optional"/>
+      <xs:attribute name="before"    use="optional"/>
+      <xs:attribute name="useGlobal" use="optional"/>
     </xs:complexType>
   </xs:element>
 </xs:schema>
