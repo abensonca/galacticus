@@ -35,10 +35,11 @@
     where $T_\mathrm{dyn}(r) = r/v_\mathrm{circ}(r)$ is the local dynamical time, $R_\mathrm{peri}$ is the
     pericentric distance computed using the locally Keplerian approximation with the enclosed host mass, and
     \begin{equation}
-     b = \begin{cases} b_\mathrm{interior} & r < R_\mathrm{vir} \\ b_\mathrm{exterior} & r \geq R_\mathrm{vir} \end{cases}.
+     b = \begin{cases} b_\mathrm{interior} &amp; r &lt; R_\mathrm{vir} \\ b_\mathrm{exterior} &amp; r \geq R_\mathrm{vir} \end{cases}.
     \end{equation}
+    Parameters are set via $A=$\mono{A}, $c=$\mono{[c]}, $b_\mathrm{interior}=$\mono{[bInterior]}, and $b_\mathrm{exterior}=$\mono{[bExterior]}.
     The default parameter values $A=5.5$, $c=0.2$, $b_\mathrm{interior}=-0.5$, and $b_\mathrm{exterior}=-1.0$ are
-    those favoured by \cite{poulton_extracting_2021}.
+    those favored by \cite{poulton_extracting_2021}.
    </description>
   </satelliteMergingTimescales>
   !!]
@@ -49,11 +50,8 @@
      private
      class           (darkMatterHaloScaleClass ), pointer :: darkMatterHaloScale_  => null()
      class           (darkMatterProfileDMOClass), pointer :: darkMatterProfileDMO_ => null()
-     double precision                                     :: timescaleMultiplier
-     double precision                                     :: A
-     double precision                                     :: c
-     double precision                                     :: bInterior
-     double precision                                     :: bExterior
+     double precision                                     :: A                              , c        , &
+          &                                                  bInterior                      , bExterior
    contains
      final     ::                     poulton2021Destructor
      procedure :: timeUntilMerging => poulton2021TimeUntilMerging
@@ -81,18 +79,11 @@ contains
     type            (inputParameters                      ), intent(inout) :: parameters
     class           (darkMatterHaloScaleClass             ), pointer       :: darkMatterHaloScale_
     class           (darkMatterProfileDMOClass            ), pointer       :: darkMatterProfileDMO_
-    double precision                                                       :: timescaleMultiplier  , A         , &
-         &                                                                    c                    , bInterior , &
-         &                                                                    bExterior
+    double precision                                                       :: A                    , c        , &
+         &                                                                    bInterior            , bExterior
 
     if (.not.defaultBasicComponent%massIsGettable()) call Error_Report('this method requires that the "mass" property of the basic component be gettable'//{introspection:location})
     !![
-    <inputParameter>
-      <name>timescaleMultiplier</name>
-      <defaultValue>1.0d0</defaultValue>
-      <description>A multiplier for the merging timescale in the \cite{poulton_extracting_2021} satellite merging timescale calculations.</description>
-      <source>parameters</source>
-    </inputParameter>
     <inputParameter>
       <name>A</name>
       <defaultValue>5.5d0</defaultValue>
@@ -120,7 +111,7 @@ contains
     <objectBuilder class="darkMatterHaloScale"  name="darkMatterHaloScale_"  source="parameters"/>
     <objectBuilder class="darkMatterProfileDMO" name="darkMatterProfileDMO_" source="parameters"/>
     !!]
-    self=satelliteMergingTimescalesPoulton2021(timescaleMultiplier,A,c,bInterior,bExterior,darkMatterHaloScale_,darkMatterProfileDMO_)
+    self=satelliteMergingTimescalesPoulton2021(A,c,bInterior,bExterior,darkMatterHaloScale_,darkMatterProfileDMO_)
     !![
     <inputParametersValidate source="parameters"/>
     <objectDestructor name="darkMatterHaloScale_" />
@@ -129,19 +120,18 @@ contains
     return
   end function poulton2021ConstructorParameters
 
-  function poulton2021ConstructorInternal(timescaleMultiplier,A,c,bInterior,bExterior,darkMatterHaloScale_,darkMatterProfileDMO_) result(self)
+  function poulton2021ConstructorInternal(A,c,bInterior,bExterior,darkMatterHaloScale_,darkMatterProfileDMO_) result(self)
     !!{
     Constructor for the \cite{poulton_extracting_2021} merging timescale class.
     !!}
     implicit none
     type            (satelliteMergingTimescalesPoulton2021)                        :: self
-    double precision                                       , intent(in   )         :: timescaleMultiplier  , A         , &
-         &                                                                            c                    , bInterior , &
-         &                                                                            bExterior
+    double precision                                       , intent(in   )         :: A                    , c        , &
+         &                                                                            bInterior            , bExterior
     class           (darkMatterHaloScaleClass             ), intent(in   ), target :: darkMatterHaloScale_
     class           (darkMatterProfileDMOClass            ), intent(in   ), target :: darkMatterProfileDMO_
     !![
-    <constructorAssign variables="timescaleMultiplier, A, c, bInterior, bExterior, *darkMatterHaloScale_, *darkMatterProfileDMO_"/>
+    <constructorAssign variables="A, c, bInterior, bExterior, *darkMatterHaloScale_, *darkMatterProfileDMO_"/>
     !!]
 
     return
@@ -161,14 +151,14 @@ contains
     return
   end subroutine poulton2021Destructor
 
-  double precision function poulton2021TimeUntilMerging(self,node,orbit)
+  double precision function poulton2021TimeUntilMerging(self,node,orbit) result(timeUntilMerging)
     !!{
     Return the timescale for merging satellites using the \cite{poulton_extracting_2021} method.
     !!}
-    use :: Galacticus_Nodes                , only : nodeComponentBasic             , treeNode
+    use :: Galacticus_Nodes                , only : nodeComponentBasic            , treeNode
     use :: Kepler_Orbits                   , only : keplerOrbit
     use :: Mass_Distributions              , only : massDistributionClass
-    use :: Numerical_Constants_Astronomical, only : gravitationalConstant_internal , MpcPerKmPerSToGyr
+    use :: Numerical_Constants_Astronomical, only : gravitationalConstant_internal, MpcPerKmPerSToGyr
     implicit none
     class           (satelliteMergingTimescalesPoulton2021), intent(inout) :: self
     type            (treeNode                             ), intent(inout) :: node
@@ -176,10 +166,10 @@ contains
     type            (treeNode                             ), pointer       :: nodeHost
     class           (nodeComponentBasic                   ), pointer       :: basic
     class           (massDistributionClass                ), pointer       :: massDistribution_
-    double precision                                                       :: orbitalRadius        , virialRadius    , &
-         &                                                                    velocityCircular      , dynamicalTime   , &
-         &                                                                    G_M_encl              , pericenterRadius, &
-         &                                                                    massSatellite         , bExponent
+    double precision                                                       :: radiusOrbital        , radiusVirial    , &
+         &                                                                    velocityCircular     , timeDynamical   , &
+         &                                                                    radiusVelocitySquared, radiusPericenter, &
+         &                                                                    massSatellite        , bExponent
 
     ! Find the host node.
     if (node%isSatellite()) then
@@ -189,49 +179,52 @@ contains
     end if
     ! Return infinite timescale for unbound orbits.
     if (orbit%eccentricity() >= 1.0d0) then
-       poulton2021TimeUntilMerging=satelliteMergeTimeInfinite
+       timeUntilMerging=satelliteMergeTimeInfinite
        return
     end if
     ! Get the orbital radius and host virial radius.
-    orbitalRadius=orbit%radius                        (         )
-    virialRadius =self %darkMatterHaloScale_%radiusVirial(nodeHost)
+    radiusOrbital=orbit                     %radius      (        )
+    radiusVirial =self %darkMatterHaloScale_%radiusVirial(nodeHost)
     ! Get the local circular velocity at the orbital radius.
-    massDistribution_ => self%darkMatterProfileDMO_%get         (nodeHost      )
-    velocityCircular  =  massDistribution_          %rotationCurve(orbitalRadius)
+    massDistribution_ => self             %darkMatterProfileDMO_%get          (nodeHost     )
+    velocityCircular  =  massDistribution_                      %rotationCurve(radiusOrbital)
     !![
     <objectDestructor name="massDistribution_"/>
     !!]
     ! Return instantaneous merging if circular velocity vanishes (e.g. r → 0).
     if (velocityCircular <= 0.0d0) then
-       poulton2021TimeUntilMerging=0.0d0
+       timeUntilMerging=0.0d0
        return
     end if
     ! Local dynamical time T_dyn(r) = r/v_circ(r), converted from Mpc/(km/s) to Gyr.
-    dynamicalTime=orbitalRadius/velocityCircular*MpcPerKmPerSToGyr
-    ! G×M_encl(r) = r×v_circ²(r) [Mpc×(km/s)²].
-    G_M_encl=orbitalRadius*velocityCircular**2
+    timeDynamical=+radiusOrbital     &
+         &        /velocityCircular  &
+         &        *MpcPerKmPerSToGyr
+    ! r×v_circ²(r) [Mpc×(km/s)²] = G×M_encl(r).
+    radiusVelocitySquared=+radiusOrbital       &
+         &                *velocityCircular**2
     ! Pericentric radius via the locally-Keplerian approximation including the two-body
-    ! reduced mass correction (Poulton et al. 2021, eq. for R_peri):
+    ! reduced mass correction (Poulton et al. 2021, eq. 13 for R_peri):
     !   R_peri = j²×(1+M_sat/M_encl) / [(1+e)×G×M_encl]
     ! where j = orbit%angularMomentum() is specific angular momentum per unit satellite
     ! mass [Mpc×km/s], and G×M_encl = r×v_circ² avoids explicit use of G except in the
-    ! dimensionless mass ratio M_sat/M_encl = M_sat×G_internal/G_M_encl.
+    ! dimensionless mass ratio M_sat/M_encl = M_sat×G_internal/radiusVelocitySquared.
     basic            =>  node%basic()
     massSatellite    =   basic%mass()
-    pericenterRadius = +orbit%angularMomentum()**2                                              &
-         &             *(1.0d0+massSatellite*gravitationalConstant_internal/G_M_encl)           &
-         &             /((1.0d0+orbit%eccentricity())*G_M_encl)
+    radiusPericenter =  +orbit%angularMomentum()**2                                                 &
+         &              *(1.0d0+massSatellite*gravitationalConstant_internal/radiusVelocitySquared) &
+         &              /(1.0d0+orbit%eccentricity())                                               &
+         &              /radiusVelocitySquared
     ! Select radial exponent b depending on whether satellite is inside or outside R_vir.
-    if (orbitalRadius < virialRadius) then
+    if (radiusOrbital < radiusVirial) then
        bExponent=self%bInterior
     else
        bExponent=self%bExterior
     end if
     ! Evaluate the Poulton et al. (2021) fitting formula.
-    poulton2021TimeUntilMerging=+self%timescaleMultiplier                    &
-         &                      *self%A                                      &
-         &                      *dynamicalTime                               &
-         &                      *(orbitalRadius   /virialRadius)**bExponent  &
-         &                      *(pericenterRadius/virialRadius)**self%c
+    timeUntilMerging=+self%A                                          &
+         &           *     timeDynamical                              &
+         &           *(radiusOrbital   /radiusVirial)**     bExponent &
+         &           *(radiusPericenter/radiusVirial)**self%c
     return
   end function poulton2021TimeUntilMerging
