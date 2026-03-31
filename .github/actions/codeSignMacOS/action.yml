@@ -33,7 +33,7 @@ runs:
         rm certificate.p12
         for file in ${{ inputs.files }}; do
           if [ -f "$file" ]; then
-            codesign --force --options runtime --entitlements "${GITHUB_WORKSPACE}/.github/entitlements.plist" \
+            codesign --force --options runtime --entitlements "${GITHUB_WORKSPACE}/.github/actions/codeSignMacOS/entitlements.plist" \
               --sign "${{ inputs.macos_developer_id }}" ${file}
             codesign --verify --deep --strict --verbose=2 ${file}
           else
