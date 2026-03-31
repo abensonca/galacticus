@@ -619,7 +619,7 @@ jobs:
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
-          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
+          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
           macos_certificate: ${{ secrets.MACOS_CERTIFICATE }}
           macos_certificate_password: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
           macos_keychain_password: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
@@ -732,7 +732,7 @@ jobs:
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
-          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
+          files: ${{ steps.buildTools.outputs.camb }} ${{ steps.buildTools.outputs.axioncamb }} ${{ steps.buildTools.outputs.class }} ${{ steps.buildTools.outputs.recfast }} ${{ steps.buildTools.outputs.cloudy }} ${{ steps.buildTools.outputs.fsps }} ${{ steps.buildTools.outputs.mangle }}
           macos_certificate: ${{ secrets.MACOS_CERTIFICATE }}
           macos_certificate_password: ${{ secrets.MACOS_CERTIFICATE_PASSWORD }}
           macos_keychain_password: ${{ secrets.MACOS_KEYCHAIN_PASSWORD }}
