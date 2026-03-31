@@ -609,13 +609,13 @@ jobs:
             dynamic/fsps-${fspsVersion}/OUTPUTS \
             dynamic/fsps-${fspsVersion}/ISOCHRONES \
             dynamic/mangle-${mangleVersion}/bin/harmonize
-            echo "camb=dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
-            echo "axioncamb=dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
-            echo "class=dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
-            echo "recfast=dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
-            echo "cloudy=dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
-            echo "fsps=dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
-            echo "mangle=dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
+            echo "camb=${GALACTICUS_DATA_PATH}/dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
+            echo "axioncamb=${GALACTICUS_DATA_PATH}/dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
+            echo "class=${GALACTICUS_DATA_PATH}/dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
+            echo "recfast=${GALACTICUS_DATA_PATH}/dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
+            echo "cloudy=${GALACTICUS_DATA_PATH}/dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
+            echo "fsps=${GALACTICUS_DATA_PATH}/dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
+            echo "mangle=${GALACTICUS_DATA_PATH}/dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
@@ -722,13 +722,13 @@ jobs:
             dynamic/fsps-${fspsVersion}/OUTPUTS \
             dynamic/fsps-${fspsVersion}/ISOCHRONES \
             dynamic/mangle-${mangleVersion}/bin/harmonize
-            echo "camb=dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
-            echo "axioncamb=dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
-            echo "class=dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
-            echo "recfast=dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
-            echo "cloudy=dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
-            echo "fsps=dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
-            echo "mangle=dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
+            echo "camb=${GALACTICUS_DATA_PATH}/dynamic/CAMB-${cambVersion}/fortran/camb" >> "$GITHUB_OUTPUT"
+            echo "axioncamb=${GALACTICUS_DATA_PATH}/dynamic/AxionCAMB/camb" >> "$GITHUB_OUTPUT"
+            echo "class=${GALACTICUS_DATA_PATH}/dynamic/class_public-${classVersion}/class" >> "$GITHUB_OUTPUT"
+            echo "recfast=${GALACTICUS_DATA_PATH}/dynamic/RecFast/recfast.exe" >> "$GITHUB_OUTPUT"
+            echo "cloudy=${GALACTICUS_DATA_PATH}/dynamic/c${cloudyVersion}/source/cloudy.exe" >> "$GITHUB_OUTPUT"
+            echo "fsps=${GALACTICUS_DATA_PATH}/dynamic/fsps-${fspsVersion}/src/autosps.exe" >> "$GITHUB_OUTPUT"
+            echo "mangle=${GALACTICUS_DATA_PATH}/dynamic/mangle-${mangleVersion}/bin/harmonize" >> "$GITHUB_OUTPUT"
       - name: Sign tool executables
         uses: ./.github/actions/codeSignMacOS
         with:
