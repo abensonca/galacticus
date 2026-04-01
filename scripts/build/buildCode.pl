@@ -13,8 +13,6 @@ use List::ExtraUtils;
 use File::Changes;
 use Storable;
 use Galacticus::Build::Hooks;
-use Galacticus::Build::ModuleUse;
-use Galacticus::Build::FunctionGlobal;
 use Galacticus::Build::SourceTree;
 
 # Scans source code for "!![...!!]" directives and generates code from these.

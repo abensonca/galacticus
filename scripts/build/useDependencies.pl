@@ -179,7 +179,7 @@ foreach my $sourceFile ( @sourceFilesToProcess ) {
     # Extract lists of directives from this file which require special handling.
     my $directives;
     @{$directives->{$_}} = &Galacticus::Build::Directives::Extract_Directives($sourceFile->{'fullPathFileName'},$_)
-	foreach ( "functionClass", "inputParameter", "enumeration", "eventHook", "eventHookStatic", "eventHookManager" );
+	foreach ( "functionClass", "inputParameter", "enumeration", "eventHook", "eventHookStatic", "eventHookManager", "functionsGlobal" );
     # Special handling for functionClass directives - add implementation files to the list of files to scan.
     if ( scalar(@{$directives->{'functionClass'}}) > 0 ) {
 	foreach my $functionClass ( @{$directives->{'functionClass'}} ) {
@@ -210,6 +210,35 @@ foreach my $sourceFile ( @sourceFilesToProcess ) {
 	my $workSubDirectoryName = $workDirectoryName.$sourceFile->{'subDirectoryName'}.($sourceFile->{'subDirectoryName'} eq "" ? "" : "/");
 	($usesPerFile->{'eventHooksManager'}->{'objectFileName'} = $workSubDirectoryName.$sourceFile    ->{'fileName'}) =~ s/\.(f|f90|c|cpp)$/.o/i;
 	$usesPerFile ->{'eventHooksManager'}->{'fileIdentifier'} =                       $fileIdentifier                                          ;
+    }
+    if ( scalar(@{$directives->{'functionsGlobal'}}) > 0 ) {
+	if ( grep {$_->{'type'} eq "pointers"} @{$directives->{'functionsGlobal'}} ) {
+	    push(@{$usesPerFile->{$fileIdentifier}->{'modulesUsed'}},$workDirectoryName."error.mod");
+	}
+	if ( grep {$_->{'type'} eq "establish"} @{$directives->{'functionsGlobal'}} ) {
+	    foreach my $functionGlobalFile ( &List::ExtraUtils::as_array($locations->{'functionGlobal'}->{'file'}) ) {
+		my $moduleName;
+		my $functionClassName;
+		open(my $file,$functionGlobalFile) or die "Can't open input file: $functionGlobalFile";
+		while (my $line = <$file>) {
+		    if ( $line =~ m/^\s*module\s+([a-zA-Z0-9_]+)/ && $line !~ m/^\s*module\s+procedure\s+([a-zA-Z0-9_]+)/ ) {
+			$moduleName = $1;
+			last;
+		    }
+		    if ( $line =~ m/^\s*<(\S+)/ ) {
+			my $elementName = $1;
+			$functionClassName = $elementName."Class"
+			    if ( exists(${$stateStorables->{'functionClasses'}}{$elementName."Class"}) );
+		    }
+		}
+		close($file);
+		$moduleName = ${$stateStorables->{'functionClasses'}}{$functionClassName}->{'module'}
+		    if ( ! defined($moduleName) && defined($functionClassName) );
+		die("useDependencies.pl: unable to locate containing module for global function in file '".$functionGlobalFile."'")
+		    unless ( defined($moduleName) );
+		push(@{$usesPerFile->{$fileIdentifier}->{'modulesUsed'}},$workDirectoryName.lc($moduleName).".mod");
+	    }
+	}
     }
     # Accumulate dependencies for static event hook modules.
     if ( scalar(@{$directives->{'eventHookStatic'}}) > 0  ) {
