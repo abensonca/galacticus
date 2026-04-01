@@ -43,7 +43,7 @@
   !![
   <enumeration>
    <name>pushType</name>
-   <description>Cross-tree event type enumeration.</description>
+   <description>Enumeration of cross-tree event types used when reading merger trees: \mono{branchJump} handles nodes that switch host branches between snapshots, while \mono{subhaloPromotion} handles subhalos promoted to isolated status.</description>
    <entry label="branchJump"      />
    <entry label="subhaloPromotion"/>
   </enumeration>
@@ -53,7 +53,7 @@
   !![
   <enumeration>
    <name>nodeReachability</name>
-   <description>Node reachability status.</description>
+   <description>Enumeration of node reachability status when traversing a merger tree read from file: \mono{unreachable} nodes cannot be reached from the root of the tree structure, while \mono{reachable} nodes can.</description>
    <entry label="unreachable"/>
    <entry label="reachable"  />
   </enumeration>
@@ -63,7 +63,7 @@
   !![
   <enumeration>
    <name>subhaloAngularMomentaMethod</name>
-   <description>Subhalo angular momentum methods.</description>
+   <description>Enumeration of methods for assigning angular momenta to subhalos when reading merger trees from file: \mono{scale} uses the halo spin parameter, while \mono{summation} sums contributions from child nodes.</description>
    <encodeFunction>yes</encodeFunction>
    <entry label="scale"    />
    <entry label="summation"/>
@@ -181,12 +181,10 @@
     \begin{itemize}
     \item The cosmological parameters ($\Omega_\mathrm{M}$, $\Omega_\Lambda$, $\Omega_\mathrm{b}$, $H_0$, $\sigma_8$), if defined in
       the file, must be set identically in the \glc\ input file unless you set \mono{[mismatchIsFatal]}$=$\mono{false} in which case you'll just be warned about any mismatch;
-    \item \glc\ assumes by default that all merger trees exist at the final output time---if this is not the case set {\normalfont
-        \ttfamily [allTreesExistAtFinalTime]}$=$\mono{false}.
+    \item \glc\ assumes by default that all merger trees exist at the final output time---if this is not the case set \mono{[allTreesExistAtFinalTime]}$=$\mono{false}.
     \end{itemize}
     
-    \textbf{Dark Matter Scale Radii}: \index{dark matter halo!concentration}\index{dark matter halo!scale radius} If {\normalfont
-      \ttfamily [presetScaleRadii]}$=$\mono{true} and the \mono{halfMassRadius}
+    \textbf{Dark Matter Scale Radii}: \index{dark matter halo!concentration}\index{dark matter halo!scale radius} If \mono{[presetScaleRadii]}$=$\mono{true} and the \mono{halfMassRadius}
     dataset is available within the \mono{haloTrees} group (see
     \href{https://github.com/galacticusorg/galacticus/wiki/Merger-Tree-File-Format#forest-halos-group}{here}) then the half-mass radii
     of nodes will be used to compute the corresponding scale length of the dark matter halo profile\footnote{The scale radius is found
