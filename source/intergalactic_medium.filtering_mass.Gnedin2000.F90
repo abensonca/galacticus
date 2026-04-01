@@ -32,7 +32,7 @@
 
   !![
   <intergalacticMediumFilteringMass name="intergalacticMediumFilteringMassGnedin2000">
-   <description>An implementation of the \cite{gnedin_effect_2000} filtering mass calculation.</description>
+   <description>An implementation of the \cite{gnedin_effect_2000} filtering mass calculation, which determines the characteristic halo mass below which gas accretion is suppressed by photoionization heating from the intergalactic radiation field. The filtering mass is computed by integrating an ODE system driven by the \gls{igm} thermal state and linear growth history.</description>
   </intergalacticMediumFilteringMass>
   !!]
   type, extends(intergalacticMediumFilteringMassClass) :: intergalacticMediumFilteringMassGnedin2000
@@ -232,8 +232,7 @@ contains
 
   double precision function gnedin2000FractionBaryonsGradientMass(self,mass,time)
     !!{
-    Return the gradient with respect to mass of the fraction of baryons accreted into a halo of the given {\normalfont
-    \ttfamily mass} at the \mono{time}.
+    Return the gradient with respect to mass of the fraction of baryons accreted into a halo of the given \mono{mass} at the \mono{time}.
     !!}
     implicit none
     class           (intergalacticMediumFilteringMassGnedin2000), intent(inout) :: self
