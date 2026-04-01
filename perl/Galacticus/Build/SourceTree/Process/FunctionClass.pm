@@ -1838,8 +1838,8 @@ CODE
 		    $modulePostContains->{'content'} .= "      if (.not.addLockInitialized) then\n";
 		    $modulePostContains->{'content'} .= "      !\$omp critical (addLockInitialize".ucfirst($directive->{'default'}).")\n";
 		    $modulePostContains->{'content'} .= "          if (.not.addLockInitialized) then\n";
-		    $modulePostContains->{'content'} .= "          addLockInitialized=.true.\n";
 		    $modulePostContains->{'content'} .= "          addLock=ompLock()\n";
+		    $modulePostContains->{'content'} .= "          addLockInitialized=.true.\n";
 		    $modulePostContains->{'content'} .= "      end if\n";
 		    $modulePostContains->{'content'} .= "      !\$omp end critical (addLockInitialize".ucfirst($directive->{'default'}).")\n";
 		    $modulePostContains->{'content'} .= "      end if\n";
@@ -2489,6 +2489,8 @@ CODE
 
 	    # Generate documentation. We construct two sets of documentation, one describing the physics models, and one describing the code implementation.
             my $documentationPhysics = "\\section{"      .$directive->{'descriptiveName'}."}\\label{phys:".$directive->{'name'}."}\\hyperdef{physics}{".$directive->{'name'}."}{}\n\n";
+	    $documentationPhysics .= $directive->{'description'}."\n\n"
+	        if ( exists($directive->{'description'}) );
 	    if ( exists($directive->{'default'}) ) {
 		$documentationPhysics .= "Default implementation: \\refPhysics{".$directive->{'name'}.ucfirst($directive->{'default'})."}\n\n";
 	    } else {
