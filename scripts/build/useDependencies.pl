@@ -213,7 +213,17 @@ foreach my $sourceFile ( @sourceFilesToProcess ) {
     }
     if ( scalar(@{$directives->{'functionsGlobal'}}) > 0 ) {
 	if ( grep {$_->{'type'} eq "pointers"} @{$directives->{'functionsGlobal'}} ) {
-	    push(@{$usesPerFile->{$fileIdentifier}->{'modulesUsed'}},$workDirectoryName."error.mod");
+	    push(@{$usesPerFile->{$fileIdentifier}->{'modulesUsed'}},$workDirectoryName."error.mod",$workDirectoryName."input_parameters.mod");
+	    foreach ( map {&Galacticus::Build::Directives::Extract_Directives($_,'functionGlobal')} &List::ExtraUtils::as_array($locations->{'functionGlobal'}->{'file'}) ) {
+		if ( exists($_->{'module'}) ) {
+		    foreach my $module ( &List::ExtraUtils::as_array($_->{'module'}) ) {
+			if ( $module =~ m/^([a-zA-Z0-9_]+)/ ) {
+			    push(@{$usesPerFile->{$fileIdentifier}->{'modulesUsed'}},$workDirectoryName.lc($1).".mod")
+				unless ( lc($1) eq "iso_c_binding" );
+			}
+		    }
+		}
+	    }
 	}
 	if ( grep {$_->{'type'} eq "establish"} @{$directives->{'functionsGlobal'}} ) {
 	    foreach my $functionGlobalFile ( &List::ExtraUtils::as_array($locations->{'functionGlobal'}->{'file'}) ) {
