@@ -1059,7 +1059,8 @@ jobs:
                       tests.binary_search_trees.exe,
                       tests.orbits.exe,
                       tests.debugging.exe,
-                      tests.hashes.cryptographic.exe ]
+                      tests.hashes.cryptographic.exe,
+                      tests.accretion_halo_isocurvature.exe ]
     uses: ./.github/workflows/testCode.yml
     with:
       executable: ${{ matrix.executable }}
