@@ -192,20 +192,16 @@ contains
     !!{
     Solve for the structure of galactic components.
     !!}
-    use :: Calculations_Resets       , only : Calculations_Reset
-    use :: Error                     , only : Error_Report
-    use :: Galactic_Structure_Options, only : enumerationComponentTypeType
+    use :: Calculations_Resets                       , only : Calculations_Reset
+    use :: Error                                     , only : Error_Report
+    use :: Galactic_Structure_Radius_Solver_Utilities, only : radiusSolverPlausibilities, radiusSolverTasks, radiusSolver
     implicit none
     class           (galacticStructureSolverSimple), intent(inout)           :: self
     type            (treeNode                     ), intent(inout), target   :: node
     logical                                        , intent(in   ), optional :: plausibilityOnly
     logical                                        , parameter               :: specificAngularMomentumRequired=.true.
-    procedure       (solverGet                    ), pointer                 :: radiusGet                             , velocityGet
-    procedure       (solverSet                    ), pointer                 :: radiusSet                             , velocitySet
+    procedure       (radiusSolver                 ), pointer                 :: radiusSolve_
     type            (treeNode                     ), pointer                 :: haloNode
-    logical                                                                  :: componentActive
-    double precision                                                         :: specificAngularMomentum
-    type            (enumerationComponentTypeType )                          :: component
     !![
     <optionalArgument name="plausibilityOnly" defaultsTo=".false."/>
     !!]
@@ -213,11 +209,7 @@ contains
     ! Check that the galaxy is physical plausible. In this simple solver, we don't act on this.
     node%isPhysicallyPlausible=.true.
     node%isSolvable           =.true.
-    !![
-    <eventHookStatic name="radiusSolverPlausibility">
-     <callWith>node</callWith>
-    </eventHookStatic>
-    !!]
+    call radiusSolverPlausibilities(node)
     if (node%isPhysicallyPlausible .and. .not.plausibilityOnly_) then
        ! Determine which node to use for halo properties.
        if (self%useFormationHalo) then
@@ -227,13 +219,9 @@ contains
           haloNode => node
        end if
        ! Solve for each component.
+       radiusSolve_ => radiusSolve
        call Calculations_Reset(node)
-       !![
-       <eventHookStatic name="radiusSolverTask">
-        <callWith>node,componentActive,component,specificAngularMomentumRequired,specificAngularMomentum,radiusGet,radiusSet,velocityGet,velocitySet</callWith>
-        <onReturn>if (componentActive) call radiusSolve(node,component,specificAngularMomentum,radiusGet,radiusSet,velocityGet,velocitySet)</onReturn>
-       </eventHookStatic>
-       !!]
+       call radiusSolverTasks(node,specificAngularMomentumRequired,radiusSolve_)
     end if
     return
 
@@ -243,8 +231,10 @@ contains
       !!{
       Solve for the equilibrium radius of the given component.
       !!}
-      use :: Mass_Distributions, only : massDistributionClass
-      implicit none
+      use :: Galactic_Structure_Radius_Solver_Utilities, only : solverGet                   , solverSet
+      use :: Mass_Distributions                        , only : massDistributionClass
+      use :: Galactic_Structure_Options                , only : enumerationComponentTypeType
+     implicit none
       type            (treeNode                    ), intent(inout)          :: node
       type            (enumerationComponentTypeType), intent(in   )          :: component
       double precision                              , intent(in   )          :: specificAngularMomentum

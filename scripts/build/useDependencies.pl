@@ -25,6 +25,8 @@ my $workDirectoryName       = $ENV{'BUILDPATH'}."/";
 my $xml                     = new XML::Simple();
 # Load the file of directive locations.
 my $locations               = -e $workDirectoryName."directiveLocations.xml" ? $xml->XMLin($workDirectoryName."directiveLocations.xml") : undef();
+# Load the file of state storables.
+my $stateStorables          = -e $workDirectoryName."stateStorables.xml"     ? $xml->XMLin($workDirectoryName."stateStorables.xml"    ) : undef();
 # List of external modules (which will be ignored for dependency analysis of the source code).
 my @externalModules = ( "omp_lib", "hdf5", "h5tb", "h5lt", "h5global", "h5fortran_types", "fox_common", "fox_dom", "fox_wxml", "fox_utils", "mpi", "mpi_f08" );
 # Modules that require a library to be linked. These are key-value pairs with the key being the module name, and the value the
@@ -214,14 +216,22 @@ foreach my $sourceFile ( @sourceFilesToProcess ) {
 	foreach my $eventHookStatic ( @{$directives->{'eventHookStatic'}} ) {
 	    foreach my $eventHookedStaticFile ( &List::ExtraUtils::as_array($locations->{$eventHookStatic->{'name'}}->{'file'}) ) {
 		my $moduleName;
+		my $functionClassName;
 		open(my $file,$eventHookedStaticFile) or die "Can't open input file: $eventHookedStaticFile";
 		while (my $line = <$file>) {
-		    if ( $line =~ m/^\s*module\s+([a-zA-Z0-9_]+)/ ) {
+		    if ( $line =~ m/^\s*module\s+([a-zA-Z0-9_]+)/ && $line !~ m/^\s*module\s+procedure\s+([a-zA-Z0-9_]+)/ ) {
 			$moduleName = $1;
 			last;
 		    }
+		    if ( $line =~ m/^\s*<(\S+)/ ) {
+			my $elementName = $1;
+			$functionClassName = $elementName."Class"
+			    if ( exists(${$stateStorables->{'functionClasses'}}{$elementName."Class"}) );
+		    }
 		}
 		close($file);
+		$moduleName = ${$stateStorables->{'functionClasses'}}{$functionClassName}->{'module'}
+		    if ( ! defined($moduleName) && defined($functionClassName) );
 		die("useDependencies.pl: unable to locate containing module for static event '".$eventHookStatic->{'name'}."' in file '".$eventHookedStaticFile."'")
 		    unless ( defined($moduleName) );
 		push(@{$usesPerFile->{$fileIdentifier}->{'modulesUsed'}},$workDirectoryName.lc($moduleName).".mod");
