@@ -26,7 +26,7 @@
 
   !![
   <mergerTreeOperator name="mergerTreeOperatorAugment">
-   <description>Provides a merger tree operator which augments tree resolution by inserting high-resolution branches.</description>
+   <description>Provides a merger tree operator which augments the mass resolution of existing merger trees by inserting high-resolution branches built to match the original tree structure. Resolution limits for new branches are set by the delegate mass resolution object, with tolerance and retry behavior controlled by \mono{[toleranceScale]}, \mono{[attemptsBeforeRescale]}, and \mono{[attemptsMaximum]}.</description>
   </mergerTreeOperator>
   !!]
   type, extends(mergerTreeOperatorClass) :: mergerTreeOperatorAugment
@@ -1067,8 +1067,7 @@ contains
 
   subroutine augmentExtendByOverlap(nodeBottom,nodeTop,keepTop,exchangeProperties)
     !!{
-    Conjoin two trees by overlapping the \mono{nodeTop} of one tree with the chosen \mono{nodeBottom} of the other. If \mono{keepTop} is \mono{true}, \mono{nodeTop} replaces \mono{nodeBottom}, otherwise, \mono{nodeBottom} replaces {\normalfont
-    \ttfamily nodeTop}. If \mono{exchangeProperties} is \mono{true}, the mass and time
+    Conjoin two trees by overlapping the \mono{nodeTop} of one tree with the chosen \mono{nodeBottom} of the other. If \mono{keepTop} is \mono{true}, \mono{nodeTop} replaces \mono{nodeBottom}, otherwise, \mono{nodeBottom} replaces \mono{nodeTop}. If \mono{exchangeProperties} is \mono{true}, the mass and time
     information of the deleted node overwrites the mass and time of the retained node.
     !!}
     use :: Galacticus_Nodes, only : nodeComponentBasic, treeNode

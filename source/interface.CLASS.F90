@@ -39,7 +39,7 @@ module Interfaces_CLASS
   !![
   <enumeration>
    <name>classSpecies</name>
-   <description>Particle species in CLASS.</description>
+   <description>Enumeration of particle species tracked by the CLASS Boltzmann code when computing transfer functions: \mono{photons}, \mono{darkMatter}, and \mono{baryons}, used to select which species' transfer function is returned.</description>
    <visibility>public</visibility>
    <indexing>1</indexing>
    <entry label="photons"   />

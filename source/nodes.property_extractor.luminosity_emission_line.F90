@@ -44,8 +44,7 @@
   !![
   <nodePropertyExtractor name="nodePropertyExtractorLuminosityEmissionLine">
    <description>
-    An emission line luminosity property extractor class. The luminosity of the named emission line (given by the {\normalfont
-    \ttfamily lineNames} parameter: if multiple lines are named, the sum of their luminosities) is computed.
+    An emission line luminosity property extractor class. The luminosities of the named emission lines (given by the \mono{lineNames} parameter) are computed.
    </description>
    <runTimeFileDependencies paths="cloudyTableFileName"/>
   </nodePropertyExtractor>
