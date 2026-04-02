@@ -7,21 +7,21 @@ use PDL;
 use PDL::NiceSlice;
 use PDL::IO::HDF5;
 use PDL::IO::Misc;
+use Data::Dumper;
 
 # Convert Pinocchio output catalogs to IRATE format.
 # Andrew Benson (28-August-2014)
 
 # Get arguments.
-die("pinocchioToIrate.pl <pinocchioDirectoryName> <pinocchioRealization> <irateFileName>")
-    unless ( scalar(@ARGV) == 3 );
+die("pinocchioToIrate.pl <pinocchioDirectoryName> <irateFileName>")
+    unless ( scalar(@ARGV) == 2 );
 my $simulationDirectoryName = $ARGV[0];
-my $realization             = $ARGV[1];
-my $irateFileName           = $ARGV[2];
+my $irateFileName           = $ARGV[1];
 $simulationDirectoryName .= "/"
     unless ( $simulationDirectoryName =~ m/\/$/ );
 # Read the parameter file.
 my %parameters;
-open(my $parameterFile,$simulationDirectoryName."parametersPinocchio".$realization.".txt");
+open(my $parameterFile,$simulationDirectoryName."/parameter_file");
 while ( my $line = <$parameterFile> ) {
     if ( $line =~ m/^([^\#\s]+)\s+([^\s]+)/ ) {
 	my $parameterName  = $1;
@@ -32,8 +32,10 @@ while ( my $line = <$parameterFile> ) {
 close($parameterFile);
 # Read the list of outputs.
 my $outputs = pdl [];
-open(my $outputFile,$simulationDirectoryName.$parameters{'OutputList'});
+open(my $outputFile,$simulationDirectoryName."/".$parameters{'OutputList'});
 while ( my $line = <$outputFile> ) {
+    next
+	if ( $line =~ m/^#/ || $line =~ m/^\s*$/ );
     chomp($line);
     $line =~ s/^\s*//;
     $line =~ s/\s*$//;
@@ -76,12 +78,11 @@ for(my $i=0;$i<nelem($outputs);++$i) {
 }
 # Cosmology.
 my $cosmology = $irateFile->group('Cosmology');
-$cosmology->attrSet(HubbleParam        => pdl $parameters{'Hubble100'    });
-$cosmology->attrSet(OmegaBaryon        => pdl $parameters{'OmegaBaryon'  }); 
-$cosmology->attrSet(OmegaLambda        => pdl $parameters{'OmegaLambda'  });   
-$cosmology->attrSet(OmegaMatter        => pdl $parameters{'Omega0'       });    
-$cosmology->attrSet(PowerSpectrumIndex => pdl $parameters{'PowerSpectrum'});     
-$cosmology->attrSet(sigma_8            => pdl $parameters{'Sigma8'       });
+$cosmology->attrSet(HubbleParam => pdl $parameters{'Hubble100'  });
+$cosmology->attrSet(OmegaBaryon => pdl $parameters{'OmegaBaryon'});
+$cosmology->attrSet(OmegaLambda => pdl $parameters{'OmegaLambda'});
+$cosmology->attrSet(OmegaMatter => pdl $parameters{'Omega0'     });
+$cosmology->attrSet(sigma_8     => pdl $parameters{'Sigma8'     });
 # Simulation properties.
 my $simulation = $irateFile->group('SimulationProperties');
 $simulation->attrSet(
