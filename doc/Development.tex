@@ -36,7 +36,7 @@ Additionally, rules are generated which describe how to build the following clas
 \begin{description}
 \item[\mono{*.mod.d}] Contains a list of all object files upon which the module depends. Used in constructing the final set of objects which must be linked to build an executable.
 \item[\mono{*.mod.gv}] Contains a list of all source files upon which the module depends. Used in constructing \gls{graphviz} visualizations of dependencies.
-\item[\mono{*.m}] Contains a list of all modules provided by the corresponding object file. Used when building object files to test whether corresponding module files have been changed---allows avoidance of recompilation cascades if modules do not need to be updated (i.e. if the modules do not differ as judged by the \mono{scripts/build/compareModules.pl}\index{findExecutables.py@\mono{compareModules.pl}} script).
+\item[\mono{*.m}] Contains a list of all modules provided by the corresponding object file. Used when building object files to test whether corresponding module files have been changed---allows avoidance of recompilation cascades if modules do not need to be updated (i.e. if the modules do not differ).
 \end{description}
 
 \subsubsection{Modules Used}\index{modules!used}\index{used modules}\label{sec:buildModulesUsed}
@@ -96,8 +96,6 @@ All files involved in the build process are summarized below.
 \item[\mono{scripts/build/buildCode.pl}\index{buildCode.pl@\mono{buildCode.pl}}:] Acts upon \mono{include} directives embedded in the source code and generates the corresponding include file (see \S\ref{sec:codeBuildIncludeDirectives});
 
 \item[\mono{scripts/build/codeDirectivesParse.pl}\index{codeDirectivesParse.pl@\mono{codeDirectivesParse.pl}}:] Discovers and parses directives embedded in source files. Generates \mono{make} rules for the resulting dependencies, a file providing a mapping of which files contain each directive, and rule files describing how to build each include file resulting from a \mono{include} directive;
-
-\item[\mono{scripts/build/compareModuleFiles.pl}\index{compareModuleFiles.pl@\mono{compareModuleFiles.pl}}:] Tests whether two Fortran module files are identical (ignoring timestamp information). Used to avoid updating modules when not necessary and so avoids recompilation cascades;
 
 \item[\mono{scripts/build/includeDependencies.py}\index{includeDependencies.py@\mono{includeDependencies.py}}:] Discovers (and generates rules for) dependencies between files arising from the use of ``\mono{include}'' statements (see \S\ref{sec:buildIncludeDeps});
   
