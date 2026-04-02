@@ -154,7 +154,7 @@ import platform
 os_opts = ' -Wl,-commons,use_dylibs' if platform.system() == 'Darwin' else ''
 
 # Determine whether to link librt (needed for older glibc).
-link_librt = False
+link_librt = True
 ldd = shutil.which('ldd')
 if ldd:
     try:
