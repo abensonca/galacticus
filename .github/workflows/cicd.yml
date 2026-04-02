@@ -2209,12 +2209,13 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v6
-      - uses: tibdex/github-app-token@v2
+      - uses: actions/create-github-app-token@v3
         if: ${{ env.appid != '' }}
         id: generate-token
         with:
-          app_id: ${{ secrets.DEPLOY_APP_ID }}
-          private_key: ${{ secrets.DEPLOY_APP_PRIVATE_KEY }}
+          app-id: ${{ secrets.DEPLOY_APP_ID }}
+          private-key: ${{ secrets.DEPLOY_APP_PRIVATE_KEY }}
+          permission-workflows: write
       - name: Update tag
         run: |
           git tag -f bleeding-edge
