@@ -12,6 +12,7 @@ use Storable;
 use List::ExtraUtils;
 use Galacticus::Build::Directives;
 use Galacticus::Build::Dependencies;
+use Fortran::Utils;
 
 # Insert hooks for our functions.
 $Galacticus::Build::SourceTree::Hooks::processHooks{'functionsGlobal'} = \&Process_FunctionsGlobal;
