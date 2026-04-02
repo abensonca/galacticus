@@ -3,6 +3,7 @@ import os
 import re
 import subprocess
 import sys
+import shlex
 
 # Make a static-linked copy of an executable by replacing dynamic library links
 # with their static equivalents. macOS-specific (uses otool).
@@ -122,7 +123,7 @@ for line in otool_out.splitlines():
                     if re.match(r'^libquadmath.*\.dylib', fname):
                         mv_libs.append(fname)
                 mv_cmd = "sudo -- sh -c '" + '; '.join(
-                    f"mv {mv_dir}/{f} {mv_dir}/{f}~" for f in mv_libs
+                    "mv "+shlex.quote(f"{mv_dir}/{f}")+" "+shlex.quote(f"{mv_dir}/{f}~") for f in mv_libs
                 ) + "'"
                 print("Must move dylibs temporarily (requires sudo):")
                 subprocess.run(mv_cmd, shell=True)
@@ -164,7 +165,7 @@ subprocess.run(compile_command, shell=True)
 # Restore any temporarily moved dylibs.
 if mv_libs:
     mv_cmd = "sudo -- sh -c '" + '; '.join(
-        f"mv {mv_dir}/{f}~ {mv_dir}/{f}" for f in mv_libs
+        "mv "+shlex.quote(f"{mv_dir}/{f}~")+" "+shlex.quote(f"{mv_dir}/{f}") for f in mv_libs
     ) + "'"
     print("Must restore temporarily moved dylibs (requires sudo):")
     subprocess.run(mv_cmd, shell=True)
