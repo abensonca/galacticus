@@ -13,14 +13,17 @@ use Fcntl qw(SEEK_SET);
 # Andrew Benson (19-October-2010).
 
 # Specify the data directory.
-my $dataDirectory = "SSP_BC2003";
+die("Usage: convertBC2003SSPsToGalacticus.pl <dataDirectory>")
+    unless ( scalar(@ARGV) == 1 );
+my $dataDirectory = $ARGV[0];
 
 # Specify models to convert.
-my @modelsToConvert = ( "padova_1994_chabrier_imf", "padova_1994_salpeter_imf" );
+my @modelsToConvert = ( "padova_1994_salpeter_imf" );
 
 # Ensure data files have been downloaded.
 foreach my $model ( @modelsToConvert ) {
-    die("Please download the model archives from the BC2003 website before running this script.") unless ( -e $dataDirectory."/bc03.models.".$model.".tar.gz" );
+    die("Please download the model archives from the BC2003 website before running this script.")
+	unless ( -e $dataDirectory."/bc03.models.".$model.".tar.gz" );
 }
 
 # Lookup table for metallicity labels.
@@ -61,7 +64,7 @@ foreach my $model ( @modelsToConvert ) {
     my $baseDirectory = $dataDirectory."/bc03/models/".$tracks.$year."/".$IMF;
 
     # Unpack the ASCII data files.
-    system("find ".$baseDirectory." -name \"*_ASCII.gz\" | xargs gunzip");
+    system("find ".$baseDirectory." -name \"*_ASCII.gz\" | xargs --no-run-if-empty gunzip -f");
 
     # Loop over low and high-res spectra.
     foreach my $resolution ( "lr", "hr" ) {
@@ -144,11 +147,11 @@ foreach my $model ( @modelsToConvert ) {
 		$wavelengths = $wavelengths->append(pdl @columns);
 	    }
 	    # Store wavelengths if not already done.
-	    my $wavelengthDataset = $wavelengths unless ( nelem($wavelengthDataset) > 0 );
+	    my $wavelengthDataset = $wavelengths;
 
 	    # Create a PDL to hold the spectra.
 	    my $metallicityCount = keys %files;
-	    $spectra = pdl zeroes($metallicityCount,$ageCount,$wavelengthCount) unless (defined($spectra));
+	    $spectra = pdl zeroes($metallicityCount,$ageCount,$wavelengthCount);
 
 	    # Loop over ages.
 	    for (my $iAge=0;$iAge<$ageCount;++$iAge) {
@@ -204,7 +207,7 @@ foreach my $model ( @modelsToConvert ) {
 
 	# Create the HDF5 output file.
 	$IMF = ucfirst($IMF);
-	my $HDFfile = new PDL::IO::HDF5(">".$ENV{'GALACTICUS_DATA_PATH'}."/static/stellarPopulations/SSP_Spectra_BC2003_".$resolutionLookup{$resolution}."_imf".$IMF.".hdf5");
+	my $HDFfile = new PDL::IO::HDF5(">SSP_Spectra_BC2003_".$resolutionLookup{$resolution}."_imf".$IMF.".hdf5");
 	$HDFfile->dataset("ages"         )->set($ageDataset       );
 	$HDFfile->dataset("wavelengths"  )->set($wavelengthDataset);
 	$HDFfile->dataset("metallicities")->set($metallicities    );
