@@ -43,6 +43,12 @@ while i < len(arguments):
     if arg.startswith('`'):
         to_expand = arg
         while not to_expand.endswith('`'):
+            if i + 1 >= len(arguments):
+                print(
+                    "Error: unterminated backtick-quoted expression in arguments",
+                    file=sys.stderr,
+                )
+                sys.exit(1)
             i += 1
             to_expand += ' ' + arguments[i]
         to_expand = to_expand.strip('`')
