@@ -166,6 +166,9 @@ if ldd:
                 link_librt = major < 2 or (major == 2 and minor <= 16)
     except Exception:
         pass
+else:
+    link_librt = False
+    
 # If ldd not found, link_librt stays False.
 
 lib_flags    = ' '.join(f'-l{lib}' for lib in sorted_libraries)
