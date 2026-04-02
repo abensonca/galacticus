@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:common="http://CommonTypesNamespace/CommonTypes"
-           elementFormDefault="qualified">
+           xmlns:common="http://CommonTypesNamespace/CommonTypes">
   <!-- Schema used to validate eventHookStatic directives -->
-
   <xs:import namespace="http://CommonTypesNamespace/CommonTypes" schemaLocation="commonTypes.xsd"/>
 
   <xs:element name="eventHookStatic">
