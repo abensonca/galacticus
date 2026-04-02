@@ -6,8 +6,8 @@ import os
 import re
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
-
 from lxml import etree
 
 
@@ -33,10 +33,11 @@ def preprocess_multiline_attributes(input_filename):
     Replaces newlines inside unclosed quotes with %%NEWLINE%%, skipping XML comments.
     Returns the path to the temporary pre-processed file.
     """
-    tmp_filename = input_filename + ".tmp"
+    fout = tempfile.NamedTemporaryFile(mode='w', delete=False)
+    tmp_filename = fout.name
     in_multiline = False
     in_comment = False
-    with open(input_filename, "r") as fin, open(tmp_filename, "w") as fout:
+    with open(input_filename, "r") as fin:
         for line in fin:
             count_quotes = line.count('"')
             if "<!--" in line:
@@ -1105,29 +1106,29 @@ def main():
     serialized = etree.tostring(input_doc, xml_declaration=True, encoding="UTF-8", pretty_print=False).decode("UTF-8")
     serialized = re.sub(r"><!--", ">\n\n  <!--", serialized)
     serialized = re.sub(r"><(?!/)", ">\n\n  <", serialized)
-    tmp_output = options.outputFile + ".tmp"
-    with open(tmp_output, "w") as f:
+    with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+        tmp_output = f.name
         f.write(serialized)
 
     # If requested, ignore whitespace changes.
     if options.ignoreWhiteSpaceChanges == "yes":
         # Make a patch from the old to the new file, but ignoring changes in whitespace.
-        with open("tmp__.patch", "w") as patch_file:
+        with tempfile.NamedTemporaryFile(mode='w') as patch_file:
             subprocess.run(
                 ["diff", "-w", "-u", tmp_input, tmp_output],
                 stdout=patch_file,
             )
-        # Apply the patch to the old file.
-        subprocess.run(
-            ["patch", tmp_input, "tmp__.patch", f"--output={tmp_output}"],
-            stdout=subprocess.DEVNULL,
-        )
+            # Apply the patch to the old file.
+            subprocess.run(
+                ["patch", tmp_input, patch_file.name, f"--output={tmp_output}"],
+                stdout=subprocess.DEVNULL,
+            )
 
     # Undo any split line reformatting that we previously applied.
     restore_multiline_attributes(tmp_output, options.outputFile)
 
     # Clean up.
-    for f in [tmp_input, tmp_output, "tmp__.patch"]:
+    for f in [tmp_input, tmp_output]:
         if os.path.exists(f):
             os.unlink(f)
 
