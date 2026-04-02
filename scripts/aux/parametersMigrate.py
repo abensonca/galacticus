@@ -144,31 +144,63 @@ def git_is_tracked(filename):
 
 def git_head_hash():
     """Get the current HEAD commit hash."""
-    result = subprocess.run(
-        ["git", "rev-parse", "HEAD"],
-        capture_output=True,
-        text=True,
-    )
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except subprocess.CalledProcessError as e:
+        message = (
+            "Failed to determine the current git HEAD revision. "
+            "Ensure that git is installed and that this script is run inside a git repository."
+        )
+        if e.stderr:
+            message += f" Git error: {e.stderr.strip()}"
+        raise RuntimeError(message) from e
     return result.stdout.strip()
 
 
 def git_last_modified_hash(filename):
     """Get the hash of the last commit that modified the given file."""
-    result = subprocess.run(
-        ["git", "log", "-n", "1", "--pretty=format:%H", "--", filename],
-        capture_output=True,
-        text=True,
-    )
+    try:
+        result = subprocess.run(
+            ["git", "log", "-n", "1", "--pretty=format:%H", "--", filename],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except subprocess.CalledProcessError as e:
+        message = (
+            f"Failed to determine the last git commit that modified '{filename}'. "
+            "Ensure that git is installed, this script is run inside a git repository, "
+            "and that the file is tracked."
+        )
+        if e.stderr:
+            message += f" Git error: {e.stderr.strip()}"
+        raise RuntimeError(message) from e
     return result.stdout.strip()
 
 
 def git_ancestry(hash_from, hash_to):
     """Get the ancestry path between two commits (oldest first)."""
-    result = subprocess.run(
-        ["git", "rev-list", "--ancestry-path", f"{hash_from}..{hash_to}"],
-        capture_output=True,
-        text=True,
-    )
+    try:
+        result = subprocess.run(
+            ["git", "rev-list", "--ancestry-path", f"{hash_from}..{hash_to}"],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+    except subprocess.CalledProcessError as e:
+        message = (
+            f"Failed to determine git ancestry from '{hash_from}' to '{hash_to}'. "
+            "Ensure that git is installed, this script is run inside a git repository, "
+            "and that both revisions are valid."
+        )
+        if e.stderr:
+            message += f" Git error: {e.stderr.strip()}"
+        raise RuntimeError(message) from e
     hashes = [h for h in result.stdout.strip().split("\n") if h]
     hashes.reverse()  # Oldest first, matching Perl's reverse(@ancestry)
     return hashes
@@ -727,7 +759,7 @@ def collaborative_mpi(input_doc, parameters, is_grid):
         parent = node.getparent()
         # Insert the new elements after the old node, then remove the old node.
         insert_after(parent, count_collaborative_groups, node)
-        insert_after(parent, first_come_first_served, node)
+        insert_after(parent, first_come_first_served, count_collaborative_groups)
         parent.remove(node)
 
 
@@ -1080,14 +1112,14 @@ def main():
     # If requested, ignore whitespace changes.
     if options.ignoreWhiteSpaceChanges == "yes":
         # Make a patch from the old to the new file, but ignoring changes in whitespace.
-        subprocess.run(
-            f"diff -w -u {tmp_input} {tmp_output} > tmp__.patch",
-            shell=True,
-        )
+        with open("tmp__.patch", "w") as patch_file:
+            subprocess.run(
+                ["diff", "-w", "-u", tmp_input, tmp_output],
+                stdout=patch_file,
+            )
         # Apply the patch to the old file.
         subprocess.run(
-            f"patch {tmp_input} tmp__.patch --output={tmp_output}",
-            shell=True,
+            ["patch", tmp_input, "tmp__.patch", f"--output={tmp_output}"],
             stdout=subprocess.DEVNULL,
         )
 
