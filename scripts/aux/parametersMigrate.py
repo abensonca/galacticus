@@ -262,14 +262,7 @@ def migrate(input_doc, parameters, root_level, is_grid, input_filename, options,
                 for parameter in parameters.xpath(translation["xpath"]):
                     print(f"   translate parameter name: {parameter.tag} --> {translation['name']['new']}")
                     leaf_name = translation["name"]["new"]
-                    value_to = None
-                    if "--" not in translation["name"]["new"]:
-                        m = re.match(r"(.*)\.(.*)\.(.*)$", leaf_name)
-                        if m:
-                            value_to = m.group(2)
                     parameter.tag = leaf_name
-                    if value_to:
-                        parameter.set("value", value_to)
 
             # Translate values.
             if "value" in translation:
@@ -345,14 +338,6 @@ def migrate(input_doc, parameters, root_level, is_grid, input_filename, options,
                     insert_before(parameters, parameter_node, sibling)
                 else:
                     parameters.append(parameter_node)
-
-    # Strip out value extensions.
-    for parameter in list(parameters):
-        if not isinstance(parameter.tag, str):
-            continue  # Skip comments/PIs
-        m = re.match(r"([^.]+)\.", parameter.tag)
-        if m:
-            parameter.tag = m.group(1)
 
     # Search for duplicated parameters.
     duplicate_wrappers = {"mergerTreeOperator": "sequence"}
