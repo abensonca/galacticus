@@ -238,7 +238,7 @@ foreach my $sourceFile ( @sourceFilesToProcess ) {
 		    if ( $line =~ m/^\s*<(\S+)/ ) {
 			my $elementName = $1;
 			$functionClassName = $elementName."Class"
-			    if ( exists(${$stateStorables->{'functionClasses'}}{$elementName."Class"}) );
+			    if ( defined($stateStorables) && exists(${$stateStorables->{'functionClasses'}}{$elementName."Class"}) );
 		    }
 		}
 		close($file);
