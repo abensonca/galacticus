@@ -1043,13 +1043,6 @@ contains
     Call routines to set all derivatives for \mono{node}.
     !!}
     use :: Calculations_Resets, only : Calculations_Reset
-    !![
-    <include directive="rateComputeTask" type="moduleUse">
-    !!]
-    include 'objects.node.component.derivatives.modules.inc'
-    !![
-    </include>
-    !!]
     implicit none
     type     (treeNode), intent(inout)          :: node
     logical            , intent(  out)          :: interrupt
@@ -1071,14 +1064,6 @@ contains
     ! Do not attempt to compute derivatives for nodes which are not solvable.
     if (.not.node%isSolvable) return
     ! Call component routines to compute derivatives.
-    !![
-    <include directive="rateComputeTask" type="functionCall" functionType="void">
-     <functionArgs>node,interrupt,functionInterrupt,propertyType</functionArgs>
-    !!]
-    include 'objects.node.component.derivatives.inc'
-    !![
-    </include>
-    !!]
     call self_%nodeOperator_%differentialEvolution(node,interrupt,functionInterrupt,propertyType)
     ! Return the procedure pointer.
     functionInterruptReturn => functionInterrupt
