@@ -85,6 +85,7 @@ contains
     type            (enumerationComponentTypeType)                         :: component
     double precision                                                       :: specificAngularMomentum
     logical                                                                :: componentActive
+    !$GLC attributes initialized :: radiusGet, velocityGet, radiusSet, velocitySet
     
     !![
     <eventHookStatic name="radiusSolverTask">
