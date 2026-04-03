@@ -110,7 +110,7 @@ contains
     class(hotHaloOutflowReincorporationClass            ), intent(in   ), target :: hotHaloOutflowReincorporation_
     class(hotHaloOutflowStrippingClass                  ), intent(in   ), target :: hotHaloOutflowStripping_
     !![
-    <constructorAssign variables="*cosmologyParameters_, *darkMatterHaloScale_, *darkMatterHaloScale_, *hotHaloRamPressureStripping_, *hotHaloRamPressureTimescale_, *hotHaloOutflowReincorporation_, *hotHaloOutflowStripping_"/>
+    <constructorAssign variables="*cosmologyParameters_, *darkMatterHaloScale_, *hotHaloRamPressureStripping_, *hotHaloRamPressureTimescale_, *hotHaloOutflowReincorporation_, *hotHaloOutflowStripping_"/>
     !!]
 
     return
@@ -125,6 +125,7 @@ contains
 
     !![
     <objectDestructor name="self%cosmologyParameters_"          />
+    <objectDestructor name="self%darkMatterHaloScale_"          />
     <objectDestructor name="self%hotHaloRamPressureStripping_"  />
     <objectDestructor name="self%hotHaloRamPressureTimescale_"  />
     <objectDestructor name="self%hotHaloOutflowReincorporation_"/>
