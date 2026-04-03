@@ -4,6 +4,9 @@
 
 # Build option.
 GALACTICUS_BUILD_OPTION ?= default
+ifdef  BUILDPATH
+ override BUILDPATH := $(patsubst %/,%,$(BUILDPATH))
+endif
 ifeq '$(GALACTICUS_BUILD_OPTION)' 'default'
 export BUILDPATH ?= ./work/build
 export SUFFIX ?=
