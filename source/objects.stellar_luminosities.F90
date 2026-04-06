@@ -174,7 +174,7 @@ module Stellar_Luminosities_Structure
 contains
 
   !![
-  <nodeComponentInitializationTask function="Stellar_Luminosities_Initializor"/>
+  <nodeComponentInitializationTask function="Stellar_Luminosities_Initializor" after="Stellar_Luminosities_Initialize"/>
   !!]
   subroutine Stellar_Luminosities_Initializor(parameters)
     !!{
