@@ -76,7 +76,7 @@
     <treeIndexToRootNodeIndex value="true"/>
     <presetPositions value="false"/>
     <presetAngularMomenta value="false"/>
-    <presetOrbits value="false"/>
+    <presetOrbits value="true"/>
     <presetMergerTimes value="true"/>
     <presetMergerNodes value="true"/>
     <presetScaleRadii value="false"/>
