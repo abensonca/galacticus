@@ -117,8 +117,8 @@ for line in otool_out.splitlines():
     elif os.path.exists(static_name):
         print(f" -> Found static library at '{static_name}'")
         escaped = re.escape(library_name_original)
-        if re.search(r'-l' + escaped, compile_command):
-            compile_command = re.sub(r'-l' + escaped, static_name, compile_command)
+        if re.search(r'-l' + escaped + '(\s|$)', compile_command):
+            compile_command = re.sub(r'-l' + escaped + '(\s|$)', static_name + ' ', compile_command)
         else:
             compile_command += ' ' + static_name
             if library_name == 'quadmath':
@@ -142,8 +142,8 @@ for line in otool_out.splitlines():
             if os.path.exists(candidate):
                 print(f" -> Found static library at '{candidate}'")
                 escaped = re.escape(library_name_original)
-                if re.search(r'-l' + escaped, compile_command):
-                    compile_command = re.sub(r'-l' + escaped, candidate, compile_command)
+                if re.search(r'-l' + escaped + '( |$)', compile_command):
+                    compile_command = re.sub(r'-l' + escaped + '( |$)', candidate + ' ', compile_command)
                 else:
                     compile_command += ' ' + candidate
                 found = True
