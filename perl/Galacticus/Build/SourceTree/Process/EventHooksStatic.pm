@@ -114,6 +114,9 @@ sub Process_EventHooksStatic {
 		&Galacticus::Build::Dependencies::Dependency_Sort(\%tasks, \%sortData);
 		my %functionByName = map { $_->{'function'} => $_ } @hookedFunctions;
 		@hookedFunctions = map { exists($functionByName{$_}) ? $functionByName{$_} : () } @{$sortData{'unitNames'}};
+	    } else {
+		# Simply sort by function name to ensure consistent build.
+		@hookedFunctions = sort {$a->{'function'} cmp $b->{'function'}} @hookedFunctions;
 	    }
 	    # Get callWith and onReturn from the directive.
 	    my $callWith = exists($node->{'directive'}->{'callWith'}) ? $node->{'directive'}->{'callWith'} : '';
