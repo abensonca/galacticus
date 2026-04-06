@@ -163,135 +163,140 @@ contains
     
     ! Get the hot halo component to work with.
     hotHalo => node%hotHalo()
-    ! First handle return of mass to the circumgalactic medium, which makes the outer radius expand.    
-    ! Get the rate at which mass is being returned to the circumgalactic medium.
-    massReturnRate=self%hotHaloOutflowReincorporation_%rate(node)
-    ! The outer radius must be increased as the halo fills up with gas.
-    radiusOuter =hotHalo                     %outerRadius (    )
-    radiusVirial=self   %darkMatterHaloScale_%radiusVirial(node)
-    if (radiusOuter < radiusVirial) then
-       coordinates          =  [radiusOuter,0.0d0,0.0d0]
-       basic                => node             %basic           (                                    )
-       massDistribution_    => node             %massDistribution(componentTypeHotHalo,massTypeGaseous)
-       densityAtOuterRadius =  massDistribution_%density         (coordinates                         )
-       !![
-       <objectDestructor name="massDistribution_"/>
-       !!]
-       ! If the outer radius and density are non-zero we can expand the outer radius at a rate determined by the current
-       ! density profile.
-       if (radiusOuter > 0.0d0 .and. densityAtOuterRadius > 0.0d0) then
-          ! Limit the density at the outer radius to one third of the mean virial density (for baryons, assuming a
-          ! universal baryon fraction) to prevent arbitrarily rapid growth of the outer radius in halos containing almost
-          ! no gas.
-          densityMinimum=+self %cosmologyParameters_%omegaBaryon ()    &
-               &         /self %cosmologyParameters_%omegaMatter ()    &
-               &         *basic                     %mass        ()    &
-               &         /                           radiusVirial  **3 &
-               &         /4.0d0                                        &
-               &         /Pi
-          call hotHalo%outerRadiusRate(                           &
-               &                       +massReturnRate            &
-               &                       /4.0d0                     &
-               &                       /Pi                        &
-               &                       /radiusOuter**2            &
-               &                       /max(                      &
-               &                            densityAtOuterRadius, &
-               &                            densityMinimum        &
-               &                           )                      &
-               &                      )
-          ! Otherwise, if we have a positive rate of mass return, simply grow the radius at the virial velocity.
-       else if (massReturnRate > 0.0d0) then
-          ! Force some growth here so the radius is not trapped at zero.
-          call hotHalo%outerRadiusRate(                       &
-               &                       +massReturnRate        &
-               &                       /basic         %mass() &
-               &                       *radiusVirial          &
-               &                      )
-       end if
-    end if
-    ! Now handle ram pressure stripping.
-    if (node%isSatellite()) then
-       ! For satellites, first compute the outer radius growth rate due to ram pressure stripping.
-       radiusRamPressure=self%hotHaloRamPressureStripping_%radiusStripped(node)
-       ! Test whether the ram pressure radius is smaller than the current outer radius of the hot gas profile.
-       if     (                                           &
-            &           radiusRamPressure   < radiusOuter &
-            &  .and.                                      &
-            &   hotHalo%angularMomentum  () > 0.0d0       &
-            & ) then
-          ! The ram pressure stripping radius is within the outer radius. Cause the outer radius to shrink to the ram pressure
-          ! stripping radius on the ram pressure stripping timescale.
-          radiusOuterGrowthRate=+(                                                 &
-               &                  +radiusRamPressure                               &
-               &                  -radiusOuter                                     &
-               &                 )                                                 &
-               &                /self%hotHaloRamPressureTimescale_%timescale(node)
-       else
-          radiusOuterGrowthRate=+0.0d0
-       end if
-       ! Now apply this growth rate and the associated rates of change of mass.
-       if     (                                                                                                           &
-            &   radiusOuterGrowthRate   /= 0.0d0                                                                          &
-            &  .and.                                                                                                      &
-            &   hotHalo%mass         () >  0.0d0                                                                          &
-            &  .and.                                                                                                      &
-            &   radiusOuter             <=                                   self%darkMatterHaloScale_%radiusVirial(node) &
-            &  .and.                                                                                                      &
-            &   radiusOuter             > radiusOuterOverRadiusVirialMinimum*self%darkMatterHaloScale_%radiusVirial(node) &
-            & ) then
+    select type (hotHalo)
+    type is (nodeComponentHotHalo)
+       ! No hot halo exists - nothing to do.
+    class default
+       ! First handle return of mass to the circumgalactic medium, which makes the outer radius expand.    
+       ! Get the rate at which mass is being returned to the circumgalactic medium.
+       massReturnRate=self%hotHaloOutflowReincorporation_%rate(node)
+       ! The outer radius must be increased as the halo fills up with gas.
+       radiusOuter =hotHalo                     %outerRadius (    )
+       radiusVirial=self   %darkMatterHaloScale_%radiusVirial(node)
+       if (radiusOuter < radiusVirial) then
           coordinates          =  [radiusOuter,0.0d0,0.0d0]
+          basic                => node             %basic           (                                    )
           massDistribution_    => node             %massDistribution(componentTypeHotHalo,massTypeGaseous)
           densityAtOuterRadius =  massDistribution_%density         (coordinates                         )
           !![
-          <objectDestructor name="massDistribution_"/>
+	  <objectDestructor name="massDistribution_"/>
           !!]
-          massGas=hotHalo%mass()
-          if (massGas > 0.0d0) then
-             massLossRate=+4.0d0                    &
-                  &       *Pi                       &
-                  &       *densityAtOuterRadius     &
-                  &       *radiusOuter          **2 &
-                  &       *radiusOuterGrowthRate
-             call    hotHalo%       outerRadiusRate(                           +radiusOuterGrowthRate,interrupt,functionInterrupt)
-             call    hotHalo%              massRate(                           +massLossRate         ,interrupt,functionInterrupt)
-             call    hotHalo%   angularMomentumRate(hotHalo%angularMomentum()*(+massLossRate/massGas),interrupt,functionInterrupt)
-             call    hotHalo%        abundancesRate(hotHalo%abundances     ()*(+massLossRate/massGas),interrupt,functionInterrupt)
-             call    hotHalo%         chemicalsRate(hotHalo%chemicals      ()*(+massLossRate/massGas),interrupt,functionInterrupt)
-             if (.not.self%hotHaloOutflowStripping_%neverStripped(node)) then
-                call hotHalo%      strippedMassRate(                           -massLossRate         ,interrupt,functionInterrupt)
-                call hotHalo%strippedAbundancesRate(hotHalo%abundances     ()*(-massLossRate/massGas),interrupt,functionInterrupt)
-                call hotHalo% strippedChemicalsRate(hotHalo%chemicals      ()*(-massLossRate/massGas),interrupt,functionInterrupt)
-             end if
+          ! If the outer radius and density are non-zero we can expand the outer radius at a rate determined by the current
+          ! density profile.
+          if (radiusOuter > 0.0d0 .and. densityAtOuterRadius > 0.0d0) then
+             ! Limit the density at the outer radius to one third of the mean virial density (for baryons, assuming a
+             ! universal baryon fraction) to prevent arbitrarily rapid growth of the outer radius in halos containing almost
+             ! no gas.
+             densityMinimum=+self %cosmologyParameters_%omegaBaryon ()    &
+                  &         /self %cosmologyParameters_%omegaMatter ()    &
+                  &         *basic                     %mass        ()    &
+                  &         /                           radiusVirial  **3 &
+                  &         /4.0d0                                        &
+                  &         /Pi
+             call hotHalo%outerRadiusRate(                           &
+                  &                       +massReturnRate            &
+                  &                       /4.0d0                     &
+                  &                       /Pi                        &
+                  &                       /radiusOuter**2            &
+                  &                       /max(                      &
+                  &                            densityAtOuterRadius, &
+                  &                            densityMinimum        &
+                  &                           )                      &
+                  &                      )
+             ! Otherwise, if we have a positive rate of mass return, simply grow the radius at the virial velocity.
+          else if (massReturnRate > 0.0d0) then
+             ! Force some growth here so the radius is not trapped at zero.
+             call hotHalo%outerRadiusRate(                       &
+                  &                       +massReturnRate        &
+                  &                       /basic         %mass() &
+                  &                       *radiusVirial          &
+                  &                      )
           end if
-          ! Handle cold mode gas.
-          if (hotHalo%massColdIsSettable()) then
-             ! Compute the density at the outer radius for the cold mode component.
+       end if
+       ! Now handle ram pressure stripping.
+       if (node%isSatellite()) then
+          ! For satellites, first compute the outer radius growth rate due to ram pressure stripping.
+          radiusRamPressure=self%hotHaloRamPressureStripping_%radiusStripped(node)
+          ! Test whether the ram pressure radius is smaller than the current outer radius of the hot gas profile.
+          if     (                                           &
+               &           radiusRamPressure   < radiusOuter &
+               &  .and.                                      &
+               &   hotHalo%angularMomentum  () > 0.0d0       &
+               & ) then
+             ! The ram pressure stripping radius is within the outer radius. Cause the outer radius to shrink to the ram pressure
+             ! stripping radius on the ram pressure stripping timescale.
+             radiusOuterGrowthRate=+(                                                 &
+                  &                  +radiusRamPressure                               &
+                  &                  -radiusOuter                                     &
+                  &                 )                                                 &
+                  &                /self%hotHaloRamPressureTimescale_%timescale(node)
+          else
+             radiusOuterGrowthRate=+0.0d0
+          end if
+          ! Now apply this growth rate and the associated rates of change of mass.
+          if     (                                                                                                           &
+               &   radiusOuterGrowthRate   /= 0.0d0                                                                          &
+               &  .and.                                                                                                      &
+               &   hotHalo%mass         () >  0.0d0                                                                          &
+               &  .and.                                                                                                      &
+               &   radiusOuter             <=                                   self%darkMatterHaloScale_%radiusVirial(node) &
+               &  .and.                                                                                                      &
+               &   radiusOuter             > radiusOuterOverRadiusVirialMinimum*self%darkMatterHaloScale_%radiusVirial(node) &
+               & ) then
              coordinates          =  [radiusOuter,0.0d0,0.0d0]
-             massDistribution_    => node             %massDistribution(componentType=componentTypeColdHalo,massType=massTypeGaseous)
-             densityAtOuterRadius =  massDistribution_%density         (              coordinates                                   )
+             massDistribution_    => node             %massDistribution(componentTypeHotHalo,massTypeGaseous)
+             densityAtOuterRadius =  massDistribution_%density         (coordinates                         )
              !![
-	     <objectDestructor name="massDistribution_"/>
-	     !!]
-             massGas=hotHalo%massCold()
+             <objectDestructor name="massDistribution_"/>
+             !!]
+             massGas=hotHalo%mass()
              if (massGas > 0.0d0) then
-                ! Compute the mass loss rate.
                 massLossRate=+4.0d0                    &
                      &       *Pi                       &
                      &       *densityAtOuterRadius     &
                      &       *radiusOuter          **2 &
                      &       *radiusOuterGrowthRate
-                ! Adjust the rates.
-                call hotHalo%           massColdRate(+                              massLossRate        ,interrupt,functionInterrupt)
-                call hotHalo%angularMomentumColdRate(+hotHalo%angularMomentumCold()*massLossRate/massGas,interrupt,functionInterrupt)
-                call hotHalo%     abundancesColdRate(+hotHalo%abundancesCold     ()*massLossRate/massGas,interrupt,functionInterrupt)
-                call hotHalo%       strippedMassRate(-                              massLossRate        ,interrupt,functionInterrupt)
-                call hotHalo% strippedAbundancesRate(-hotHalo%abundancesCold     ()*massLossRate/massGas,interrupt,functionInterrupt)
+                call    hotHalo%       outerRadiusRate(                           +radiusOuterGrowthRate,interrupt,functionInterrupt)
+                call    hotHalo%              massRate(                           +massLossRate         ,interrupt,functionInterrupt)
+                call    hotHalo%   angularMomentumRate(hotHalo%angularMomentum()*(+massLossRate/massGas),interrupt,functionInterrupt)
+                call    hotHalo%        abundancesRate(hotHalo%abundances     ()*(+massLossRate/massGas),interrupt,functionInterrupt)
+                call    hotHalo%         chemicalsRate(hotHalo%chemicals      ()*(+massLossRate/massGas),interrupt,functionInterrupt)
+                if (.not.self%hotHaloOutflowStripping_%neverStripped(node)) then
+                   call hotHalo%      strippedMassRate(                           -massLossRate         ,interrupt,functionInterrupt)
+                   call hotHalo%strippedAbundancesRate(hotHalo%abundances     ()*(-massLossRate/massGas),interrupt,functionInterrupt)
+                   call hotHalo% strippedChemicalsRate(hotHalo%chemicals      ()*(-massLossRate/massGas),interrupt,functionInterrupt)
+                end if
+             end if
+             ! Handle cold mode gas.
+             if (hotHalo%massColdIsSettable()) then
+                ! Compute the density at the outer radius for the cold mode component.
+                coordinates          =  [radiusOuter,0.0d0,0.0d0]
+                massDistribution_    => node             %massDistribution(componentType=componentTypeColdHalo,massType=massTypeGaseous)
+                densityAtOuterRadius =  massDistribution_%density         (              coordinates                                   )
+                !![
+		<objectDestructor name="massDistribution_"/>
+	        !!]
+                massGas=hotHalo%massCold()
+                if (massGas > 0.0d0) then
+                   ! Compute the mass loss rate.
+                   massLossRate=+4.0d0                    &
+                        &       *Pi                       &
+                        &       *densityAtOuterRadius     &
+                        &       *radiusOuter          **2 &
+                        &       *radiusOuterGrowthRate
+                   ! Adjust the rates.
+                   call hotHalo%           massColdRate(+                              massLossRate        ,interrupt,functionInterrupt)
+                   call hotHalo%angularMomentumColdRate(+hotHalo%angularMomentumCold()*massLossRate/massGas,interrupt,functionInterrupt)
+                   call hotHalo%     abundancesColdRate(+hotHalo%abundancesCold     ()*massLossRate/massGas,interrupt,functionInterrupt)
+                   call hotHalo%       strippedMassRate(-                              massLossRate        ,interrupt,functionInterrupt)
+                   call hotHalo% strippedAbundancesRate(-hotHalo%abundancesCold     ()*massLossRate/massGas,interrupt,functionInterrupt)
+                end if
              end if
           end if
+       else
+          ! For isolated halos, the outer radius should grow with the virial radius.
+          call hotHalo%outerRadiusRate(self%darkMatterHaloScale_%radiusVirialGrowthRate(node),interrupt,functionInterrupt)
        end if
-    else
-       ! For isolated halos, the outer radius should grow with the virial radius.
-       call hotHalo%outerRadiusRate(self%darkMatterHaloScale_%radiusVirialGrowthRate(node),interrupt,functionInterrupt)
-    end if
+    end select
     return
   end subroutine cgmOuterRadiusRamPressureStrippingDifferentialEvolution
