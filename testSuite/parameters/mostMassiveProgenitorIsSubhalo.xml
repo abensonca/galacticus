@@ -104,6 +104,7 @@
     </nodeOperator>
     <nodeOperator value="CGMOutflowReincorporation">
       <includeSatellites value="true"/>
+      <outflowToColdMode value="false"/>
     </nodeOperator>
     <nodeOperator value="CGMCoolingHeating">
       <component value="disk"/>
@@ -115,9 +116,7 @@
       <component value="disk"/>
       <coolingFrom value="currentNode"/>
     </nodeOperator>
-    <nodeOperator value="CGMOuterRadiusRamPressureStripping">
-      <outflowToColdMode value="false"/>
-    </nodeOperator>
+    <nodeOperator value="CGMOuterRadiusRamPressureStripping"/>
   </nodeOperator>
 
   <outputFileName value="testSuite/outputs/mostMassiveProgenitorIsSubhalo.hdf5"/>

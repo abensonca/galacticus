@@ -948,8 +948,13 @@ def hot_halo_standard_ram_pressure_stripping(input_doc, parameters, is_grid):
         # Remove obsoleted parameters.
         for elem in nodes[0].xpath(".//outflowToColdMode[@value]"):
             elem.getparent().remove(elem)
-        # Set the option in the new nodeOperator.
-        outflow_to_cold_mode = etree.SubElement(operator_accretion, "outflowToColdMode")
+        # Set the option in the CGMOutflowReincorporation nodeOperator.
+        operator_reincorporation = node_operators[0]].xpath(".//nodeOperator[@value='CGMOutflowReincorporation']")
+        if len(operator_reincorporation) == 0:
+            sys.exit("can not find any `nodeOperator[@value='CGMOutflowReincorporation']` into which to insert `outflowToColdMode`")
+        if len(operator_reincorporation) > 1:
+            sys.exit("found multiple `nodeOperator[@value='CGMOutflowReincorporation']` nodes - unknown into which to insert `outflowToColdMode`")
+        outflow_to_cold_mode = etree.SubElement(operator_reincorporation, "outflowToColdMode")
         outflow_to_cold_mode.set("value", outflow_to_cold_mode_value)
 
 def hot_halo_standard_inflow_outflow(input_doc, parameters, is_grid):

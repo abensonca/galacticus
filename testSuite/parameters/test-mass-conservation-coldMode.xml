@@ -332,6 +332,7 @@
       </nodeOperator>
       <nodeOperator value="CGMOutflowReincorporation" iterable="no">
 	<includeSatellites value="true"/>
+	<outflowToColdMode value="false"/>
       </nodeOperator>
       <nodeOperator value="CGMCoolingHeating" iterable="no">
 	<component value="disk"/>
@@ -343,9 +344,7 @@
 	<component value="disk"/>
 	<coolingFrom value="currentNode"/>
       </nodeOperator>
-      <nodeOperator value="CGMOuterRadiusRamPressureStripping" iterable="no">
-	<outflowToColdMode value="false"/>
-      </nodeOperator>
+      <nodeOperator value="CGMOuterRadiusRamPressureStripping" iterable="no"/>
     </nodeOperator>
     
     <!-- Numerical tolerances -->
