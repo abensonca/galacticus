@@ -78,16 +78,17 @@ except FileNotFoundError:
     print("Error: otool not found (this script is macOS-specific)", file=sys.stderr)
     sys.exit(1)
 
+print("Parsing otool output:")
 for line in otool_out.splitlines():
     columns = line.split()
     if not columns:
         continue
-    lib_path = columns[0]
+    lib_path = columns[0]    
     if not (re.search(r'\.dylib$', lib_path) or re.search(r'\.so[0-9.]+$', lib_path)):
         continue
 
     dynamic_name = lib_path
-    m = re.search(r'^.*/lib([a-zA-Z0-9_\-+]+)\.', dynamic_name)
+    m = re.search(r'^.*/lib([a-zA-Z0-9_\-\+]+)\.', dynamic_name)
     library_name          = m.group(1) if m else dynamic_name
     library_name_original = library_name
 
@@ -99,7 +100,10 @@ for line in otool_out.splitlines():
     if library_name == 'qhull_r':
         library_name = 'qhullstatic_r'
 
-    print(f"Looking for static library for '{library_name}'")
+    print(f"Line: '{line}'")
+    print(f"   Original path was '{dynamic_name}'")
+    print(f"   Looking for static library for '{library_name}' (originally '{library_name_original}')")
+    print(f"   Static name is '{static_name}'")
 
     if re.match(r'^gcc', library_name):
         is_gcc = True
