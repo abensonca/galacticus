@@ -949,7 +949,7 @@ def hot_halo_standard_ram_pressure_stripping(input_doc, parameters, is_grid):
         for elem in nodes[0].xpath(".//outflowToColdMode[@value]"):
             elem.getparent().remove(elem)
         # Set the option in the CGMOutflowReincorporation nodeOperator.
-        operator_reincorporation = node_operators[0]].xpath(".//nodeOperator[@value='CGMOutflowReincorporation']")
+        operator_reincorporation = node_operators[0].xpath(".//nodeOperator[@value='CGMOutflowReincorporation']")
         if len(operator_reincorporation) == 0:
             sys.exit("can not find any `nodeOperator[@value='CGMOutflowReincorporation']` into which to insert `outflowToColdMode`")
         if len(operator_reincorporation) > 1:
