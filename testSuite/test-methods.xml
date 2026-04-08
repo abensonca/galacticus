@@ -2082,7 +2082,6 @@
 	</nodeOperator>
 	<nodeOperator value="CGMAccretion" iterable="no"/>
 	<nodeOperator value="CGMStarvation" iterable="no"/>
-	<nodeOperator value="CGMOuterRadiusRamPressureStripping" iterable="no"/>
       </nodeOperator>
     </componentHotHalo>
     <componentHotHalo value="verySimpleDelayed">
@@ -2133,7 +2132,6 @@
 	<nodeOperator value="CGMAccretion" iterable="no"/>
 	<nodeOperator value="CGMStarvation" iterable="no"/>
 	<nodeOperator value="CGMOutflowReincorporation" iterable="no"/>
-	<nodeOperator value="CGMOuterRadiusRamPressureStripping" iterable="no"/>
       </nodeOperator>
     </componentHotHalo>
   </parameters>
