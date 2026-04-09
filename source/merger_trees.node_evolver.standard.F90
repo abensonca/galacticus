@@ -1030,11 +1030,6 @@ contains
     ! Do not attempt to compute derivatives for nodes which are not solvable.
     if (.not.node%isSolvable) return
     ! Call component routines to compute derivatives.
-    !![
-    <eventHookStatic name="rateComputeTask">
-     <callWith>node,interrupt,functionInterrupt,propertyType</callWith>
-    </eventHookStatic>
-    !!]
     call self_%nodeOperator_%differentialEvolution(node,interrupt,functionInterrupt,propertyType)
     ! Return the procedure pointer.
     functionInterruptReturn => functionInterrupt

@@ -405,8 +405,8 @@ def migrate(input_doc, parameters, root_level, is_grid, input_filename, options,
 
 def radiation_field_intergalactic_background_cmb(input_doc, parameters, is_grid):
     """Special handling to add CMB radiation into the intergalactic background radiation."""
-    for node in parameters.xpath("//radiationFieldIntergalacticBackground[@value]"):
-        print("   translate special '//radiationFieldIntergalacticBackground[@value]'")
+    for node in parameters.xpath(".//radiationFieldIntergalacticBackground[@value]"):
+        print("   translate special './/radiationFieldIntergalacticBackground[@value]'")
         # Construct new summation and CMB nodes, and a copy of the original node.
         summation_node = etree.Element("radiationFieldIntergalacticBackground")
         cmb_node = etree.Element("radiationField")
@@ -437,9 +437,9 @@ def black_hole_seed_mass(input_doc, parameters, is_grid):
     mass_seed = 100.0  # Default value.
     component_black_hole = None
     for node in parameters.xpath(
-        "//componentBlackHole[@value='simple' or @value='standard' or @value='nonCentral']/massSeed[@value]"
+        ".//componentBlackHole[@value='simple' or @value='standard' or @value='nonCentral']/massSeed[@value]"
     ):
-        print("   translate special '//componentBlackHole[@value]/massSeed[@value]'")
+        print("   translate special './/componentBlackHole[@value]/massSeed[@value]'")
         do_translate = True
         component_black_hole = node.getparent()
         mass_seed = node.get("value")
@@ -447,7 +447,7 @@ def black_hole_seed_mass(input_doc, parameters, is_grid):
     if not do_translate:
         return
     # Find nodeOperators.
-    node_operators = parameters.xpath("//nodeOperator[@value='multi']")
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
     if len(node_operators) == 0:
         sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert a black hole seed operator")
     if len(node_operators) > 1:
@@ -499,9 +499,9 @@ def black_hole_physics(input_doc, parameters, is_grid):
     component_node = None
     do_translate = False
     for node in parameters.xpath(
-        "//componentBlackHole[@value='simple' or @value='standard' or @value='nonCentral']"
+        ".//componentBlackHole[@value='simple' or @value='standard' or @value='nonCentral']"
     ):
-        print("   translate special '//componentBlackHole[@value]'")
+        print("   translate special './/componentBlackHole[@value]'")
         do_translate = True
         component_node = node
         component_type = node.get("value")
@@ -521,7 +521,7 @@ def black_hole_physics(input_doc, parameters, is_grid):
     if not do_translate:
         return
     # Find nodeOperators.
-    node_operators = parameters.xpath("//nodeOperator[@value='multi']")
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
     if len(node_operators) == 0:
         sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert a black hole seed operator")
     if len(node_operators) > 1:
@@ -605,8 +605,8 @@ def black_hole_physics(input_doc, parameters, is_grid):
 
 def model_parameter_xpath(input_doc, parameters, is_grid):
     """Special handling to switch `modelParameter` names to use XPath syntax."""
-    for model_parameter in parameters.xpath("//modelParameter[@value='active' or @value='inactive']"):
-        print("   translate special '//modelParameter[@value]'")
+    for model_parameter in parameters.xpath(".//modelParameter[@value='active' or @value='inactive']"):
+        print("   translate special './/modelParameter[@value]'")
         for name_node in model_parameter.findall("name"):
             value = name_node.get("value")
             value = value.replace("::", "/")
@@ -630,7 +630,7 @@ def method_suffix_remove(input_doc, parameters, is_grid):
         "duttonMaccio2014DensityContrastMethod",
         "duttonMaccio2014DensityProfileMethod",
     }
-    for parameter in parameters.xpath("//*"):
+    for parameter in parameters.xpath(".//*"):
         node_name = parameter.tag
         if node_name in exceptions:
             continue
@@ -645,12 +645,12 @@ def method_suffix_remove(input_doc, parameters, is_grid):
 
 def satellite_orphanize(input_doc, parameters, is_grid):
     """Special handling to add a nodeOperator to orphanize satellites."""
-    nodes = parameters.xpath("//componentSatellite[@value='preset']")
+    nodes = parameters.xpath(".//componentSatellite[@value='preset']")
     if len(nodes) <= 0:
         return
-    print("   translate special '//componentSatellite[@value='preset']'")
+    print("   translate special './/componentSatellite[@value='preset']'")
     # Find nodeOperators.
-    node_operators = parameters.xpath("//nodeOperator[@value='multi']")
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
     if len(node_operators) == 0:
         sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert a satellite orphanizer operator")
     if len(node_operators) > 1:
@@ -665,23 +665,23 @@ def satellite_orphanize(input_doc, parameters, is_grid):
 
 def black_hole_non_central(input_doc, parameters, is_grid):
     """Special handling to add nodeOperators for non-central black hole evolution."""
-    nodes = parameters.xpath("//componentBlackHole[@value='nonCentral']")
+    nodes = parameters.xpath(".//componentBlackHole[@value='nonCentral']")
     if len(nodes) <= 0:
         return
     if len(nodes) > 1:
-        sys.exit("found multiple `//componentBlackHole[@value='nonCentral']` nodes - unknown what should be done in this situation")
-    print("   translate special '//componentBlackHole[@value='nonCentral']'")
+        sys.exit("found multiple `.//componentBlackHole[@value='nonCentral']` nodes - unknown what should be done in this situation")
+    print("   translate special './/componentBlackHole[@value='nonCentral']'")
     # Look for any "tripleInteraction" option.
     triple_interactions = nodes[0].findall("tripleInteraction[@value]")
     if len(triple_interactions) > 1:
-        sys.exit("found multiple `//tripleInteraction[@value]` nodes - unknown what should be done in this situation")
+        sys.exit("found multiple `.//tripleInteraction[@value]` nodes - unknown what should be done in this situation")
     triple_interaction = (
         triple_interactions[0].get("value") == "true" if len(triple_interactions) == 1 else True
     )
     for ti in triple_interactions:
         ti.getparent().remove(ti)
     # Find nodeOperators.
-    node_operators = parameters.xpath("//nodeOperator[@value='multi']")
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
     if len(node_operators) == 0:
         sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert a black hole operator")
     if len(node_operators) > 1:
@@ -701,17 +701,17 @@ def black_hole_non_central(input_doc, parameters, is_grid):
 
 def hot_halo_very_simple(input_doc, parameters, is_grid):
     """Special handling to add nodeOperators for 'very simple' hot halo evolution."""
-    nodes = parameters.xpath("//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed']")
+    nodes = parameters.xpath(".//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed']")
     if len(nodes) <= 0:
         return
     if len(nodes) > 1:
         sys.exit(
-            "found multiple `//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed']` nodes"
+            "found multiple `.//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed']` nodes"
             " - unknown what should be done in this situation"
         )
-    print("   translate special '//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed']'")
+    print("   translate special './/componentHotHalo[@value='verySimple' or @value='verySimpleDelayed']'")
     # Find nodeOperators.
-    node_operators = parameters.xpath("//nodeOperator[@value='multi']")
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
     if len(node_operators) == 0:
         sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert CGM operators")
     if len(node_operators) > 1:
@@ -746,10 +746,10 @@ def hot_halo_very_simple(input_doc, parameters, is_grid):
 
 def collaborative_mpi(input_doc, parameters, is_grid):
     """Special handling to migrate the `collaborativeMPI` parameter."""
-    nodes = parameters.xpath("//posteriorSampleLikelihood[@value='galaxyPopulation']/collaborativeMPI")
+    nodes = parameters.xpath(".//posteriorSampleLikelihood[@value='galaxyPopulation']/collaborativeMPI")
     if len(nodes) <= 0:
         return
-    print("   translate special '//posteriorSampleLikelihood[@value='galaxyPopulation']/collaborativeMPI'")
+    print("   translate special './/posteriorSampleLikelihood[@value='galaxyPopulation']/collaborativeMPI'")
     # Replace each node.
     for node in nodes:
         count_groups = 1 if node.get("value") == "true" else -1
@@ -767,38 +767,38 @@ def collaborative_mpi(input_doc, parameters, is_grid):
 def hot_halo_standard_accretion(input_doc, parameters, is_grid):
     """Special handling to add and modify nodeOperators for CGM accretion in the standard hot halo component."""
     nodes = parameters.xpath(
-        "//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed' "
+        ".//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed' "
         "or @value='standard' or @value='coldMode' or @value='outflowTracking']"
     )
     if len(nodes) <= 0:
         # None found - check if we have any componentHotHalo.
-        nodes_any = parameters.xpath("//componentHotHalo[@value]")
+        nodes_any = parameters.xpath(".//componentHotHalo[@value]")
         if len(nodes_any) > 0:
             return
         # Check if we have nodeOperators present.
-        node_ops = parameters.xpath("//nodeOperator[@value='multi']")
+        node_ops = parameters.xpath(".//nodeOperator[@value='multi']")
         if len(node_ops) == 0:
             return
         # No componentHotHalo - insert one with the default value.
         component_hot_halo = etree.SubElement(parameters, "componentHotHalo")
         component_hot_halo.set("value", "standard")
         nodes = parameters.xpath(
-            "//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed' "
+            ".//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed' "
             "or @value='standard' or @value='coldMode' or @value='outflowTracking']"
         )
     if len(nodes) > 1:
         sys.exit(
-            "found multiple `//componentHotHalo[@value='verySimple' or ...]` nodes"
+            "found multiple `.//componentHotHalo[@value='verySimple' or ...]` nodes"
             " - unknown what should be done in this situation"
         )
     print(
-        "   translate special '//componentHotHalo[@value='verySimple' or @value='verySimpleDelayed'"
+        "   translate special './/componentHotHalo[@value='verySimple' or @value='verySimpleDelayed'"
         " or @value='standard' or @value='coldMode' or @value='outflowTracking']'"
     )
     # Determine the type of hot halo component.
     hh_type = nodes[0].get("value")
     # Find nodeOperators.
-    node_operators = parameters.xpath("//nodeOperator[@value='multi']")
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
     if len(node_operators) == 0:
         sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert CGM operators")
     if len(node_operators) > 1:
@@ -806,7 +806,7 @@ def hot_halo_standard_accretion(input_doc, parameters, is_grid):
     # Handle the verySimple or verySimpleDelayed cases.
     if hh_type in ("verySimple", "verySimpleDelayed"):
         # Find existing nodeOperatorCGMOutflowReincorporation.
-        ops_reinc = node_operators[0].xpath("//nodeOperator[@value='CGMOutflowReincorporation']")
+        ops_reinc = node_operators[0].xpath(".//nodeOperator[@value='CGMOutflowReincorporation']")
         if len(ops_reinc) > 1:
             sys.exit("found multiple `nodeOperator[@value='CGMOutflowReincorporation']` nodes - unknown which to use")
         if len(ops_reinc) == 1:
@@ -814,7 +814,7 @@ def hot_halo_standard_accretion(input_doc, parameters, is_grid):
             include_satellites.set("value", "false")
             ops_reinc[0].append(include_satellites)
         # Find existing nodeOperatorCGMAccretion operator.
-        ops_accretion = node_operators[0].xpath("//nodeOperator[@value='CGMAccretion']")
+        ops_accretion = node_operators[0].xpath(".//nodeOperator[@value='CGMAccretion']")
         if len(ops_accretion) == 0:
             sys.exit("can not find any `nodeOperator[@value='CGMAccretion']` operators")
         if len(ops_accretion) > 1:
@@ -823,7 +823,7 @@ def hot_halo_standard_accretion(input_doc, parameters, is_grid):
         allow_negative.set("value", "false")
         ops_accretion[0].append(allow_negative)
         # Find existing nodeOperatorStarvation operator.
-        ops_starvation = node_operators[0].xpath("//nodeOperator[@value='CGMStarvation']")
+        ops_starvation = node_operators[0].xpath(".//nodeOperator[@value='CGMStarvation']")
         if len(ops_starvation) == 0:
             sys.exit("can not find any `nodeOperator[@value='CGMStarvation']` operators")
         if len(ops_starvation) > 1:
@@ -841,18 +841,18 @@ def hot_halo_standard_accretion(input_doc, parameters, is_grid):
             prior = nodes[0].xpath(xpath_expr)
             return prior[0].get("value") if len(prior) == 1 else default
 
-        fraction_baryon_value = _get_prior_value("//fractionBaryonLimitInNodeMerger[@value]", "false")
-        starve_satellites_value = _get_prior_value("//starveSatellites[@value]", "false")
-        starve_satellites_outflowed_value = _get_prior_value("//starveSatellitesOutflowed[@value]", "false")
-        angular_momentum_value = _get_prior_value("//angularMomentumAlwaysGrows[@value]", "false")
-        outflow_to_cold_mode_value = _get_prior_value("//outflowToColdMode[@value]", "false")
+        fraction_baryon_value = _get_prior_value(".//fractionBaryonLimitInNodeMerger[@value]", "false")
+        starve_satellites_value = _get_prior_value(".//starveSatellites[@value]", "false")
+        starve_satellites_outflowed_value = _get_prior_value(".//starveSatellitesOutflowed[@value]", "false")
+        angular_momentum_value = _get_prior_value(".//angularMomentumAlwaysGrows[@value]", "false")
+        outflow_to_cold_mode_value = _get_prior_value(".//outflowToColdMode[@value]", "false")
         # Remove obsoleted parameters.
         if hh_type != "coldMode":
-            for xpath_expr in ("//fractionBaryonLimitInNodeMerger[@value]", "//angularMomentumAlwaysGrows[@value]"):
+            for xpath_expr in (".//fractionBaryonLimitInNodeMerger[@value]", ".//angularMomentumAlwaysGrows[@value]"):
                 for elem in nodes[0].xpath(xpath_expr):
                     elem.getparent().remove(elem)
         # Remove starveSatellites and starveSatellitesOutflowed regardless.
-        for xpath_expr in ("//starveSatellites[@value]", "//starveSatellitesOutflowed[@value]"):
+        for xpath_expr in (".//starveSatellites[@value]", ".//starveSatellitesOutflowed[@value]"):
             for elem in nodes[0].xpath(xpath_expr):
                 elem.getparent().remove(elem)
         # Add the accretion operator.
@@ -893,46 +893,110 @@ def hot_halo_standard_accretion(input_doc, parameters, is_grid):
             include_satellites.set("value", include_satellites_value)
 
 
+def hot_halo_standard_ram_pressure_stripping(input_doc, parameters, is_grid):
+    """Special handling to add and modify nodeOperators for ram pressure stripping of the CGM in the standard hot halo component."""
+    nodes = parameters.xpath(
+        ".//componentHotHalo[@value='standard' or @value='coldMode']"
+    )
+    if len(nodes) <= 0:
+        # None found - check if we have any componentHotHalo.
+        nodes_any = parameters.xpath(".//componentHotHalo[@value]")
+        if len(nodes_any) > 0:
+            return
+        # Check if we have nodeOperators present.
+        node_ops = parameters.xpath(".//nodeOperator[@value='multi']")
+        if len(node_ops) == 0:
+            return
+        # No componentHotHalo - insert one with the default value.
+        component_hot_halo = etree.SubElement(parameters, "componentHotHalo")
+        component_hot_halo.set("value", "standard")
+        nodes = parameters.xpath(
+            ".//componentHotHalo[@value='standard' or @value='coldMode' or @value='outflowTracking']"
+        )
+    if len(nodes) > 1:
+        sys.exit(
+            "found multiple `.//componentHotHalo[@value='standard' or ...]` nodes"
+            " - unknown what should be done in this situation"
+        )
+    print(
+        "   translate special './/componentHotHalo[@value='standard' or @value='coldMode']'"
+    )
+    # Determine the type of hot halo component.
+    hh_type = nodes[0].get("value")
+    # Find nodeOperators.
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
+    if len(node_operators) == 0:
+        sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert CGM operators")
+    if len(node_operators) > 1:
+        print(etree.tostring(parameters, encoding="unicode"))
+        sys.exit("found multiple `nodeOperator[@value='multi']` nodes - unknown into which to insert CGM operators")
+    # Add the ram pressure stripping operator.
+    operator_accretion = etree.Element("nodeOperator")
+    operator_accretion.set("value", "CGMOuterRadiusRamPressureStripping")
+    operator_accretion.tail = "\n"
+    if is_grid:
+        operator_accretion.set("iterable", "no")
+    node_operators[0].append(operator_accretion)
+    # Handle the coldMode cases.
+    if hh_type == "coldMode":
+        # Find pre-existing options.
+        def _get_prior_value(xpath_expr, default):
+            prior = nodes[0].xpath(xpath_expr)
+            return prior[0].get("value") if len(prior) == 1 else default
+
+        outflow_to_cold_mode_value = _get_prior_value(".//outflowToColdMode[@value]", "false")
+        # Remove obsoleted parameters.
+        for elem in nodes[0].xpath(".//outflowToColdMode[@value]"):
+            elem.getparent().remove(elem)
+        # Set the option in the CGMOutflowReincorporation nodeOperator.
+        operator_reincorporation = node_operators[0].xpath(".//nodeOperator[@value='CGMOutflowReincorporation']")
+        if len(operator_reincorporation) == 0:
+            sys.exit("can not find any `nodeOperator[@value='CGMOutflowReincorporation']` into which to insert `outflowToColdMode`")
+        if len(operator_reincorporation) > 1:
+            sys.exit("found multiple `nodeOperator[@value='CGMOutflowReincorporation']` nodes - unknown into which to insert `outflowToColdMode`")
+        outflow_to_cold_mode = etree.SubElement(operator_reincorporation, "outflowToColdMode")
+        outflow_to_cold_mode.set("value", outflow_to_cold_mode_value)
+
 def hot_halo_standard_inflow_outflow(input_doc, parameters, is_grid):
     """Special handling to add and modify nodeOperators for CGM inflow/outflow in the standard hot halo component."""
     # Rename any `nodeOperatorCGMCoolingInflow` to `CGMCoolingHeating`.
-    for op in parameters.xpath("//nodeOperator[@value='multi']/nodeOperator[@value='CGMCoolingInflow']"):
+    for op in parameters.xpath(".//nodeOperator[@value='multi']/nodeOperator[@value='CGMCoolingInflow']"):
         op.tag = "CGMCoolingHeating"
     # Look for "componentHotHalo" parameters.
     nodes = parameters.xpath(
-        "//componentHotHalo[@value='standard' or @value='coldMode' or @value='outflowTracking']"
+        ".//componentHotHalo[@value='standard' or @value='coldMode' or @value='outflowTracking']"
     )
     if len(nodes) <= 0:
-        nodes_any = parameters.xpath("//componentHotHalo[@value]")
+        nodes_any = parameters.xpath(".//componentHotHalo[@value]")
         if len(nodes_any) > 0:
             return
-        node_ops = parameters.xpath("//nodeOperator[@value='multi']")
+        node_ops = parameters.xpath(".//nodeOperator[@value='multi']")
         if len(node_ops) == 0:
             return
         component_hot_halo = etree.SubElement(parameters, "componentHotHalo")
         component_hot_halo.set("value", "standard")
         nodes = parameters.xpath(
-            "//componentHotHalo[@value='standard' or @value='coldMode' or @value='outflowTracking']"
+            ".//componentHotHalo[@value='standard' or @value='coldMode' or @value='outflowTracking']"
         )
     if len(nodes) > 1:
         sys.exit(
-            "found multiple `//componentHotHalo[@value='standard' or ...]` nodes"
+            "found multiple `.//componentHotHalo[@value='standard' or ...]` nodes"
             " - unknown what should be done in this situation"
         )
     print(
-        "   translate special '//componentHotHalo[@value='standard' or @value='coldMode'"
+        "   translate special './/componentHotHalo[@value='standard' or @value='coldMode'"
         " or @value='outflowTracking']'"
     )
     hh_type = nodes[0].get("value")
     # Find the component to which cooling should be directed.
-    nodes_disk = parameters.xpath("//componentDisk[@value]")
+    nodes_disk = parameters.xpath(".//componentDisk[@value]")
     if len(nodes_disk) == 0:
         component_cooling = "disk"
     else:
         type_disk = nodes_disk[0].get("value")
         component_cooling = "none" if type_disk == "null" else "disk"
     # Find nodeOperators.
-    node_operators = parameters.xpath("//nodeOperator[@value='multi']")
+    node_operators = parameters.xpath(".//nodeOperator[@value='multi']")
     if len(node_operators) == 0:
         sys.exit("can not find any `nodeOperator[@value='multi']` into which to insert CGM operators")
     if len(node_operators) > 1:
@@ -943,25 +1007,25 @@ def hot_halo_standard_inflow_outflow(input_doc, parameters, is_grid):
         prior = nodes[0].xpath(xpath_expr)
         return prior[0].get("value") if len(prior) == 1 else default
 
-    cooling_from_node_value = _get_prior("//coolingFromNode[@value]", "currentNode")
-    excess_heat_drives_outflow_value = _get_prior("//hotHaloExcessHeatDrivesOutflow[@value]", "true")
-    rate_maximum_expulsion_value = _get_prior("//rateMaximumExpulsion[@value]", "1.0")
-    fraction_loss_angular_momentum_value = _get_prior("//fractionLossAngularMomentum[@value]", "0.3")
-    efficiency_stripping_outflow_value = _get_prior("//efficiencyStrippingOutflow[@value]", "0.1")
-    track_stripped_gas_value = _get_prior("//trackStrippedGas[@value]", "true")
+    cooling_from_node_value = _get_prior(".//coolingFromNode[@value]", "currentNode")
+    excess_heat_drives_outflow_value = _get_prior(".//hotHaloExcessHeatDrivesOutflow[@value]", "true")
+    rate_maximum_expulsion_value = _get_prior(".//rateMaximumExpulsion[@value]", "1.0")
+    fraction_loss_angular_momentum_value = _get_prior(".//fractionLossAngularMomentum[@value]", "0.3")
+    efficiency_stripping_outflow_value = _get_prior(".//efficiencyStrippingOutflow[@value]", "0.1")
+    track_stripped_gas_value = _get_prior(".//trackStrippedGas[@value]", "true")
     # Remove obsoleted parameters.
     for xpath_expr in (
-        "//coolingFromNode[@value]",
-        "//hotHaloExcessHeatDrivesOutflow[@value]",
-        "//rateMaximumExpulsion[@value]",
-        "//fractionLossAngularMomentum[@value]",
-        "//efficiencyStrippingOutflow[@value]",
-        "//trackStrippedGas[@value]",
+        ".//coolingFromNode[@value]",
+        ".//hotHaloExcessHeatDrivesOutflow[@value]",
+        ".//rateMaximumExpulsion[@value]",
+        ".//fractionLossAngularMomentum[@value]",
+        ".//efficiencyStrippingOutflow[@value]",
+        ".//trackStrippedGas[@value]",
     ):
         for elem in nodes[0].xpath(xpath_expr):
             elem.getparent().remove(elem)
     # Remove any blackHolesCGMHeating nodeOperator.
-    bh_cgm_heatings = parameters.xpath("//nodeOperator[@value='multi']/nodeOperator[@value='blackHolesCGMHeating']")
+    bh_cgm_heatings = parameters.xpath(".//nodeOperator[@value='multi']/nodeOperator[@value='blackHolesCGMHeating']")
     if len(bh_cgm_heatings) > 0:
         cgm_heating = etree.Element("circumgalacticMediumHeating")
         cgm_heating.set("value", "AGNFeedback")
@@ -1016,7 +1080,7 @@ def hot_halo_standard_inflow_outflow(input_doc, parameters, is_grid):
     if hh_type == "outflowTracking":
         nodes[0].set("value", "standard")
         # Find nodePropertyExtractors, inserting one if none exists.
-        extractors = parameters.xpath("//nodePropertyExtractor[@value='multi']")
+        extractors = parameters.xpath(".//nodePropertyExtractor[@value='multi']")
         if len(extractors) > 1:
             sys.exit("found multiple `nodePropertyExtractor[@value='multi']` nodes - unknown into which to insert CGM operators")
         if len(extractors) == 0:
@@ -1025,7 +1089,7 @@ def hot_halo_standard_inflow_outflow(input_doc, parameters, is_grid):
             extractor_multi.set("value", "multi")
             extractor_indices.set("value", "nodeIndices")
             extractor_multi.append(extractor_indices)
-            extractors = parameters.xpath("//nodePropertyExtractor[@value='multi']")
+            extractors = parameters.xpath(".//nodePropertyExtractor[@value='multi']")
         # Insert nodeOperator.
         node_operator = etree.Element("nodeOperator")
         node_operator.set("value", "trackOutflowedMass")
@@ -1052,6 +1116,7 @@ SPECIAL_FUNCTIONS = {
     "collaborative_mpi": collaborative_mpi,
     "hot_halo_standard_accretion": hot_halo_standard_accretion,
     "hot_halo_standard_inflow_outflow": hot_halo_standard_inflow_outflow,
+    "hot_halo_standard_ram_pressure_stripping": hot_halo_standard_ram_pressure_stripping,
 }
 
 

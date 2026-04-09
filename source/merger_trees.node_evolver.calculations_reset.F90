@@ -48,12 +48,6 @@ contains
     type(treeNode), intent(inout) :: node
 
     !![
-    <eventHookStatic name="calculationResetTask">
-     <callWith>node,node%uniqueID()</callWith>
-    </eventHookStatic>
-    !!]
-
-    !![
     <eventHook name="calculationReset">
      <callWith>node,node%uniqueID()</callWith>
     </eventHook>
