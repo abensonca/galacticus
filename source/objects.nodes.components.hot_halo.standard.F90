@@ -244,9 +244,7 @@ module Node_Component_Hot_Halo_Standard
 contains
 
   !![
-  <nodeComponentInitializationTask>
-   <unitName>Node_Component_Hot_Halo_Standard_Initialize</unitName>
-  </nodeComponentInitializationTask>
+  <nodeComponentInitializationTask function="Node_Component_Hot_Halo_Standard_Initialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_Initialize(parameters)
     !!{
@@ -347,9 +345,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Standard_Initialize
 
   !![
-  <nodeComponentThreadInitializationTask>
-   <unitName>Node_Component_Hot_Halo_Standard_Thread_Initialize</unitName>
-  </nodeComponentThreadInitializationTask>
+  <nodeComponentThreadInitializationTask function="Node_Component_Hot_Halo_Standard_Thread_Initialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_Thread_Initialize(parameters)
     !!{
@@ -405,9 +401,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Standard_Thread_Initialize
 
   !![
-  <nodeComponentThreadUninitializationTask>
-   <unitName>Node_Component_Hot_Halo_Standard_Thread_Uninitialize</unitName>
-  </nodeComponentThreadUninitializationTask>
+  <nodeComponentThreadUninitializationTask function="Node_Component_Hot_Halo_Standard_Thread_Uninitialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_Thread_Uninitialize()
     !!{
@@ -462,9 +456,7 @@ contains
   end function Node_Component_Hot_Halo_Standard_Outer_Radius
 
   !![
-  <postStepTask>
-   <unitName>Node_Component_Hot_Halo_Standard_Post_Step</unitName>
-  </postStepTask>
+  <postStepTask function="Node_Component_Hot_Halo_Standard_Post_Step"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_Post_Step(node,status)
     !!{
@@ -727,9 +719,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Standard_Outflowing_Abundances_Rate
 
   !![
-  <preEvolveTask>
-  <unitName>Node_Component_Hot_Halo_Standard_Pre_Evolve</unitName>
-  </preEvolveTask>
+  <preEvolveTask function="Node_Component_Hot_Halo_Standard_Pre_Evolve"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_Pre_Evolve(node)
     !!{
@@ -807,9 +797,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Standard_Hot_Gas_All_Rate
 
   !![
-  <scaleSetTask>
-   <unitName>Node_Component_Hot_Halo_Standard_Scale_Set</unitName>
-  </scaleSetTask>
+  <scaleSetTask function="Node_Component_Hot_Halo_Standard_Scale_Set"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_Scale_Set(node)
     !!{
@@ -860,9 +848,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Standard_Scale_Set
 
   !![
-  <mergerTreeInitializeTask>
-   <unitName>Node_Component_Hot_Halo_Standard_Tree_Initialize</unitName>
-  </mergerTreeInitializeTask>
+  <mergerTreeInitializeTask function="Node_Component_Hot_Halo_Standard_Tree_Initialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_Tree_Initialize(node)
     !!{
@@ -1042,9 +1028,7 @@ contains
   end subroutine haloFormation
 
   !![
-  <stateStoreTask>
-   <unitName>Node_Component_Hot_Halo_Standard_State_Store</unitName>
-  </stateStoreTask>
+  <stateStoreTask function="Node_Component_Hot_Halo_Standard_State_Store"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_State_Store(stateFile,gslStateFile,stateOperationID)
     !!{
@@ -1065,9 +1049,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Standard_State_Store
 
   !![
-  <stateRetrieveTask>
-   <unitName>Node_Component_Hot_Halo_Standard_State_Restore</unitName>
-  </stateRetrieveTask>
+  <stateRetrieveTask function="Node_Component_Hot_Halo_Standard_State_Restore"/>
   !!]
   subroutine Node_Component_Hot_Halo_Standard_State_Restore(stateFile,gslStateFile,stateOperationID)
     !!{

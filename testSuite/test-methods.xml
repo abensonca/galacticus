@@ -620,6 +620,7 @@
     <satelliteMergingTimescales value="villalobos2013">
       <satelliteMergingTimescales value="boylanKolchin2008"/>
     </satelliteMergingTimescales>
+    <satelliteMergingTimescales value="poulton2021"/>
   </parameters>
   <parameters>
     <formatVersion>2</formatVersion>
