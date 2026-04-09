@@ -81,6 +81,7 @@ while ( my $line = <$compilerDefs> ) {
     my @columns = split(" ",$line);
     push(@preprocessorDirectives,$columns[1]);
 }
+close($compilerDefs);
 
 # Initialize structure to hold record of directives from each source file.
 my $usesPerFile;
