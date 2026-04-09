@@ -1038,9 +1038,7 @@ contains
   end subroutine nfwDescriptor
 
   !![
-  <stateStoreTask>
-   <unitName>massDistributionNFWStateStore</unitName>
-  </stateStoreTask>
+  <stateStoreTask function="massDistributionNFWStateStore"/>
   !!]
   subroutine massDistributionNFWStateStore(stateFile,gslStateFile,stateOperationID)
     !!{
@@ -1064,9 +1062,7 @@ contains
   end subroutine massDistributionNFWStateStore
 
   !![
-  <stateRetrieveTask>
-   <unitName>massDistributionNFWStateRestore</unitName>
-  </stateRetrieveTask>
+  <stateRetrieveTask function="massDistributionNFWStateRestore"/>
   !!]
   subroutine massDistributionNFWStateRestore(stateFile,gslStateFile,stateOperationID)
     !!{

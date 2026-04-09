@@ -123,9 +123,7 @@ module Node_Component_Hot_Halo_Cold_Mode
 contains
 
   !![
-  <nodeComponentInitializationTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_Initialize</unitName>
-  </nodeComponentInitializationTask>
+  <nodeComponentInitializationTask function="Node_Component_Hot_Halo_Cold_Mode_Initialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_Initialize(parameters)
     !!{
@@ -167,9 +165,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Cold_Mode_Initialize
 
   !![
-  <nodeComponentThreadInitializationTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_Thread_Initialize</unitName>
-  </nodeComponentThreadInitializationTask>
+  <nodeComponentThreadInitializationTask function="Node_Component_Hot_Halo_Cold_Mode_Thread_Initialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_Thread_Initialize(parameters)
     !!{
@@ -204,9 +200,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Cold_Mode_Thread_Initialize
 
   !![
-  <nodeComponentThreadUninitializationTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_Thread_Uninitialize</unitName>
-  </nodeComponentThreadUninitializationTask>
+  <nodeComponentThreadUninitializationTask function="Node_Component_Hot_Halo_Cold_Mode_Thread_Uninitialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_Thread_Uninitialize()
     !!{
@@ -232,9 +226,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Cold_Mode_Thread_Uninitialize
 
   !![
-  <rateComputeTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_Rate_Compute</unitName>
-  </rateComputeTask>
+  <rateComputeTask function="Node_Component_Hot_Halo_Cold_Mode_Rate_Compute"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_Rate_Compute(node,interrupt,interruptProcedure,propertyType)
     !!{
@@ -422,9 +414,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Cold_Mode_Outflow_Return
 
   !![
-  <scaleSetTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_Scale_Set</unitName>
-  </scaleSetTask>
+  <scaleSetTask function="Node_Component_Hot_Halo_Cold_Mode_Scale_Set"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_Scale_Set(node)
     !!{
@@ -463,10 +453,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Cold_Mode_Scale_Set
 
   !![
-  <mergerTreeInitializeTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_Tree_Initialize</unitName>
-   <after>Node_Component_Hot_Halo_Standard_Tree_Initialize</after>
-  </mergerTreeInitializeTask>
+  <mergerTreeInitializeTask function="Node_Component_Hot_Halo_Cold_Mode_Tree_Initialize" after="Node_Component_Hot_Halo_Standard_Tree_Initialize"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_Tree_Initialize(node)
     !!{
@@ -522,10 +509,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Cold_Mode_Tree_Initialize
 
   !![
-  <nodeMergerTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_Node_Merger</unitName>
-   <before>Node_Component_Hot_Halo_Standard_Node_Merger</before>
-  </nodeMergerTask>
+  <nodeMergerTask function="Node_Component_Hot_Halo_Cold_Mode_Node_Merger" before="Node_Component_Hot_Halo_Standard_Node_Merger"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_Node_Merger(node)
     !!{
@@ -803,9 +787,7 @@ contains
   end subroutine haloFormation
 
   !![
-  <stateStoreTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_State_Store</unitName>
-  </stateStoreTask>
+  <stateStoreTask function="Node_Component_Hot_Halo_Cold_Mode_State_Store"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_State_Store(stateFile,gslStateFile,stateOperationID)
     !!{
@@ -826,9 +808,7 @@ contains
   end subroutine Node_Component_Hot_Halo_Cold_Mode_State_Store
 
   !![
-  <stateRetrieveTask>
-   <unitName>Node_Component_Hot_Halo_Cold_Mode_State_Restore</unitName>
-  </stateRetrieveTask>
+  <stateRetrieveTask function="Node_Component_Hot_Halo_Cold_Mode_State_Restore"/>
   !!]
   subroutine Node_Component_Hot_Halo_Cold_Mode_State_Restore(stateFile,gslStateFile,stateOperationID)
     !!{
