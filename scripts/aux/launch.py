@@ -4,7 +4,7 @@ Launch sets of Galacticus models, iterating over sets of parameters and
 performing analysis on the results.  Supports launching on a variety of
 platforms via launch-method hooks.
 
-Python port of scripts/aux/launch.pl
+Python port of ./scripts/aux/launch.py
 Andrew Benson (11-June-2010; major re-write 01-February-2014; Python port 2026)
 """
 
@@ -141,7 +141,7 @@ def _parse_options(argv: list) -> tuple:
                 val = val[1:-1]
             if key in options:
                 existing = options[key]
-                options[key] = (existing if isinstance(existing, list) else [existing]) + [val]
+                options[key] = (existing + [val] if isinstance(existing, list) else val)
             else:
                 options[key] = val
         else:
