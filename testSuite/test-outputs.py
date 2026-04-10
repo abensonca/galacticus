@@ -17,7 +17,7 @@ args, _ = parser.parse_known_args()
 launchOptions = f"--launchMethod {args.launchMethod} --threadMaximum {args.threadMaximum} --ompThreads {args.ompThreads}"
 
 # Simply run the models.
-subprocess.run(f"cd ..; scripts/aux/launch.pl testSuite/test-outputs.xml {launchOptions}", shell=True)
+subprocess.run(f"cd ..; ./scripts/aux/launch.py testSuite/test-outputs.xml {launchOptions}", shell=True)
 
 # Check for failed models.
 logFiles = glob.glob("outputs/test-outputs/galacticus_*/galacticus.log")
