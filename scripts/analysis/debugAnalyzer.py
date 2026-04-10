@@ -41,10 +41,6 @@ with open(debug_file_name) as debug_log:
                     print(line, end='')
                     sys.exit("failed to parse line")
 
-        # AJB HACK
-        if i > 10:
-            break
-
 step_count = i + 1
 
 # Output values and rates.
