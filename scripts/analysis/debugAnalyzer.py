@@ -23,23 +23,26 @@ re_step  = re.compile(r'^\s*step:\s+([0-9\.eE\+\-]+)')
 re_value = re.compile(r'^\s*value:\s+([a-zA-Z:]+)\s+([\d\.eE\+\-]+)')
 re_rate  = re.compile(r'^\s*rate:\s+\(([a-zA-Z0-9_]+)\)\s+([a-zA-Z:\d\[\]]+)\s+([\d\.eE\+\-]+)')
 
-with open(debug_file_name) as debug_log:
-    for line in debug_log:
-        m = re_step.match(line)
-        if m:
-            i += 1
-            times.append(m.group(1))
-        else:
-            m = re_value.match(line)
+try:
+    with open(debug_file_name) as debug_log:
+        for line in debug_log:
+            m = re_step.match(line)
             if m:
-                properties[m.group(1)]['value'][i] = m.group(2)
+                i += 1
+                times.append(m.group(1))
             else:
-                m = re_rate.match(line)
+                m = re_value.match(line)
                 if m:
-                    properties[m.group(2)]['rate'][m.group(1)][i] = m.group(3)
+                    properties[m.group(1)]['value'][i] = m.group(2)
                 else:
-                    print(line, end='')
-                    sys.exit("failed to parse line")
+                    m = re_rate.match(line)
+                    if m:
+                        properties[m.group(2)]['rate'][m.group(1)][i] = m.group(3)
+                    else:
+                        print(line, end='')
+                        sys.exit("failed to parse line")
+except OSError as e:
+    sys.exit(f"failed to open {debug_file_name}: {e.strerror or e}")
 
 step_count = i + 1
 
