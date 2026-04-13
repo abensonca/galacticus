@@ -19,7 +19,7 @@ This section walks you through building and running a minimal Galacticus model f
 
 Before building, make sure you have the following available:
 
-- A modern Fortran compiler (e.g., `gfortran` ≥ 9 or Intel `ifort`)
+- A modern Fortran compiler (e.g., `gfortran` ≥ 11)
 - `make`
 - HDF5 libraries (the code writes output in HDF5 format)
 - FFTW3 libraries
