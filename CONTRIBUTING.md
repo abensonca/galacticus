@@ -66,7 +66,7 @@ For simple changes, you can work on `master` and follow the [simple changes work
 
 When making changes:
 
-1. **Follow code conventions** - See [doc/Coding.tex](doc/Coding.tex) for detailed style guidelines, naming conventions, and component patterns
+1. **Follow code conventions** - See the [Coding](https://github.com/galacticusorg/galacticus/releases/download/bleeding-edge/Galacticus_Development.pdf#coding) documentation for detailed style guidelines, naming conventions, and component patterns
 2. **Test locally** - Build and test your changes before submitting
 3. **Add yourself as a contributor** (see [Contributor Attribution](#contributor-attribution) below)
 4. **Document your changes** - Update comments and documentation as needed
@@ -207,7 +207,7 @@ This is **not a distrust of AI**—it's professional responsibility. Just as you
 - **Questions?** Ask in the [discussion forum](https://github.com/galacticusorg/galacticus/discussions)
 - **Found a bug?** Open an [issue](https://github.com/galacticusorg/galacticus/issues) with details about your system and the error
 - **Need more details?** See the comprehensive [wiki](https://github.com/galacticusorg/galacticus/wiki/Contributing)
-- **Development docs?** Check [doc/Development.tex](doc/Development.tex) for build system details and [doc/Coding.tex](doc/Coding.tex) for code conventions
+- **Development docs?** Check the [Development](https://github.com/galacticusorg/galacticus/releases/download/bleeding-edge/Galacticus_Development.pdf#development) documentation for build system details and the [Coding](https://github.com/galacticusorg/galacticus/releases/download/bleeding-edge/Galacticus_Development.pdf#coding) documentation for code conventions
 
 ## License
 
